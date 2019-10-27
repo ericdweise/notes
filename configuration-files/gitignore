@@ -18,3 +18,10 @@
 *.docx
 *.xls
 *.xlsx
+
+# Image Files
+*.png
+*.jpg
+*.jpeg
+*.tiff
+*.bmp
