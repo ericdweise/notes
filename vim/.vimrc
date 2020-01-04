@@ -1,0 +1,26 @@
+" insert spaces instead of tab character
+set expandtab 
+
+" set number of spaces to be inserted: 2
+set shiftwidth=4
+
+" set tab to stop at modulo 2 columns
+set tabstop=4
+
+" allow backspace <bs> to delete to tabstop locations
+set smarttab 
+
+" no simulated tab stops
+set softtabstop=0
+
+" turn on automatic indentation (when pressing enter)
+filetype indent on
+
+" Highlight pattern when searching
+set hlsearch
+
+" turn on syntax highlighting
+syntax enable
+
+" show the line and column number of the cursor
+set ruler
