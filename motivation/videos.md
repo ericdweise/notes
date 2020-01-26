@@ -22,3 +22,5 @@ These are some motivational videos that I go back to from time to time when I ne
 [9 Life Lessons - Convocation speech by Tim Minchin](https://www.youtube.com/watch?v=aAJ76a17VfI)
 
 [On The Other Side Of Suffering Is Greatness - David Goggins](https://www.youtube.com/watch?v=B9YhjPP3b2s)
+
+[Convocation Speach - Denzel Washington](https://www.youtube.com/watch?v=tbnzAVRZ9Xc)
