@@ -8,5 +8,8 @@ apt-get install -y \
     exfat-utils \
     gcc \
     git \
+    git-lfs \
     vim \
     zsh
+
+git lfs install

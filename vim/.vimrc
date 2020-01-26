@@ -1,10 +1,10 @@
 " insert spaces instead of tab character
 set expandtab 
 
-" set number of spaces to be inserted: 2
+" set number of spaces to be inserted: 4
 set shiftwidth=4
 
-" set tab to stop at modulo 2 columns
+" set tab to stop at modulo 4 columns
 set tabstop=4
 
 " allow backspace <bs> to delete to tabstop locations

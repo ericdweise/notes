@@ -1,0 +1,16 @@
+[user]
+    name = Eric Weise
+    email = ericdweise@gmail.com
+
+[core]
+    editor = "vi"
+
+[alias]
+    ll = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen--> %cr%Creset by %Cblue%cN <%cE>%Creset' --abbrev-commit --date=relative
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+
+[color]
+    ui = true
+    diff = true
+    branch = auto
+    status = auto
