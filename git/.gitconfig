@@ -6,6 +6,7 @@
     editor = "vi"
 
 [alias]
+    co = checkout
     ll = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen--> %cr%Creset by %Cblue%cN <%cE>%Creset' --abbrev-commit --date=relative
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 
