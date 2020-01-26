@@ -2,6 +2,9 @@
     name = Eric Weise
     email = ericdweise@gmail.com
 
+[core]
+    editor = "vi"
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -26,6 +29,3 @@
 
 [difftool "p4merge"]
     cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
-
-[core]
-    editor = 'vi' --wait
