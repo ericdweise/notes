@@ -9,16 +9,20 @@ if [ -z $1 ] || [ $1 == 'today' ]; then
     DATE="$(date $F_FORMAT)"
 elif [ $1 == 'tomorrow' ]; then
     DATE="$(date -v+1d $F_FORMAT)"
+elif [ $1 == 'yesterday' ]; then
+    DATE="$(date -v-1d $F_FORMAT)"
 else
     echo 'ERROR: input not understood'
     exit 100
 fi
 
 DATE="$DATE.txt"
-echo "Editing file: $DATE"
 
 if [ ! -f $DATE ]; then
     cat $TEMPLATE >> $DATE
+    echo "Creating new file: $DATE"
+else
+    echo "Editing existing file: $DATE"
 fi
 
 vi $DATE
