@@ -4,12 +4,20 @@
 3. 
 
 
+### LITTLE THINGS ###
+- 
+
+
 ### SCHEDULE ###
 
 
 ### NOTES ###
-HEALTH: 
 SLEEP: 
+    time: 
+    duration: 
+    quality: 
+    interuptions: 
+HEALTH: 
 EMOTION: 
 EXERCISE: 
 BERNIE: 
