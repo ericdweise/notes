@@ -1,4 +1,5 @@
 # Configuring a new Debian instance
+# RUN AS UNPRIVILEGED USER. Don't use sudo
 
 
 # Set up sudo for current user
@@ -18,3 +19,10 @@ sudo ./ubuntu/install-basic-packages.sh
 # Configure GIT
 git config --global user.name 'Eric Weise'
 git config --global user.email 'ericdweise@gmail.com'
+
+
+# Create new RSA key
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa
+
+# Install KeePass
+sudo ./ubuntu/install-keepass.sh
