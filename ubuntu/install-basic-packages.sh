@@ -11,7 +11,4 @@ apt-get install -y \
     vim \
     zsh
 
-git config --global user.name 'Eric Weise'
-git config --global user.email 'ericdweise@gmail.com'
-
 chsh -s $(which zsh)
