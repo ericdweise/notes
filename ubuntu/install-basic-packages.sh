@@ -8,8 +8,10 @@ apt-get install -y \
     exfat-utils \
     gcc \
     git \
-    git-lfs \
     vim \
     zsh
 
-git lfs install
+git config --global user.name 'Eric Weise'
+git config --global user.email 'ericdweise@gmail.com'
+
+chsh -s $(which zsh)
