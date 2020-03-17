@@ -1,3 +1,6 @@
+" disable mouse interaction
+set mouse=
+
 " insert spaces instead of tab character
 set expandtab 
 
