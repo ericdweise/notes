@@ -1,8 +1,10 @@
+#! /bin/bash
+
 # ARGS
 # NONE
 # TODO: Add today [default], tomorrow, +N
 
-TEMPLATE='template.txt'
+TEMPLATE='template.yaml'
 F_FORMAT='+%Y-%m-%d'
 
 # TODO: 
@@ -13,17 +15,29 @@ F_FORMAT='+%Y-%m-%d'
 if [ -z $1 ] || [ $1 == 'today' ]; then
     DATE="$(date $F_FORMAT)"
 elif [ $1 == 'tomorrow' ]; then
-    if [ $(uname) == 'Darwin' ]; then
+    case uname in
+    'Darwin')
         DATE="$(date -v+1d $F_FORMAT)"
-    else
+        ;;
+    'Linux')
         DATE="$(date -d '+1 day' $F_FORMAT)"
-    fi
+        ;;
+    *)
+        DATE="$(date -d '+1 day' $F_FORMAT)"
+        ;;
+    esac
 elif [ $1 == 'yesterday' ]; then
-    if [ $(uname) == 'Darwin' ]; then
+    case uname in
+    'Darwin')
         DATE="$(date -v-1d $F_FORMAT)"
-    else
+        ;;
+    'Linux')
         DATE="$(date -d '-1 day' $F_FORMAT)"
-    fi
+        ;;
+    *)
+        DATE="$(date -d '-1 day' $F_FORMAT)"
+        ;;
+    esac
 else
     echo 'ERROR: input not understood'
     exit 100
@@ -39,7 +53,7 @@ if [ -z $DATE ]; then
     exit 102
 fi
 
-DATE="$DATE.txt"
+DATE="$DATE.yaml"
 
 if [ ! -f $DATE ]; then
     cat $TEMPLATE >> $DATE
