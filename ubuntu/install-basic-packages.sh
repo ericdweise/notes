@@ -8,6 +8,7 @@ apt-get install -y \
     exfat-utils \
     gcc \
     git \
+    tmux \
     vim \
     zsh
 
