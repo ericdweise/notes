@@ -88,6 +88,19 @@ function install_docker {
     sudo chmod +x /usr/local/bin/docker-compose
     }
 
+function install_music_tools {
+    announce 'install' 'Strawberry (music library)'
+    wget -O /tmp/strawberry.deb 'https://github.com/strawberrymusicplayer/strawberry/releases/download/0.6.11/strawberry_0.6.11-eoan_amd64.deb'
+    sudo dpkg -i /tmp/strawberry.deb
+    sudo apt-get install -yf
+    sudo dpkg -i /tmp/strawberry.deb
+    rm /tmp/strawberry.deb
+    echo 'When moving files to collection use this format: %artist/{%album/}{%track_}%title.%extension'
+
+    announce 'install' 'Audacity (music player)'
+    sudo apt-get install -y audacity
+    }
+
 function install_password_manager {
     announce 'install' 'KeePass'
 
