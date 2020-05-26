@@ -97,8 +97,8 @@ function install_music_tools {
     rm /tmp/strawberry.deb
     echo 'When moving files to collection use this format: %artist/{%album/}{%track_}%title.%extension'
 
-    announce 'install' 'Audacity (music player)'
-    sudo apt-get install -y audacity
+    announce 'install' 'Audacious (music player)'
+    sudo apt install -y audacious
     }
 
 function install_password_manager {
@@ -193,6 +193,8 @@ for ARG in "$@"; do
         FLAG_INSTALL_ATOM='1'
     elif [ $ARG == '--docker' ]; then
         FLAG_INSTALL_DOCKER='1'
+    elif [ $ARG == '--music-tools' ]; then
+        FLAG_INSTALL_MUSIC_TOOLS='1'
     elif [ $ARG == '--password-manager' ]; then
         FLAG_INSTALL_PASSWORD_MANAGER='1'
     elif [ $ARG == '--python' ]; then
@@ -208,6 +210,7 @@ for ARG in "$@"; do
           --fresh-install
           --atom
           --docker
+          --music-tools
           --password-manager
           --python
           --rss-client
@@ -238,6 +241,11 @@ fi
 if [ $FLAG_INSTALL_DOCKER ]; then
     install_docker
     unset FLAG_INSTALL_DOCKER
+fi
+
+if [ $FLAG_INSTALL_MUSIC_TOOLS ]; then
+    install_music_tools
+    unset FLAG_INSTALL_MUSIC_TOOLS 
 fi
 
 if [ $FLAG_INSTALL_PASSWORD_MANAGER ]; then
