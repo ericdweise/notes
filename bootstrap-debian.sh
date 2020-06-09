@@ -24,8 +24,23 @@ function announce {
     fi
 }
 
+function get_distro {
+    if [[ "$(uname -v)" == *"Debian"* ]]; then
+        DISTRO='debian'
+    elif [[ "$(uname -v)" == *"Ubuntu"* ]]; then
+        DISTRO='ubuntu'
+    fi
+}
+
+
 function fresh_install {
     # The absolutely necessary packages for a fresh install of Debian/Ubuntu
+
+    if [ $DISTRO == 'debian' ]; then
+        if ![ $(which sudo) ]; then
+            install_sudo
+        fi
+    fi
 
     sudo apt install -y \
         curl \
@@ -68,9 +83,16 @@ function install_docker {
         gnupg-agent \
         software-properties-common
 
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    sudo add-apt-repository \
-        "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    if [ $DISTRO == 'ubuntu' ]; then
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        sudo add-apt-repository \
+            "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    elif [ $DISTRO == 'debian' ]; then
+        curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+        sudo apt-key fingerprint 0EBFCD88
+        sudo add-apt-repository \
+            "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+    fi
 
     sudo apt update
     sudo apt install -y \
@@ -148,11 +170,6 @@ function install_slack {
     }
 
 function install_sudo {
-    if [ $(which sudo) ]; then
-        echo "  Sudo is already installed."
-        exit
-    fi
-
     USER_NAME=$(whoami)
 
     echo "Temporarily switching to Super User"
@@ -175,15 +192,10 @@ function install_sudo {
 ### MAIN ###
 ############
 
-# Install the sudo package on basic Debian distro
-if [[ "$(uname -v)" == *"Debian"* ]]; then
-    install_sudo
-fi
-
 # Handle Command Line Arguments
 if ! [ "$@" ]; then
     echo 'Use "-h" to see arguments'
-    return 0
+    exit 0
 fi
 
 for ARG in "$@"; do
@@ -216,11 +228,13 @@ for ARG in "$@"; do
           --rss-client
           --rust
           --slack\n"
-        return 0
+        exit 0
     else
         announce 'error' "Unknown argument '$ARG'"
     fi
 done
+
+get_distro
 
 # Update aptitude and upgrade installed packages
 echo '    <<< Updating Aptitude library and upgrading installed packages >>>'
