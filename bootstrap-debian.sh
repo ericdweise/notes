@@ -37,10 +37,13 @@ function fresh_install {
     # The absolutely necessary packages for a fresh install of Debian/Ubuntu
 
     if [ $DISTRO == 'debian' ]; then
-        if ![ $(which sudo) ]; then
+        if ! [ $(which sudo) ]; then
             install_sudo
         fi
     fi
+
+    sudo apt update
+    sudo apt upgrade -y
 
     sudo apt install -y \
         curl \
@@ -62,12 +65,12 @@ function fresh_install {
 function install_atom_text {
     announce 'install' "Atom Text Editor"
 
-    #sudo apt install apt-transport-https
-    #wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
-    #sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+    sudo apt install -y apt-transport-https
+    wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+    echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" | sudo tee -a  /etc/apt/sources.list
 
-    #sudo apt update
-    #sudo apt install -y atom
+    sudo apt update
+    sudo apt install -y atom
     }
 
 function install_docker {
@@ -100,7 +103,6 @@ function install_docker {
         docker-ce-cli \
         containerd.io
 
-    systemctl status docker
     sudo docker run hello-world
 
     ## Installing Docker Compose
@@ -135,7 +137,7 @@ function install_python {
     announce 'install' 'Python 3'
 
     sudo apt install -y python3 python3-pip
-    sudo pip install virtualenv
+    sudo pip3 install virtualenv
     }
 
 function install_rss_client {
@@ -172,19 +174,19 @@ function install_slack {
 function install_sudo {
     USER_NAME=$(whoami)
 
-    echo "Temporarily switching to Super User"
-    su
-
-    announce 'install' 'sudo'
     apt update
-    apt upgrade -y
-    apt install sudo
 
-    echo "Adding $USER_NAME to sudoers."
-    usermod -aG $USER_NAME sudo
+    echo "Temporarily switching to Super User"
+    su -c "apt upgrade -y && \
+        apt install -y sudo && \
+        echo \"Adding $USER_NAME to sudoers.\" && \
+        usermod -aG sudo $USER_NAME"
 
     # TODO: Make sure function exits safely (decreases privilege) if this execution block fails somehow
-    exit
+    logout
+
+    echo "Re-login to user '$USER_NAME' to allow sudo access."
+    exec su -l $USER
     }
 
 
@@ -193,7 +195,7 @@ function install_sudo {
 ############
 
 # Handle Command Line Arguments
-if ! [ "$@" ]; then
+if [ "$#" -lt 1 ]; then
     echo 'Use "-h" to see arguments'
     exit 0
 fi
@@ -236,13 +238,8 @@ done
 
 get_distro
 
-# Update aptitude and upgrade installed packages
-echo '    <<< Updating Aptitude library and upgrading installed packages >>>'
-sudo apt update
-sudo apt upgrade -y
-
 # INSTALL PACKAGES
-if [ $FLAG_FRESH_INSTALL ]; then i
+if [ $FLAG_FRESH_INSTALL ]; then
     fresh_install
     unset FLAG_FRESH_INSTALL
 fi
