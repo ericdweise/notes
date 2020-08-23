@@ -1,6 +1,3 @@
-" disable mouse interaction
-set mouse=
-
 " insert spaces instead of tab character
 set expandtab 
 
@@ -27,3 +24,6 @@ syntax enable
 
 " show the line and column number of the cursor
 set ruler
+
+" disable mouse 
+set mouse=a

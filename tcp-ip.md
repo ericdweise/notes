@@ -1,5 +1,4 @@
-# CIDR
-Classless Inter-Domain Routing
+# CIDR - Classless Inter-Domain Routing
 
 Can be represented in a number of different ways:
 

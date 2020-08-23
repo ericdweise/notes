@@ -1,19 +1,19 @@
-A list of cybersecurity resources.
+# Resources.
 
-# Tutorials
+## Tutorials
 [h4cker](https://github.com/The-Art-of-Hacking/h4cker)
 A large list of resources maintained by Omar Santos
 
 
-# People
+## People
 [Omar Santos](https://omarsantos.io/)
 
 
-# Blogs
+## Blogs
 [Krebs on Security](https://krebsonsecurity.com)
 
 
-# Podcasts
+## Podcasts
 True stories from the dark side of the Internet.
 [Darknet Diaries](https://darknetdiaries.com/)
 

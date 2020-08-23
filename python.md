@@ -1,4 +1,4 @@
-A procedure for calling C functions from Python
+# Calling C inside Python
 
 0. Create the C code, `CODE.c`, and the header, `CODE.h`, files
 1. Compile C code. This can be done two ways:
