@@ -3,6 +3,7 @@
 # Configuring a new Debian-based instance
 # RUN AS UNPRIVILEGED USER. Don't use sudo
 # This will also work on Ubuntu distros.
+set -e
 
 
 ### FUNCTION DEFINITIONS ###
@@ -34,7 +35,7 @@ function get_distro {
 
 
 function fresh_install {
-    # The absolutely necessary packages for a fresh install of Debian/Ubuntu
+    # My absolutely necessary packages for a fresh install of Debian/Ubuntu
 
     if [ $DISTRO == 'debian' ]; then
         if ! [ $(which sudo) ]; then
@@ -133,6 +134,24 @@ function install_password_manager {
     sudo apt install -y keepass2
     }
 
+function install_shellcaster {
+    # https://github.com/jeff-hughes/shellcaster
+    announce 'install' 'ShellCaster'
+
+    if ! [ which cargo ]; then
+        install_rust_lang
+    fi
+
+    sudo apt install -y \
+        gcc \
+        libncurses-dev \
+        libsqlite3-dev \
+        libssl-dev \
+        pkg-config
+
+    sudo cargo install shellcaster --no-track --root "/usr/local"
+}
+
 function install_python {
     announce 'install' 'Python 3'
 
@@ -151,11 +170,26 @@ function install_rss_client {
     }
 
 function install_rust_lang {
+    if [ $(which cargo) ]; then
+        return 0
+    fi
+
     announce 'install' 'Rust Language'
 
-    curl https://sh.rustup.rs -sSf | sh
-    source $HOME/.cargo/env
-    sudo apt install build-essential
+    sudo mkdir /opt/rust
+    sudo chown -R $(whoami) /opt/rust
+    RUSTUP_HOME=/opt/rust
+    export RUSTUP_HOME
+    CARGO_HOME=/opt/rust
+    export CARGO_HOME
+    curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
+
+    for k in $(ls /opt/rust/bin); do
+        f="/usr/local/bin/$k"
+        echo '#!/bin/bash' | sudo tee $f
+        echo 'RUSTUP_HOME=/opt/rust exec /opt/rust/bin/${0##*/} "$@"' | sudo tee -a $f
+        sudo chmod +x $f
+    done
 
     rustc --version
     }
@@ -211,6 +245,8 @@ for ARG in "$@"; do
         FLAG_INSTALL_MUSIC_TOOLS='1'
     elif [ $ARG == '--password-manager' ]; then
         FLAG_INSTALL_PASSWORD_MANAGER='1'
+    elif [ $ARG == '--podcast-manager' ]; then
+        FLAG_INSTALL_PODCAST_MANAGER='1'
     elif [ $ARG == '--python' ]; then
         FLAG_INSTALL_PYTHON='1'
     elif [ $ARG == '--rss-client' ]; then
@@ -226,6 +262,7 @@ for ARG in "$@"; do
           --docker
           --music-tools
           --password-manager
+          --podcast-manager
           --python
           --rss-client
           --rust
@@ -262,6 +299,11 @@ fi
 if [ $FLAG_INSTALL_PASSWORD_MANAGER ]; then
     install_password_manager
     unset FLAG_INSTALL_PASSWORD_MANAGER
+fi
+
+if [ $FLAG_INSTALL_PODCAST_MANAGER ]; then
+    install_shellcaster
+    unset FLAG_INSTALL_PODCAST_MANAGER
 fi
 
 if [ $FLAG_INSTALL_PYTHON ]; then
