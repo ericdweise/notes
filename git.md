@@ -21,6 +21,17 @@ If you want to squash the last 3 commits:
 5. Your text editor will reopen. Rewrite the commit message if you want.
 6. Save the commit message and close the editor.
 
+## Three Way Merge
+This is useful when when you want to merge two branches that have diverged. That is, both branches have a common ancestor commit, but each branch has one or more unique commits. For example, say you have a branch called `feature` on which development is complete and which is ready to be merged into `main`. However, since `feature` was branched, `main` has new commits. The following will commands will merge the `main` branch into `feature`. This will make the `feature` ready to submit to `master` as a Pull Request.
+```bash
+git checkout feature
+git rebase main
+```
+Alternatively, you can use `git merge`:
+```bash
+git checkout feature
+git merge master
+```
 
 ## Submodules
 Allows you to reference a source controlled repository inside another source controlled repository.
