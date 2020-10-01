@@ -12,3 +12,24 @@ Acer Cloudbook 11
 Year: 2015
 Model No: N15V1
 Debian 9 with XFCE desktop
+
+
+# Bluetooth Keyboard
+Boot up with numlock disabled:
+```bash
+sudo apt install -y numlockx
+IS_ERROR=0
+if [ ! -f /usr/bin/numlockx ]; then
+    echo 'ERROR: numlockx not installed'
+    IS_ERROR=1
+fi
+
+if [ ! -f /etc/X11/Xsession ]; then
+    echo 'ERROR: config file not found'
+    IS_ERROR=1
+fi
+
+if [ $IS_ERROR = 0 ]; then 
+    echo '/usr/bin/numlockx off' | sudo tee -a /etc/X11/Xsession
+fi
+```
