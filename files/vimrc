@@ -26,4 +26,4 @@ syntax enable
 set ruler
 
 " disable mouse 
-set mouse=a
+set mouse=
