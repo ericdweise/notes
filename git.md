@@ -50,3 +50,10 @@ git clone --recursive [URL]
 2. `cd PARENT_PATH`
 3. `git add SUBMODULE_PATH`
 4. `git commit -m 'MESSAGE'`
+
+### Pinning Submodule to Commit
+1. `cd SUBMODULE`
+2. `git checkout COMMIT_HASH`
+3. `cd GIT_PARENT`
+4. `git add SUBMODULE_DIR/`
+5. `git commit`
