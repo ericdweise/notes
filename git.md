@@ -63,4 +63,5 @@ git clone --recursive [URL]
 2. `git checkout main`
 3. `git pull`
 4. `cd PROJECT_ROOT`
-5. `git commit -m ...`
+5. `git add SUBMODULE_PATH`
+6. `git commit -m ...`
