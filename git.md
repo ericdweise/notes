@@ -57,3 +57,10 @@ git clone --recursive [URL]
 3. `cd GIT_PARENT`
 4. `git add SUBMODULE_DIR/`
 5. `git commit`
+
+### Updating a Submodule to Reflect the Latest Changes on Remote Branch
+1. `cd SUBMODULE_PATH`
+2. `git checkout main`
+3. `git pull`
+4. `cd PROJECT_ROOT`
+5. `git commit -m ...`
