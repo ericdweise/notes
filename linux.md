@@ -52,6 +52,8 @@ for SNAPPLE in $(snap list | tail -n +2 | cut -d ' ' -f 1); do
     echo "  Removing snap: $SNAPPLE"
     sudo snap remove $SNAPPLE
 done
+sudo snap remove core18
+sudo snap remove snapd
 
 # Get Snap Device ID
 for SNAP_DEVICE in $(df --output=target | grep '/snap/' ); do
