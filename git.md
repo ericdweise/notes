@@ -1,12 +1,10 @@
+# Git
 
 
-# Config Files
+## Config Files
 [gitconfig](files/gitconfig)
 [gitignore](files/gitignore)
 
-
-# Common Commands
-A list of git commands (that I usually forget about)
 
 ## Squashing Commits
 Combine multiple commits into one commit.
