@@ -1,10 +1,10 @@
 #! /bin/bash
+set -e
 
 # ARGS
-# NONE
-# TODO: Add today [default], tomorrow, +N
+# 1 - Relative date. E.g.: -1=yesterday, -2=two days ago, +3=three days in the future
 
-TEMPLATE='template.yaml'
+TEMPLATE_FILE='template.md'
 F_FORMAT='+%Y-%m-%d'
 
 # TODO: 
@@ -12,57 +12,38 @@ F_FORMAT='+%Y-%m-%d'
 #   "-v+1d" 
 ### For Ubuntu
 #   "-d '+1 day'"
-if [ -z $1 ] || [ $1 == 'today' ]; then
+
+if [ -z "$1" ]; then
     DATE="$(date $F_FORMAT)"
-elif [ $1 == 'tomorrow' ]; then
-    case uname in
-    'Darwin')
-        DATE="$(date -v+1d $F_FORMAT)"
-        ;;
-    'Linux')
-        DATE="$(date -d '+1 day' $F_FORMAT)"
-        ;;
-    *)
-        DATE="$(date -d '+1 day' $F_FORMAT)"
-        ;;
-    esac
-elif [ $1 == 'yesterday' ]; then
-    case uname in
-    'Darwin')
-        DATE="$(date -v-1d $F_FORMAT)"
-        ;;
-    'Linux')
-        DATE="$(date -d '-1 day' $F_FORMAT)"
-        ;;
-    *)
-        DATE="$(date -d '-1 day' $F_FORMAT)"
-        ;;
-    esac
 else
-    echo 'ERROR: input not understood'
-    exit 100
+    case uname in
+    'Darwin')
+        DATE="$(date "-v$1d" $F_FORMAT)"
+        ;;
+    'Linux')
+        DATE="$(date -d "$1 day" $F_FORMAT)"
+        ;;
+    *)
+        DATE="$(date -d "$1 day" $F_FORMAT)"
+        ;;
+    esac
 fi
 
-if [ $? != 0 ] ; then
-    echo "ERROR: date command exited with code $?"
-    exit 101
-fi
-
-if [ -z $DATE ]; then
+if [ -z "$DATE" ]; then
     echo "ERROR: date is empty "
     exit 102
 fi
 
-DATE="$DATE.yaml"
+FILENAME="$DATE.md"
 
-if [ ! -f $DATE ]; then
-    cat $TEMPLATE >> $DATE
-    echo "Creating new file: $DATE"
+if [ ! -f $FILENAME ]; then
+    echo "Creating new file: $FILENAME"
+    cp $TEMPLATE_FILE $FILENAME
 else
-    echo "Editing existing file: $DATE"
+    echo "Editing existing file: $FILENAME"
 fi
 
-vi $DATE
+vi $FILENAME
 
 
 ### UBUNTU date VERSION
