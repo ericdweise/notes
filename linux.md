@@ -3,26 +3,26 @@
 Commands, heuristics, and tips for navigating Linux.
 
 
-# Networking
+## Networking
 
 
-# Filesystem
+## Filesystem
 
 
-# APT Package Manager
+## APT Package Manager
 APT is the package manager that comes with Debian (and Debian based flavor) distros.
 
-## Sources
+### Sources
 APT stores a list of source databases in `/etc/apt/sources.list` and `/etc/apt/sources.list.d/`.
 TODO: Add a description of file format.
 
-## Updating packages
+### Updating packages
 ```bash
 sudo apt update  # update APT's database of available packages and versions
 sudo apt upgrade # install newer version of packages already on machine
 ```
 
-## PPAs
+### PPAs
 Adding a PPA:
 ```bash
 sudo add-apt-repository --remove ppa:PPA_REPOSITORY_NAME/PPA
@@ -33,19 +33,19 @@ sudo add-apt-repository ppa:PPA_REPOSITORY_NAME/PPA
 ```
 
 
-# Personalization
+## Personalization
 My personal steps for setting up a linux computer.
 
-## Install Favorite Programs (Debian)
+### Install Favorite Programs (Debian)
 Download and run the [bootstrap script](files/bootstrap-debian.sh).
 Run `./bootstrap-debian.sh -h` for usage.
 
 
-## Copy DotFiles
+### Copy DotFiles
 You know what to do...
 
 
-## Disabling Snaps
+### Disabling Snaps
 ```bash
 # Remove existing snaps
 for SNAPPLE in $(snap list | tail -n +2 | cut -d ' ' -f 1); do

@@ -1,8 +1,8 @@
 # BASH
 
 
-# Variables
-## Special Parameters
+## Variables
+### Special Parameters
 | Variable | Meaning |
 |----------|---------|
 | $\*	   | Positional parameters, starting from one. In double quotes expands to a single word. |
@@ -17,8 +17,8 @@
 
 [source: TLDP](https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_02.html)
 
-## String Manipulation
-### String Length
+### String Manipulation
+#### String Length
 ```bash
 LENGTH=$((${#STRING}-1))
 ```
@@ -26,7 +26,7 @@ Notes:
 - Only works in BASH and its derivatives.
 - `STRING` must be a variable that is prepended by an octothorpe (`#`), not a dollar sign (`$`)
 
-### Substrings
+#### Substrings
 ```bash
 # The command has the form: SUB_STRING=${STRING:start:length}
 STRING='Hello World'
@@ -46,8 +46,8 @@ Notes:
 - Values of the last element, `length`, can be negative. This is how many elements to be ignored at the end of `STRING`
 
 
-# Conditionals
-## Format of `If Then Else`
+## Conditionals
+### Format of `If Then Else`
 ```bash
 if [[ CONDITION ]]; then
     COMMANDS
@@ -58,10 +58,10 @@ else
 fi
 ```
 
-## Boolean Expressions
+### Boolean Expressions
 Also called "Test Commands" or "Primaries"
 
-### Form
+#### Form
 ```bash
 [ EXPRESSION ]
 # OR
@@ -71,24 +71,24 @@ Also called "Test Commands" or "Primaries"
 Notes:
 - It is important to include spaces between the brackets (`[`, `]`, `[[`, and `]]`) and the `EXPRESSION`.
 
-### Negating Boolean Expressions
+#### Negating Boolean Expressions
 ```bash
 if ! [[ EXPRESSION ]]; then
     If EXPRESSION evaluates to False, the commands here will execute
 fi
 ```
 
-### Single vs Double Bracket
+#### Single vs Double Bracket
 There are two different bracket types that be used to evaluate a Boolean expression, `[ EXPRESSION ]` and ``[[ EXPRESSION ]]``. While these can be used interchangeably, they handle `EXPRESSION` differently. The reason for this is historical. the single bracket, `[` was developed in the Thompson shell, and is more limited than the double bracket, `[[`, operator. The double bracket was introduced in the Korn shell and adopted by others (including Bash). It is an extension of the `[` operator, and adds functions like pattern matching.
 
 The general rules I follow are:
 - Use single brackets, `[`, when you are writing scripts that might be used on older systems, or needs to be run by a variety of shells.
 - When you use single brackets always quote your variables: `[ -n "$VARIABLE"]`, (not `[ -n $VARIABLE]`
 
-### Useful Conditionals
+#### Useful Conditionals
 [TLDP list of conditionals](https://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html)
 
-### Primaries acting on Integer Variables
+#### Primaries acting on Integer Variables
 | Primary        | Evaluates to |
 |----------------|--------------|
 | `[ ARG1 -eq ARG2 ]`  | True if `ARG1` is **equal to** `ARG2` |
@@ -98,7 +98,7 @@ The general rules I follow are:
 | `[ ARG1 -gt ARG2 ]`  | True if `ARG1` is **strictly greater than** `ARG2` |
 | `[ ARG1 -ge ARG2 ]`  | True if `ARG1` is **greater than or equal to** `ARG2` |
 
-### Primaries on String Variables
+#### Primaries on String Variables
 | Primary        | Evaluates to |
 |----------------|--------------|
 | `[ -z STRING ]`      | True of the length if `STRING` is zero. |
@@ -109,7 +109,7 @@ The general rules I follow are:
 | `[ STR1 > STR2 ]`    | True if `STR1` sorts after `STR2` lexicographically in the current locale. |
 | `[ -o OPTIONNAME ]`  | True if shell option `OPTIONNAME` is enabled. |
 
-### Primaries acting on files
+#### Primaries acting on files
 | Primary        | Evaluates to |
 |----------------|--------------|
 | `[ -a FILE ]`  | True if `FILE` exists |
@@ -138,22 +138,22 @@ The general rules I follow are:
 | `[ FILE1 -ef FILE2 ]`  | True if `FILE1` and `FILE2` refer to the same device and inode numbers |
 
 
-# Loops
-## For Loops
+## Loops
+### For Loops
 ```bash
 for VAR in $LIST; do
     ...
 done
 ```
 
-## While Loops
+### While Loops
 ```bash
 while [[ CONDITION ]]; do
     ...
 done
 ```
 
-# Functions
+## Functions
 ```bash
 function function_name = {
     ...
@@ -165,7 +165,7 @@ function_name () = {
 }
 ```
 
-## Function Arguments
+### Function Arguments
 Arguments can be passed to functions as follows:
 ```bash
 function_name [ARG1 [ARG2 [...]]]
@@ -175,6 +175,6 @@ Arguments are accessed the same as in bash scripts:
 * `$2` is the first argument
 * `$3` is the second argument ...
 
-## Exit vs Return from a Function
+### Exit vs Return from a Function
 Using `return [INTEGER]` will stop function execution and will set `$?` in the parent shell.
 Using `exit` will stop execution and close the parent shell.

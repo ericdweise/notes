@@ -2,9 +2,9 @@
 
 Some things I will probably need to do again in the future.
 
-# GitHub Pages
+## GitHub Pages
 
-## Adding a custom domain
+### Adding a custom domain
 Normally GitHub Pages are accessible through `username.github.io/repository`, however you can set up your github pages to be accessible from a custom URL.
 
 1. Obtain an Apex level domain name, e.g. `example.com`
@@ -21,11 +21,11 @@ Normally GitHub Pages are accessible through `username.github.io/repository`, ho
     ```
     YOu should see all four ip addresses in the `dig` output.
 
-### Enabling HTTPS:
+#### Enabling HTTPS:
 When you first enable GitHub Pages you will see an option to **Enforce HTTPS**. At first there will be a message that says your domain isn't configured to enable SSL. However, if you wait for a bit you should see the message: _Not yet available for your site because the certificate has not finished being issued. Please allow 24 hours for this process to complete_. So, it seems like this works itself out. Come back in a day and check this box.
 
 
-### References
+#### References
 [GitHub: Managing a custom domain for you github pages site](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain)
 [GitHub: Securing your GitHub Pages site with HTTPS](https://docs.github.com/en/free-pro-team@latest/articles/securing-your-github-pages-site-with-https)
 [GitHub Pages Docs](https://pages.github.com/)

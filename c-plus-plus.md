@@ -1,6 +1,7 @@
-# Operators
+# Programming in C++
 
-## Scope Resolution Operator (`::`)
+## Operators
+### Scope Resolution Operator (`::`)
 Can be used to define a function outside of a class.
 ```c
 # include<iostream>

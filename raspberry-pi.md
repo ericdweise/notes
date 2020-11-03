@@ -1,16 +1,18 @@
-# Bootstrap Installation
+# Raspberry Pi's
 
-## Enable SSH
+## Bootstrap Installation
+
+### Enable SSH
 ```bash
 touch /boot/ssh
 ```
 
-## Disable Graphics
+### Disable Graphics
 ```bash
 sudo update-rc.d lightdm disable
 ```
 
-## Create New User
+### Create New User
 ```bash
 NEW_USER=''  # name of your new user
 
@@ -19,12 +21,12 @@ sudo passwd $NEW_USER
 sudo usermod -aG sudo $NEW_USER
 ```
 
-## Disable pi User
+### Disable pi User
 ```bash
 sudo usermod -L pi
 ```
 
-## Connect to WiFi Network
+### Connect to WiFi Network
 ```bash
 SSID=''  # Network SSID.
 PASS=''  # Network Password
@@ -38,7 +40,7 @@ wpa-psk \"$PASS\"" | sudo tee -a /etc/network/interfaces
 ```
 
 
-# Troubleshooting
+## Troubleshooting
 
-## LED Warning Flash Codes
+### LED Warning Flash Codes
 [LED Codes](https://www.raspberrypi.org/documentation/configuration/led_blink_warnings.md)

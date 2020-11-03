@@ -1,4 +1,4 @@
+# LaTeX
 
-
-# Templates
+## Templates
 [Homework](files/homework.tex)

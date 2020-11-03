@@ -1,4 +1,4 @@
-# Using GCC
+# GCC - GNU Compiler Collection
 
 
 ## Basic Compilation

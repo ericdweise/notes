@@ -1,8 +1,9 @@
-# Pointers
+# Programming in C
 
+## Pointers
 A variable that points to an address in memory.
 
-## Basics
+### Basics
 Pointers can be initialized outright or created for an existing variable.
 ```c
 char var1 = "Hello";
@@ -18,6 +19,6 @@ printf("%s", pointer2);
 ```
 
 
-## Pointers in C++
+### Pointers in C++
 Since memory is deleted at the end of an objects life, you need to be careful
 passing values to pointers in C++. For example,

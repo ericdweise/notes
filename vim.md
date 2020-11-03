@@ -1,2 +1,4 @@
-# My .vimrc File
+# VIM - Vi IMproved
+
+## My .vimrc File
 [Download](files/vimrc)
