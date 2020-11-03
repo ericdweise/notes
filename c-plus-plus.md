@@ -3,7 +3,7 @@
 ## Operators
 ### Scope Resolution Operator (`::`)
 Can be used to define a function outside of a class.
-```c
+```
 # include<iostream>
 using namespace std;
 class Example {
@@ -30,7 +30,7 @@ The value of num is: 10
 ```
 
 Also can be used to access a global variable when there is a local variable with the same name
-```c
+```
 #include<iostream>
 using namespace std;
 int num = 7;
