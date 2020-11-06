@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1><a href="/">Eric's Notes</a></h1>
+    <hr>
+</header>
+<h1 id="programming-in-c">Programming in C</h1>
+<h2 id="pointers">Pointers</h2>
+<p>A variable that points to an address in memory.</p>
+<h3 id="basics">Basics</h3>
+<p>Pointers can be initialized outright or created for an existing variable.</p>
+<pre><code>char var1 = &quot;Hello&quot;;
+pointer1 = *var1;
+
+char *pointer2 = &quot;Hello&quot;</code></pre>
+<p>Then, the following will print the same output:</p>
+<pre><code>printf(&quot;%s&quot;, var1);
+printf(&quot;%s&quot;, pointer1);
+printf(&quot;%s&quot;, pointer2);</code></pre>
+<h3 id="pointers-in-c">Pointers in C++</h3>
+<p>Since memory is deleted at the end of an objects life, you need to be careful passing values to pointers in C++.</p>
+<div class="footer">
+    <hr>
+    <p><b>Computers</b></p>
+    <p>
+             <a href="/amazon-web-services.html">AWS</a>
+    &middot; <a href="/bash.html">Bash</a>
+    &middot; <a href="/c.html">C</a>
+    &middot; <a href="/c-plus-plus.html">C++</a>
+    &middot; <a href="/cybersecurity.html">CyberSecurity</a>
+    &middot; <a href="/devices.html">Devices</a>
+    &middot; <a href="/gcc.html">GCC</a>
+    &middot; <a href="/git.html">Git</a>
+    &middot; <a href="/latex.html">LaTeX</a>
+    &middot; <a href="/linux.html">Linux</a>
+    &middot; <a href="/networking.html">Networking</a>
+    &middot; <a href="/python.html">Python</a>
+    &middot; <a href="/raspberry-pi.html">Raspberry Pi</a>
+    &middot; <a href="/vim.html">Vim</a>
+    </p>
+    <p><b>Maths &amp; Physics</b></p>
+    <p>
+             <a href="#!linear-algebra.html">Linear Algebra</a>
+    &middot; <a href="#!solid-state-physics.html">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2020, <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>

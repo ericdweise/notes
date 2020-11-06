@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1><a href="/">Eric's Notes</a></h1>
+    <hr>
+</header>
+<h1 id="github">GitHub</h1>
+<p>Some things I will probably need to do again in the future.</p>
+<h2 id="github-pages">GitHub Pages</h2>
+<h3 id="adding-a-custom-domain">Adding a custom domain</h3>
+<p>Normally GitHub Pages are accessible through <code>username.github.io/repository</code>, however you can set up your github pages to be accessible from a custom URL.</p>
+<ol type="1">
+<li>Obtain an Apex level domain name, e.g. <code>example.com</code></li>
+<li>Activate GitHub Pages for the repository (Through the settings &gt; GitHub Pages). After you do this the webpage is available at <code>https://USERNAME.github.io/REPOSITORY/</code>. Next we’ll assign your custom domain.</li>
+<li>Create a file called <code>CNAME</code> in the root of the repository and put your domain name in this file.</li>
+<li>On your DNS Providor’s portal create an A record for your domain to each of the GitHub Pages IP Addresses: <code>185.199.108.153</code>, <code>185.199.109.153</code>, <code>185.199.110.153</code>, and <code>185.199.111.153</code>. You will need to create a separate DNS record for each IP Address. Note: I also had to add a separate DNS record for <code>example.com</code> and <code>www.example.com</code> for eash IP address.</li>
+<li>Test DNS configuration: <code>bash  dig EXAMPLE.COM +noall +answer  &gt; EXAMPLE.COM     3600    IN A     185.199.108.153  &gt; EXAMPLE.COM     3600    IN A     185.199.109.153  &gt; EXAMPLE.COM     3600    IN A     185.199.110.153  &gt; EXAMPLE.COM     3600    IN A     185.199.111.153</code> YOu should see all four ip addresses in the <code>dig</code> output.</li>
+</ol>
+<h4 id="enabling-https">Enabling HTTPS:</h4>
+<p>When you first enable GitHub Pages you will see an option to <strong>Enforce HTTPS</strong>. At first there will be a message that says your domain isn’t configured to enable SSL. However, if you wait for a bit you should see the message: <em>Not yet available for your site because the certificate has not finished being issued. Please allow 24 hours for this process to complete</em>. So, it seems like this works itself out. Come back in a day and check this box.</p>
+<h4 id="references">References</h4>
+<p><a href="https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain">GitHub: Managing a custom domain for you github pages site</a> <a href="https://docs.github.com/en/free-pro-team@latest/articles/securing-your-github-pages-site-with-https">GitHub: Securing your GitHub Pages site with HTTPS</a> <a href="https://pages.github.com/">GitHub Pages Docs</a></p>
+<div class="footer">
+    <hr>
+    <p><b>Computers</b></p>
+    <p>
+             <a href="/amazon-web-services.html">AWS</a>
+    &middot; <a href="/bash.html">Bash</a>
+    &middot; <a href="/c.html">C</a>
+    &middot; <a href="/c-plus-plus.html">C++</a>
+    &middot; <a href="/cybersecurity.html">CyberSecurity</a>
+    &middot; <a href="/devices.html">Devices</a>
+    &middot; <a href="/gcc.html">GCC</a>
+    &middot; <a href="/git.html">Git</a>
+    &middot; <a href="/latex.html">LaTeX</a>
+    &middot; <a href="/linux.html">Linux</a>
+    &middot; <a href="/networking.html">Networking</a>
+    &middot; <a href="/python.html">Python</a>
+    &middot; <a href="/raspberry-pi.html">Raspberry Pi</a>
+    &middot; <a href="/vim.html">Vim</a>
+    </p>
+    <p><b>Maths &amp; Physics</b></p>
+    <p>
+             <a href="#!linear-algebra.html">Linear Algebra</a>
+    &middot; <a href="#!solid-state-physics.html">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2020, <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>

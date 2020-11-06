@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1><a href="/">Eric's Notes</a></h1>
+    <hr>
+</header>
+<h1 id="raspberry-pis">Raspberry Pi’s</h1>
+<h2 id="bootstrap-installation">Bootstrap Installation</h2>
+<h3 id="enable-ssh">Enable SSH</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">touch</span> /boot/ssh</a></code></pre></div>
+<h3 id="disable-graphics">Disable Graphics</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">sudo</span> update-rc.d lightdm disable</a></code></pre></div>
+<h3 id="create-new-user">Create New User</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="va">NEW_USER=</span><span class="st">&#39;&#39;</span>  <span class="co"># name of your new user</span></a>
+<a class="sourceLine" id="cb3-2" title="2"></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="fu">sudo</span> useradd <span class="va">$NEW_USER</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="fu">sudo</span> passwd <span class="va">$NEW_USER</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="fu">sudo</span> usermod -aG sudo <span class="va">$NEW_USER</span></a></code></pre></div>
+<h3 id="disable-pi-user">Disable pi User</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">sudo</span> usermod -L pi</a></code></pre></div>
+<h3 id="connect-to-wifi-network">Connect to WiFi Network</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="va">SSID=</span><span class="st">&#39;&#39;</span>  <span class="co"># Network SSID.</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="va">PASS=</span><span class="st">&#39;&#39;</span>  <span class="co"># Network Password</span></a>
+<a class="sourceLine" id="cb5-3" title="3"></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="bu">echo</span> <span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb5-5" title="5"></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="st">allow-hotplug wlan0</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="st">iface wlan0 inet dhcp</span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="st">wpa-ssid </span><span class="dt">\&quot;</span><span class="va">$SSID</span><span class="dt">\&quot;</span></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="st">wpa-psk </span><span class="dt">\&quot;</span><span class="va">$PASS</span><span class="dt">\&quot;</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee -a /etc/network/interfaces</a></code></pre></div>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="led-warning-flash-codes">LED Warning Flash Codes</h3>
+<p><a href="https://www.raspberrypi.org/documentation/configuration/led_blink_warnings.md">LED Codes</a></p>
+<div class="footer">
+    <hr>
+    <p><b>Computers</b></p>
+    <p>
+             <a href="/amazon-web-services.html">AWS</a>
+    &middot; <a href="/bash.html">Bash</a>
+    &middot; <a href="/c.html">C</a>
+    &middot; <a href="/c-plus-plus.html">C++</a>
+    &middot; <a href="/cybersecurity.html">CyberSecurity</a>
+    &middot; <a href="/devices.html">Devices</a>
+    &middot; <a href="/gcc.html">GCC</a>
+    &middot; <a href="/git.html">Git</a>
+    &middot; <a href="/latex.html">LaTeX</a>
+    &middot; <a href="/linux.html">Linux</a>
+    &middot; <a href="/networking.html">Networking</a>
+    &middot; <a href="/python.html">Python</a>
+    &middot; <a href="/raspberry-pi.html">Raspberry Pi</a>
+    &middot; <a href="/vim.html">Vim</a>
+    </p>
+    <p><b>Maths &amp; Physics</b></p>
+    <p>
+             <a href="#!linear-algebra.html">Linear Algebra</a>
+    &middot; <a href="#!solid-state-physics.html">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2020, <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>

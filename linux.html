@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1><a href="/">Eric's Notes</a></h1>
+    <hr>
+</header>
+<h1 id="linux">Linux</h1>
+<p>Commands, heuristics, and tips for navigating Linux.</p>
+<h2 id="networking">Networking</h2>
+<h2 id="filesystem">Filesystem</h2>
+<h2 id="apt-package-manager">APT Package Manager</h2>
+<p>APT is the package manager that comes with Debian (and Debian based flavor) distros.</p>
+<h3 id="sources">Sources</h3>
+<p>APT stores a list of source databases in <code>/etc/apt/sources.list</code> and <code>/etc/apt/sources.list.d/</code>. TODO: Add a description of file format.</p>
+<h3 id="updating-packages">Updating packages</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">sudo</span> apt update  <span class="co"># update APT&#39;s database of available packages and versions</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="fu">sudo</span> apt upgrade <span class="co"># install newer version of packages already on machine</span></a></code></pre></div>
+<h3 id="ppas">PPAs</h3>
+<p>Adding a PPA:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">sudo</span> add-apt-repository --remove ppa:PPA_REPOSITORY_NAME/PPA</a></code></pre></div>
+<p>Removing a PPA:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">sudo</span> add-apt-repository ppa:PPA_REPOSITORY_NAME/PPA</a></code></pre></div>
+<h2 id="personalization">Personalization</h2>
+<p>My personal steps for setting up a linux computer.</p>
+<h3 id="install-favorite-programs-debian">Install Favorite Programs (Debian)</h3>
+<p>Download and run the <a href="storage/bootstrap-debian.sh">bootstrap script</a>. Run <code>./bootstrap-debian.sh -h</code> for usage.</p>
+<h3 id="copy-dotfiles">Copy DotFiles</h3>
+<p>You know what to do…</p>
+<h3 id="disabling-snaps">Disabling Snaps</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># Remove existing snaps</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw">for</span> <span class="ex">SNAPPLE</span> in <span class="va">$(</span><span class="ex">snap</span> list <span class="kw">|</span> <span class="fu">tail</span> -n +2 <span class="kw">|</span> <span class="fu">cut</span> -d <span class="st">&#39; &#39;</span> -f 1<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb4-3" title="3">    <span class="bu">echo</span> <span class="st">&quot;  Removing snap: </span><span class="va">$SNAPPLE</span><span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb4-4" title="4">    <span class="fu">sudo</span> snap remove <span class="va">$SNAPPLE</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="kw">done</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="fu">sudo</span> snap remove core18</a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="fu">sudo</span> snap remove snapd</a>
+<a class="sourceLine" id="cb4-8" title="8"></a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="co"># Get Snap Device ID</span></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="kw">for</span> <span class="ex">SNAP_DEVICE</span> in <span class="va">$(</span><span class="fu">df</span> --output=target <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&#39;/snap/&#39;</span> <span class="va">)</span><span class="kw">;</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb4-11" title="11">    <span class="bu">echo</span> <span class="st">&quot;  Unmounting snap: </span><span class="va">$SNAP_DEVICE</span><span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb4-12" title="12">    <span class="fu">sudo</span> umount <span class="va">$SNAP_DEVICE</span></a>
+<a class="sourceLine" id="cb4-13" title="13"><span class="kw">done</span></a>
+<a class="sourceLine" id="cb4-14" title="14"></a>
+<a class="sourceLine" id="cb4-15" title="15"><span class="co"># Purge Aptitude package</span></a>
+<a class="sourceLine" id="cb4-16" title="16"><span class="fu">sudo</span> apt purge snapd</a>
+<a class="sourceLine" id="cb4-17" title="17"></a>
+<a class="sourceLine" id="cb4-18" title="18"><span class="co"># Remove remaining Snap directories</span></a>
+<a class="sourceLine" id="cb4-19" title="19"><span class="fu">rm</span> -rf ~/snap</a>
+<a class="sourceLine" id="cb4-20" title="20"><span class="fu">sudo</span> rm -rf /snap</a>
+<a class="sourceLine" id="cb4-21" title="21"><span class="fu">sudo</span> rm -rf /var/snap</a>
+<a class="sourceLine" id="cb4-22" title="22"><span class="fu">sudo</span> rm -rf /var/lib/snapd</a></code></pre></div>
+<div class="footer">
+    <hr>
+    <p><b>Computers</b></p>
+    <p>
+             <a href="/amazon-web-services.html">AWS</a>
+    &middot; <a href="/bash.html">Bash</a>
+    &middot; <a href="/c.html">C</a>
+    &middot; <a href="/c-plus-plus.html">C++</a>
+    &middot; <a href="/cybersecurity.html">CyberSecurity</a>
+    &middot; <a href="/devices.html">Devices</a>
+    &middot; <a href="/gcc.html">GCC</a>
+    &middot; <a href="/git.html">Git</a>
+    &middot; <a href="/latex.html">LaTeX</a>
+    &middot; <a href="/linux.html">Linux</a>
+    &middot; <a href="/networking.html">Networking</a>
+    &middot; <a href="/python.html">Python</a>
+    &middot; <a href="/raspberry-pi.html">Raspberry Pi</a>
+    &middot; <a href="/vim.html">Vim</a>
+    </p>
+    <p><b>Maths &amp; Physics</b></p>
+    <p>
+             <a href="#!linear-algebra.html">Linear Algebra</a>
+    &middot; <a href="#!solid-state-physics.html">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2020, <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>

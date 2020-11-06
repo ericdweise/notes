@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1><a href="/">Eric's Notes</a></h1>
+    <hr>
+</header>
+<h1 id="amazon-web-services">Amazon Web Services</h1>
+<h2 id="create-a-webserver">Create a Webserver</h2>
+<h3 id="create-vpc">Create VPC</h3>
+<ol type="1">
+<li>Use Following parameters:</li>
+</ol>
+<ul>
+<li>Name: open-to-web</li>
+<li>CIDR Block 10.0.0.0/24</li>
+</ul>
+<ol start="2" type="1">
+<li>Enable “DNS resolution”</li>
+<li>Enable “DNS hostnames”</li>
+</ol>
+<h3 id="create-subnet">Create Subnet</h3>
+<p>For this simple webserver I will only use one subnet and it will be public. Create it with the following parameters: * Name: open-to-web * VPC: open-to-web * CIDR Block: 10.0.0.0/28</p>
+<h3 id="create-security-groups">Create Security Groups</h3>
+<p>Create two security groups within EC2. They should be the following:</p>
+<h4 id="security-group-to-allow-web-traffic">Security Group to allow web traffic</h4>
+<p>Security Group Configuration: * Security group name: “http-https-from-everywhere” * Description: “Allow http and https requests from everywhere” * VPC: “open-to-web” Add Rule for HTTP: * Type: “HTTP” * Source: “Anywhere” * Description: “allow incoming http requests” Add Rule for HTTPS * Type: “HTTPS” * Source: “Anywhere” * Description: “allow incoming https requests”</p>
+<h4 id="security-group-to-allow-ssh-to-server">Security Group to allow SSH to server</h4>
+<p>This group will allow you to ssh from home. It should only be attached to the instance once while provisioning or maintenance the instance. Security Group Configuration: * Security group name: “ssh-from-home” * Description: “ssh from home” * VPC: “open-to-web” Add Rule for SSH. This rule can (and should) be suspended when not provisioning the webserver * Type: “SSH” * Source: “My IP” * Description: “allow ssh from home”</p>
+<h3 id="create-internet-gateway">Create Internet Gateway</h3>
+<ul>
+<li>Name tag: open-to-web Then, attach the IGW to the VPC “open-to-web”</li>
+</ul>
+<h3 id="route-tables">Route Tables</h3>
+<p>Edit the route table created when you created the VPC. It should be the only one associated with the VPC “open-to-web”. Add a route with the following parameters: * Destination: 0.0.0.0/0 * Target: Internet gateway “open-to-web”</p>
+<h3 id="launch-instance">Launch Instance</h3>
+<p>Create an instance. You will provision it later</p>
+<h3 id="elastic-ip-address">Elastic IP Address</h3>
+<p>Create a new EIP and associate it to the instance.</p>
+<div class="footer">
+    <hr>
+    <p><b>Computers</b></p>
+    <p>
+             <a href="/amazon-web-services.html">AWS</a>
+    &middot; <a href="/bash.html">Bash</a>
+    &middot; <a href="/c.html">C</a>
+    &middot; <a href="/c-plus-plus.html">C++</a>
+    &middot; <a href="/cybersecurity.html">CyberSecurity</a>
+    &middot; <a href="/devices.html">Devices</a>
+    &middot; <a href="/gcc.html">GCC</a>
+    &middot; <a href="/git.html">Git</a>
+    &middot; <a href="/latex.html">LaTeX</a>
+    &middot; <a href="/linux.html">Linux</a>
+    &middot; <a href="/networking.html">Networking</a>
+    &middot; <a href="/python.html">Python</a>
+    &middot; <a href="/raspberry-pi.html">Raspberry Pi</a>
+    &middot; <a href="/vim.html">Vim</a>
+    </p>
+    <p><b>Maths &amp; Physics</b></p>
+    <p>
+             <a href="#!linear-algebra.html">Linear Algebra</a>
+    &middot; <a href="#!solid-state-physics.html">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2020, <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>
