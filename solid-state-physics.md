@@ -8,14 +8,14 @@ I do my best to include the mathematical intuition, but anything out of scope ca
 This is not a one-stop shop for learning about electronic materials, but hopefully it is a good starting point or refresher.
 
 ## Electrons and Holes
-  <p>When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
-  \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]</p>
 
 ## Crystal Lattice 
 
 ### Reciprocal Space
 
 ### Equations of Motion
+
+## X-Ray Diffraction
 
 ## Kr&ouml;nig-Penny Model
 

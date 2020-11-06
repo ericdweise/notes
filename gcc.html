@@ -10,7 +10,7 @@
 </head>
 <body>
 <header>
-    <h1><a href="/notes/">Eric's Notes</a></h1>
+    <h1 class="center"><a href="/notes/">Weise-ipedia</a></h1>
     <hr>
 </header>
 <h1 id="gcc---gnu-compiler-collection">GCC - GNU Compiler Collection</h1>
@@ -33,7 +33,7 @@
 <p>The skinny: Use <code>-L</code> to add a directory with an external <code>.so</code> file</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">gcc</span> FILENAME.c -L/home/user/lib/ -l<span class="op">&lt;</span>lib-name<span class="op">&gt;</span></a></code></pre></div>
 <p>GCC knows where to look for external libraries. Usually developers know put these libraries where GCC can find them, e.g. <code>/usr/lib</code>. However, not all libraries are stored where GCC can find them. In this case you need to add the directory with your shared object to GCC’s search path using <code>-L</code></p>
-<div class="footer">
+<div class="center">
     <hr>
     <p><b>Computers</b></p>
     <p>
