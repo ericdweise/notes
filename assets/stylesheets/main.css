@@ -1,6 +1,81 @@
+/* GENERAL ELEMENTS */
+html {
+    font-family: Trebuchet MS, Arial, sans-serif;
+    background-color: #323232;
+}
 body {
+    background-color: #c8c8c8;
+    border-radius: 2ch;
+    max-width: 120ch;
+    padding: 2ch;
+    margin: auto;
+    margin-top: 2ch;
+    margin-bottom: 2ch;
+    color: #000000;
+}
+hr {
+    border: none;
+    height: 1px;
+    background-color: #909090;
 }
 
+/* TEXT */
 .center {
     text-align: center;
+}
+a {
+    color: #4864e8;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+h2 {
+    padding-top: 4ch;
+}
+
+/* CODE BLOCKS */
+code {
+    color: rgb(0,75,75);
+    padding: 0.5ch;
+}
+pre.sourceCode {
+    max-width: 100%;
+    padding: 2ch;
+    background-color: rgba(0, 50, 50, 0.7);
+    border-radius: 1ch;
+}
+a.sourceLine {
+    color: #ffffff;
+    text-decoration: none;
+}
+span.co { /* comment */
+    color: #b0b0b0;
+}
+span.va { /* variable */
+    color: #b0b0ff;
+    /* color: #da3232; */
+}
+span.st { /* string */
+}
+span.bu { /* built-in commands? */
+    color: #fac800;
+}
+span.kw { /* known functions? */
+    color: #fac800;
+}
+span.fu { /* function */
+    color: #fac800;
+}
+span.ex { /* expression */
+    color: #a0a0a0;
+}
+
+/* TABLES */
+table, td, th {
+    border-collapse: collapse;
+    border: 1px solid #909090;
+}
+td {
+    padding: 0.5ch;
 }
