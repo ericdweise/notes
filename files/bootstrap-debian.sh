@@ -72,6 +72,9 @@ function install_atom_text {
 
     sudo apt update
     sudo apt install -y atom
+
+    # Install Atop Packages
+    apm install mathjax-wrapper markdown-preview-plus language-markdown markdown-writer markdown-preview-enhanced
     }
 
 function install_docker {
