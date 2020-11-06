@@ -105,8 +105,8 @@ The general rules I follow are:
 | `[ -n STRING ]`      | True if the length of `STRING` is non-zero. Can also use `[ STRING ]` |
 | `[ STR1 == STR2 ]`   | True if the strings are equal. `=` may be used instead of `==` for strict POSIX compliance. |
 | `[ STR1 != STR2 ]`   | True if the strings are not equal. |
-| `[ STR1 < STR2 ]`    | True if `STR1` sorts before `STR2` lexicographically in the current locale. |
-| `[ STR1 > STR2 ]`    | True if `STR1` sorts after `STR2` lexicographically in the current locale. |
+| `[ STR1 '<' STR2 ]`    | True if `STR1` sorts before `STR2` lexicographically. Quotes `'` are necessary otherwise `<` is interpreted as operating on a file |
+| `[ STR1 '>' STR2 ]`    | True if `STR1` sorts after `STR2` lexicographically. |
 | `[ -o OPTIONNAME ]`  | True if shell option `OPTIONNAME` is enabled. |
 
 #### Primaries acting on files
