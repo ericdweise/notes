@@ -5,7 +5,7 @@ Some things I will probably need to do again in the future.
 ## GitHub Pages
 
 
-### Adding a Custom Domain Using an Apex Record (A)
+### Adding a Custom Domain Using a Canonical Name Record (CNAME)
 Normally GitHub Pages are accessible through `username.github.io/repository`, however you can set up your github pages to be accessible from a custom URL.
 
 1. Obtain an Apex level domain name, e.g. `example.com`
