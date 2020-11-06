@@ -63,3 +63,13 @@ git clone --recursive [URL]
 4. `cd PROJECT_ROOT`
 5. `git add SUBMODULE_PATH`
 6. `git commit -m ...`
+
+### Removing a Submodule
+1. `git rm PATH`
+2. `rm -rf .git/modules/PATH`
+where `SUBMODULE` is the `path` parameter in `.gitmodules`:
+```
+[submodule "NAME"]
+    path = PATH
+    url = ...
+```
