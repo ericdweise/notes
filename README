@@ -1,0 +1,11 @@
+This is a basic static site that hosts my notes. I write them first in MarkDown, then I build them to HTML files for hosting online. The process is really simple:
+
+# Building
+Building the static site is really easy, but it must be done on a Linux maching with coreutils installed. In addition, pandoc must be installed too:
+```bash
+sudo apt install -y pandoc
+```
+To build the site simply run:
+```bash
+./build.sh
+```
