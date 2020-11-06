@@ -4,7 +4,7 @@ set -e
 # ARGS
 # 1 - Relative date. E.g.: -1=yesterday, -2=two days ago, +3=three days in the future
 
-TEMPLATE_FILE='template.md'
+TEMPLATE_FILE='template'
 F_FORMAT='+%Y-%m-%d'
 
 # TODO: 
