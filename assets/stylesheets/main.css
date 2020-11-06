@@ -2,6 +2,10 @@
 html {
     font-family: Trebuchet MS, Arial, sans-serif;
     background-color: #323232;
+    background-image: url("/assets/images/icecrystals.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 body {
     background-color: #c8c8c8;
