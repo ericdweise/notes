@@ -2,8 +2,8 @@
 
 
 ## Config Files
-[gitconfig](files/gitconfig)
-[gitignore](files/gitignore)
+[gitconfig](dotfiles/.gitconfig)
+[gitignore](dotfiles/.gitignore)
 
 
 ## Squashing Commits

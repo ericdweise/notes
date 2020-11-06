@@ -1,4 +1,4 @@
 # LaTeX
 
 ## Templates
-[Homework](files/homework.tex)
+[Homework](storage/homework.tex)

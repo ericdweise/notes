@@ -37,7 +37,7 @@ sudo add-apt-repository ppa:PPA_REPOSITORY_NAME/PPA
 My personal steps for setting up a linux computer.
 
 ### Install Favorite Programs (Debian)
-Download and run the [bootstrap script](files/bootstrap-debian.sh).
+Download and run the [bootstrap script](storage/bootstrap-debian.sh).
 Run `./bootstrap-debian.sh -h` for usage.
 
 
