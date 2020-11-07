@@ -22,6 +22,7 @@ gcc FILENAME.c -l<lib-name>
 ```
 
 #### NOTES
+
 - Order is important. `-l<lib-name>` has to come after `FILENAME.c`
 - No space between `-l` and `<lib-name>`
 - Example: To include `libmyfunctions.so` use `-lmyfunctions`

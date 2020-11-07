@@ -24,6 +24,7 @@ LENGTH=$((${#STRING}-1))
 ```
 
 Notes:
+
 - Only works in BASH and its derivatives.
 - `STRING` must be a variable that is prepended by an octothorpe (`#`), not a dollar sign (`$`)
 
@@ -42,6 +43,7 @@ SUBSTR=${STRING:6:-1}
 echo $SUBSTR   # prints 'Worl'
 ```
 Notes:
+
 - `STRING` must be a variable. It is NOT prepended by a dollar sign (`$`)
 - The index of the first element is `0`
 - Values of the last element, `length`, can be negative. This is how many elements to be ignored at the end of `STRING`
@@ -70,6 +72,7 @@ Also called "Test Commands" or "Primaries"
 ```
 
 Notes:
+
 - It is important to include spaces between the brackets (`[`, `]`, `[[`, and `]]`) and the `EXPRESSION`.
 
 #### Negating Boolean Expressions
@@ -83,6 +86,7 @@ fi
 There are two different bracket types that be used to evaluate a Boolean expression, `[ EXPRESSION ]` and ``[[ EXPRESSION ]]``. While these can be used interchangeably, they handle `EXPRESSION` differently. The reason for this is historical. the single bracket, `[` was developed in the Thompson shell, and is more limited than the double bracket, `[[`, operator. The double bracket was introduced in the Korn shell and adopted by others (including Bash). It is an extension of the `[` operator, and adds functions like pattern matching.
 
 The general rules I follow are:
+
 - Use single brackets, `[`, when you are writing scripts that might be used on older systems, or needs to be run by a variety of shells.
 - When you use single brackets always quote your variables: `[ -n "$VARIABLE"]`, (not `[ -n $VARIABLE]`
 
@@ -182,5 +186,6 @@ Arguments are accessed the same as in bash scripts:
 * `$3` is the second argument ...
 
 ### Exit vs Return from a Function
-Using `return [INTEGER]` will stop function execution and will set `$?` in the parent shell.
-Using `exit` will stop execution and close the parent shell.
+
+- Using `return [INTEGER]` will stop function execution and will set `$?` in the parent shell.
+- Using `exit` will stop execution and close the parent shell.
