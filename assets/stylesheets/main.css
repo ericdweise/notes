@@ -8,7 +8,7 @@ html {
     background-repeat: no-repeat;
 }
 body {
-    background-color: #c8c8c8;
+    background-color: #ffffff;
     border-radius: 2ch;
     max-width: 120ch;
     padding: 2ch;
@@ -22,13 +22,16 @@ hr {
     height: 1px;
     background-color: #909090;
 }
+ul {
+    list-style-type: ':\00b7  ';
+}
 
 /* TEXT */
 .center {
     text-align: center;
 }
 a {
-    color: #4864e8;
+    color: #4b80c0;
     text-decoration: none;
 }
 a:hover {
@@ -38,29 +41,38 @@ h2 {
     padding-top: 4ch;
 }
 
-/* CODE BLOCKS */
+/* INLINE CODE */
 code {
     color: rgb(0,75,75);
     padding: 0.5ch;
 }
+
+/* CODE BLOCKS */
+div.sourceCode {
+    padding-left: 1ch;
+    padding-right: 1ch;
+    background-color: rgba(0, 50, 50, 0.7);
+    border-radius: 1ch;
+    max-width: 100ch;
+}
 pre.sourceCode {
     max-width: 100%;
     padding: 2ch;
-    background-color: rgba(0, 50, 50, 0.7);
-    border-radius: 1ch;
+    overflow-x: scroll;
+    scrollbar-color: rgba(0,0,0,0.5) rgba(0,0,0,0);
 }
 a.sourceLine {
     color: #ffffff;
     text-decoration: none;
 }
 span.co { /* comment */
-    color: #b0b0b0;
+    color: #f0b0b0;
 }
 span.va { /* variable */
     color: #b0b0ff;
-    /* color: #da3232; */
 }
 span.st { /* string */
+    color: #ffffff;
 }
 span.bu { /* built-in commands? */
     color: #fac800;
