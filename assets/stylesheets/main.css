@@ -1,6 +1,6 @@
 /* GENERAL ELEMENTS */
 html {
-    font-family: Trebuchet MS, Arial, sans-serif;
+    font-family: "Times New Roman", Times, serif;
     background-color: #323232;
     background-image: url("/assets/images/icecrystals.jpg");
     background-attachment: fixed;
@@ -44,14 +44,16 @@ h2 {
 /* INLINE CODE */
 code {
     color: rgb(0,75,75);
-    padding: 0.5ch;
+    background-color: rgba(0,50,50,0.05);
+    padding-left: 0.5ch;
+    padding-right: 0.5ch;
 }
 
 /* CODE BLOCKS */
 div.sourceCode {
     padding-left: 1ch;
     padding-right: 1ch;
-    background-color: rgba(0, 50, 50, 0.7);
+    background-color: rgba(0, 50, 50, 0.9);
     border-radius: 1ch;
     max-width: 100ch;
 }
@@ -75,13 +77,13 @@ span.st { /* string */
     color: #ffffff;
 }
 span.bu { /* built-in commands? */
-    color: #fac800;
+    color: #ffc800;
 }
 span.kw { /* known functions? */
-    color: #fac800;
+    color: #ffc800;
 }
 span.fu { /* function */
-    color: #fac800;
+    color: #ffc800;
 }
 span.ex { /* expression */
     color: #a0a0a0;
