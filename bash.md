@@ -165,12 +165,12 @@ done
 
 ## Functions
 ```bash
-function function_name = {
+function FUNCTION_NAME = {
     ...
 }
 
 # OR
-function_name () = {
+FUNCTION_NAME () = {
     ...
 }
 ```
@@ -178,9 +178,10 @@ function_name () = {
 ### Function Arguments
 Arguments can be passed to functions as follows:
 ```bash
-function_name [ARG1 [ARG2 [...]]]
+FUNCTION_NAME [ARG1 [ARG2 [...]]]
 ```
 Arguments are accessed the same as in bash scripts:
+
 * `$1` is the function name
 * `$2` is the first argument
 * `$3` is the second argument ...
