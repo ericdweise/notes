@@ -67,27 +67,35 @@ a.sourceLine {
     color: #ffffff;
     text-decoration: none;
 }
-span.co { /* comment */
-    color: #f0b0b0;
-}
-span.va { /* variable */
-    color: #b0b0ff;
-}
-span.st { /* string */
-    color: #ffffff;
-}
-span.bu { /* built-in commands? */
-    color: #ffc800;
-}
-span.kw { /* known functions? */
-    color: #ffc800;
-}
-span.fu { /* function */
-    color: #ffc800;
-}
-span.ex { /* expression */
-    color: #a0a0a0;
-}
+code span.al { color: #ff0000; }                    /* Alert           red */
+code span.an { color: #ffb0b0; font-weight: bold; } /* Annotation      salmon */
+code span.at { }                                    /* Attribute */
+code span.bn { color: #ccff00; }                    /* BaseN           lime green */
+code span.bu { color: #ffc800; }                    /* BuiltIn         goldenrod */
+code span.cf { color: #ffc800; }                    /* ControlFlow     goldenrod */
+code span.ch { color: #ccff00; }                    /* Char            lime green */
+code span.cn { color: #ccff00; font-weight: bold; } /* Constant        lime green */
+code span.co { color: #c0c0c0; }                    /* Comment         gray */
+code span.cv { color: #ffb0b0; font-weight: bold; } /* CommentVar      salmon */
+code span.do { color: #ffb0b0; }                    /* Documentation   salmon */
+code span.dt { color: #c020d0; }                    /* DataType        purple */
+code span.dv { color: #ccff00; }                    /* DecVal          lime green */
+code span.er { color: #ff0000; }                    /* Error           red */
+code span.ex { color: #ffb0b0; }                    /* Extension       salmon */
+code span.fl { color: #ccff00; }                    /* Float           lime green */
+code span.fu { color: #ffb0b0; }                    /* Function        salmon */
+code span.im { color: #f0b0b0; }                    /* Import          salmon */
+code span.in { color: #f0b0b0; font-weight: bold; } /* Information     salmon */
+code span.kw { color: #ffc800; }                    /* Keyword         goldenrod */
+code span.op { color: #f0efd0; }                    /* Operator */
+code span.ot { color: #efef8f; }                    /* Other */
+code span.pp { color: #ffb0b0; font-weight: bold; } /* Preprocessor    salmon */
+code span.sc { color: #ccff00; }                    /* SpecialChar     lime green */
+code span.ss { color: #ffffff; }                    /* SpecialString   white */
+code span.st { color: #ffffff; }                    /* String          white */
+code span.va { color: #b0b0ff; }                    /* Variable        powder blue */
+code span.vs { color: #ffffff; }                    /* VerbatimString  white */
+code span.wa { color: #ffb0b0; font-weight: bold; } /* Warning         salmon */
 
 /* TABLES */
 table, td, th {
