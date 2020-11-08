@@ -70,21 +70,3 @@ sudo rm -rf /snap
 sudo rm -rf /var/snap
 sudo rm -rf /var/lib/snapd
 ```
-
-### Installing LightDM and XFCE
-Ubuntu and Gnome come with quite a bit of fancy features that really slow it down.
-I prefer a simpler and lighter interface, like XFCE.
-
-1. Install LightDM:
-    ```bash
-    sudo apt install lightdm
-    ```
-1. Set LightDM as the default Display Manager:
-    ```bash
-    which lightdm | sudo tee /etc/X11/default-display-manager
-    ```
-1. Install the XFCE Meta Package:
-    ```bash
-    sudo apt install xfce4
-    ```
-1. Log out and log back in.

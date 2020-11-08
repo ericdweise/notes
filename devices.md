@@ -35,3 +35,19 @@ if [ $IS_ERROR = 0 ]; then
     echo '/usr/bin/numlockx off' | sudo tee -a /etc/X11/Xsession
 fi
 ```
+
+## Installing LightDM and XFCE on Ubuntu
+```bash
+sudo apt install xubuntu-desktop
+```
+then, log out and log back in.
+
+Optionally, you can get rid of the Unity/Gnome utilities:
+```bash
+sudo apt purge nautilus gnome-power-manager gnome-screensaver gnome-termina* \
+    gnome-pane* gnome-applet* gnome-bluetooth gnome-desktop* gnome-sessio* \
+    gnome-user* gnome-shell-common compiz compiz* unity unity* hud zeitgeist \
+    zeitgeist* python-zeitgeist libzeitgeist* activity-log-manager-common \
+    gnome-control-center gnome-screenshot overlay-scrollba* 
+sudo apt autoremove
+```

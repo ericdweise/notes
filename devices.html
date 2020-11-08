@@ -45,6 +45,16 @@
 <a class="sourceLine" id="cb1-13" title="13"><span class="kw">if</span><span class="bu"> [</span> <span class="va">$IS_ERROR</span> <span class="ot">=</span> 0<span class="bu"> ]</span>; <span class="kw">then</span> </a>
 <a class="sourceLine" id="cb1-14" title="14">    <span class="bu">echo</span> <span class="st">&#39;/usr/bin/numlockx off&#39;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee -a /etc/X11/Xsession</a>
 <a class="sourceLine" id="cb1-15" title="15"><span class="kw">fi</span></a></code></pre></div>
+<h2 id="installing-lightdm-and-xfce-on-ubuntu">Installing LightDM and XFCE on Ubuntu</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">sudo</span> apt install xubuntu-desktop</a></code></pre></div>
+<p>then, log out and log back in.</p>
+<p>Optionally, you can get rid of the Unity/Gnome utilities:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">sudo</span> apt purge nautilus gnome-power-manager gnome-screensaver gnome-termina* \</a>
+<a class="sourceLine" id="cb3-2" title="2">    gnome-pane* gnome-applet* gnome-bluetooth gnome-desktop* gnome-sessio* \</a>
+<a class="sourceLine" id="cb3-3" title="3">    gnome-user* gnome-shell-common compiz compiz* unity unity* hud zeitgeist \</a>
+<a class="sourceLine" id="cb3-4" title="4">    zeitgeist* python-zeitgeist libzeitgeist* activity-log-manager-common \</a>
+<a class="sourceLine" id="cb3-5" title="5">    gnome-control-center gnome-screenshot overlay-scrollba* </a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="fu">sudo</span> apt autoremove</a></code></pre></div>
 <div class="center">
     <hr>
     <p><b>Notes on Computers</b></p>
