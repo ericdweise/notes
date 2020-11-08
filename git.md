@@ -5,6 +5,17 @@
 [gitconfig](dotfiles/.gitconfig)
 [gitignore](dotfiles/.gitignore)
 
+## Unstage File
+Undo a`git add FILE` command.
+```bash
+git reset -- FILE
+```
+
+## Delete Unstaged Changes
+Get rid of any changes that havent been committed or staged for a commit.
+```bash
+git checkout HEAD -- FILE
+```
 
 ## Squashing Commits
 Combine multiple commits into one commit.
