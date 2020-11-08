@@ -34,7 +34,7 @@
 </tr>
 <tr class="even">
 <td><code>$@</code></td>
-<td>Positional parameters. Expands to a separate words.</td>
+<td>Positional parameters. Expands to separate words.</td>
 </tr>
 <tr class="odd">
 <td><code>$#</code></td>
@@ -121,7 +121,7 @@
 <p>The general rules I follow are:</p>
 <ul>
 <li>Use single brackets, <code>[</code>, when you are writing scripts that might be used on older systems, or needs to be run by a variety of shells.</li>
-<li>When you use single brackets always quote your variables: <code>[ -n "$VARIABLE"]</code>, (not <code>[ -n $VARIABLE]</code></li>
+<li>When you use single brackets always quote your variables: <code>[ -n "$VARIABLE" ]</code>, (not <code>[ -n $VARIABLE ]</code> .)</li>
 </ul>
 <h4 id="useful-conditionals">Useful Conditionals</h4>
 <p><a href="https://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html">TLDP list of conditionals</a></p>

@@ -6,7 +6,7 @@
 | Variable | Meaning                                                                    |
 |----------|----------------------------------------------------------------------------|
 | `$\*`    | Positional parameters. Expands to a single word.                           |
-| `$@`     | Positional parameters. Expands to a separate words.                        |
+| `$@`     | Positional parameters. Expands to separate words.                          |
 | `$#`     | The number of positional parameters                                        |
 | `$?`     | Exit status of the most recently executed foreground pipeline              |
 | `$-`     | Current option flags                                                       |
@@ -88,7 +88,7 @@ There are two different bracket types that be used to evaluate a Boolean express
 The general rules I follow are:
 
 - Use single brackets, `[`, when you are writing scripts that might be used on older systems, or needs to be run by a variety of shells.
-- When you use single brackets always quote your variables: `[ -n "$VARIABLE"]`, (not `[ -n $VARIABLE]`
+- When you use single brackets always quote your variables: `[ -n "$VARIABLE" ]`, (not `[ -n $VARIABLE ]` .)
 
 #### Useful Conditionals
 [TLDP list of conditionals](https://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html)
