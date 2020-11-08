@@ -37,17 +37,31 @@ fi
 ```
 
 ## Installing LightDM and XFCE on Ubuntu
-```bash
-sudo apt install xubuntu-desktop
-```
-then, log out and log back in.
 
-Optionally, you can get rid of the Unity/Gnome utilities:
-```bash
-sudo apt purge nautilus gnome-power-manager gnome-screensaver gnome-termina* \
-    gnome-pane* gnome-applet* gnome-bluetooth gnome-desktop* gnome-sessio* \
-    gnome-user* gnome-shell-common compiz compiz* unity unity* hud zeitgeist \
-    zeitgeist* python-zeitgeist libzeitgeist* activity-log-manager-common \
-    gnome-control-center gnome-screenshot overlay-scrollba* 
-sudo apt autoremove
-```
+1. Install the xubuntu-desktop metapackage:
+    ```bash
+    sudo apt install xubuntu-desktop
+    ```
+
+1. If you weren't prompted to change Desktop Managers to LightDM:
+    ```bash
+    sudo dpkg-reconfigure lightdm
+    ```
+
+1. Add or replace this stanza in the `~/.dmrc` file in your home folder:
+    ```bash
+    [Desktop]
+    Session=xfce4
+    ```
+
+1. Reboot.
+
+1. Optionally, you can get rid of the Unity/Gnome utilities:
+    ```bash
+    sudo apt-get purge libgnome* gnome-session* gnome-desktop* gnome-panel* gnome-user* gnome-shell* \
+        gnome-applet* gnome-terminal* gnome-bluetooth gnome-system-tools gnome-software-plugin-snap \
+        gnome-power-manager gnome-system-monitor gnome-control-center gnome-logs gnome-screensaver \
+        gnome-themes* gnome-accessibility-themes gnome-menus gnome-screenshot overlay-scrollba* hud \
+        unity* compiz* zeitgeist* libzeitgeist* activity-log-manager-common nautilus
+    sudo apt autoremove
+    ```
