@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="center"><a href="/">Weise-ipedia</a></h1>
+    <hr>
+</header>
+<h1 id="information-theory">Information Theory</h1>
+<p>Information theory is the study of how to store and transmit data in the most effective way. Some of the big questions that Information Theory tries to answer are: 1. How much Information Exists? 2. What is the smallest amount of data that can accurately describe the set? 3. How much information can be sent or stored given available resources?</p>
+<h2 id="fundamentals">Fundamentals</h2>
+<p>Background, fundamentals, and prerequisites.</p>
+<h3 id="basic-probability-theory">Basic Probability Theory</h3>
+<h3 id="elementary-definitions">Elementary Definitions</h3>
+<p>Throughout this document I will try to stick to these definitions.</p>
+<h4 id="experiments-outcomes-and-probabilities">Experiments, Outcomes, and Probabilities</h4>
+<ul>
+<li>An <strong>experiment</strong> is an event with random outcomes.</li>
+<li>The <strong>set of possible outcomes</strong> of an experiment are described by capital letters (<span class="math inline">\(X, Y, Z\)</span>).</li>
+<li>A single <strong>outcome</strong> of an experiment is described by a lower case letter (<span class="math inline">\(x,y,z\)</span>) and is said to exist in the set of possible outcomes (<span class="math inline">\(x \in X\)</span> and <span class="math inline">\(y \in Y\)</span>).</li>
+<li>The <strong>probability mass function</strong>, <span class="math inline">\(p(x)\)</span>, tells us the likelyhood of the outcome <span class="math inline">\(x\)</span> occurring when the experiment is performed.</li>
+</ul>
+<h5 id="example-1">Example 1</h5>
+<p>A coin flip is an experiment with two outcomes, heads or tails, or <span class="math inline">\(X = \{heads, tails\}\)</span>. If the coin is fair (if one side isn’t weighted) then the probability mass function is:</p>
+<p><span class="math display">\[ p(x) = \begin{cases}
+    \frac{1}{2} \text{ $x$ is heads} \\
+    \frac{1}{2} \text{ $x$ is tails}
+\end{cases} \]</span></p>
+<h5 id="example-2">Example 2</h5>
+<p>An unfair dice might be weighted in such a way that the number 1 is biased. A probability mass function for rolling the dice once might be: <span class="math display">\[ p(x) = \begin{cases}
+    \frac{1}{4} \ \ x=1 \\
+    \frac{1}{6} \ \ x=2 \\
+    \frac{1}{6} \ \ x=3 \\
+    \frac{1}{6} \ \ x=4 \\
+    \frac{1}{6} \ \ x=5 \\
+    \frac{1}{12} \ \ x=6
+\end{cases} \]</span></p>
+<h1 id="references">References</h1>
+<ol type="1">
+<li>Elements in Information Theory, Second Ed. Thomas M. Cover and Joy A. Thomas</li>
+</ol>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/amazon-web-services.html">AWS</a>
+    &middot; <a href="/bash.html">Bash</a>
+    &middot; <a href="/c.html">C</a>
+    &middot; <a href="/c-plus-plus.html">C++</a>
+    &middot; <a href="/cybersecurity.html">CyberSecurity</a>
+    &middot; <a href="/devices.html">Devices</a>
+    &middot; <a href="/gcc.html">GCC</a>
+    &middot; <a href="/git.html">Git</a>
+    &middot; <a href="/github.html">GitHub</a>
+    &middot; <a href="/latex.html">LaTeX</a>
+    &middot; <a href="/linux.html">Linux</a>
+    &middot; <a href="/networking.html">Networking</a>
+    &middot; <a href="/python.html">Python</a>
+    &middot; <a href="/raspberry-pi.html">Raspberry Pi</a>
+    &middot; <a href="/vim.html">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/linear-algebra.html">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics.html">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2020 <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>
