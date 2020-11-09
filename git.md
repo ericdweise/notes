@@ -2,8 +2,8 @@
 
 
 ## Config Files
-[gitconfig](dotfiles/.gitconfig)
-[gitignore](dotfiles/.gitignore)
+- [gitconfig](dotfiles/.gitconfig)
+- [gitignore](dotfiles/.gitignore)
 
 ## Unstage File
 Undo a`git add FILE` command.
@@ -20,10 +20,10 @@ git checkout HEAD -- FILE
 ## Squashing Commits
 Combine multiple commits into one commit.
 If you want to squash the last 3 commits:
-1.  ```bash
+1. Start the rebase process:
+    ```bash
     git rebase -i HEAD~3
     ```
-    This will open your text editor.
 2. Write `pick` next to the oldest commit
 3. Write `squash` in front of the commits to 
 4. Save the commit file and close the editor
@@ -44,6 +44,7 @@ git merge master
 
 ## Submodules
 Allows you to reference a source controlled repository inside another source controlled repository.
+
 ### Adding a New Submodule
 ```bash
 git submodule add URL [PATH]
@@ -79,7 +80,8 @@ git clone --recursive [URL]
 1. `git rm PATH`
 2. `rm -rf .git/modules/PATH`
 where `SUBMODULE` is the `path` parameter in `.gitmodules`:
-```
+
+```text
 [submodule "NAME"]
     path = PATH
     url = ...
