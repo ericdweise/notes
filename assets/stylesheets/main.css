@@ -10,7 +10,7 @@ html {
 body {
     background-color: #ffffff;
     border-radius: 2ch;
-    max-width: 120ch;
+    max-width: 100ch;
     padding: 2ch;
     margin: auto;
     margin-top: 2ch;
@@ -55,7 +55,7 @@ div.sourceCode {
     padding-right: 1ch;
     background-color: rgba(0, 50, 50, 0.9);
     border-radius: 1ch;
-    max-width: 100ch;
+    max-width: 80ch;
 }
 pre.sourceCode {
     max-width: 100%;
