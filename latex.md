@@ -23,6 +23,27 @@ A list of symbols I use often:
 | $\dagger$              | `\dagger`              | Adjoint Operator (Hermitian Conjugate)     |
 
 ### Math Snippets
+
+#### Align
+In block sections the `align` function is used to line up formulas horizontally.
+Each new line in the `align` block can have different anchor points, at `&`, `&&`, etc.
+These anchor points will match horizonally on each new line.
+
+LaTeX:
+```tex
+\begin{align}
+    f(x) & = x^2 + 4^x + 3 \\
+         & = (x+3)(x+1)   && \text{factoring the polynomial} \\
+         & && \{Now we can find the roots}
+\end{align}
+```
+Output:
+$$  \begin{align}
+    f(x) & = x^2 + 4^x + 3 \\
+         & = (x+3)(x+1)   && \text{factoring the polynomial} \\
+         & && \text{Now we can find the roots}
+\end{align} $$
+
 #### Piecewise Functions
 LaTeX:
 ```tex
