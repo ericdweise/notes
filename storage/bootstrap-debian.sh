@@ -56,8 +56,7 @@ function fresh_install {
         vim
 
     announce 'config' 'GIT'
-    git config --global user.name 'Eric Weise'
-    git config --global user.email 'ericdweise@gmail.com'
+    cp ../dotfiles/.gitconfig ~
 
     announce 'config' 'SSH Keys'
     ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa
@@ -76,6 +75,34 @@ function install_atom_text {
     # Install Atop Packages
     apm install mathjax-wrapper markdown-preview-plus language-markdown markdown-writer markdown-preview-enhanced
     }
+
+function install_calendar {
+    # https://www.calcurse.org/
+    announce 'install' 'Calendar: CalCurse'
+    sudo apt install -y calcurse
+
+    if ! mountpoint -q "$HOME/mobilehome"; then
+        echo "MobileHome is not mounted, configuration failed for Calcurse Calendar"
+        exit 1
+    fi
+
+    CAL_DIR="$HOME/mobilehome/documents/calendar"
+    if ! [ -d $CAL_DIR ]; then
+        mkdir -p $CAL_DIR
+    fi
+
+    echo "alias calcurse='calcurse --confdir $CAL_DIR --datadir $CAL_DIR" >> "$HOME/.bashrc"
+
+    # OSMO Calendar
+    # announce 'install' 'OSMO Calendar'
+    # sudo apt install -y osmo
+
+    # https://dmedvinsky.github.io/gsimplecal/
+}
+
+function install_dev_tools {
+    announce 'install' 'Development Tools'
+}
 
 function install_docker {
     # Following steps outlined here:
@@ -240,6 +267,8 @@ for ARG in "$@"; do
         FLAG_FRESH_INSTALL='1'
     elif [ $ARG == '--atom' ]; then
         FLAG_INSTALL_ATOM='1'
+    elif [ $ARG == '--calendar' ]; then
+        FLAG_INSTALL_CALENDAR='1'
     elif [ $ARG == '--docker' ]; then
         FLAG_INSTALL_DOCKER='1'
     elif [ $ARG == '--music-tools' ]; then
@@ -260,6 +289,7 @@ for ARG in "$@"; do
         printf "Allowed arguments:
           --fresh-install
           --atom
+          --calendar
           --docker
           --music-tools
           --password-manager
@@ -285,6 +315,11 @@ fi
 if [ $FLAG_INSTALL_ATOM ]; then
     install_atom_text;
     unset FLAG_INSTALL_ATOM
+fi
+
+if [ $FLAG_INSTALL_CALENDAR ]; then
+    install_calendar
+    unset FLAG_INSTALL_CALENDAR
 fi
 
 if [ $FLAG_INSTALL_DOCKER ]; then
