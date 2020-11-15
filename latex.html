@@ -21,17 +21,31 @@
 <li>The package <code>amsmath</code> adds a lot of math functions and symbols.</li>
 <li>The package <code>amssymb</code> gives you access to a many more math symbols.</li>
 </ul>
+<h3 id="math-symbols">Math Symbols</h3>
+<p>A list of symbols I use often: | symbol | LaTeX | Description | |————————|————————|——————————————–| | <span class="math inline">\(\mathbb{R}\)</span> | <code>\mathbb{R}</code> | Real Numbers | | <span class="math inline">\(\mathbb{N}\)</span> | <code>\mathbb{N}</code> | Natural Numbers | | <span class="math inline">\(\mathbb{Z}\)</span> | <code>\mathbb{Z}</code> | Zahlen Numbers (integers) | | <span class="math inline">\(\mathbb{Q}\)</span> | <code>\mathbb{Q}</code> | Complex Numbers | | <span class="math inline">\(\mathbb{1}\)</span> | <code>\mathbb{1}</code> | Identity Matrix | | <span class="math inline">\(\dagger\)</span> | <code>\dagger</code> | Adjoint Operator (Hermitian Conjugate) |</p>
 <h3 id="math-snippets">Math Snippets</h3>
-<h4 id="piecewise-functions">Piecewise Functions</h4>
-<p>Preamble:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb1-1" title="1"><span class="bu">\usepackage</span>{<span class="ex">amsmath</span>}</a></code></pre></div>
+<h4 id="align">Align</h4>
+<p>In block sections the <code>align</code> function is used to line up formulas horizontally. Each new line in the <code>align</code> block can have different anchor points, at <code>&amp;</code>, <code>&amp;&amp;</code>, etc. These anchor points will match horizonally on each new line.</p>
 <p>LaTeX:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb2-1" title="1"><span class="ss">\[</span></a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="ss">    f(x) = </span><span class="sc">\begin</span><span class="ss">{cases}</span></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="ss">        </span><span class="sc">\frac</span><span class="ss">{1}{2} </span><span class="sc">\text</span>{ <span class="ss">$x$</span> is heads}<span class="ss"> </span><span class="sc">\\</span></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="ss">        </span><span class="sc">\frac</span><span class="ss">{1}{2} </span><span class="sc">\text</span>{ <span class="ss">$x$</span> is tails}</a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="ss">    </span><span class="sc">\end</span><span class="ss">{cases}</span></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="ss">\]</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">\begin</span>{<span class="ex">align</span>}</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="ss">    f(x) &amp; = x^2 + 4^x + 3 </span><span class="sc">\\</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="ss">         &amp; = (x+3)(x+1)   &amp;&amp; </span><span class="sc">\text</span>{factoring the polynomial}<span class="ss"> </span><span class="sc">\\</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="ss">         &amp; &amp;&amp; </span><span class="sc">\{</span><span class="ss">Now we can find the roots}</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="kw">\end</span>{<span class="ex">align</span>}</a></code></pre></div>
+<p>Output: <span class="math display">\[  \begin{align}
+    f(x) &amp; = x^2 + 4^x + 3 \\
+         &amp; = (x+3)(x+1)   &amp;&amp; \text{factoring the polynomial} \\
+         &amp; &amp;&amp; \text{Now we can find the roots}
+\end{align} \]</span></p>
+<h4 id="piecewise-functions">Piecewise Functions</h4>
+<p>LaTeX:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb2-1" title="1"><span class="bu">\usepackage</span>{<span class="ex">amsmath</span>}</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="ss">\[</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="ss">    f(x) = </span><span class="sc">\begin</span><span class="ss">{cases}</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="ss">        </span><span class="sc">\frac</span><span class="ss">{1}{2} </span><span class="sc">\text</span>{ <span class="ss">$x$</span> is heads}<span class="ss"> </span><span class="sc">\\</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="ss">        </span><span class="sc">\frac</span><span class="ss">{1}{2} </span><span class="sc">\text</span>{ <span class="ss">$x$</span> is tails}</a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="ss">    </span><span class="sc">\end</span><span class="ss">{cases}</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="ss">\]</span></a></code></pre></div>
 <p>Output: <span class="math display">\[ f(x) = \begin{cases}
 \frac{1}{2} \text{ $x$ is heads} \\
     \frac{1}{2} \text{ $x$ is tails}

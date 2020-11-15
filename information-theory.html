@@ -22,7 +22,7 @@
 <p>Throughout this document I will try to stick to these definitions.</p>
 <h4 id="experiments-outcomes-and-probabilities">Experiments, Outcomes, and Probabilities</h4>
 <ul>
-<li>An <strong>experiment</strong> is an event with random outcomes.</li>
+<li>An <strong>experiment</strong> or a <strong>random variable</strong> is an event with random outcomes.</li>
 <li>The <strong>set of possible outcomes</strong> of an experiment are described by capital letters (<span class="math inline">\(X, Y, Z\)</span>).</li>
 <li>A single <strong>outcome</strong> of an experiment is described by a lower case letter (<span class="math inline">\(x,y,z\)</span>) and is said to exist in the set of possible outcomes (<span class="math inline">\(x \in X\)</span> and <span class="math inline">\(y \in Y\)</span>).</li>
 <li>The <strong>probability mass function</strong>, <span class="math inline">\(p(x)\)</span>, tells us the likelyhood of the outcome <span class="math inline">\(x\)</span> occurring when the experiment is performed.</li>
@@ -33,15 +33,38 @@
     \frac{1}{2} \text{ $x$ is heads} \\
     \frac{1}{2} \text{ $x$ is tails}
 \end{cases} \]</span></p>
-<h5 id="example-2">Example 2</h5>
+<h2 id="shannon-entropy">Shannon Entropy</h2>
+<p>The entropy of a random experiment, <span class="math inline">\(X\)</span> (which has discrete outcomes), is defined as <span class="math display">\[ H(X) = -\sum_{x \in X} p(x) \cdot log_2(p(x)) \]</span></p>
+<h5 id="example">Example</h5>
 <p>An unfair dice might be weighted in such a way that the number 1 is biased. A probability mass function for rolling the dice once might be: <span class="math display">\[ p(x) = \begin{cases}
-    \frac{1}{4} \ \ x=1 \\
-    \frac{1}{6} \ \ x=2 \\
-    \frac{1}{6} \ \ x=3 \\
-    \frac{1}{6} \ \ x=4 \\
-    \frac{1}{6} \ \ x=5 \\
-    \frac{1}{12} \ \ x=6
-\end{cases} \]</span></p>
+    \frac{1}{4} \ \ x=1, \ \ \frac{1}{6} \ \ x=2, \ \ \frac{1}{6} \ \ x=3, \\
+    \frac{1}{6} \ \ x=4, \ \ \frac{1}{6} \ \ x=5, \ \ \frac{1}{12} \ \ x=6
+\end{cases} \]</span> The entropy of tossing this dice once is <span class="math display">\[ H(X) = \frac{1}{4}log(4) + 4\Big(\frac{1}{6}log(6)\Big) + \frac{1}{12}log(12) = 2.522\]</span> Compare this to the “fair” dice: <span class="math display">\[ H(X_{fair}) = 6\Big(\frac{1}{6}log(6)\Big) = 2.585 \]</span></p>
+<h3 id="properties-of-shannon-entropy">Properties of Shannon Entropy</h3>
+<p>If <span class="math inline">\(p(x)=0\)</span> then <span class="math inline">\(p(x) \cdot log(p(x))=0\)</span>. This can be proven even for discrete probability mass functions by finding the value of the continuous function <span class="math inline">\(x \cdot log(x)\)</span> as <span class="math inline">\(x\)</span> aproaches <span class="math inline">\(0\)</span>.</p>
+<ol type="1">
+<li>Negative entroy, <span class="math inline">\(-H(X)\)</span>, is a convex function. This means we can find maximum entropy (minimum negative entropy) using convex optimization. We can also use Lagrange multipliers to solve some problems.</li>
+<li>For a given set of outcomes the maximum entropy is achieved when the probability distribution is uniform. Entropy is maximized when we know the least about the outcome.</li>
+<li></li>
+</ol>
+<h3 id="joint-entropy">Joint Entropy</h3>
+<p>Two random variables can be joined together to form a single random variable. Given random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, the vector <span class="math inline">\((X,Y)\)</span> can be thought of as a single random variable. To see this, know that there are set of possible outcomes for <span class="math inline">\(X\)</span> and a set of possible outcomes for <span class="math inline">\(Y\)</span>. Joining these outcomes in a vector is still has random outcomes. the probability of observing <span class="math inline">\(x\)</span> from <span class="math inline">\(X\)</span> and <span class="math inline">\(y\)</span> from <span class="math inline">\(Y\)</span> is denoted <span class="math inline">\(p(x,y)\)</span>.</p>
+<p>The <strong>Joint Entropy</strong> of this joint distribution is defined to be: <span class="math display">\[ H(X,Y) = -\sum_{x \in $X} \sum_{y \in Y} p(x,y) log \big(p(x,y)\big) \]</span></p>
+<p>Note that this says nothing about the independence of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. It only says that if we know the probabilities for every outcome in the joint distribution we can find the entropy of the system.</p>
+<p>This holds true for systems of any number of random variables: <span class="math inline">\((X_1, X_2, \ldots , X_n)\)</span>.</p>
+<h5 id="example-2">Example</h5>
+<p>Let two events be flipping a fair coin and picking a ball out of a bag containing one white and two red balls. The separate outocomes are: <span class="math display">\[ p(x) = \begin{cases} \frac{1}{2} \text{ heads}, \ \ \frac{1}{2} \text{ tails} \end{cases} \]</span> and <span class="math display">\[ p(y) = \begin{cases} \frac{1}{3} \text{ white}, \ \ \frac{2}{3} \text{ red} \end{cases} \]</span> But the joint outcome has probability distribution: <span class="math display">\[
+p(x,y) = \begin{cases} \frac{1}{6} \text{ (heads, white),} \ \
+\frac{1}{6} \text{ (tails, white),} \\
+\frac{1}{3} \text{ (heads, red),} \ \
+\frac{1}{3} \text{ (tails, red)}
+\end{cases} \]</span> And the entropy of this joint distribution is: <span class="math display">\[ H(X,Y) = 2 \Big( \frac{1}{6} log(6) \Big) + 2 \Big( \frac{1}{3} log(3) \Big) = 1.918 \]</span></p>
+<h3 id="conditional-entropy">Conditional Entropy</h3>
+<h3 id="relative-entropy">Relative Entropy</h3>
+<h3 id="mutual-information">Mutual Information</h3>
+<h3 id="chain-rules">Chain Rules</h3>
+<h2 id="dependent-random-variables">Dependent Random Variables</h2>
+<h2 id="markov-chains">Markov Chains</h2>
 <h1 id="references">References</h1>
 <ol type="1">
 <li>Elements in Information Theory, Second Ed. Thomas M. Cover and Joy A. Thomas</li>
