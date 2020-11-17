@@ -14,28 +14,113 @@
     <hr>
 </header>
 <h1 id="information-theory">Information Theory</h1>
-<p>Information theory is the study of how to store and transmit data in the most effective way. Some of the big questions that Information Theory tries to answer are: 1. How much Information Exists? 2. What is the smallest amount of data that can accurately describe the set? 3. How much information can be sent or stored given available resources?</p>
-<h2 id="fundamentals">Fundamentals</h2>
-<p>Background, fundamentals, and prerequisites.</p>
-<h3 id="basic-probability-theory">Basic Probability Theory</h3>
-<h3 id="elementary-definitions">Elementary Definitions</h3>
-<p>Throughout this document I will try to stick to these definitions.</p>
-<h4 id="experiments-outcomes-and-probabilities">Experiments, Outcomes, and Probabilities</h4>
+<p>Information theory is the study of how to store and transmit data in the most effective way. Some of the big questions that Information Theory tries to answer are:</p>
+<ol type="1">
+<li>How much Information Exists?</li>
+<li>What is the smallest amount of data that can accurately describe the set?</li>
+<li>How much information can be sent or stored given available resources?</li>
+</ol>
+<h2 id="first-probability">First, Probability</h2>
+<h3 id="random-variables">Random Variables</h3>
+<p>This page is only going to deal with <strong>discrete</strong> random variables.</p>
 <ul>
 <li>An <strong>experiment</strong> or a <strong>random variable</strong> is an event with random outcomes.</li>
 <li>The <strong>set of possible outcomes</strong> of an experiment are described by capital letters (<span class="math inline">\(X, Y, Z\)</span>).</li>
 <li>A single <strong>outcome</strong> of an experiment is described by a lower case letter (<span class="math inline">\(x,y,z\)</span>) and is said to exist in the set of possible outcomes (<span class="math inline">\(x \in X\)</span> and <span class="math inline">\(y \in Y\)</span>).</li>
-<li>The <strong>probability mass function</strong>, <span class="math inline">\(p(x)\)</span>, tells us the likelyhood of the outcome <span class="math inline">\(x\)</span> occurring when the experiment is performed.</li>
+<li>The <strong>probability mass function</strong>, <span class="math inline">\(p(x)\)</span>, tells us the likelyhood of the outcome <span class="math inline">\(x\)</span> occurring when experiment <span class="math inline">\(X\)</span> is performed. (If we were dealing with continuous random variables we would call <span class="math inline">\(p(x)\)</span> a probability distribution function, PDF)</li>
 </ul>
-<h5 id="example-1">Example 1</h5>
+<h5 id="example">Example</h5>
 <p>A coin flip is an experiment with two outcomes, heads or tails, or <span class="math inline">\(X = \{heads, tails\}\)</span>. If the coin is fair (if one side isn’t weighted) then the probability mass function is:</p>
 <p><span class="math display">\[ p(x) = \begin{cases}
     \frac{1}{2} \text{ $x$ is heads} \\
     \frac{1}{2} \text{ $x$ is tails}
 \end{cases} \]</span></p>
+<h3 id="joint-prob">Joint Probability Mass Functions</h3>
+<p>If There are two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, which have outcomes <span class="math inline">\(\{x_1, \ldots, x_n\}\)</span> and <span class="math inline">\(\{y_1, \ldots, y_m\}\)</span>, respectively, then the vector <span class="math inline">\((X,Y)\)</span> is also a discrete random variable. It has the probility mass function <span class="math inline">\(p(x,y)\)</span>, also called the <strong>joint pmf</strong>. This PMF tells us that there is a <span class="math inline">\(p(x_i,y_j)\)</span> probability of observing <span class="math inline">\(X=x_i\)</span> and <span class="math inline">\(Y=y_j\)</span> together.</p>
+<p>Sometimes we write the joint probability mass function as <span class="math inline">\(p(X \cap Y)\)</span>. This is just a restatement that the set of possible outcomes <span class="math inline">\((X,Y)\)</span> is the intersection of the outcomes of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. You will see <span class="math inline">\(p(X,Y)\)</span> and <span class="math inline">\(P(X \cap Y)\)</span> used interchangeably.</p>
+<p>A joint probability mass function must satisfy:</p>
+<ol type="1">
+<li><span class="math inline">\(0 \leq p(x,y) \leq 1\)</span>, and</li>
+<li><span class="math inline">\(\sum_{i=1}^n \sum_{j=1}^m p(x_i,y_j) = 1\)</span></li>
+</ol>
+<p>This logic can be extended to any number of random variables. So, if we have a set of <span class="math inline">\(n\)</span> random events, the probability mass function will be <span class="math inline">\(p(x_1, \ldots, x_n)\)</span></p>
+<h5 id="example-1">Example</h5>
+<p>Consider flipping a fair coin (call this <span class="math inline">\(X\)</span>) and rolling a fair dice (<span class="math inline">\(Y\)</span>). Then the joint probability function <span class="math inline">\(p(x,y)\)</span> for <span class="math inline">\(x \in X\)</span> and <span class="math inline">\(y \in Y\)</span>:</p>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x\)</span>  <span class="math inline">\(y\)</span></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>heads</td>
+<td><span class="math inline">\(\frac{1}{12}\)</span></td>
+<td><span class="math inline">\(\frac{1}{12}\)</span></td>
+<td><span class="math inline">\(\frac{1}{12}\)</span></td>
+<td><span class="math inline">\(\frac{1}{12}\)</span></td>
+<td><span class="math inline">\(\frac{1}{12}\)</span></td>
+<td><span class="math inline">\(\frac{1}{12}\)</span></td>
+</tr>
+<tr class="even">
+<td>tails</td>
+<td><span class="math inline">\(\frac{1}{12}\)</span></td>
+<td><span class="math inline">\(\frac{1}{12}\)</span></td>
+<td><span class="math inline">\(\frac{1}{12}\)</span></td>
+<td><span class="math inline">\(\frac{1}{12}\)</span></td>
+<td><span class="math inline">\(\frac{1}{12}\)</span></td>
+<td><span class="math inline">\(\frac{1}{12}\)</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="conditional-probability">Conditional Probability</h3>
+<p>Consider two random variables, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, where the outcome of <span class="math inline">\(Y\)</span> is dependent on the outcome of <span class="math inline">\(X\)</span>. The following relationship is can be derived by multiplying the probabilities of two disjoint events <span class="math inline">\(x_i\)</span> and <span class="math inline">\(y_j|x_i\)</span>: <span class="math display">\[ p(y_j|x_i) = \frac{p(y_j \cap x_i)}{p(x_i)} \]</span> If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent then <span class="math inline">\(p(y_j \cap x_i) = p(y_j)p(x_i)\)</span> and this reduces to <span class="math inline">\(p(y_j|x_i) = p(y_j)\)</span>, as expected.</p>
+<h5 id="example-2">Example</h5>
+<p>Consider flipping a coin (<span class="math inline">\(X\)</span>) then drawing a ball out of a bag (<span class="math inline">\(Y\)</span>), but the bag changes depending on the result of the coin flip. If the coin is heads the bag has two white and one red balls, but if the bag is tails the bag has three white and two red balls. Then, <span class="math display">\[
+p(white|heads) = \frac{2}{3}, \ \
+p(red|heads) = \frac{1}{3} \\
+p(white|tails) = \frac{3}{5}, \ \
+p(red|tails) = \frac{2}{5} \]</span> Using <span class="math inline">\(p(x,y) = p(y|x)p(x)\)</span> we can calculate the joint probability mass function:</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x\)</span>  <span class="math inline">\(y\)</span></th>
+<th>white</th>
+<th>red</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>heads</td>
+<td><span class="math inline">\(\frac{1}{3}\)</span></td>
+<td><span class="math inline">\(\frac{1}{6}\)</span></td>
+</tr>
+<tr class="even">
+<td>tails</td>
+<td><span class="math inline">\(\frac{3}{10}\)</span></td>
+<td><span class="math inline">\(\frac{1}{5}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>We can verify these probabilities by counting all the possibe outcomes.</p>
 <h2 id="shannon-entropy">Shannon Entropy</h2>
 <p>The entropy of a random experiment, <span class="math inline">\(X\)</span> (which has discrete outcomes), is defined as <span class="math display">\[ H(X) = -\sum_{x \in X} p(x) \cdot log_2(p(x)) \]</span></p>
-<h5 id="example">Example</h5>
+<h5 id="example-3">Example</h5>
 <p>An unfair dice might be weighted in such a way that the number 1 is biased. A probability mass function for rolling the dice once might be: <span class="math display">\[ p(x) = \begin{cases}
     \frac{1}{4} \ \ x=1, \ \ \frac{1}{6} \ \ x=2, \ \ \frac{1}{6} \ \ x=3, \\
     \frac{1}{6} \ \ x=4, \ \ \frac{1}{6} \ \ x=5, \ \ \frac{1}{12} \ \ x=6
@@ -45,14 +130,19 @@
 <ol type="1">
 <li>Negative entroy, <span class="math inline">\(-H(X)\)</span>, is a convex function. This means we can find maximum entropy (minimum negative entropy) using convex optimization. We can also use Lagrange multipliers to solve some problems.</li>
 <li>For a given set of outcomes the maximum entropy is achieved when the probability distribution is uniform. Entropy is maximized when we know the least about the outcome.</li>
-<li></li>
+<li><span class="math inline">\(H(X) \leq log\big(|X|\big)\)</span>, where <span class="math inline">\(|X|\)</span> is the number of elements in <span class="math inline">\(X\)</span>. Equality holds if <span class="math inline">\(X\)</span> has a uniform distribution.</li>
 </ol>
+<h3 id="interpretations-of-entropy">Interpretations of Entropy</h3>
+<ol type="1">
+<li>Entropy measures the amount of information required on average to describe a random variable.</li>
+</ol>
+<h3 id="expected-value">Expected Value</h3>
+<p>The expected value of a function <span class="math inline">\(g\)</span> acting on a discrete random variable <span class="math inline">\(X\)</span> is defined as: <span class="math display">\[E[g(X)] \equiv E_p g(X) = \sum_{x \in X} p(x)g(x) \]</span></p>
 <h3 id="joint-entropy">Joint Entropy</h3>
-<p>Two random variables can be joined together to form a single random variable. Given random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, the vector <span class="math inline">\((X,Y)\)</span> can be thought of as a single random variable. To see this, know that there are set of possible outcomes for <span class="math inline">\(X\)</span> and a set of possible outcomes for <span class="math inline">\(Y\)</span>. Joining these outcomes in a vector is still has random outcomes. the probability of observing <span class="math inline">\(x\)</span> from <span class="math inline">\(X\)</span> and <span class="math inline">\(y\)</span> from <span class="math inline">\(Y\)</span> is denoted <span class="math inline">\(p(x,y)\)</span>.</p>
-<p>The <strong>Joint Entropy</strong> of this joint distribution is defined to be: <span class="math display">\[ H(X,Y) = -\sum_{x \in $X} \sum_{y \in Y} p(x,y) log \big(p(x,y)\big) \]</span></p>
+<p>We can extend the definition of Shannon Entropy to include joint probability distributions (see <a href="#joint-prob">Joint Probability Mass Functions</a>.) If there are two random variables, <span class="math inline">\(X\)</span>, and <span class="math inline">\(Y\)</span> with outcomes <span class="math inline">\(\{x_1, \ldots,x_n\}\)</span> and <span class="math inline">\(\{y_1, \ldots, y_m\}\)</span>. We join them together into the new random variable <span class="math inline">\((X,Y)\)</span>. If this vector has joint probability mass function <span class="math inline">\(p(x_i,y_j)\)</span> for all <span class="math inline">\(x_i \in X\)</span> and <span class="math inline">\(y_j \in Y\)</span>, then the <strong>Joint Entropy</strong> is: <span class="math display">\[ H(X,Y) = -\sum_{x \in X} \sum_{y \in Y} p(x,y) log \big(p(x,y)\big) \]</span></p>
 <p>Note that this says nothing about the independence of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. It only says that if we know the probabilities for every outcome in the joint distribution we can find the entropy of the system.</p>
 <p>This holds true for systems of any number of random variables: <span class="math inline">\((X_1, X_2, \ldots , X_n)\)</span>.</p>
-<h5 id="example-2">Example</h5>
+<h5 id="example-4">Example</h5>
 <p>Let two events be flipping a fair coin and picking a ball out of a bag containing one white and two red balls. The separate outocomes are: <span class="math display">\[ p(x) = \begin{cases} \frac{1}{2} \text{ heads}, \ \ \frac{1}{2} \text{ tails} \end{cases} \]</span> and <span class="math display">\[ p(y) = \begin{cases} \frac{1}{3} \text{ white}, \ \ \frac{2}{3} \text{ red} \end{cases} \]</span> But the joint outcome has probability distribution: <span class="math display">\[
 p(x,y) = \begin{cases} \frac{1}{6} \text{ (heads, white),} \ \
 \frac{1}{6} \text{ (tails, white),} \\
@@ -60,14 +150,80 @@ p(x,y) = \begin{cases} \frac{1}{6} \text{ (heads, white),} \ \
 \frac{1}{3} \text{ (tails, red)}
 \end{cases} \]</span> And the entropy of this joint distribution is: <span class="math display">\[ H(X,Y) = 2 \Big( \frac{1}{6} log(6) \Big) + 2 \Big( \frac{1}{3} log(3) \Big) = 1.918 \]</span></p>
 <h3 id="conditional-entropy">Conditional Entropy</h3>
+<p>Consider two random variables, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, and the outcome of <span class="math inline">\(Y\)</span> depends on the outcome of <span class="math inline">\(X\)</span>. We define <strong>conditional entropy</strong> as <span class="math display">\[ \begin{align}
+H(Y|X) &amp;= \sum_{x \in X} p(x) H(Y|X=x) \\
+       &amp;= \sum_{x \in X} p(x) \sum_{y \in Y} p(y|x) log \big(p(y|x)\big) \\
+       &amp;= \sum_{x \in X} \sum_{y \in Y} p(x) \frac{p(x,y)}{p(x)} log\big(p(y|x)\big)
+           &amp;&amp; \text{ since } p(b|a) = \frac{p(a,b)}{p(a)} \\
+       &amp;= E
+\end{align} \]</span></p>
+<h3 id="chain-rule-for-entropy">Chain Rule for Entropy</h3>
+<p><span class="math display">\[ H(X,Y) = H(X) + H(Y|X) \]</span> proof: <span class="math display">\[ \begin{align}
+    H(X,Y) &amp;= - \sum_{x\in X}\sum_{y\in Y} p(x,y) log \big( p(x,y) \big) \\
+        &amp;= -\sum_{x\in X} \sum_{y\in Y} p(x,y) \ log \big( p(y|x) \ p(x) \big)
+            &amp;&amp; \text{ since } p(x,y) = p(y|x) \cdot p(x) \\
+        &amp;= -\sum_{x\in X} \sum_{y\in Y} p(x,y) \ log \big( p(y|x) \big) -\sum_{x\in X} \sum_{y\in Y} p(x,y) \ log \big( p(x) \big) \\
+        &amp;= H(Y|X) -\sum_{x\in X} p(x) \ log \big( p(x) \big)
+            &amp;&amp; \text{ since } \sum_{y}p(x,y) = p(x) \\
+        &amp;= H(Y|X) + H(X)
+\end{align} \]</span></p>
+<p>Using induction we can extend this to any number of random variables: <span class="math display">\[ H(X_1, \ldots, X_n) = \sum_{i=1}^n H(X_i|X_1, \ldots, X_{i-1})\]</span></p>
 <h3 id="relative-entropy">Relative Entropy</h3>
+<p>Measures the distance between two distributions.</p>
+<p><strong>Relative Entropy</strong> of two probability mass functions, <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>, defined on the random variable <span class="math inline">\(X\)</span> is defined as: <span class="math display">\[ D(p||q) =
+\sum_{x \in X} p(x) log \Big( \frac{p(x)}{q(x)} \Big)
+\equiv E_p log \Big( \frac{p(X)}{q(X)} \Big) \]</span></p>
+<h4 id="properties-of-relative-entropy">Properties of Relative Entropy</h4>
+<ol type="1">
+<li><span class="math inline">\(D(p||q)=0\)</span> if <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> are the same</li>
+<li><span class="math inline">\(D(p||q) \neq D(q||p)\)</span></li>
+<li>Not a distance function since the triangle inequality does not hold</li>
+</ol>
+<h3 id="chain-rule-for-relative-entropy">Chain Rule for Relative Entropy</h3>
+<p><span class="math display">\[ D\big( p(x,y)\ ||\ q(x,y) \big) = D\big( p(x)\ ||\ q(x) \big) + D\big( p(y|x)\ ||\ q(y|x) \big) \]</span></p>
+<h5 id="example-5">Example</h5>
+<p>For the random variable taking values in <span class="math inline">\(\{1,2,3,4\}\)</span> consider the following PMFs: | <span class="math inline">\(x\in X\)</span> | 1 | 2 | 3 | 4 | |———-|—————|—————|—————|—————| | <span class="math inline">\(p(x)\)</span> | <span class="math inline">\(\frac{1}{2}\)</span> | <span class="math inline">\(\frac{1}{4}\)</span> | <span class="math inline">\(\frac{1}{8}\)</span> | <span class="math inline">\(\frac{1}{8}\)</span> | | <span class="math inline">\(q(x)\)</span> | <span class="math inline">\(\frac{1}{8}\)</span> | <span class="math inline">\(\frac{1}{8}\)</span> | <span class="math inline">\(\frac{1}{4}\)</span> | <span class="math inline">\(\frac{1}{2}\)</span> | | <span class="math inline">\(r(x)\)</span> | <span class="math inline">\(\frac{1}{2}\)</span> | <span class="math inline">\(\frac{1}{6}\)</span> | <span class="math inline">\(\frac{1}{6}\)</span> | <span class="math inline">\(\frac{1}{6}\)</span> |</p>
+<p>Then</p>
+<p><span class="math display">\[ \begin{align}
+D(p||p) &amp;= \Big(\frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{8} \Big) log(1) &amp;&amp;= 0 \\
+D(p||q) &amp;= \frac{1}{2} log(4) + \frac{1}{4} log(2) + \frac{1}{8} log(\frac{1}{2}) + \frac{1}{8} log(\frac{1}{4}) &amp;&amp;= \frac{7}{8} \\
+D(p||r) &amp;= \frac{1}{2} log(1) + \frac{1}{4} log(\frac{3}{2}) + \frac{1}{8} log(\frac{3}{4}) + \frac{1}{8} log(\frac{3}{4}) &amp;&amp;= 0.0425\\
+D(p||r) &amp;= \frac{1}{2} log(1) + \frac{1}{6} \Big( log(\frac{2}{3}) + log(\frac{4}{3}) + log(\frac{4}{3}) \Big) &amp;&amp;= 0.0408
+\end{align} \]</span></p>
 <h3 id="mutual-information">Mutual Information</h3>
-<h3 id="chain-rules">Chain Rules</h3>
+<p>Given two discrete random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> with joind PMF <span class="math inline">\(p(x,y)\)</span> and marginal PMFs <span class="math inline">\(p(x)\)</span> and <span class="math inline">\(p(y)\)</span>, the mutual information is defined as: <span class="math display">\[ I(X;Y) = \sum_x \sum_y p(x,y) log \Big( \frac{p(x,y)}{p(x)p(y)} \Big)\]</span> This can also be interpreted as:</p>
+<ol type="1">
+<li>The relative entropy between <span class="math inline">\(p(x,y)\)</span> and <span class="math inline">\(p(x)p(y)\)</span>: <span class="math inline">\(D\big(p(x,y)||p(x)p(y)))\big)\)</span></li>
+<li>The expected value: <span class="math inline">\(E_{p(x,y)} log \big( \frac{p(X,Y)}{p(X)p(Y)} \big)\)</span></li>
+</ol>
+<h4 id="relationship-to-entropy">Relationship to Entropy</h4>
+<p><span class="math display">\[ \begin{align}
+I(X;Y) &amp;= H(X) - H(X|Y) \\
+\text{proof: } &amp;\\
+I(X;Y)
+&amp;= \sum_x \sum_y p(x,y) log\Big( \frac{p(x,y)}{p(x)p(y)} \Big) \\
+&amp;= \sum_x \sum_y p(x,y) log\Big( \frac{p(x|y)}{p(x)} \Big) \\
+&amp;= \sum_x \sum_y p(x,y) \Big( log\big( p(x|y) \big) - log\big( p(x) \big) \Big) \\
+&amp;= \sum_x \sum_y p(x,y) log\big( p(x|y) \big) - \sum_y\Big( \sum_x p(x,y) log\big(p(x)\big) \Big) \\
+&amp;= -H(X|Y) + \sum_y p(y)H(X) \\
+&amp;= -H(X|Y) + H(X)
+\end{align} \]</span></p>
+<h4 id="properties-of-mutual-information">Properties of Mutual Information</h4>
+<ol type="1">
+<li>Symmetry: <span class="math inline">\(I(X;Y) = I(Y;X)\)</span></li>
+<li><span class="math inline">\(I(X;Y) = H(X) − H(X|Y)\)</span></li>
+<li><span class="math inline">\(I(X;Y) = H(X) + H(Y) − H(X,Y)\)</span></li>
+<li><span class="math inline">\(I(X;X) = H(X)\)</span></li>
+<li><span class="math inline">\(I(X;Y) \leq H(X)\)</span></li>
+</ol>
+<h4 id="chain-rule-for-mutual-information">Chain Rule for Mutual Information</h4>
+<p><span class="math display">\[ I(X_1, \ldots, X_n ; Y) = \sum_{i=1}^n I(X_i;Y | X_1, \ldots, X_{i-1}) \]</span></p>
 <h2 id="dependent-random-variables">Dependent Random Variables</h2>
 <h2 id="markov-chains">Markov Chains</h2>
 <h1 id="references">References</h1>
 <ol type="1">
 <li>Elements in Information Theory, Second Ed. Thomas M. Cover and Joy A. Thomas</li>
+<li><a href="https://ocw.mit.edu/courses/mathematics/18-05-introduction-to-probability-and-statistics-spring-2014/readings/MIT18_05S14_Reading7a.pdf">Introduction to Probability and Statistics, MIT OpenCourseWare</a></li>
 </ol>
 <div class="center">
     <hr>
