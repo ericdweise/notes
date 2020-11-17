@@ -13,6 +13,7 @@
 
 ### Math Symbols
 A list of symbols I use often:
+
 | symbol                 | LaTeX                  | Description                                |
 |------------------------|------------------------|--------------------------------------------|
 | $\mathbb{R}$           | `\mathbb{R}`           | Real Numbers                               |
@@ -21,6 +22,8 @@ A list of symbols I use often:
 | $\mathbb{Q}$           | `\mathbb{Q}`           | Complex Numbers                            |
 | $\mathbb{1}$           | `\mathbb{1}`           | Identity Matrix                            |
 | $\dagger$              | `\dagger`              | Adjoint Operator (Hermitian Conjugate)     |
+| $\cap$                 | `\cap`                 | Intersection (set theory)                  |
+| $\cup$                 | `\cup`                 | Union (set theory)                         |
 
 ### Math Snippets
 
