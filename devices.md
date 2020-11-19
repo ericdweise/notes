@@ -16,6 +16,17 @@ Model No: N15V1
 Debian 9 with XFCE desktop
 
 
+## File Transfer from Android to Debian
+
+1. `sudo apt install jmtpfs fusermount`
+2. Connect android to computer (USB)
+3. Enable `File Transfer` on phone
+4. Make mount point: `mkdir ~/android`
+5. Mount phone: `jmtpfs ~/android`
+6. Move files
+7. Unmount: `fusermount -u ~/android`
+
+
 ## Bluetooth Keyboard
 Boot up with numlock disabled:
 ```bash
