@@ -28,6 +28,16 @@
 </ol>
 <h3 id="computer-specs">Computer Specs</h3>
 <p>Acer Cloudbook 11 Year: 2015 Model No: N15V1 Debian 9 with XFCE desktop</p>
+<h2 id="file-transfer-from-android-to-debian">File Transfer from Android to Debian</h2>
+<ol type="1">
+<li><code>sudo apt install jmtpfs fusermount</code></li>
+<li>Connect android to computer (USB)</li>
+<li>Enable <code>File Transfer</code> on phone</li>
+<li>Make mount point: <code>mkdir ~/android</code></li>
+<li>Mount phone: <code>jmtpfs ~/android</code></li>
+<li>Move files</li>
+<li>Unmount: <code>fusermount -u ~/android</code></li>
+</ol>
 <h2 id="bluetooth-keyboard">Bluetooth Keyboard</h2>
 <p>Boot up with numlock disabled:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">sudo</span> apt install -y numlockx</a>
