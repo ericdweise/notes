@@ -9,14 +9,10 @@ Some of the big questions that Information Theory tries to answer are:
 
 I've broken some major results of information theory into the following sections:
 
-1. [Basic Probability](info-theory/probability.html)
-2. [Shannon Entropy](info-theory/entropy.html)
-3. [Properties of Entropy](info-theory/entropy-properties.html)
-4. [Sequences of Random Variables](info-theory/sequences.html)
-5. [Compression](info-theory/compression.html)
-6. [Channel Communications](info-theory/channel.html)
-
-
-The following are application areas that I'm interested in
-
-1. [Quantum Error Correction](info-theory/quantum-error-correction.html)
+1. [Basic Probability](information-theory/probability.html)
+1. [Shannon Entropy](information-theory/entropy.html)
+1. [Properties of Entropy](information-theory/entropy-properties.html)
+1. [Sequences of Random Variables](information-theory/sequences.html)
+1. [Compression](information-theory/compression.html)
+1. [Channel Communications](information-theory/channel.html)
+1. [Quantum Error Correction](information-theory/quantum-error-correction.html)
