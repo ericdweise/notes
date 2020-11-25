@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="center"><a href="/">Weise-ipedia</a></h1>
+    <hr>
+</header>
+<h1 id="shannon-entropy">Shannon Entropy</h1>
+<p>The entropy of a random experiment, <span class="math inline">\(X\)</span>, with discrete outcomes, is defined as <span class="math display">\[ H(X) = -\sum_{x \in X} p(x) \cdot log_2(p(x)) \]</span></p>
+<p>Since we usually deal with binary information you will see <span class="math inline">\(log\)</span> used instead of <span class="math inline">\(log_2\)</span>. In this base Shannon Entropy has units of bits.</p>
+<h4 id="example">Example</h4>
+<p>An unfair dice might be weighted in such a way that the number 1 is biased. A probability mass function for rolling the dice once might be: <span class="math display">\[ p(x) = \begin{cases}
+    \frac{1}{4} \ \ x=1, \ \ \frac{1}{6} \ \ x=2, \ \ \frac{1}{6} \ \ x=3, \\
+    \frac{1}{6} \ \ x=4, \ \ \frac{1}{6} \ \ x=5, \ \ \frac{1}{12} \ \ x=6
+\end{cases} \]</span> The entropy of tossing this dice once is <span class="math display">\[ H(X) = \frac{1}{4}log(4) + 4\Big(\frac{1}{6}log(6)\Big) + \frac{1}{12}log(12) = 2.522\]</span> Compare this to the &quot;fair&quot; dice: <span class="math display">\[ H(X_{fair}) = 6\Big(\frac{1}{6}log(6)\Big) = 2.585 \]</span></p>
+<h3 id="properties-of-shannon-entropy">Properties of Shannon Entropy</h3>
+<p>If <span class="math inline">\(p(x)=0\)</span> then <span class="math inline">\(p(x) \cdot log(p(x))=0\)</span>. This can be proven even for discrete probability mass functions by finding the value of the continuous function <span class="math inline">\(x \cdot log(x)\)</span> as <span class="math inline">\(x\)</span> aproaches <span class="math inline">\(0\)</span>.</p>
+<ol type="1">
+<li>Negative entroy, <span class="math inline">\(-H(X)\)</span>, is a convex function. This means we can find maximum entropy (minimum negative entropy) using convex optimization. We can also use Lagrange multipliers to solve some problems.</li>
+<li>For a given set of outcomes the maximum entropy is achieved when the probability distribution is uniform. Entropy is maximized when we know the least about the outcome.</li>
+<li><span class="math inline">\(H(X) \leq log\big(|X|\big)\)</span>, where <span class="math inline">\(|X|\)</span> is the number of elements in <span class="math inline">\(X\)</span>. Equality holds if <span class="math inline">\(X\)</span> has a uniform distribution.</li>
+</ol>
+<h3 id="interpretations-of-entropy">Interpretations of Entropy</h3>
+<ol type="1">
+<li>Entropy measures the amount of information required on average to describe a random variable.</li>
+</ol>
+<h2 id="joint-entropy">Joint Entropy</h2>
+<p>We can extend the definition of Shannon Entropy to include joint probability distributions. If there are two random variables, <span class="math inline">\(X\)</span>, and <span class="math inline">\(Y\)</span> with outcomes <span class="math inline">\(\{x_1, \ldots,x_n\}\)</span> and <span class="math inline">\(\{y_1, \ldots, y_m\}\)</span>. We join them together into the new random variable <span class="math inline">\((X,Y)\)</span>. If this vector has joint probability mass function <span class="math inline">\(p(x_i,y_j)\)</span> for all <span class="math inline">\(x_i \in X\)</span> and <span class="math inline">\(y_j \in Y\)</span>, then the <strong>Joint Entropy</strong> is: <span class="math display">\[ H(X,Y) = -\sum_{x \in X} \sum_{y \in Y} p(x,y) log \big(p(x,y)\big) \]</span></p>
+<p>Note that this says nothing about the independence of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. It only says that if we know the probabilities for every outcome in the joint distribution we can find the entropy of the system.</p>
+<p>This holds true for systems of any number of random variables: <span class="math inline">\((X_1, X_2, \ldots , X_n)\)</span>.</p>
+<h4 id="example-1">Example</h4>
+<p>Let two events be flipping a fair coin and picking a ball out of a bag containing one white and two red balls. The separate outocomes are: <span class="math display">\[ p(x) = \begin{cases} \frac{1}{2} \text{ heads}, \ \ \frac{1}{2} \text{ tails} \end{cases} \]</span> and <span class="math display">\[ p(y) = \begin{cases} \frac{1}{3} \text{ white}, \ \ \frac{2}{3} \text{ red} \end{cases} \]</span> But the joint outcome has probability distribution: <span class="math display">\[
+p(x,y) = \begin{cases} \frac{1}{6} \text{ (heads, white),} \ \
+\frac{1}{6} \text{ (tails, white),} \\
+\frac{1}{3} \text{ (heads, red),} \ \
+\frac{1}{3} \text{ (tails, red)}
+\end{cases} \]</span> And the entropy of this joint distribution is: <span class="math display">\[ H(X,Y) = 2 \Big( \frac{1}{6} log(6) \Big) + 2 \Big( \frac{1}{3} log(3) \Big) = 1.918 \]</span></p>
+<h2 id="conditional-entropy">Conditional Entropy</h2>
+<p>Consider two random variables, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, and the outcome of <span class="math inline">\(Y\)</span> depends on the outcome of <span class="math inline">\(X\)</span>. We define <strong>conditional entropy</strong> as <span class="math display">\[ \begin{align}
+H(Y|X) &amp;= \sum_{x \in X} p(x) H(Y|X=x) \\
+       &amp;= \sum_{x \in X} p(x) \sum_{y \in Y} p(y|x) log \big(p(y|x)\big) \\
+       &amp;= \sum_{x \in X} \sum_{y \in Y} p(x) \frac{p(x,y)}{p(x)} log\big(p(y|x)\big)
+           &amp;&amp; \text{ since } p(b|a) = \frac{p(a,b)}{p(a)} \\
+       &amp;= E
+\end{align} \]</span></p>
+<h2 id="chain-rule-for-entropy">Chain Rule for Entropy</h2>
+<p><span class="math display">\[ H(X,Y) = H(X) + H(Y|X) \]</span> proof: <span class="math display">\[ \begin{align}
+    H(X,Y) &amp;= - \sum_{x\in X}\sum_{y\in Y} p(x,y) log \big( p(x,y) \big) \\
+        &amp;= -\sum_{x\in X} \sum_{y\in Y} p(x,y) \ log \big( p(y|x) \ p(x) \big)
+            &amp;&amp; \text{ since } p(x,y) = p(y|x) \cdot p(x) \\
+        &amp;= -\sum_{x\in X} \sum_{y\in Y} p(x,y) \ log \big( p(y|x) \big) -\sum_{x\in X} \sum_{y\in Y} p(x,y) \ log \big( p(x) \big) \\
+        &amp;= H(Y|X) -\sum_{x\in X} p(x) \ log \big( p(x) \big)
+            &amp;&amp; \text{ since } \sum_{y}p(x,y) = p(x) \\
+        &amp;= H(Y|X) + H(X)
+\end{align} \]</span></p>
+<p>Using induction we can extend this to any number of random variables: <span class="math display">\[ H(X_1, \ldots, X_n) = \sum_{i=1}^n H(X_i|X_1, \ldots, X_{i-1})\]</span></p>
+<h2 id="relative-entropy">Relative Entropy</h2>
+<p>Measures the distance between two PMF distributions defined on the same random variable.</p>
+<p>The <strong>relative entropy</strong> of two probability mass functions, <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>, defined on the random variable <span class="math inline">\(X\)</span> is defined as: <span class="math display">\[ D(p||q) =
+\sum_{x \in X} p(x) log \Big( \frac{p(x)}{q(x)} \Big)
+\equiv E_p log \Big( \frac{p(X)}{q(X)} \Big) \]</span></p>
+<h3 id="properties-of-relative-entropy">Properties of Relative Entropy</h3>
+<ol type="1">
+<li><span class="math inline">\(D(p||q)=0\)</span> if <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> are the same</li>
+<li><span class="math inline">\(D(p||q) \neq D(q||p)\)</span></li>
+<li>Not a distance function since the triangle inequality does not hold</li>
+</ol>
+<h3 id="chain-rule-for-relative-entropy">Chain Rule for Relative Entropy</h3>
+<p><span class="math display">\[ D\big( p(x,y)\ ||\ q(x,y) \big) = D\big( p(x)\ ||\ q(x) \big) + D\big( p(y|x)\ ||\ q(y|x) \big) \]</span></p>
+<h4 id="example-2">Example</h4>
+<p>For the random variable taking values in <span class="math inline">\(\{1,2,3,4\}\)</span> consider the following PMFs:</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x\in X\)</span></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(p(x)\)</span></td>
+<td><span class="math inline">\(\frac{1}{2}\)</span></td>
+<td><span class="math inline">\(\frac{1}{4}\)</span></td>
+<td><span class="math inline">\(\frac{1}{8}\)</span></td>
+<td><span class="math inline">\(\frac{1}{8}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(q(x)\)</span></td>
+<td><span class="math inline">\(\frac{1}{8}\)</span></td>
+<td><span class="math inline">\(\frac{1}{8}\)</span></td>
+<td><span class="math inline">\(\frac{1}{4}\)</span></td>
+<td><span class="math inline">\(\frac{1}{2}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(r(x)\)</span></td>
+<td><span class="math inline">\(\frac{1}{2}\)</span></td>
+<td><span class="math inline">\(\frac{1}{6}\)</span></td>
+<td><span class="math inline">\(\frac{1}{6}\)</span></td>
+<td><span class="math inline">\(\frac{1}{6}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Then</p>
+<p><span class="math display">\[ \begin{align}
+D(p||p) &amp;= \Big(\frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{8} \Big) log(1) &amp;&amp;= 0 \\
+D(p||q) &amp;= \frac{1}{2} log(4) + \frac{1}{4} log(2) + \frac{1}{8} log(\frac{1}{2}) + \frac{1}{8} log(\frac{1}{4}) &amp;&amp;= \frac{7}{8} \\
+D(p||r) &amp;= \frac{1}{2} log(1) + \frac{1}{4} log(\frac{3}{2}) + \frac{1}{8} log(\frac{3}{4}) + \frac{1}{8} log(\frac{3}{4}) &amp;&amp;= 0.0425\\
+D(r||p) &amp;= \frac{1}{2} log(1) + \frac{1}{6} \Big( log(\frac{2}{3}) + log(\frac{4}{3}) + log(\frac{4}{3}) \Big) &amp;&amp;= 0.0408
+\end{align} \]</span></p>
+<h2 id="mutual-information">Mutual Information</h2>
+<p>Given two discrete random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> with joind PMF <span class="math inline">\(p(x,y)\)</span> and marginal PMFs <span class="math inline">\(p(x)\)</span> and <span class="math inline">\(p(y)\)</span>, the mutual information is defined as: <span class="math display">\[ I(X;Y) = \sum_x \sum_y p(x,y) log \Big( \frac{p(x,y)}{p(x)p(y)} \Big)\]</span> This can also be interpreted as:</p>
+<ol type="1">
+<li>The relative entropy between <span class="math inline">\(p(x,y)\)</span> and <span class="math inline">\(p(x)p(y)\)</span>: <span class="math inline">\(D\big(p(x,y)||p(x)p(y)))\big)\)</span></li>
+<li>The expected value: <span class="math inline">\(E_{p(x,y)} log \big( \frac{p(X,Y)}{p(X)p(Y)} \big)\)</span></li>
+</ol>
+<h3 id="relationship-to-entropy">Relationship to Entropy</h3>
+<p><span class="math display">\[ \begin{align}
+I(X;Y) &amp;= H(X) - H(X|Y) \\
+\text{proof: } &amp;\\
+I(X;Y)
+&amp;= \sum_x \sum_y p(x,y) log\Big( \frac{p(x,y)}{p(x)p(y)} \Big) \\
+&amp;= \sum_x \sum_y p(x,y) log\Big( \frac{p(x|y)}{p(x)} \Big) \\
+&amp;= \sum_x \sum_y p(x,y) \Big( log\big( p(x|y) \big) - log\big( p(x) \big) \Big) \\
+&amp;= \sum_x \sum_y p(x,y) log\big( p(x|y) \big) - \sum_y\Big( \sum_x p(x,y) log\big(p(x)\big) \Big) \\
+&amp;= -H(X|Y) + \sum_y p(y)H(X) \\
+&amp;= -H(X|Y) + H(X)
+\end{align} \]</span></p>
+<h3 id="properties-of-mutual-information">Properties of Mutual Information</h3>
+<ol type="1">
+<li>Symmetry: <span class="math inline">\(I(X;Y) = I(Y;X)\)</span></li>
+<li><span class="math inline">\(I(X;Y) = H(X) − H(X|Y)\)</span></li>
+<li><span class="math inline">\(I(X;Y) = H(X) + H(Y) − H(X,Y)\)</span></li>
+<li><span class="math inline">\(I(X;X) = H(X)\)</span></li>
+<li><span class="math inline">\(I(X;Y) \leq H(X)\)</span></li>
+</ol>
+<h3 id="conditional-mutual-information">Conditional Mutual Information</h3>
+<p><span class="math display">\[ I(X;Y|Z) = H(X|Z) - H(X|Y,Z) \]</span></p>
+<h3 id="chain-rule-for-mutual-information">Chain Rule for Mutual Information</h3>
+<p><span class="math display">\[ I(X;Y,Z) = I(X;Z) + I(X;Y|Z) \]</span></p>
+<h4 id="proof">Proof</h4>
+<p><span class="math display">\[ \begin{align}
+I(X;Y|Z)
+  &amp;= H(X|Z) - H(X|Y,Z)
+    &amp;&amp; \text{defn: conditional mutual information} \\
+  &amp;= H(X|Z) + H(Y,Z) - H(X,Y,Z)
+    &amp;&amp; \text{chain rule for entropy} \\
+  &amp;=  -\big[ H(X) - H(X|Z) \big] + H(X) + H(Y,Z) - H(X,Y,Z) \\
+  &amp;= - I(X;Z) + I(X;Y,Z)
+    &amp;&amp; \text{see identities for mutual information}
+\end{align} \]</span></p>
+<p>rearranging gives:</p>
+<p><span class="math display">\[ I(X;Y,Z) = I(X;Z) + I(X;Y|Z) \]</span></p>
+<p>Applying this successively gives:</p>
+<p><span class="math display">\[ I(X_1, \ldots, X_n ; Y) = \sum_{i=1}^n I(X_i;Y | X_1, \ldots, X_{i-1}) \]</span></p>
+<h2 id="references">References</h2>
+<ol type="1">
+<li>Elements in Information Theory, Second Ed. Thomas M. Cover and Joy A. Thomas</li>
+</ol>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/amazon-web-services.html">AWS</a>
+    &middot; <a href="/bash.html">Bash</a>
+    &middot; <a href="/c.html">C</a>
+    &middot; <a href="/c-plus-plus.html">C++</a>
+    &middot; <a href="/cybersecurity.html">CyberSecurity</a>
+    &middot; <a href="/devices.html">Devices</a>
+    &middot; <a href="/gcc.html">GCC</a>
+    &middot; <a href="/git.html">Git</a>
+    &middot; <a href="/github.html">GitHub</a>
+    &middot; <a href="/latex.html">LaTeX</a>
+    &middot; <a href="/linux.html">Linux</a>
+    &middot; <a href="/networking.html">Networking</a>
+    &middot; <a href="/python.html">Python</a>
+    &middot; <a href="/raspberry-pi.html">Raspberry Pi</a>
+    &middot; <a href="/vim.html">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory.html">Information Theory</a>
+    &middot; <a href="/linear-algebra.html">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics.html">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2020 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>
