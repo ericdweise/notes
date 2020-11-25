@@ -67,7 +67,7 @@ function install_atom_text {
 
     sudo apt install -y apt-transport-https
     wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
-    echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" | sudo tee -a  /etc/apt/sources.list
+    sudo add-apt-repository "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main"
 
     sudo apt update
     sudo apt install -y atom
@@ -161,24 +161,6 @@ function install_password_manager {
     sudo apt update
     sudo apt install -y keepass2
     }
-
-function install_shellcaster {
-    # https://github.com/jeff-hughes/shellcaster
-    announce 'install' 'ShellCaster'
-
-    if ! [ which cargo ]; then
-        install_rust_lang
-    fi
-
-    sudo apt install -y \
-        gcc \
-        libncurses-dev \
-        libsqlite3-dev \
-        libssl-dev \
-        pkg-config
-
-    sudo cargo install shellcaster --no-track --root "/usr/local"
-}
 
 function install_python {
     announce 'install' 'Python 3'
@@ -275,8 +257,6 @@ for ARG in "$@"; do
         FLAG_INSTALL_MUSIC_TOOLS='1'
     elif [ $ARG == '--password-manager' ]; then
         FLAG_INSTALL_PASSWORD_MANAGER='1'
-    elif [ $ARG == '--podcast-manager' ]; then
-        FLAG_INSTALL_PODCAST_MANAGER='1'
     elif [ $ARG == '--python' ]; then
         FLAG_INSTALL_PYTHON='1'
     elif [ $ARG == '--rss-client' ]; then
@@ -293,7 +273,6 @@ for ARG in "$@"; do
           --docker
           --music-tools
           --password-manager
-          --podcast-manager
           --python
           --rss-client
           --rust
@@ -335,11 +314,6 @@ fi
 if [ $FLAG_INSTALL_PASSWORD_MANAGER ]; then
     install_password_manager
     unset FLAG_INSTALL_PASSWORD_MANAGER
-fi
-
-if [ $FLAG_INSTALL_PODCAST_MANAGER ]; then
-    install_shellcaster
-    unset FLAG_INSTALL_PODCAST_MANAGER
 fi
 
 if [ $FLAG_INSTALL_PYTHON ]; then
