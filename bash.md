@@ -5,7 +5,7 @@
 ### Special Parameters
 | Variable | Meaning                                                                    |
 |----------|----------------------------------------------------------------------------|
-| `$\*`    | Positional parameters. Expands to a single word.                           |
+| `$*`     | Positional parameters. Expands to a single word with spaces.               |
 | `$@`     | Positional parameters. Expands to separate words.                          |
 | `$#`     | The number of positional parameters                                        |
 | `$?`     | Exit status of the most recently executed foreground pipeline              |
@@ -47,6 +47,21 @@ Notes:
 - `STRING` must be a variable. It is NOT prepended by a dollar sign (`$`)
 - The index of the first element is `0`
 - Values of the last element, `length`, can be negative. This is how many elements to be ignored at the end of `STRING`
+
+
+## Math
+Every variable in Bash is a string.
+To do math you need to surround the equations with `$((` and `))`.
+Otherwise, operations like `+` will keep their string behavior, in this case, concatenation.
+
+```bash
+i=0
+while [[ $i -lt 5 ]]; do
+    i=$((i+1))
+    echo "$i"
+done
+````
+
 
 
 ## Conditionals
