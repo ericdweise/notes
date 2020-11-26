@@ -2,7 +2,8 @@
 set -e
 
 
-for INFILE in $(find . -type f | grep -e '\.md$'); do
+function convert {
+    INFILE=$1
     OUTFILE=$(echo $INFILE | sed -r 's/.md/.html/')
     echo "$INFILE ---> $OUTFILE"
     echo '<!DOCTYPE html>' > $OUTFILE
@@ -14,5 +15,16 @@ for INFILE in $(find . -type f | grep -e '\.md$'); do
     cat assets/parts/footer.html >> $OUTFILE
     echo '</body>' >> $OUTFILE
     echo '</html>' >> $OUTFILE
-done
+}
+
+
+if [ "$#" -gt 0 ]; then
+    for FILE in "$*"; do
+        convert $FILE
+    done
+else
+    for FILE in $(find . -type f | grep -e '\.md$'); do
+        convert $FILE
+    done
+fi
 
