@@ -71,14 +71,14 @@ $$ \begin{align}
 H(Y|X) &= \sum_{x \in X} p(x) H(Y|X=x) \\
        &= \sum_{x \in X} p(x) \sum_{y \in Y} p(y|x) log \big(p(y|x)\big) \\
        &= \sum_{x \in X} \sum_{y \in Y} p(x) \frac{p(x,y)}{p(x)} log\big(p(y|x)\big)
-           && \text{ since } p(b|a) = \frac{p(a,b)}{p(a)} \\
-       &= E
+           && \text{ since } p(b|a) = \frac{p(a,b)}{p(a)}
 \end{align} $$
 
 
 ## Chain Rule for Entropy
 $$ H(X,Y) = H(X) + H(Y|X) $$
-proof:
+<details>
+<summary>Proof:</summary>
 $$ \begin{align}
     H(X,Y) &= - \sum_{x\in X}\sum_{y\in Y} p(x,y) log \big( p(x,y) \big) \\
         &= -\sum_{x\in X} \sum_{y\in Y} p(x,y) \ log \big( p(y|x) \ p(x) \big)
@@ -88,6 +88,7 @@ $$ \begin{align}
             && \text{ since } \sum_{y}p(x,y) = p(x) \\
         &= H(Y|X) + H(X)
 \end{align} $$
+</details>
 
 Using induction we can extend this to any number of random variables:
 $$ H(X_1, \ldots, X_n) = \sum_{i=1}^n H(X_i|X_1, \ldots, X_{i-1})$$
@@ -140,9 +141,11 @@ This can also be interpreted as:
 
 ### Relationship to Entropy
 
+$$ I(X;Y) = H(X) - H(X|Y) $$
+
+<details>
+<summary>Proof:</summary>
 $$ \begin{align}
-I(X;Y) &= H(X) - H(X|Y) \\
-\text{proof: } &\\
 I(X;Y)
 &= \sum_x \sum_y p(x,y) log\Big( \frac{p(x,y)}{p(x)p(y)} \Big) \\
 &= \sum_x \sum_y p(x,y) log\Big( \frac{p(x|y)}{p(x)} \Big) \\
@@ -151,6 +154,7 @@ I(X;Y)
 &= -H(X|Y) + \sum_y p(y)H(X) \\
 &= -H(X|Y) + H(X)
 \end{align} $$
+</details>
 
 ### Properties of Mutual Information
 
@@ -169,8 +173,8 @@ $$ I(X;Y|Z) = H(X|Z) - H(X|Y,Z) $$
 
 $$ I(X;Y,Z) = I(X;Z) + I(X;Y|Z) $$
 
-#### Proof
-
+<details>
+<summary>Proof:</summary>
 $$ \begin{align}
 I(X;Y|Z)
   &= H(X|Z) - H(X|Y,Z)
@@ -185,6 +189,7 @@ I(X;Y|Z)
 rearranging gives:
 
 $$ I(X;Y,Z) = I(X;Z) + I(X;Y|Z) $$
+</details>
 
 Applying this successively gives:
 
