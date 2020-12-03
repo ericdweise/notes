@@ -105,3 +105,8 @@ table, td, th {
 td {
     padding: 0.5ch;
 }
+
+/* MathJax */
+mjx-math {
+    color: rgb(0,75,75);
+}
