@@ -13,8 +13,14 @@
     <h1 class="center"><a href="/">Weise-ipedia</a></h1>
     <hr>
 </header>
-<h1 id="device-quirks">Device Quirks</h1>
-<h2 id="instructions-for-installing-debian-9-on-the-acer-cloudbook-with-emmc-storage.">Instructions for installing Debian 9 on the Acer Cloudbook with eMMC storage.</h2>
+<h1 id="devices">Devices</h1>
+<p>Some things I need to do repeatedly on the devices I own.</p>
+<h2 id="acer-cloudbook">Acer Cloudbook</h2>
+<details>
+<p><summary>Show</summary></p>
+<h3 id="computer">Computer</h3>
+<p>Acer Cloudbook 11 Year: 2015 Model No: N15V1 Debian 9 with XFCE desktop</p>
+<h3 id="installing-debian-9-on-the-acer-cloudbook-with-emmc-storage.">Installing Debian 9 on the Acer Cloudbook with eMMC storage.</h3>
 <ol type="1">
 <li>Boot computer and get to the “Debian GNU/Linux installer boot loader”</li>
 <li>Press <code>esc</code> key to get to the grub command-line</li>
@@ -26,11 +32,14 @@
 </ul></li>
 <li>Proceed with installation as you normally would</li>
 </ol>
-<h3 id="computer-specs">Computer Specs</h3>
-<p>Acer Cloudbook 11 Year: 2015 Model No: N15V1 Debian 9 with XFCE desktop</p>
-<h2 id="file-transfer-from-android-to-debian">File Transfer from Android to Debian</h2>
+</details>
+<h2 id="android">Android</h2>
+<details>
+<p><summary>Show</summary></p>
+<h3 id="transferring-files-to-debian">Transferring Files to Debian</h3>
 <ol type="1">
-<li><code>sudo apt install jmtpfs fusermount</code></li>
+<li><code>sudo apt install jmtpfs</code></li>
+<li>Debian only: <code>sudo apt install fusermount</code></li>
 <li>Connect android to computer (USB)</li>
 <li>Enable <code>File Transfer</code> on phone</li>
 <li>Make mount point: <code>mkdir ~/android</code></li>
@@ -38,23 +47,31 @@
 <li>Move files</li>
 <li>Unmount: <code>fusermount -u ~/android</code></li>
 </ol>
-<h2 id="bluetooth-keyboard">Bluetooth Keyboard</h2>
+</details>
+<h2 id="ubuntu">Ubuntu</h2>
+<details>
+<p><summary>Show</summary></p>
+<h3 id="making-a-pdf-from-multiple-files">Making a PDF from Multiple Files:</h3>
+<p>I prefer <code>img2pdf</code> over <code>convert</code>. It has a lower memory footprint and <code>convert</code> will crash on my cloudbook if there are more than 14 pages of 300 dpi pngs.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">img2pdf</span> -o output.pdf JPG1 [JPG2 [...]]</a></code></pre></div>
+<p>To install <code>img2pdf</code> on Debian: <code>sudo apt install img2pdf</code></p>
+<h3 id="bluetooth-keyboard">Bluetooth Keyboard</h3>
 <p>Boot up with numlock disabled:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">sudo</span> apt install -y numlockx</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="va">IS_ERROR=</span>0</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">if</span><span class="bu"> [</span> <span class="ot">!</span> <span class="ot">-f</span> /usr/bin/numlockx<span class="bu"> ]</span>; <span class="kw">then</span></a>
-<a class="sourceLine" id="cb1-4" title="4">    <span class="bu">echo</span> <span class="st">&#39;ERROR: numlockx not installed&#39;</span></a>
-<a class="sourceLine" id="cb1-5" title="5">    <span class="va">IS_ERROR=</span>1</a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="kw">fi</span></a>
-<a class="sourceLine" id="cb1-7" title="7"></a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="kw">if</span><span class="bu"> [</span> <span class="ot">!</span> <span class="ot">-f</span> /etc/X11/Xsession<span class="bu"> ]</span>; <span class="kw">then</span></a>
-<a class="sourceLine" id="cb1-9" title="9">    <span class="bu">echo</span> <span class="st">&#39;ERROR: config file not found&#39;</span></a>
-<a class="sourceLine" id="cb1-10" title="10">    <span class="va">IS_ERROR=</span>1</a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="kw">fi</span></a>
-<a class="sourceLine" id="cb1-12" title="12"></a>
-<a class="sourceLine" id="cb1-13" title="13"><span class="kw">if</span><span class="bu"> [</span> <span class="va">$IS_ERROR</span> <span class="ot">=</span> 0<span class="bu"> ]</span>; <span class="kw">then</span> </a>
-<a class="sourceLine" id="cb1-14" title="14">    <span class="bu">echo</span> <span class="st">&#39;/usr/bin/numlockx off&#39;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee -a /etc/X11/Xsession</a>
-<a class="sourceLine" id="cb1-15" title="15"><span class="kw">fi</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">sudo</span> apt install -y numlockx</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="va">IS_ERROR=</span>0</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="kw">if</span><span class="bu"> [</span> <span class="ot">!</span> <span class="ot">-f</span> /usr/bin/numlockx<span class="bu"> ]</span>; <span class="kw">then</span></a>
+<a class="sourceLine" id="cb2-4" title="4">    <span class="bu">echo</span> <span class="st">&#39;ERROR: numlockx not installed&#39;</span></a>
+<a class="sourceLine" id="cb2-5" title="5">    <span class="va">IS_ERROR=</span>1</a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="kw">fi</span></a>
+<a class="sourceLine" id="cb2-7" title="7"></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="kw">if</span><span class="bu"> [</span> <span class="ot">!</span> <span class="ot">-f</span> /etc/X11/Xsession<span class="bu"> ]</span>; <span class="kw">then</span></a>
+<a class="sourceLine" id="cb2-9" title="9">    <span class="bu">echo</span> <span class="st">&#39;ERROR: config file not found&#39;</span></a>
+<a class="sourceLine" id="cb2-10" title="10">    <span class="va">IS_ERROR=</span>1</a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="kw">fi</span></a>
+<a class="sourceLine" id="cb2-12" title="12"></a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="kw">if</span><span class="bu"> [</span> <span class="va">$IS_ERROR</span> <span class="ot">=</span> 0<span class="bu"> ]</span>; <span class="kw">then</span> </a>
+<a class="sourceLine" id="cb2-14" title="14">    <span class="bu">echo</span> <span class="st">&#39;/usr/bin/numlockx off&#39;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee -a /etc/X11/Xsession</a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="kw">fi</span></a></code></pre></div>
 <h2 id="installing-lightdm-and-xfce-on-ubuntu">Installing LightDM and XFCE on Ubuntu</h2>
 <ol type="1">
 <li><p>Install the xubuntu-desktop metapackage: <code>bash  sudo apt install xubuntu-desktop</code></p></li>
@@ -63,6 +80,7 @@
 <li><p>Reboot.</p></li>
 <li><p>Optionally, you can get rid of the Unity/Gnome utilities: <code>bash  sudo apt-get purge libgnome* gnome-session* gnome-desktop* gnome-panel* gnome-user* gnome-shell* \      gnome-applet* gnome-terminal* gnome-bluetooth gnome-system-tools gnome-software-plugin-snap \      gnome-power-manager gnome-system-monitor gnome-control-center gnome-logs gnome-screensaver \      gnome-themes* gnome-accessibility-themes gnome-menus gnome-screenshot overlay-scrollba* hud \      unity* compiz* zeitgeist* libzeitgeist* activity-log-manager-common nautilus  sudo apt autoremove</code></p></li>
 </ol>
+</details>
 <div class="center">
     <hr>
     <p><b>Notes on Computers</b></p>

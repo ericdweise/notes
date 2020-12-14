@@ -1,6 +1,22 @@
-# Device Quirks
+# Devices
 
-## Instructions for installing Debian 9 on the Acer Cloudbook with eMMC storage.
+Some things I need to do repeatedly on the devices I own.
+
+
+
+
+## Acer Cloudbook
+
+<details>
+<summary>Show</summary>
+
+### Computer
+Acer Cloudbook 11
+Year: 2015
+Model No: N15V1
+Debian 9 with XFCE desktop
+
+### Installing Debian 9 on the Acer Cloudbook with eMMC storage.
 1. Boot computer and get to the "Debian GNU/Linux installer boot loader"
 2. Press `esc` key to get to the grub command-line
 3. `install /install.amd/vmlinuz desktop=xfce vga=788 noapic edd=off quiet`
@@ -9,25 +25,47 @@
     * https://packages.debian.org/sid/firmware-iwlwifi
 5. Proceed with installation as you normally would
 
-### Computer Specs
-Acer Cloudbook 11
-Year: 2015
-Model No: N15V1
-Debian 9 with XFCE desktop
+</details>
 
 
-## File Transfer from Android to Debian
-
-1. `sudo apt install jmtpfs fusermount`
-2. Connect android to computer (USB)
-3. Enable `File Transfer` on phone
-4. Make mount point: `mkdir ~/android`
-5. Mount phone: `jmtpfs ~/android`
-6. Move files
-7. Unmount: `fusermount -u ~/android`
 
 
-## Bluetooth Keyboard
+## Android
+
+<details>
+<summary>Show</summary>
+
+### Transferring Files to Debian
+1. `sudo apt install jmtpfs`
+2. Debian only: `sudo apt install fusermount`
+3. Connect android to computer (USB)
+4. Enable `File Transfer` on phone
+5. Make mount point: `mkdir ~/android`
+6. Mount phone: `jmtpfs ~/android`
+7. Move files
+8. Unmount: `fusermount -u ~/android`
+
+</details>
+
+
+
+
+## Ubuntu
+
+<details>
+<summary>Show</summary>
+
+### Making a PDF from Multiple Files:
+I prefer `img2pdf` over `convert`.
+It has a lower memory footprint and `convert` will crash on my cloudbook if there are more than 14 pages of 300 dpi pngs.
+```bash
+img2pdf -o output.pdf JPG1 [JPG2 [...]]
+```
+
+To install `img2pdf` on Debian: `sudo apt install img2pdf`
+
+
+### Bluetooth Keyboard
 Boot up with numlock disabled:
 ```bash
 sudo apt install -y numlockx
@@ -76,3 +114,5 @@ fi
         unity* compiz* zeitgeist* libzeitgeist* activity-log-manager-common nautilus
     sudo apt autoremove
     ```
+
+</details>
