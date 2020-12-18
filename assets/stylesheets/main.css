@@ -50,6 +50,9 @@ code {
 }
 
 /* CODE BLOCKS */
+code.sourceCode {
+    color: #b0b0ff;
+}
 div.sourceCode {
     padding-left: 1ch;
     padding-right: 1ch;
