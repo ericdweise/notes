@@ -24,7 +24,7 @@ It's similar to an iTunes Library.
 2. Clean up metadata
    - Set Album to `Unknown` if not available
 3. Move files to collection (`select all`, `right click`, `Move to collection`)
-4. Set output filename format: `%artist/%album/{%track-}%title.%extension`
+4. Set output filename format: `%artist/%album/{0%track-}%title.%extension`
 5. Check `Remove problematic characters from filenames`
 5. Check `Restrict to characters allowed on FAT filesystems`
 6. Check `Replace spaces with underscores`
