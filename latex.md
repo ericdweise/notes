@@ -31,9 +31,9 @@ Quick guide to adding images.
 
 %% Document
 \begin{figure}[h]
-  \caption{A picture of a gull.}
+  \caption{ CAPTION }
   \centering
-    \includegraphics[width=0.5\textwidth]{IMAGE_PATH}
+    \includegraphics[width=0.5\textwidth]{ IMAGE_PATH }
 \end{figure}
 ```
 
