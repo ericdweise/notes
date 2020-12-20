@@ -91,7 +91,7 @@ function install_calendar {
         mkdir -p $CAL_DIR
     fi
 
-    echo "alias calcurse='calcurse --confdir $CAL_DIR --datadir $CAL_DIR" >> "$HOME/.bashrc"
+    echo "alias calcurse='calcurse --confdir $CAL_DIR --datadir $CAL_DIR'" >> "$HOME/.bashrc"
 
     # OSMO Calendar
     # announce 'install' 'OSMO Calendar'
