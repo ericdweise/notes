@@ -1,10 +1,61 @@
 # LaTeX
 
+A quickstart guide to latex.
 
+
+## Installation
+
+#### Debian/Ubuntu
+
+```bash
+apt install texlive-latex-extra
+```
+
+## Compiling Documents
+
+```bash
+pdflatex -halt-on-error LATEX_FILE
+```
+
+
+
+## Images
+<details>
+<summary>Show:</summary>
+
+Quick guide to adding images.
+
+```tex
+%% Preamble
+\usepackage{graphicx}
+
+%% Document
+\begin{figure}[h]
+  \caption{A picture of a gull.}
+  \centering
+    \includegraphics[width=0.5\textwidth]{IMAGE_PATH}
+\end{figure}
+```
+
+### Placement
+
+| value |  placement                               |
+|-------|------------------------------------------|
+| h 	| Approx. here                             |
+| H 	| Precisely here. Requires float package   |
+| t 	| Top of page.                             |
+| b 	| Bottom of page.                          |
+| p 	| Special page for floats only.            |
+| ! 	| Override positional optimization         |
+
+</details>
 
 
 
 ## Math
+<details>
+<summary>Show:</summary>
+
 
 - Inline math formulas use `\(   \)`
 - Block math formulas use: `\[   \]`
@@ -65,6 +116,17 @@ $$ f(x) = \begin{cases}
     \frac{1}{2} \text{ $x$ is tails}
 \end{cases} $$
 
+</details>
 
-## LaTeX Document Templates
+
+
+## Symbols
+The complete list of symbols can be found on [CTAN](http://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf),
+but it has wandered in the past.
+This includes all font symbols, arrows, mathematical characters, and musical symbols, and more.
+
+
+## My LaTeX Document Templates
+My Tex templates.
 [Homework](storage/homework.tex)
+[Presentation](storage/presentation.tex)
