@@ -5,11 +5,18 @@ A quickstart guide to latex.
 
 ## Installation
 
-#### Debian/Ubuntu
+#### APT (Debian/Ubuntu)
 
 ```bash
 apt install texlive-latex-extra
 ```
+
+#### Pacman (Manjaro)
+
+```bash
+sudo pacman -S texlive-latexextra
+```
+
 
 ## Compiling Documents
 
