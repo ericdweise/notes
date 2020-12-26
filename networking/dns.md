@@ -1,9 +1,12 @@
-# GitHub
+# Domain Name System
 
-Some things I will probably need to do again in the future.
+A few things to know about routing through the DNS.
+
+
+## Different types of records
+
 
 ## GitHub Pages
-
 
 ### Adding a Custom Domain Using a Canonical Name Record (CNAME)
 Normally GitHub Pages are accessible through `username.github.io/repository`, however you can set up your github pages to be accessible from a custom URL.

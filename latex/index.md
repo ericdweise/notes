@@ -31,9 +31,9 @@ Quick guide to adding images.
 
 %% Document
 \begin{figure}[h]
-  \caption{ CAPTION }
-  \centering
-    \includegraphics[width=0.5\textwidth]{ IMAGE_PATH }
+    \centering
+        \includegraphics[width=0.5\textwidth]{ IMAGE_PATH }
+        \caption{ CAPTION }
 \end{figure}
 ```
 

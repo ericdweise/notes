@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="center"><a href="/">Weise-ipedia</a></h1>
+    <hr>
+</header>
+<h1 id="linux">Linux</h1>
+<p>Commands, heuristics, and tips for navigating Linux.</p>
+<h2 id="networking">Networking</h2>
+<h2 id="filesystem">Filesystem</h2>
+<h2 id="apt-package-manager">APT Package Manager</h2>
+<p>APT is the package manager that comes with Debian (and Debian based flavor) distros.</p>
+<h3 id="sources">Sources</h3>
+<p>APT stores a list of source databases in <code>/etc/apt/sources.list</code> and <code>/etc/apt/sources.list.d/</code>. TODO: Add a description of file format.</p>
+<h3 id="updating-packages">Updating packages</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> apt update  <span class="co"># update APT&#39;s database of available packages and versions</span>
+<span class="fu">sudo</span> apt upgrade <span class="co"># install newer version of packages already on machine</span></code></pre></div>
+<h3 id="ppas">PPAs</h3>
+<p>Adding a PPA:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> add-apt-repository --remove ppa:PPA_REPOSITORY_NAME/PPA</code></pre></div>
+<p>Removing a PPA:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> add-apt-repository ppa:PPA_REPOSITORY_NAME/PPA</code></pre></div>
+<h2 id="personalization">Personalization</h2>
+<p>My personal steps for setting up a linux computer.</p>
+<h3 id="install-favorite-programs-debian">Install Favorite Programs (Debian)</h3>
+<p>Download and run the <a href="storage/bootstrap-debian.sh">bootstrap script</a>. Run <code>./bootstrap-debian.sh -h</code> for usage.</p>
+<h3 id="copy-dotfiles">Copy DotFiles</h3>
+<p>You know what to do...</p>
+<h3 id="disabling-snaps">Disabling Snaps</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Remove existing snaps</span>
+<span class="kw">for</span> <span class="ex">SNAPPLE</span> in <span class="va">$(</span><span class="ex">snap</span> list <span class="kw">|</span> <span class="fu">tail</span> -n +2 <span class="kw">|</span> <span class="fu">cut</span> -d <span class="st">&#39; &#39;</span> -f 1<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span>
+    <span class="bu">echo</span> <span class="st">&quot;  Removing snap: </span><span class="va">$SNAPPLE</span><span class="st">&quot;</span>
+    <span class="fu">sudo</span> snap remove <span class="va">$SNAPPLE</span>
+<span class="kw">done</span>
+<span class="fu">sudo</span> snap remove core18
+<span class="fu">sudo</span> snap remove snapd
+
+<span class="co"># Get Snap Device ID</span>
+<span class="kw">for</span> <span class="ex">SNAP_DEVICE</span> in <span class="va">$(</span><span class="fu">df</span> --output=target <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&#39;/snap/&#39;</span> <span class="va">)</span><span class="kw">;</span> <span class="kw">do</span>
+    <span class="bu">echo</span> <span class="st">&quot;  Unmounting snap: </span><span class="va">$SNAP_DEVICE</span><span class="st">&quot;</span>
+    <span class="fu">sudo</span> umount <span class="va">$SNAP_DEVICE</span>
+<span class="kw">done</span>
+
+<span class="co"># Purge Aptitude package</span>
+<span class="fu">sudo</span> apt purge snapd
+
+<span class="co"># Remove remaining Snap directories</span>
+<span class="fu">rm</span> -rf ~/snap
+<span class="fu">sudo</span> rm -rf /snap
+<span class="fu">sudo</span> rm -rf /var/snap
+<span class="fu">sudo</span> rm -rf /var/lib/snapd</code></pre></div>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/devices">Devices</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2020 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>

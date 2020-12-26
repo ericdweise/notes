@@ -1,7 +1,13 @@
 # Devices
 
 Some things I need to do repeatedly on the devices I own.
+Most are linux things.
 
+
+
+## Favorite Software
+
+- [Managing My Audio Collection](audio)
 
 
 

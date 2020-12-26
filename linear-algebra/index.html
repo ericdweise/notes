@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="center"><a href="/">Weise-ipedia</a></h1>
+    <hr>
+</header>
+<h1 id="linear-algebra">Linear Algebra</h1>
+<p>Just the basics.</p>
+<h2 id="vector-spaces">Vector Spaces</h2>
+<p><details> <summary>Show:</summary></p>
+<p>A <strong>Vector Space</strong> <span class="math inline">\(V\)</span> is defined over a field <span class="math inline">\(F\)</span> is a non-empty set that has two operations: 1. Vector Addition: <span class="math inline">\(+:V \times V \to V\)</span> 2. Scalar Multiplication: <span class="math inline">\(\cdot:F \times V \to V\)</span></p>
+<p>Satisfying the following properties for all <span class="math inline">\(u,v,w \in V\)</span> and <span class="math inline">\(\alpha,\beta \in F\)</span>:</p>
+<ol type="1">
+<li>Closure: <span class="math inline">\(u+v \in V\)</span> and <span class="math inline">\(\alpha \cdot v \in V\)</span></li>
+<li>Commutativity (addition): <span class="math inline">\(u+v = v+u\)</span></li>
+<li>Associativity: <span class="math inline">\(u+(v+w) = (u+v)+w\)</span></li>
+<li>Zero Vector: <span class="math inline">\(\exists 0 \in V\)</span> such that <span class="math inline">\(0+v=v\)</span></li>
+<li>Additive Inverse: <span class="math inline">\(\exists -v \in V\)</span> such that <span class="math inline">\(v+(-v)=0\)</span></li>
+<li>Commutativity (multiplication): <span class="math inline">\(\alpha\cdot(\beta\cdot v)= (\alpha\times\beta)\cdot v\)</span></li>
+<li>Field Identity preserves vector: <span class="math inline">\(1\cdot v = v\)</span></li>
+<li>Distributivity: <span class="math inline">\(\alpha \cdot (u+v) = \alpha\cdot u + \alpha \cdot v\)</span></li>
+</ol>
+<h3 id="vector-subspaces">Vector Subspaces</h3>
+<p>A <strong>Subspace</strong> is a subset of a vector space that is itself a vector space. Properties 2, 3,</p>
+<p></details></p>
+<h2 id="column-and-range-space">Column and Range space</h2>
+<p><details> <summary>Show:</summary></p>
+<p></details></p>
+<h2 id="linear-independence">Linear Independence</h2>
+<p><details> <summary>Show:</summary></p>
+<p>A set of nonzero vectors <span class="math inline">\(v_1, \ldots, v_n\)</span> in a vector space <span class="math inline">\(V\)</span> over field <span class="math inline">\(F\)</span> is <strong>linearly dependent</strong> if there exists some set of field elements <span class="math inline">\(\alpha_1, \ldots, \alpha_n\)</span> not all zero such that: <span class="math display">\[ 0 = \sum_{i=1}^n \alpha_i \cdot v_i \]</span> If no such set of <span class="math inline">\(\alpha_i\)</span> exists then the set of vectors is <strong>linearly independent</strong>.</p>
+<p></details></p>
+<h2 id="inner-products">Inner Products</h2>
+<p><details> <summary>Show:</summary></p>
+<p>Let <span class="math inline">\(u,v,w \in V\)</span>, a vector space over field <span class="math inline">\(F\)</span>. A function, <span class="math inline">\(&lt;*,*&gt;:V \times V \to F\)</span> is called an inner product if:</p>
+<ol type="1">
+<li><span class="math inline">\(&lt;u+v,w&gt; \;=\; &lt;u,w&gt; + &lt;v,w&gt;\)</span></li>
+<li><span class="math inline">\(&lt;\alpha \cdot u,w&gt; \;=\; \alpha &lt;u,w&gt;\)</span></li>
+<li><span class="math inline">\(&lt;u,v&gt; \;=\; \overline{&lt;v,u&gt;}\)</span>, (where <span class="math inline">\(\overline{\alpha}\)</span> is the complex conjucate of <span class="math inline">\(\alpha\)</span>)</li>
+<li><span class="math inline">\(&lt;u,u&gt; \;\geq\; 0\)</span> with equality iff <span class="math inline">\(u=0\)</span></li>
+</ol>
+<h3 id="orthogonality">Orthogonality</h3>
+<p>Two nonzero vectors <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> are orthogonal if <span class="math inline">\(&lt;u,v\)</span>=0$</p>
+<h4 id="consequences">Consequences</h4>
+<ul>
+<li>Orthogonal vectors are also linearly independent</li>
+</ul>
+<p></details></p>
+<h2 id="hilbert-spaces">Hilbert Spaces</h2>
+<p><details> <summary>Show:</summary></p>
+<p></details></p>
+<h2 id="vector-and-matrix-norms">Vector and Matrix Norms</h2>
+<p><details> <summary>Show:</summary></p>
+<p>A function <span class="math inline">\(||\;|| : V \to \mathbb{R}^+\)</span> satisfying:</p>
+<ol type="1">
+<li><span class="math inline">\(||\alpha \cdot v|| = |\alpha| \cdot ||v||\)</span></li>
+<li><span class="math inline">\(||v|| \geq 0\)</span> with equality iff <span class="math inline">\(v=0\)</span></li>
+<li><span class="math inline">\(||u+v|| \leq ||u||+||v||\)</span></li>
+</ol>
+<p></details></p>
+<h2 id="unitary-matrices">Unitary Matrices</h2>
+<p><details> <summary>Show:</summary></p>
+<p><span class="math display">\[A^HA = \mathbb(1) = AA^H\]</span></p>
+<p></details></p>
+<h2 id="matrix-inverses">Matrix Inverses</h2>
+<p><details> <summary>Show:</summary></p>
+<h3 id="right-inverses">Right Inverses</h3>
+<h3 id="left-inverse">Left Inverse</h3>
+<h3 id="inverse">Inverse</h3>
+<h3 id="pseudo-inverse">Pseudo Inverse</h3>
+<p></details></p>
+<h2 id="jordan-canonical-form">Jordan Canonical Form</h2>
+<p><details> <summary>Show:</summary></p>
+<p></details></p>
+<h2 id="singular-value-decomposition">Singular Value Decomposition</h2>
+<p><details> <summary>Show:</summary></p>
+<p></details></p>
+<h2 id="graham-schmidt-orthogonalization">Graham Schmidt Orthogonalization</h2>
+<p><details> <summary>Show:</summary></p>
+<p></details></p>
+<h2 id="section"></h2>
+<p><details> <summary>Show:</summary></p>
+<p></details></p>
+<h2 id="section-1"></h2>
+<p><details> <summary>Show:</summary></p>
+<p></details></p>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/devices">Devices</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2020 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>
