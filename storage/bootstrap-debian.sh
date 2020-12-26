@@ -56,7 +56,8 @@ function fresh_install {
         vim
 
     announce 'config' 'GIT'
-    cp ../dotfiles/.gitconfig ~
+    wget notes.ericdweise.com/dotfiles/gitconfig -O ~/.gitconfig
+    wget notes.ericdweise.com/dotfiles/vimrc -O ~/.vimrc
 
     announce 'config' 'SSH Keys'
     ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa
