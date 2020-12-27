@@ -9,9 +9,12 @@
 *.pyc
 
 # Latex Compilation Files
-*.log
 *.aux
+*.log
+*.nav
 *.out
+*.snm
+*.toc
 
 # Document Files
 *.pdf
