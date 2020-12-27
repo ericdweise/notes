@@ -24,8 +24,9 @@
 *.xlsx
 
 # Image Files
-*.png
+*.bmp
+*.gif
 *.jpg
 *.jpeg
+*.png
 *.tiff
-*.bmp
