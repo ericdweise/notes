@@ -10,6 +10,9 @@
 
 # Latex Compilation Files
 *.aux
+*.bbl
+*.bcf
+*.blg
 *.log
 *.nav
 *.out
@@ -20,6 +23,8 @@
 *.pdf
 *.doc
 *.docx
+*.ppt
+*.pptx
 *.xls
 *.xlsx
 
