@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="center"><a href="/">Weise-ipedia</a></h1>
+    <hr>
+</header>
+<h1 id="biblatex">BibLatex</h1>
+<p>The <code>BibLatex</code> system is a framework for building bibliographies and adding citations in LaTeX documents.</p>
+<h2 id="prerequesites">Prerequesites</h2>
+<p>You will need to install the <code>biber</code> package. On Debian systems you can install this using:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">apt</span> install biber</code></pre></div>
+<h2 id="the-bibtex-file">The BibTex File</h2>
+<p>The BibTex file is the heart of your citation database. It is the same format for BibTex and a BibLatex databases. This is just a text file with a list of citations. There are ways to generate a BibTex file automatically (for example, see <a href="inciteful.xyz">Inciteful</a>.)</p>
+<p>Each citation in the BibLatex database is a data structure similar to JSON. If you want to build your own BibTex file you need to follow this structure. Key-value pairs store relevant information. Different citation types have different required fields. Common citations are listed below:</p>
+<p><details> <summary>Show citation types</summary></p>
+<h4 id="article">Article</h4>
+<p>Used for journal articles.</p>
+<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex">@ARTICLE{key,
+    author = {},  <span class="co">% REQUIRED</span>
+    title  = {},  <span class="co">% REQUIRED</span>
+    journal = {}, <span class="co">% REQUIRED</span>
+    year = {},    <span class="co">% REQUIRED</span>
+    volume = {},
+    number = {},
+    pages  = {}
+}</code></pre></div>
+<h4 id="book">Book</h4>
+<p>Use if an entire book is referenced.</p>
+<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex">@BOOK{key,
+    author = {},    <span class="co">% REQUIRED</span>
+    title = {},     <span class="co">% REQUIRED</span>
+    publisher = {}, <span class="co">% REQUIRED</span>
+    year = {},      <span class="co">% REQUIRED</span>
+    series = {}
+}</code></pre></div>
+<h4 id="inbook">Inbook</h4>
+<p>Use if referencing specific pages from a book.</p>
+<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex">@INBOOK{key,
+    author = {},
+    title = {},
+    publisher = {},
+    year = {},
+    pages = {},
+}</code></pre></div>
+<h4 id="website">Website</h4>
+<p>Use if citing something from the internet.</p>
+<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex">@MISC{key,
+    author = {},
+    title = {},
+    month = {},
+    year = {},
+    howpublished = {<span class="fu">\url</span>{ URL }},
+    note = {Accessed on YYYY-MM-DD}
+}</code></pre></div>
+<h4 id="thesis">Thesis</h4>
+<p>Use for masters or phd thesis.</p>
+<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex">@mastersthesis{
+or 
+@phdthesis{key,
+    author = {},    <span class="co">% REQUIRED</span>
+    title = {},     <span class="co">% REQUIRED</span>
+    publisher = {}, <span class="co">% REQUIRED</span>
+    year = {},      <span class="co">% REQUIRED</span>
+    address = {}
+}</code></pre></div>
+<h4 id="technical-report">Technical Report</h4>
+<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex">@techreport{key,
+    author = {},    <span class="co">% REQUIRED</span>
+    title = {},     <span class="co">% REQUIRED</span>
+    publisher = {}, <span class="co">% REQUIRED</span>
+    year = {},      <span class="co">% REQUIRED</span>
+    series = {},
+    volume = {},
+    address = {},
+}</code></pre></div>
+<h4 id="in-collection">In Collection</h4>
+<p>Use for an article published in a bound book or volume.</p>
+<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex">@incollection{key,
+    author = {},    <span class="co">% REQUIRED</span>
+    title = {},     <span class="co">% REQUIRED</span>
+    booktitle = {}, <span class="co">% REQUIRED</span>
+    year = {},      <span class="co">% REQUIRED</span>
+    editor = {},
+    publisher = {},
+    address = {},
+    pages = {}
+}</code></pre></div>
+<p></details></p>
+<h2 id="citing-a-reference">Citing a Reference</h2>
+<p>To insert a citation inside your article use the <code>\cite{key}</code> command. The <code>key</code> must be one of the entries in your BibTex file. You can use any number of references in one citation. If you do this the keys must be comma separated. The <code>key</code> is the first element in a BibTex entry, e.g. <code>einstein1</code> in <code>@article{einstein1, \ldots</code></p>
+<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex"><span class="kw">\cite</span>{ <span class="ex">key1 [, key2 [, ...]]</span> }</code></pre></div>
+<h2 id="styling">Styling</h2>
+<p>Styling is set during the <code>usepackage</code> directive. Use the <code>style</code> option to change the format of citations and bibliograpy. For example, <code>\usepackage[style=numeric]{biblatex}</code>. These are possible styles:</p>
+<ul>
+<li><code>numeric</code></li>
+<li><code>alphabetic</code></li>
+<li><code>reading</code></li>
+<li><code>authoryear</code></li>
+</ul>
+<p>Fine control of the citations and bibliography formats can be exerted using the <code>citestyle</code> and <code>bibstyle</code>. These take the same values as <code>style</code>.</p>
+<p>The order that your references are shown in the bibliography can be changed using the <code>sorting</code> option. Possible values are:</p>
+<ul>
+<li><code>nty</code> order by name, title, year</li>
+<li><code>nyt</code> order by name, year, title</li>
+<li><code>nyvt</code> order by name, year, volume, title</li>
+<li><code>anyt</code> order by alphabetic label, name, year, title</li>
+<li><code>anyvt</code> order by alphabetic label, name, year, volume, title</li>
+<li><code>ynt</code> order by year, name, title</li>
+<li><code>ydnt</code> order by year (descending order), name, title</li>
+<li><code>none</code> no sorting. Entries appear in the order they appear in the text.</li>
+</ul>
+<h2 id="printing-the-bibliography.">Printing the Bibliography.</h2>
+<p>You can choose where the bibliography is displayed. Usually this will go at the very end of the document, but you might want to put an annex or afterword after the references. The bibliography is displayed where you use this command:</p>
+<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex"><span class="fu">\printbibliography</span></code></pre></div>
+<h2 id="compiling">Compiling</h2>
+<p>Compiling needs to be done in several steps (don't ask me why.) Suppose you're working on a document called <code>report.tex</code>, this is what you do:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pdflatex</span> report.tex  <span class="co"># This generates a .bcf with the citations not filled in</span>
+<span class="ex">biber</span> report.bcf     <span class="co"># Parses the .bib file(s) and fills in the blanks in the .bcf file</span>
+<span class="ex">pdflatex</span> report.tex  <span class="co"># Create the PDF with references filled in</span>
+<span class="ex">pdflatex</span> report.tex  <span class="co"># Run this just in cases page numbers are messed up</span></code></pre></div>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://www.overleaf.com/learn/latex/Articles/Getting_started_with_BibLaTeX">OverLeaf Guide</a></li>
+<li><a href="https://www.latex-tutorial.com/tutorials/bibtex/">Bibliography in Latex with Bibtex/Biblatex</a></li>
+<li><a href="http://web.mit.edu/rsi/www/pdfs/bibtex-format.pdf">BibTex Formats</a></li>
+</ul>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/devices">Devices</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2020 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>
