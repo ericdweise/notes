@@ -93,12 +93,6 @@ function install_calendar {
     fi
 
     echo "alias calcurse='calcurse --confdir $CAL_DIR --datadir $CAL_DIR'" >> "$HOME/.bashrc"
-
-    # OSMO Calendar
-    # announce 'install' 'OSMO Calendar'
-    # sudo apt install -y osmo
-
-    # https://dmedvinsky.github.io/gsimplecal/
 }
 
 function install_dev_tools {
