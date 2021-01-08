@@ -16,22 +16,25 @@
 <h1 id="latex">LaTeX</h1>
 <p>A quickstart guide to latex.</p>
 <h2 id="installation">Installation</h2>
-<h4 id="debianubuntu">Debian/Ubuntu</h4>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">apt</span> install texlive-latex-extra</code></pre></div>
+<h4 id="apt-debianubuntu">APT (Debian/Ubuntu)</h4>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">apt</span> install texlive-latex-extra</a></code></pre></div>
+<h4 id="pacman-manjaro">Pacman (Manjaro)</h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">sudo</span> pacman -S texlive-latexextra</a></code></pre></div>
 <h2 id="compiling-documents">Compiling Documents</h2>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pdflatex</span> -halt-on-error LATEX_FILE</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">pdflatex</span> -halt-on-error LATEX_FILE</a></code></pre></div>
 <h2 id="images">Images</h2>
-<p><details> <summary>Show:</summary></p>
+<details>
+<p><summary>Show:</summary></p>
 <p>Quick guide to adding images.</p>
-<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex"><span class="co">%% Preamble</span>
-<span class="bu">\usepackage</span>{<span class="ex">graphicx</span>}
-
-<span class="co">%% Document</span>
-<span class="kw">\begin</span>{<span class="ex">figure</span>}[h]
-    <span class="fu">\centering</span>
-        <span class="bu">\includegraphics</span>[width=0.5<span class="fu">\textwidth</span>]{ <span class="ex">IMAGE_PATH</span> }
-        <span class="fu">\caption</span>{ CAPTION }
-<span class="kw">\end</span>{<span class="ex">figure</span>}</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb4-1" title="1"><span class="co">%% Preamble</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="bu">\usepackage</span>{<span class="ex">graphicx</span>}</a>
+<a class="sourceLine" id="cb4-3" title="3"></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">%% Document</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="kw">\begin</span>{<span class="ex">figure</span>}[h]</a>
+<a class="sourceLine" id="cb4-6" title="6">    <span class="fu">\centering</span></a>
+<a class="sourceLine" id="cb4-7" title="7">        <span class="bu">\includegraphics</span>[width=0.5<span class="fu">\textwidth</span>]{ <span class="ex">IMAGE_PATH</span> }</a>
+<a class="sourceLine" id="cb4-8" title="8">        <span class="fu">\caption</span>{ CAPTION }</a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="kw">\end</span>{<span class="ex">figure</span>}</a></code></pre></div>
 <h3 id="placement">Placement</h3>
 <table>
 <thead>
@@ -67,9 +70,10 @@
 </tr>
 </tbody>
 </table>
-<p></details></p>
+</details>
 <h2 id="math">Math</h2>
-<p><details> <summary>Show:</summary></p>
+<details>
+<p><summary>Show:</summary></p>
 <ul>
 <li>Inline math formulas use <code>\(   \)</code></li>
 <li>Block math formulas use: <code>\[   \]</code></li>
@@ -133,11 +137,11 @@
 <h4 id="align">Align</h4>
 <p>In block sections the <code>align</code> function is used to line up formulas horizontally. Each new line in the <code>align</code> block can have different anchor points, at <code>&amp;</code>, <code>&amp;&amp;</code>, etc. These anchor points will match horizonally on each new line.</p>
 <p>LaTeX:</p>
-<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex"><span class="kw">\begin</span>{<span class="ex">align</span>}
-<span class="ss">    f(x) &amp; = x^2 + 4^x + 3 </span><span class="sc">\\</span>
-<span class="ss">         &amp; = (x+3)(x+1)   &amp;&amp; </span><span class="sc">\text</span>{factoring the polynomial}<span class="ss"> </span><span class="sc">\\</span>
-<span class="ss">         &amp; &amp;&amp; </span><span class="sc">\{</span><span class="ss">Now we can find the roots}</span>
-<span class="kw">\end</span>{<span class="ex">align</span>}</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">\begin</span>{<span class="ex">align</span>}</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="ss">    f(x) &amp; = x^2 + 4^x + 3 </span><span class="sc">\\</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="ss">         &amp; = (x+3)(x+1)   &amp;&amp; </span><span class="sc">\text</span>{factoring the polynomial}<span class="ss"> </span><span class="sc">\\</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="ss">         &amp; &amp;&amp; </span><span class="sc">\{</span><span class="ss">Now we can find the roots}</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="kw">\end</span>{<span class="ex">align</span>}</a></code></pre></div>
 <p>Output: <span class="math display">\[  \begin{align}
     f(x) &amp; = x^2 + 4^x + 3 \\
          &amp; = (x+3)(x+1)   &amp;&amp; \text{factoring the polynomial} \\
@@ -145,18 +149,18 @@
 \end{align} \]</span></p>
 <h4 id="piecewise-functions">Piecewise Functions</h4>
 <p>LaTeX:</p>
-<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex"><span class="bu">\usepackage</span>{<span class="ex">amsmath</span>}
-<span class="ss">\[</span>
-<span class="ss">    f(x) = </span><span class="sc">\begin</span><span class="ss">{cases}</span>
-<span class="ss">        </span><span class="sc">\frac</span><span class="ss">{1}{2} </span><span class="sc">\text</span>{ <span class="ss">$x$</span> is heads}<span class="ss"> </span><span class="sc">\\</span>
-<span class="ss">        </span><span class="sc">\frac</span><span class="ss">{1}{2} </span><span class="sc">\text</span>{ <span class="ss">$x$</span> is tails}
-<span class="ss">    </span><span class="sc">\end</span><span class="ss">{cases}</span>
-<span class="ss">\]</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb6-1" title="1"><span class="bu">\usepackage</span>{<span class="ex">amsmath</span>}</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="ss">\[</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="ss">    f(x) = </span><span class="sc">\begin</span><span class="ss">{cases}</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="ss">        </span><span class="sc">\frac</span><span class="ss">{1}{2} </span><span class="sc">\text</span>{ <span class="ss">$x$</span> is heads}<span class="ss"> </span><span class="sc">\\</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="ss">        </span><span class="sc">\frac</span><span class="ss">{1}{2} </span><span class="sc">\text</span>{ <span class="ss">$x$</span> is tails}</a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="ss">    </span><span class="sc">\end</span><span class="ss">{cases}</span></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="ss">\]</span></a></code></pre></div>
 <p>Output: <span class="math display">\[ f(x) = \begin{cases}
 \frac{1}{2} \text{ $x$ is heads} \\
     \frac{1}{2} \text{ $x$ is tails}
 \end{cases} \]</span></p>
-<p></details></p>
+</details>
 <h2 id="symbols">Symbols</h2>
 <p>The complete list of symbols can be found on <a href="http://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf">CTAN</a>, but it has wandered in the past. This includes all font symbols, arrows, mathematical characters, and musical symbols, and more.</p>
 <h2 id="my-latex-document-templates">My LaTeX Document Templates</h2>
@@ -186,7 +190,7 @@
     &middot; <a href="/solid-state-physics">Solid State Physics</a>
     </p>
     <hr>
-    <p>Copyright 2020 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
 </div>
 </body>
 </html>

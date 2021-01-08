@@ -17,87 +17,88 @@
 <p>The <code>BibLatex</code> system is a framework for building bibliographies and adding citations in LaTeX documents.</p>
 <h2 id="prerequesites">Prerequesites</h2>
 <p>You will need to install the <code>biber</code> package. On Debian systems you can install this using:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">apt</span> install biber</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">apt</span> install biber</a></code></pre></div>
 <h2 id="the-bibtex-file">The BibTex File</h2>
 <p>The BibTex file is the heart of your citation database. It is the same format for BibTex and a BibLatex databases. This is just a text file with a list of citations. There are ways to generate a BibTex file automatically (for example, see <a href="inciteful.xyz">Inciteful</a>.)</p>
 <p>Each citation in the BibLatex database is a data structure similar to JSON. If you want to build your own BibTex file you need to follow this structure. Key-value pairs store relevant information. Different citation types have different required fields. Common citations are listed below:</p>
-<p><details> <summary>Show citation types</summary></p>
+<details>
+<p><summary>Show citation types</summary></p>
 <h4 id="article">Article</h4>
 <p>Used for journal articles.</p>
-<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex">@ARTICLE{key,
-    author = {},  <span class="co">% REQUIRED</span>
-    title  = {},  <span class="co">% REQUIRED</span>
-    journal = {}, <span class="co">% REQUIRED</span>
-    year = {},    <span class="co">% REQUIRED</span>
-    volume = {},
-    number = {},
-    pages  = {}
-}</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb2-1" title="1">@ARTICLE{key,</a>
+<a class="sourceLine" id="cb2-2" title="2">    author = {},  <span class="co">% REQUIRED</span></a>
+<a class="sourceLine" id="cb2-3" title="3">    title  = {},  <span class="co">% REQUIRED</span></a>
+<a class="sourceLine" id="cb2-4" title="4">    journal = {}, <span class="co">% REQUIRED</span></a>
+<a class="sourceLine" id="cb2-5" title="5">    year = {},    <span class="co">% REQUIRED</span></a>
+<a class="sourceLine" id="cb2-6" title="6">    volume = {},</a>
+<a class="sourceLine" id="cb2-7" title="7">    number = {},</a>
+<a class="sourceLine" id="cb2-8" title="8">    pages  = {}</a>
+<a class="sourceLine" id="cb2-9" title="9">}</a></code></pre></div>
 <h4 id="book">Book</h4>
 <p>Use if an entire book is referenced.</p>
-<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex">@BOOK{key,
-    author = {},    <span class="co">% REQUIRED</span>
-    title = {},     <span class="co">% REQUIRED</span>
-    publisher = {}, <span class="co">% REQUIRED</span>
-    year = {},      <span class="co">% REQUIRED</span>
-    series = {}
-}</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb3-1" title="1">@BOOK{key,</a>
+<a class="sourceLine" id="cb3-2" title="2">    author = {},    <span class="co">% REQUIRED</span></a>
+<a class="sourceLine" id="cb3-3" title="3">    title = {},     <span class="co">% REQUIRED</span></a>
+<a class="sourceLine" id="cb3-4" title="4">    publisher = {}, <span class="co">% REQUIRED</span></a>
+<a class="sourceLine" id="cb3-5" title="5">    year = {},      <span class="co">% REQUIRED</span></a>
+<a class="sourceLine" id="cb3-6" title="6">    series = {}</a>
+<a class="sourceLine" id="cb3-7" title="7">}</a></code></pre></div>
 <h4 id="inbook">Inbook</h4>
 <p>Use if referencing specific pages from a book.</p>
-<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex">@INBOOK{key,
-    author = {},
-    title = {},
-    publisher = {},
-    year = {},
-    pages = {},
-}</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb4-1" title="1">@INBOOK{key,</a>
+<a class="sourceLine" id="cb4-2" title="2">    author = {},</a>
+<a class="sourceLine" id="cb4-3" title="3">    title = {},</a>
+<a class="sourceLine" id="cb4-4" title="4">    publisher = {},</a>
+<a class="sourceLine" id="cb4-5" title="5">    year = {},</a>
+<a class="sourceLine" id="cb4-6" title="6">    pages = {},</a>
+<a class="sourceLine" id="cb4-7" title="7">}</a></code></pre></div>
 <h4 id="website">Website</h4>
 <p>Use if citing something from the internet.</p>
-<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex">@MISC{key,
-    author = {},
-    title = {},
-    month = {},
-    year = {},
-    howpublished = {<span class="fu">\url</span>{ URL }},
-    note = {Accessed on YYYY-MM-DD}
-}</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb5-1" title="1">@MISC{key,</a>
+<a class="sourceLine" id="cb5-2" title="2">    author = {},</a>
+<a class="sourceLine" id="cb5-3" title="3">    title = {},</a>
+<a class="sourceLine" id="cb5-4" title="4">    month = {},</a>
+<a class="sourceLine" id="cb5-5" title="5">    year = {},</a>
+<a class="sourceLine" id="cb5-6" title="6">    howpublished = {<span class="fu">\url</span>{ URL }},</a>
+<a class="sourceLine" id="cb5-7" title="7">    note = {Accessed on YYYY-MM-DD}</a>
+<a class="sourceLine" id="cb5-8" title="8">}</a></code></pre></div>
 <h4 id="thesis">Thesis</h4>
 <p>Use for masters or phd thesis.</p>
-<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex">@mastersthesis{
-or 
-@phdthesis{key,
-    author = {},    <span class="co">% REQUIRED</span>
-    title = {},     <span class="co">% REQUIRED</span>
-    publisher = {}, <span class="co">% REQUIRED</span>
-    year = {},      <span class="co">% REQUIRED</span>
-    address = {}
-}</code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb6-1" title="1">@mastersthesis{</a>
+<a class="sourceLine" id="cb6-2" title="2">or </a>
+<a class="sourceLine" id="cb6-3" title="3">@phdthesis{key,</a>
+<a class="sourceLine" id="cb6-4" title="4">    author = {},    <span class="co">% REQUIRED</span></a>
+<a class="sourceLine" id="cb6-5" title="5">    title = {},     <span class="co">% REQUIRED</span></a>
+<a class="sourceLine" id="cb6-6" title="6">    publisher = {}, <span class="co">% REQUIRED</span></a>
+<a class="sourceLine" id="cb6-7" title="7">    year = {},      <span class="co">% REQUIRED</span></a>
+<a class="sourceLine" id="cb6-8" title="8">    address = {}</a>
+<a class="sourceLine" id="cb6-9" title="9">}</a></code></pre></div>
 <h4 id="technical-report">Technical Report</h4>
-<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex">@techreport{key,
-    author = {},    <span class="co">% REQUIRED</span>
-    title = {},     <span class="co">% REQUIRED</span>
-    publisher = {}, <span class="co">% REQUIRED</span>
-    year = {},      <span class="co">% REQUIRED</span>
-    series = {},
-    volume = {},
-    address = {},
-}</code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb7-1" title="1">@techreport{key,</a>
+<a class="sourceLine" id="cb7-2" title="2">    author = {},    <span class="co">% REQUIRED</span></a>
+<a class="sourceLine" id="cb7-3" title="3">    title = {},     <span class="co">% REQUIRED</span></a>
+<a class="sourceLine" id="cb7-4" title="4">    publisher = {}, <span class="co">% REQUIRED</span></a>
+<a class="sourceLine" id="cb7-5" title="5">    year = {},      <span class="co">% REQUIRED</span></a>
+<a class="sourceLine" id="cb7-6" title="6">    series = {},</a>
+<a class="sourceLine" id="cb7-7" title="7">    volume = {},</a>
+<a class="sourceLine" id="cb7-8" title="8">    address = {},</a>
+<a class="sourceLine" id="cb7-9" title="9">}</a></code></pre></div>
 <h4 id="in-collection">In Collection</h4>
 <p>Use for an article published in a bound book or volume.</p>
-<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex">@incollection{key,
-    author = {},    <span class="co">% REQUIRED</span>
-    title = {},     <span class="co">% REQUIRED</span>
-    booktitle = {}, <span class="co">% REQUIRED</span>
-    year = {},      <span class="co">% REQUIRED</span>
-    editor = {},
-    publisher = {},
-    address = {},
-    pages = {}
-}</code></pre></div>
-<p></details></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb8-1" title="1">@incollection{key,</a>
+<a class="sourceLine" id="cb8-2" title="2">    author = {},    <span class="co">% REQUIRED</span></a>
+<a class="sourceLine" id="cb8-3" title="3">    title = {},     <span class="co">% REQUIRED</span></a>
+<a class="sourceLine" id="cb8-4" title="4">    booktitle = {}, <span class="co">% REQUIRED</span></a>
+<a class="sourceLine" id="cb8-5" title="5">    year = {},      <span class="co">% REQUIRED</span></a>
+<a class="sourceLine" id="cb8-6" title="6">    editor = {},</a>
+<a class="sourceLine" id="cb8-7" title="7">    publisher = {},</a>
+<a class="sourceLine" id="cb8-8" title="8">    address = {},</a>
+<a class="sourceLine" id="cb8-9" title="9">    pages = {}</a>
+<a class="sourceLine" id="cb8-10" title="10">}</a></code></pre></div>
+</details>
 <h2 id="citing-a-reference">Citing a Reference</h2>
-<p>To insert a citation inside your article use the <code>\cite{key}</code> command. The <code>key</code> must be one of the entries in your BibTex file. You can use any number of references in one citation. If you do this the keys must be comma separated. The <code>key</code> is the first element in a BibTex entry, e.g. <code>einstein1</code> in <code>@article{einstein1, \ldots</code></p>
-<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex"><span class="kw">\cite</span>{ <span class="ex">key1 [, key2 [, ...]]</span> }</code></pre></div>
+<p>To insert a citation inside your article use the <code>\cite{key}</code> command. The <code>key</code> must be one of the entries in your BibTex file. You can use any number of references in one citation. If you do this the keys must be comma separated. The <code>key</code> is the first element in a BibTex entry, e.g. <code>einstein1</code> in <code>@article{einstein1, \ldots</code></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">\cite</span>{ <span class="ex">key1 [, key2 [, ...]]</span> }</a></code></pre></div>
 <h2 id="styling">Styling</h2>
 <p>Styling is set during the <code>usepackage</code> directive. Use the <code>style</code> option to change the format of citations and bibliograpy. For example, <code>\usepackage[style=numeric]{biblatex}</code>. These are possible styles:</p>
 <ul>
@@ -120,13 +121,13 @@ or
 </ul>
 <h2 id="printing-the-bibliography.">Printing the Bibliography.</h2>
 <p>You can choose where the bibliography is displayed. Usually this will go at the very end of the document, but you might want to put an annex or afterword after the references. The bibliography is displayed where you use this command:</p>
-<div class="sourceCode"><pre class="sourceCode tex"><code class="sourceCode latex"><span class="fu">\printbibliography</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode tex"><code class="sourceCode latex"><a class="sourceLine" id="cb10-1" title="1"><span class="fu">\printbibliography</span></a></code></pre></div>
 <h2 id="compiling">Compiling</h2>
-<p>Compiling needs to be done in several steps (don't ask me why.) Suppose you're working on a document called <code>report.tex</code>, this is what you do:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pdflatex</span> report.tex  <span class="co"># This generates a .bcf with the citations not filled in</span>
-<span class="ex">biber</span> report.bcf     <span class="co"># Parses the .bib file(s) and fills in the blanks in the .bcf file</span>
-<span class="ex">pdflatex</span> report.tex  <span class="co"># Create the PDF with references filled in</span>
-<span class="ex">pdflatex</span> report.tex  <span class="co"># Run this just in cases page numbers are messed up</span></code></pre></div>
+<p>Compiling needs to be done in several steps (don’t ask me why.) Suppose you’re working on a document called <code>report.tex</code>, this is what you do:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="ex">pdflatex</span> report.tex  <span class="co"># This generates a .bcf with the citations not filled in</span></a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="ex">biber</span> report.bcf     <span class="co"># Parses the .bib file(s) and fills in the blanks in the .bcf file</span></a>
+<a class="sourceLine" id="cb11-3" title="3"><span class="ex">pdflatex</span> report.tex  <span class="co"># Create the PDF with references filled in</span></a>
+<a class="sourceLine" id="cb11-4" title="4"><span class="ex">pdflatex</span> report.tex  <span class="co"># Run this just in cases page numbers are messed up</span></a></code></pre></div>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://www.overleaf.com/learn/latex/Articles/Getting_started_with_BibLaTeX">OverLeaf Guide</a></li>
@@ -158,7 +159,7 @@ or
     &middot; <a href="/solid-state-physics">Solid State Physics</a>
     </p>
     <hr>
-    <p>Copyright 2020 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
 </div>
 </body>
 </html>

@@ -16,10 +16,10 @@
 <h1 id="bash">BASH</h1>
 <h2 id="variables">Variables</h2>
 <h3 id="special-parameters">Special Parameters</h3>
-<table style="width:100%;">
+<table>
 <colgroup>
-<col style="width: 12%" />
-<col style="width: 87%" />
+<col style="width: 11%" />
+<col style="width: 88%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -69,24 +69,24 @@
 <p><a href="https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_02.html">source: TLDP</a></p>
 <h3 id="string-manipulation">String Manipulation</h3>
 <h4 id="string-length">String Length</h4>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="va">LENGTH=$((${#STRING}</span>-1<span class="va">))</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="va">LENGTH=$((${#STRING}</span>-1<span class="va">))</span></a></code></pre></div>
 <p>Notes:</p>
 <ul>
 <li>Only works in BASH and its derivatives.</li>
 <li><code>STRING</code> must be a variable that is prepended by an octothorpe (<code>#</code>), not a dollar sign (<code>$</code>)</li>
 </ul>
 <h4 id="substrings">Substrings</h4>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># The command has the form: SUB_STRING=${STRING:start:length}</span>
-<span class="va">STRING=</span><span class="st">&#39;Hello World&#39;</span>
-
-<span class="va">SUBSTR=${STRING:0:5}</span>
-<span class="bu">echo</span> <span class="va">$SUBSTR</span>   <span class="co"># prints &#39;Hello&#39;</span>
-
-<span class="va">SUBSTR=${STRING:3:5}</span>
-<span class="bu">echo</span> <span class="va">$SUBSTR</span>   <span class="co"># prints &#39;lo Wo&#39;</span>
-
-<span class="va">SUBSTR=${STRING:6:</span><span class="er">-</span><span class="va">1}</span>
-<span class="bu">echo</span> <span class="va">$SUBSTR</span>   <span class="co"># prints &#39;Worl&#39;</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="co"># The command has the form: SUB_STRING=${STRING:start:length}</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="va">STRING=</span><span class="st">&#39;Hello World&#39;</span></a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="va">SUBSTR=${STRING:0:5}</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="bu">echo</span> <span class="va">$SUBSTR</span>   <span class="co"># prints &#39;Hello&#39;</span></a>
+<a class="sourceLine" id="cb2-6" title="6"></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="va">SUBSTR=${STRING:3:5}</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="bu">echo</span> <span class="va">$SUBSTR</span>   <span class="co"># prints &#39;lo Wo&#39;</span></a>
+<a class="sourceLine" id="cb2-9" title="9"></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="va">SUBSTR=${STRING:6:-1}</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="bu">echo</span> <span class="va">$SUBSTR</span>   <span class="co"># prints &#39;Worl&#39;</span></a></code></pre></div>
 <p>Notes:</p>
 <ul>
 <li><code>STRING</code> must be a variable. It is NOT prepended by a dollar sign (<code>$</code>)</li>
@@ -95,40 +95,40 @@
 </ul>
 <h2 id="math">Math</h2>
 <p>Every variable in Bash is a string. To do math you need to surround the equations with <code>$((</code> and <code>))</code>. Otherwise, operations like <code>+</code> will keep their string behavior, in this case, concatenation.</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="va">i=</span>0
-<span class="kw">while [[</span> <span class="va">$i</span> <span class="ot">-lt</span> 5<span class="kw"> ]]</span>; <span class="kw">do</span>
-    <span class="va">i=$((</span>i+1<span class="va">))</span>
-    <span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$i</span><span class="st">&quot;</span>
-<span class="kw">done</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="va">i=</span>0</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">while [[</span> <span class="va">$i</span> <span class="ot">-lt</span> 5<span class="kw"> ]]</span>; <span class="kw">do</span></a>
+<a class="sourceLine" id="cb3-3" title="3">    <span class="va">i=$((</span>i+1<span class="va">))</span></a>
+<a class="sourceLine" id="cb3-4" title="4">    <span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$i</span><span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="kw">done</span></a></code></pre></div>
 <h2 id="conditionals">Conditionals</h2>
 <h3 id="format-of-if-then-else">Format of <code>If Then Else</code></h3>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">if [[</span> CONDITION<span class="kw"> ]]</span>; <span class="kw">then</span>
-    <span class="ex">COMMANDS</span>
-<span class="kw">elif [[</span> CONDITION<span class="kw"> ]]</span>; <span class="kw">then</span>
-    <span class="ex">COMMANDS</span>
-<span class="kw">else</span>
-    <span class="ex">COMMANDS</span>
-<span class="kw">fi</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">if [[</span> CONDITION<span class="kw"> ]]</span>; <span class="kw">then</span></a>
+<a class="sourceLine" id="cb4-2" title="2">    <span class="ex">COMMANDS</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="kw">elif [[</span> CONDITION<span class="kw"> ]]</span>; <span class="kw">then</span></a>
+<a class="sourceLine" id="cb4-4" title="4">    <span class="ex">COMMANDS</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="kw">else</span></a>
+<a class="sourceLine" id="cb4-6" title="6">    <span class="ex">COMMANDS</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="kw">fi</span></a></code></pre></div>
 <h3 id="boolean-expressions">Boolean Expressions</h3>
-<p>Also called &quot;Test Commands&quot; or &quot;Primaries&quot;</p>
+<p>Also called “Test Commands” or “Primaries”</p>
 <h4 id="form">Form</h4>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">[</span> EXPRESSION<span class="bu"> ]</span>
-<span class="co"># OR</span>
-<span class="kw">[[</span> EXPRESSION<span class="kw"> ]]</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="bu">[</span> EXPRESSION<span class="bu"> ]</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="co"># OR</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="kw">[[</span> EXPRESSION<span class="kw"> ]]</span></a></code></pre></div>
 <p>Notes:</p>
 <ul>
 <li>It is important to include spaces between the brackets (<code>[</code>, <code>]</code>, <code>[[</code>, and <code>]]</code>) and the <code>EXPRESSION</code>.</li>
 </ul>
 <h4 id="negating-boolean-expressions">Negating Boolean Expressions</h4>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">if</span> !<span class="kw"> [[</span> EXPRESSION<span class="kw"> ]]</span>; <span class="kw">then</span>
-    <span class="co"># If EXPRESSION evaluates to False, the commands here will execute</span>
-<span class="kw">fi</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">if</span> !<span class="kw"> [[</span> EXPRESSION<span class="kw"> ]]</span>; <span class="kw">then</span></a>
+<a class="sourceLine" id="cb6-2" title="2">    <span class="co"># If EXPRESSION evaluates to False, the commands here will execute</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="kw">fi</span></a></code></pre></div>
 <h4 id="single-vs-double-bracket">Single vs Double Bracket</h4>
 <p>There are two different bracket types that be used to evaluate a Boolean expression, <code>[ EXPRESSION ]</code> and <code>[[ EXPRESSION ]]</code>. While these can be used interchangeably, they handle <code>EXPRESSION</code> differently. The reason for this is historical. the single bracket, <code>[</code> was developed in the Thompson shell, and is more limited than the double bracket, <code>[[</code>, operator. The double bracket was introduced in the Korn shell and adopted by others (including Bash). It is an extension of the <code>[</code> operator, and adds functions like pattern matching.</p>
 <p>The general rules I follow are:</p>
 <ul>
 <li>Use single brackets, <code>[</code>, when you are writing scripts that might be used on older systems, or needs to be run by a variety of shells.</li>
-<li>When you use single brackets always quote your variables: <code>[ -n &quot;$VARIABLE&quot; ]</code>, (not <code>[ -n $VARIABLE ]</code> .)</li>
+<li>When you use single brackets always quote your variables: <code>[ -n "$VARIABLE" ]</code>, (not <code>[ -n $VARIABLE ]</code> .)</li>
 </ul>
 <h4 id="useful-conditionals">Useful Conditionals</h4>
 <p><a href="https://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html">TLDP list of conditionals</a></p>
@@ -327,30 +327,30 @@
 </table>
 <h2 id="loops">Loops</h2>
 <h3 id="for-loops">For Loops</h3>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">for</span> <span class="ex">VAR</span> in <span class="va">$LIST</span><span class="kw">;</span> <span class="kw">do</span>
-    <span class="ex">...</span>
-<span class="kw">done</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">for</span> <span class="ex">VAR</span> in <span class="va">$LIST</span><span class="kw">;</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb7-2" title="2">    <span class="ex">...</span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="kw">done</span></a></code></pre></div>
 <h3 id="while-loops">While Loops</h3>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">while [[</span> CONDITION<span class="kw"> ]]</span>; <span class="kw">do</span>
-    <span class="ex">...</span>
-<span class="kw">done</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">while [[</span> CONDITION<span class="kw"> ]]</span>; <span class="kw">do</span></a>
+<a class="sourceLine" id="cb8-2" title="2">    <span class="ex">...</span></a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="kw">done</span></a></code></pre></div>
 <h2 id="functions">Functions</h2>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">function</span><span class="fu"> FUNCTION_NAME</span> = <span class="kw">{</span>
-    <span class="ex">...</span>
-<span class="kw">}</span>
-
-<span class="co"># OR</span>
-<span class="fu">FUNCTION_NAME ()</span> = <span class="kw">{</span>
-    <span class="ex">...</span>
-<span class="kw">}</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">function</span><span class="fu"> FUNCTION_NAME</span> = <span class="kw">{</span></a>
+<a class="sourceLine" id="cb9-2" title="2">    <span class="ex">...</span></a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="kw">}</span></a>
+<a class="sourceLine" id="cb9-4" title="4"></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="co"># OR</span></a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="fu">FUNCTION_NAME ()</span> = <span class="kw">{</span></a>
+<a class="sourceLine" id="cb9-7" title="7">    <span class="ex">...</span></a>
+<a class="sourceLine" id="cb9-8" title="8"><span class="kw">}</span></a></code></pre></div>
 <h3 id="function-arguments">Function Arguments</h3>
 <p>Arguments can be passed to functions as follows:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">FUNCTION_NAME</span> [ARG1 [ARG2 [...]]]</code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="ex">FUNCTION_NAME</span> [ARG1 [ARG2 [...]]]</a></code></pre></div>
 <p>Arguments are accessed the same as in bash scripts:</p>
 <ul>
 <li><code>$1</code> is the function name</li>
 <li><code>$2</code> is the first argument</li>
-<li><code>$3</code> is the second argument ...</li>
+<li><code>$3</code> is the second argument …</li>
 </ul>
 <h3 id="exit-vs-return-from-a-function">Exit vs Return from a Function</h3>
 <ul>
@@ -382,7 +382,7 @@
     &middot; <a href="/solid-state-physics">Solid State Physics</a>
     </p>
     <hr>
-    <p>Copyright 2020 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
 </div>
 </body>
 </html>

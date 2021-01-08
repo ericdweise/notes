@@ -15,14 +15,14 @@
 </header>
 <h1 id="gcc---gnu-compiler-collection">GCC - GNU Compiler Collection</h1>
 <h2 id="basic-compilation">Basic Compilation</h2>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">gcc</span> FILENAME.c -Wall -o OUTPUT_FILE</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">gcc</span> FILENAME.c -Wall -o OUTPUT_FILE</a></code></pre></div>
 <h2 id="useful-options">Useful Options</h2>
-<p><code>-Wall</code> -- Print all compiler warnings <code>-o</code> -- Change the output file</p>
+<p><code>-Wall</code> – Print all compiler warnings <code>-o</code> – Change the output file</p>
 <h2 id="external-libraries">External Libraries</h2>
 <p>When you have to include headers from other projects using <code>#include &lt;&gt;</code> gcc will search for these header files (<code>.h</code>) and shared object files (<code>.so</code>). When compiling you need to tell GCC to include these files as well.</p>
 <h3 id="using-external-libraries">Using External Libraries</h3>
 <p>The skinny: Use <code>-l</code> to include libraries in an external</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">gcc</span> FILENAME.c -l<span class="op">&lt;</span>lib-name<span class="op">&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">gcc</span> FILENAME.c -l<span class="op">&lt;</span>lib-name<span class="op">&gt;</span></a></code></pre></div>
 <h4 id="notes">NOTES</h4>
 <ul>
 <li>Order is important. <code>-l&lt;lib-name&gt;</code> has to come after <code>FILENAME.c</code></li>
@@ -31,8 +31,8 @@
 </ul>
 <h3 id="linked-object-directory.">Linked Object Directory.</h3>
 <p>The skinny: Use <code>-L</code> to add a directory with an external <code>.so</code> file</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">gcc</span> FILENAME.c -L/home/user/lib/ -l<span class="op">&lt;</span>lib-name<span class="op">&gt;</span></code></pre></div>
-<p>GCC knows where to look for external libraries. Usually developers know put these libraries where GCC can find them, e.g. <code>/usr/lib</code>. However, not all libraries are stored where GCC can find them. In this case you need to add the directory with your shared object to GCC's search path using <code>-L</code></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">gcc</span> FILENAME.c -L/home/user/lib/ -l<span class="op">&lt;</span>lib-name<span class="op">&gt;</span></a></code></pre></div>
+<p>GCC knows where to look for external libraries. Usually developers know put these libraries where GCC can find them, e.g. <code>/usr/lib</code>. However, not all libraries are stored where GCC can find them. In this case you need to add the directory with your shared object to GCC’s search path using <code>-L</code></p>
 <div class="center">
     <hr>
     <p><b>Notes on Computers</b></p>
@@ -58,7 +58,7 @@
     &middot; <a href="/solid-state-physics">Solid State Physics</a>
     </p>
     <hr>
-    <p>Copyright 2020 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
 </div>
 </body>
 </html>

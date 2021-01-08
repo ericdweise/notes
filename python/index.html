@@ -19,18 +19,12 @@
 <li>Create the C code, <code>CODE.c</code>, and the header, <code>CODE.h</code>, files</li>
 <li>Compile C code. This can be done two ways:
 <ul>
-<li><p>Compile <code>.o</code> then compile the shared object, <code>.so</code>, file:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">gcc</span> -c -fPIC CODE_FILE.c -o CODE_FILE.o <span class="kw">&amp;&amp;</span> <span class="kw">\</span>
-<span class="fu">gcc</span> CODE_FILE.o -shared -o SHARED_OBJECT.so</code></pre></div></li>
-<li><p>Compile only the shared object, <code>.so</code>, file:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">gcc</span> -shared -o SHARED_OBJECT.so -fPIC CODE_FILE.c</code></pre></div></li>
+<li>Compile <code>.o</code> then compile the shared object, <code>.so</code>, file: <code>bash   gcc -c -fPIC CODE_FILE.c -o CODE_FILE.o &amp;&amp; \   gcc CODE_FILE.o -shared -o SHARED_OBJECT.so</code></li>
+<li>Compile only the shared object, <code>.so</code>, file: <code>bash   gcc -shared -o SHARED_OBJECT.so -fPIC CODE_FILE.c</code></li>
 </ul></li>
-<li><p>Import <code>ctypes</code> in python:</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> ctypes <span class="im">import</span> <span class="op">*</span></code></pre></div></li>
-<li><p>Import the C function from the shared object file:</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">C_FUNCTIONS <span class="op">=</span> CDLL(<span class="st">&#39;./SHARED_OBJECT.so&#39;</span>)</code></pre></div></li>
-<li><p>Calling functions within python:</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">C_FUNCTIONS.functionName(arg1, arg2, ...)</code></pre></div></li>
+<li>Import <code>ctypes</code> in python: <code>python  from ctypes import *</code></li>
+<li>Import the C function from the shared object file: <code>python  C_FUNCTIONS = CDLL('./SHARED_OBJECT.so')</code></li>
+<li>Calling functions within python: <code>python  C_FUNCTIONS.functionName(arg1, arg2, ...)</code></li>
 </ol>
 <div class="center">
     <hr>
@@ -57,7 +51,7 @@
     &middot; <a href="/solid-state-physics">Solid State Physics</a>
     </p>
     <hr>
-    <p>Copyright 2020 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
 </div>
 </body>
 </html>
