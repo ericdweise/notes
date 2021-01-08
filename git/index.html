@@ -14,64 +14,13 @@
     <hr>
 </header>
 <h1 id="git">Git</h1>
+<p><a href="./cheatsheet">Git Cheat Sheet</a></p>
 <h2 id="config-files">Config Files</h2>
+<p>My config files.</p>
 <ul>
 <li><a href="dotfiles/.gitconfig">gitconfig</a></li>
 <li><a href="dotfiles/.gitignore">gitignore</a></li>
 </ul>
-<h2 id="unstage-file">Unstage File</h2>
-<p>Undo a<code>git add FILE</code> command.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">git</span> reset -- FILE</a></code></pre></div>
-<h2 id="delete-unstaged-changes">Delete Unstaged Changes</h2>
-<p>Get rid of any changes that havent been committed or staged for a commit.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">git</span> checkout HEAD -- FILE</a></code></pre></div>
-<h2 id="squashing-commits">Squashing Commits</h2>
-<p>Combine multiple commits into one commit. If you want to squash the last 3 commits: 1. Start the rebase process: <code>bash     git rebase -i HEAD~3</code> 2. Write <code>pick</code> next to the oldest commit 3. Write <code>squash</code> in front of the commits to 4. Save the commit file and close the editor 5. Your text editor will reopen. Rewrite the commit message if you want. 6. Save the commit message and close the editor.</p>
-<h2 id="three-way-merge">Three Way Merge</h2>
-<p>This is useful when when you want to merge two branches that have diverged. That is, both branches have a common ancestor commit, but each branch has one or more unique commits. For example, say you have a branch called <code>feature</code> on which development is complete and which is ready to be merged into <code>main</code>. However, since <code>feature</code> was branched, <code>main</code> has new commits. The following will commands will merge the <code>main</code> branch into <code>feature</code>. This will make the <code>feature</code> ready to submit to <code>master</code> as a Pull Request.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">git</span> checkout feature</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="fu">git</span> rebase main</a></code></pre></div>
-<p>Alternatively, you can use <code>git merge</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">git</span> checkout feature</a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="fu">git</span> merge master</a></code></pre></div>
-<h2 id="submodules">Submodules</h2>
-<p>Allows you to reference a source controlled repository inside another source controlled repository.</p>
-<h3 id="adding-a-new-submodule">Adding a New Submodule</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="fu">git</span> submodule add URL [PATH]</a></code></pre></div>
-<h3 id="cloning-a-repository-with-submodules">Cloning a Repository with Submodules</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">git</span> clone --recursive [URL]</a></code></pre></div>
-<h3 id="changing-a-submodule">Changing a Submodule</h3>
-<ol type="1">
-<li>Update submodule (commit changes)</li>
-<li><code>cd PARENT_PATH</code></li>
-<li><code>git add SUBMODULE_PATH</code></li>
-<li><code>git commit -m 'MESSAGE'</code></li>
-</ol>
-<h3 id="pinning-submodule-to-commit">Pinning Submodule to Commit</h3>
-<ol type="1">
-<li><code>cd SUBMODULE</code></li>
-<li><code>git checkout COMMIT_HASH</code></li>
-<li><code>cd GIT_PARENT</code></li>
-<li><code>git add SUBMODULE_DIR/</code></li>
-<li><code>git commit</code></li>
-</ol>
-<h3 id="updating-a-submodule-to-reflect-the-latest-changes-on-remote-branch">Updating a Submodule to Reflect the Latest Changes on Remote Branch</h3>
-<ol type="1">
-<li><code>cd SUBMODULE_PATH</code></li>
-<li><code>git checkout main</code></li>
-<li><code>git pull</code></li>
-<li><code>cd PROJECT_ROOT</code></li>
-<li><code>git add SUBMODULE_PATH</code></li>
-<li><code>git commit -m ...</code></li>
-</ol>
-<h3 id="removing-a-submodule">Removing a Submodule</h3>
-<ol type="1">
-<li><code>git rm PATH</code></li>
-<li><code>rm -rf .git/modules/PATH</code> where <code>SUBMODULE</code> is the <code>path</code> parameter in <code>.gitmodules</code>:</li>
-</ol>
-<pre class="text"><code>[submodule &quot;NAME&quot;]
-    path = PATH
-    url = ...</code></pre>
 <div class="center">
     <hr>
     <p><b>Notes on Computers</b></p>

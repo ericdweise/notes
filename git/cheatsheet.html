@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="center"><a href="/">Weise-ipedia</a></h1>
+    <hr>
+</header>
+<h1 id="git-cheatsheet">Git Cheatsheet</h1>
+<p>A growing list of common porcelain commands that make life easy.</p>
+<h2 id="clone">Clone</h2>
+<p>Copy remote repositories.</p>
+<details>
+<h3 id="shallow-clone">Shallow Clone</h3>
+<p>Don’t download all the history, just the most recent commit.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">git</span> clone --depth 1</a></code></pre></div>
+<h3 id="clone-to-specific-tag-or-branch">Clone to Specific Tag or Branch</h3>
+<p>Instead of downloading all the history of a repository just clone the repository at a specific tag or branch.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">git</span> clone --branch [TAG<span class="kw">|</span><span class="ex">BRANCH</span>] --depth 1 https://example.com/my/repo.git</a></code></pre></div>
+</details>
+<h2 id="commit">Commit</h2>
+<p>Adding and manipulating changes.</p>
+<details>
+<h3 id="delete-unstaged-changes">Delete Unstaged Changes</h3>
+<p>Get rid of any changes that havent been committed or staged for a commit.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">git</span> checkout HEAD -- FILE</a></code></pre></div>
+<h3 id="unstage-file">Unstage File</h3>
+<p>Undo <code>git add</code>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">git</span> reset -- FILE</a></code></pre></div>
+<h3 id="squashing-commits">Squashing Commits</h3>
+Combine multiple commits into one commit. If you want to squash the last 3 commits: 1. Start the rebase process: <code>bash     git rebase -i HEAD~3</code> 2. Write <code>pick</code> next to the oldest commit 3. Write <code>squash</code> in front of the commits to 4. Save the commit file and close the editor 5. Your text editor will reopen. Rewrite the commit message if you want. 6. Save the commit message and close the editor.
+</details>
+<h2 id="merge">Merge</h2>
+<p>Merging branches.</p>
+<details>
+<h3 id="three-way-merge">Three Way Merge</h3>
+<p>This is useful when when you want to merge two branches that have diverged. That is, both branches have a common ancestor commit, but each branch has one or more unique commits. For example, say you have a branch called <code>feature</code> on which development is complete and which is ready to be merged into <code>main</code>. However, since <code>feature</code> was branched, <code>main</code> has new commits. The following will commands will merge the <code>main</code> branch into <code>feature</code>. This will make the <code>feature</code> ready to submit to <code>master</code> as a Pull Request.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="fu">git</span> checkout feature</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="fu">git</span> rebase main</a></code></pre></div>
+<p>Alternatively, you can use <code>git merge</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">git</span> checkout feature</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="fu">git</span> merge master</a></code></pre></div>
+</details>
+<h2 id="submodules">Submodules</h2>
+<p>Russian nesting dolls, but for <code>git</code>.</p>
+<details>
+<h3 id="adding-a-new-submodule">Adding a New Submodule</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="fu">git</span> submodule add URL [PATH]</a></code></pre></div>
+<h3 id="cloning-a-repository-with-submodules">Cloning a Repository with Submodules</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="fu">git</span> clone --recursive [URL]</a></code></pre></div>
+<h3 id="changing-a-submodule">Changing a Submodule</h3>
+<ol type="1">
+<li>Update submodule (commit changes)</li>
+<li><code>cd PARENT_PATH</code></li>
+<li><code>git add SUBMODULE_PATH</code></li>
+<li><code>git commit -m 'MESSAGE'</code></li>
+</ol>
+<h3 id="pinning-submodule-to-commit">Pinning Submodule to Commit</h3>
+<ol type="1">
+<li><code>cd SUBMODULE</code></li>
+<li><code>git checkout COMMIT_HASH</code></li>
+<li><code>cd GIT_PARENT</code></li>
+<li><code>git add SUBMODULE_DIR/</code></li>
+<li><code>git commit</code></li>
+</ol>
+<h3 id="updating-a-submodule-to-reflect-the-latest-changes-on-remote-branch">Updating a Submodule to Reflect the Latest Changes on Remote Branch</h3>
+<ol type="1">
+<li><code>cd SUBMODULE_PATH</code></li>
+<li><code>git checkout main</code></li>
+<li><code>git pull</code></li>
+<li><code>cd PROJECT_ROOT</code></li>
+<li><code>git add SUBMODULE_PATH</code></li>
+<li><code>git commit -m ...</code></li>
+</ol>
+<h3 id="removing-a-submodule">Removing a Submodule</h3>
+<ol type="1">
+<li><code>git rm PATH</code></li>
+<li><code>rm -rf .git/modules/PATH</code> where <code>SUBMODULE</code> is the <code>path</code> parameter in <code>.gitmodules</code>:</li>
+</ol>
+<pre class="text"><code>[submodule &quot;NAME&quot;]
+    path = PATH
+    url = ...</code></pre>
+</details>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/devices">Devices</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>
