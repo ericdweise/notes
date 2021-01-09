@@ -20,67 +20,74 @@
 <li><a href="https://zguide.zeromq.org/">Getting Started Guide</a></li>
 <li><a href="http://api.zeromq.org/">API</a></li>
 </ul>
+<h2 id="installation">Installation</h2>
+<p>If these don’t work then go to the <a href="https://zeromq.org/download/">ZMQ Download page</a>.</p>
+<h3 id="python">Python</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">pip</span> install pyzmq</a></code></pre></div>
+<h3 id="c-headers">C Headers</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">apt-get</span> install libzmq3-dev    <span class="co"># Debian / Ubuntu</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="ex">pacman</span> -S zeromq               <span class="co"># Arch / Manjaro</span></a></code></pre></div>
 <h2 id="basic-client-and-server-setup-in-c">Basic Client and Server Setup in C</h2>
 <h3 id="server">Server</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" title="1"><span class="co">//  Example server</span></a>
-<a class="sourceLine" id="cb1-2" title="2"></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="pp">#include </span><span class="im">&lt;zmq.h&gt;</span></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="pp">#include </span><span class="im">&lt;string.h&gt;</span></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="pp">#include </span><span class="im">&lt;assert.h&gt;</span></a>
-<a class="sourceLine" id="cb1-8" title="8"></a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="dt">int</span> main (<span class="dt">void</span>)</a>
-<a class="sourceLine" id="cb1-10" title="10">{</a>
-<a class="sourceLine" id="cb1-11" title="11">    <span class="co">// Establish socket connection</span></a>
-<a class="sourceLine" id="cb1-12" title="12">    <span class="dt">void</span> *context = zmq_ctx_new ();</a>
-<a class="sourceLine" id="cb1-13" title="13">    <span class="dt">void</span> *responder = zmq_socket (context, ZMQ_REP);</a>
-<a class="sourceLine" id="cb1-14" title="14">    <span class="dt">int</span> rc = zmq_bind (responder, <span class="st">&quot;tcp://*:5555&quot;</span>);    <span class="co">// &quot;*&quot; receives from all sources</span></a>
-<a class="sourceLine" id="cb1-15" title="15">    assert (rc == <span class="dv">0</span>);</a>
-<a class="sourceLine" id="cb1-16" title="16"></a>
-<a class="sourceLine" id="cb1-17" title="17">    <span class="cf">while</span> (<span class="dv">1</span>) {</a>
-<a class="sourceLine" id="cb1-18" title="18">        <span class="dt">char</span> buffer [<span class="dv">255</span>];</a>
-<a class="sourceLine" id="cb1-19" title="19">        zmq_recv (responder, buffer, <span class="dv">255</span>, <span class="dv">0</span>);          <span class="co">// zmq_recv (SOCKET, BUFFER, BUFFER SIZE, FLAGS)</span></a>
-<a class="sourceLine" id="cb1-20" title="20"></a>
-<a class="sourceLine" id="cb1-21" title="21">        <span class="co">// Act on request (do work)</span></a>
-<a class="sourceLine" id="cb1-22" title="22"></a>
-<a class="sourceLine" id="cb1-23" title="23">        <span class="co">// Send response to client</span></a>
-<a class="sourceLine" id="cb1-24" title="24">        zmq_send (responder, <span class="st">&quot;RESPONSE&quot;</span>, <span class="dv">9</span>, <span class="dv">0</span>);       <span class="co">// zmq_send (SOCKET, BUFFER, BUFFER SIZE, FLAGS)</span></a>
-<a class="sourceLine" id="cb1-25" title="25">    }</a>
-<a class="sourceLine" id="cb1-26" title="26"></a>
-<a class="sourceLine" id="cb1-27" title="27">    <span class="co">// Close socket and clean up</span></a>
-<a class="sourceLine" id="cb1-28" title="28">    zmq_close (responder);</a>
-<a class="sourceLine" id="cb1-29" title="29">    zmq_ctx_destroy (context);</a>
-<a class="sourceLine" id="cb1-30" title="30"></a>
-<a class="sourceLine" id="cb1-31" title="31">    <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-32" title="32">}</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb3-1" title="1"><span class="co">//  Example server</span></a>
+<a class="sourceLine" id="cb3-2" title="2"></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="pp">#include </span><span class="im">&lt;zmq.h&gt;</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="pp">#include </span><span class="im">&lt;string.h&gt;</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="pp">#include </span><span class="im">&lt;assert.h&gt;</span></a>
+<a class="sourceLine" id="cb3-8" title="8"></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="dt">int</span> main (<span class="dt">void</span>)</a>
+<a class="sourceLine" id="cb3-10" title="10">{</a>
+<a class="sourceLine" id="cb3-11" title="11">    <span class="co">// Establish socket connection</span></a>
+<a class="sourceLine" id="cb3-12" title="12">    <span class="dt">void</span> *context = zmq_ctx_new ();</a>
+<a class="sourceLine" id="cb3-13" title="13">    <span class="dt">void</span> *responder = zmq_socket (context, ZMQ_REP);</a>
+<a class="sourceLine" id="cb3-14" title="14">    <span class="dt">int</span> rc = zmq_bind (responder, <span class="st">&quot;tcp://*:5555&quot;</span>);    <span class="co">// &quot;*&quot; receives from all sources</span></a>
+<a class="sourceLine" id="cb3-15" title="15">    assert (rc == <span class="dv">0</span>);</a>
+<a class="sourceLine" id="cb3-16" title="16"></a>
+<a class="sourceLine" id="cb3-17" title="17">    <span class="cf">while</span> (<span class="dv">1</span>) {</a>
+<a class="sourceLine" id="cb3-18" title="18">        <span class="dt">char</span> buffer [<span class="dv">255</span>];</a>
+<a class="sourceLine" id="cb3-19" title="19">        zmq_recv (responder, buffer, <span class="dv">255</span>, <span class="dv">0</span>);          <span class="co">// zmq_recv (SOCKET, BUFFER, BUFFER SIZE, FLAGS)</span></a>
+<a class="sourceLine" id="cb3-20" title="20"></a>
+<a class="sourceLine" id="cb3-21" title="21">        <span class="co">// Act on request (do work)</span></a>
+<a class="sourceLine" id="cb3-22" title="22"></a>
+<a class="sourceLine" id="cb3-23" title="23">        <span class="co">// Send response to client</span></a>
+<a class="sourceLine" id="cb3-24" title="24">        zmq_send (responder, <span class="st">&quot;RESPONSE&quot;</span>, <span class="dv">9</span>, <span class="dv">0</span>);       <span class="co">// zmq_send (SOCKET, BUFFER, BUFFER SIZE, FLAGS)</span></a>
+<a class="sourceLine" id="cb3-25" title="25">    }</a>
+<a class="sourceLine" id="cb3-26" title="26"></a>
+<a class="sourceLine" id="cb3-27" title="27">    <span class="co">// Close socket and clean up</span></a>
+<a class="sourceLine" id="cb3-28" title="28">    zmq_close (responder);</a>
+<a class="sourceLine" id="cb3-29" title="29">    zmq_ctx_destroy (context);</a>
+<a class="sourceLine" id="cb3-30" title="30"></a>
+<a class="sourceLine" id="cb3-31" title="31">    <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb3-32" title="32">}</a></code></pre></div>
 <h3 id="client">Client</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb2-1" title="1"><span class="co">//  Example client</span></a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="pp">#include </span><span class="im">&lt;zmq.h&gt;</span></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="pp">#include </span><span class="im">&lt;string.h&gt;</span></a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></a>
-<a class="sourceLine" id="cb2-7" title="7"></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="dt">int</span> main (<span class="dt">void</span>)</a>
-<a class="sourceLine" id="cb2-9" title="9">{</a>
-<a class="sourceLine" id="cb2-10" title="10">    <span class="co">// Establish socket connection</span></a>
-<a class="sourceLine" id="cb2-11" title="11">    printf (<span class="st">&quot;Connecting to ZMQ server...</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
-<a class="sourceLine" id="cb2-12" title="12">    <span class="dt">void</span> *context = zmq_ctx_new ();</a>
-<a class="sourceLine" id="cb2-13" title="13">    <span class="dt">void</span> *requester = zmq_socket (context, ZMQ_REQ);</a>
-<a class="sourceLine" id="cb2-14" title="14">    zmq_connect (requester, <span class="st">&quot;tcp://localhost:5555&quot;</span>);    <span class="co">// Change localhost to your server</span></a>
-<a class="sourceLine" id="cb2-15" title="15"></a>
-<a class="sourceLine" id="cb2-16" title="16">    <span class="co">//  Send request</span></a>
-<a class="sourceLine" id="cb2-17" title="17">    <span class="dt">char</span> buffer [<span class="dv">10</span>];                                   <span class="co">// Make buffer large enought to store response</span></a>
-<a class="sourceLine" id="cb2-18" title="18">    zmq_send (requester, <span class="st">&quot;RESPONSE&quot;</span>, <span class="dv">9</span>, <span class="dv">0</span>);             <span class="co">// zmq_send (SOCKET, BUFFER, BUFFER SIZE, FLAGS)</span></a>
-<a class="sourceLine" id="cb2-19" title="19">    zmq_recv (requester, buffer, <span class="dv">255</span>, <span class="dv">0</span>);               <span class="co">// Make buffer large enought to store response</span></a>
-<a class="sourceLine" id="cb2-20" title="20"></a>
-<a class="sourceLine" id="cb2-21" title="21">    <span class="co">// Close socket and clean up</span></a>
-<a class="sourceLine" id="cb2-22" title="22">    zmq_close (requester);</a>
-<a class="sourceLine" id="cb2-23" title="23">    zmq_ctx_destroy (context);</a>
-<a class="sourceLine" id="cb2-24" title="24"></a>
-<a class="sourceLine" id="cb2-25" title="25">    <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb2-26" title="26">}</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb4-1" title="1"><span class="co">//  Example client</span></a>
+<a class="sourceLine" id="cb4-2" title="2"></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="pp">#include </span><span class="im">&lt;zmq.h&gt;</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="pp">#include </span><span class="im">&lt;string.h&gt;</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></a>
+<a class="sourceLine" id="cb4-7" title="7"></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="dt">int</span> main (<span class="dt">void</span>)</a>
+<a class="sourceLine" id="cb4-9" title="9">{</a>
+<a class="sourceLine" id="cb4-10" title="10">    <span class="co">// Establish socket connection</span></a>
+<a class="sourceLine" id="cb4-11" title="11">    printf (<span class="st">&quot;Connecting to ZMQ server...</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb4-12" title="12">    <span class="dt">void</span> *context = zmq_ctx_new ();</a>
+<a class="sourceLine" id="cb4-13" title="13">    <span class="dt">void</span> *requester = zmq_socket (context, ZMQ_REQ);</a>
+<a class="sourceLine" id="cb4-14" title="14">    zmq_connect (requester, <span class="st">&quot;tcp://localhost:5555&quot;</span>);    <span class="co">// Change localhost to your server</span></a>
+<a class="sourceLine" id="cb4-15" title="15"></a>
+<a class="sourceLine" id="cb4-16" title="16">    <span class="co">//  Send request</span></a>
+<a class="sourceLine" id="cb4-17" title="17">    <span class="dt">char</span> buffer [<span class="dv">10</span>];                                   <span class="co">// Make buffer large enought to store response</span></a>
+<a class="sourceLine" id="cb4-18" title="18">    zmq_send (requester, <span class="st">&quot;RESPONSE&quot;</span>, <span class="dv">9</span>, <span class="dv">0</span>);             <span class="co">// zmq_send (SOCKET, BUFFER, BUFFER SIZE, FLAGS)</span></a>
+<a class="sourceLine" id="cb4-19" title="19">    zmq_recv (requester, buffer, <span class="dv">255</span>, <span class="dv">0</span>);               <span class="co">// Make buffer large enought to store response</span></a>
+<a class="sourceLine" id="cb4-20" title="20"></a>
+<a class="sourceLine" id="cb4-21" title="21">    <span class="co">// Close socket and clean up</span></a>
+<a class="sourceLine" id="cb4-22" title="22">    zmq_close (requester);</a>
+<a class="sourceLine" id="cb4-23" title="23">    zmq_ctx_destroy (context);</a>
+<a class="sourceLine" id="cb4-24" title="24"></a>
+<a class="sourceLine" id="cb4-25" title="25">    <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb4-26" title="26">}</a></code></pre></div>
 <h3 id="zeromq-strings-in-c">ZeroMQ Strings in C</h3>
 <p>Strings received in C they might not be terminated correctly. If you are sending strings from a C context you can include the <code>NULL</code> byte. For example: <code>zmq_send (requester, "send", 5, 0);</code> However, messages sent from non-null byte terminated languages (e.g. Python) will not, and overrunning will occur.</p>
 <p>Best practice is always to copy the message to a new buffer and terminate the buffer with a null byte. There is a function called <code>s_recv</code> in the <a href="https://github.com/booksbyus/zguide/blob/master/examples/C/zhelpers.h">zhelpers.h</a> file provided by the ZeroMQ developers that does this well.</p>

@@ -9,6 +9,26 @@ A messaging queue that focuses on simplicity, prioritizing removing complexity o
 - [API](http://api.zeromq.org/)
 
 
+
+
+
+## Installation
+If these don't work then go to the [ZMQ Download page](https://zeromq.org/download/).
+
+### Python
+```bash
+pip install pyzmq
+```
+
+### C Headers
+```bash
+apt-get install libzmq3-dev    # Debian / Ubuntu
+pacman -S zeromq               # Arch / Manjaro
+```
+
+
+
+
 ## Basic Client and Server Setup in C
 
 ### Server
