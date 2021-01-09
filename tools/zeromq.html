@@ -90,7 +90,39 @@
 <a class="sourceLine" id="cb4-26" title="26">}</a></code></pre></div>
 <h3 id="zeromq-strings-in-c">ZeroMQ Strings in C</h3>
 <p>Strings received in C they might not be terminated correctly. If you are sending strings from a C context you can include the <code>NULL</code> byte. For example: <code>zmq_send (requester, "send", 5, 0);</code> However, messages sent from non-null byte terminated languages (e.g. Python) will not, and overrunning will occur.</p>
-<p>Best practice is always to copy the message to a new buffer and terminate the buffer with a null byte. There is a function called <code>s_recv</code> in the <a href="https://github.com/booksbyus/zguide/blob/master/examples/C/zhelpers.h">zhelpers.h</a> file provided by the ZeroMQ developers that does this well.</p>
+<p>Best practice is always to copy the message to a new buffer and terminate the buffer with a null byte. There is a function called <code>s_recv</code> in the <a href="https://github.com/booksbyus/zguide/blob/master/examples/C/zhelpers.h">zhelpers.h</a> file provided by the ZeroMQ developers that does this well. In this case the server will be:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb5-1" title="1"><span class="co">//  Example server with s_recv</span></a>
+<a class="sourceLine" id="cb5-2" title="2"></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="pp">#include </span><span class="im">&lt;zmq.h&gt;</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="pp">#include </span><span class="im">&lt;string.h&gt;</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="pp">#include </span><span class="im">&lt;assert.h&gt;</span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="pp">#include </span><span class="im">&quot;zhelpers.h&quot;</span></a>
+<a class="sourceLine" id="cb5-9" title="9"></a>
+<a class="sourceLine" id="cb5-10" title="10"><span class="dt">int</span> main (<span class="dt">void</span>)</a>
+<a class="sourceLine" id="cb5-11" title="11">{</a>
+<a class="sourceLine" id="cb5-12" title="12">    <span class="co">// Establish socket connection</span></a>
+<a class="sourceLine" id="cb5-13" title="13">    <span class="dt">void</span> *context = zmq_ctx_new ();</a>
+<a class="sourceLine" id="cb5-14" title="14">    <span class="dt">void</span> *responder = zmq_socket (context, ZMQ_REP);</a>
+<a class="sourceLine" id="cb5-15" title="15">    <span class="dt">int</span> rc = zmq_bind (responder, <span class="st">&quot;tcp://*:5555&quot;</span>);    <span class="co">// &quot;*&quot; receives from all sources</span></a>
+<a class="sourceLine" id="cb5-16" title="16">    assert (rc == <span class="dv">0</span>);</a>
+<a class="sourceLine" id="cb5-17" title="17"></a>
+<a class="sourceLine" id="cb5-18" title="18">    <span class="cf">while</span> (<span class="dv">1</span>) {</a>
+<a class="sourceLine" id="cb5-19" title="19">        s_recv (responder);</a>
+<a class="sourceLine" id="cb5-20" title="20"></a>
+<a class="sourceLine" id="cb5-21" title="21">        <span class="co">// Act on request (do work)</span></a>
+<a class="sourceLine" id="cb5-22" title="22"></a>
+<a class="sourceLine" id="cb5-23" title="23">        <span class="co">// Send response to client</span></a>
+<a class="sourceLine" id="cb5-24" title="24">        zmq_send (responder, <span class="st">&quot;RESPONSE&quot;</span>, <span class="dv">9</span>, <span class="dv">0</span>);</a>
+<a class="sourceLine" id="cb5-25" title="25">    }</a>
+<a class="sourceLine" id="cb5-26" title="26"></a>
+<a class="sourceLine" id="cb5-27" title="27">    <span class="co">// Close socket and clean up</span></a>
+<a class="sourceLine" id="cb5-28" title="28">    zmq_close (responder);</a>
+<a class="sourceLine" id="cb5-29" title="29">    zmq_ctx_destroy (context);</a>
+<a class="sourceLine" id="cb5-30" title="30"></a>
+<a class="sourceLine" id="cb5-31" title="31">    <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb5-32" title="32">}</a></code></pre></div>
 <div class="center">
     <hr>
     <p><b>Notes on Computers</b></p>

@@ -107,3 +107,39 @@ However, messages sent from non-null byte terminated languages (e.g. Python) wil
 
 Best practice is always to copy the message to a new buffer and terminate the buffer with a null byte.
 There is a function called `s_recv` in the [zhelpers.h](https://github.com/booksbyus/zguide/blob/master/examples/C/zhelpers.h) file provided by the ZeroMQ developers that does this well.
+In this case the server will be:
+
+```c
+//  Example server with s_recv
+
+#include <zmq.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
+#include <assert.h>
+#include "zhelpers.h"
+
+int main (void)
+{
+    // Establish socket connection
+    void *context = zmq_ctx_new ();
+    void *responder = zmq_socket (context, ZMQ_REP);
+    int rc = zmq_bind (responder, "tcp://*:5555");    // "*" receives from all sources
+    assert (rc == 0);
+
+    while (1) {
+        s_recv (responder);
+
+        // Act on request (do work)
+
+        // Send response to client
+        zmq_send (responder, "RESPONSE", 9, 0);
+    }
+
+    // Close socket and clean up
+    zmq_close (responder);
+    zmq_ctx_destroy (context);
+
+    return 0;
+}
+```
