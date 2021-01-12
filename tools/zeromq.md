@@ -128,7 +128,7 @@ int main (void)
     assert (rc == 0);
 
     while (1) {
-        s_recv (responder);
+        char *zmqString = s_recv (responder);
 
         // Act on request (do work)
 

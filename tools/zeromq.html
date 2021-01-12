@@ -109,7 +109,7 @@
 <a class="sourceLine" id="cb5-16" title="16">    assert (rc == <span class="dv">0</span>);</a>
 <a class="sourceLine" id="cb5-17" title="17"></a>
 <a class="sourceLine" id="cb5-18" title="18">    <span class="cf">while</span> (<span class="dv">1</span>) {</a>
-<a class="sourceLine" id="cb5-19" title="19">        s_recv (responder);</a>
+<a class="sourceLine" id="cb5-19" title="19">        <span class="dt">char</span> *zmqString = s_recv (responder);</a>
 <a class="sourceLine" id="cb5-20" title="20"></a>
 <a class="sourceLine" id="cb5-21" title="21">        <span class="co">// Act on request (do work)</span></a>
 <a class="sourceLine" id="cb5-22" title="22"></a>
