@@ -50,7 +50,14 @@ network={
 <h3 id="led-warning-flash-codes">LED Warning Flash Codes</h3>
 <p><a href="https://www.raspberrypi.org/documentation/configuration/led_blink_warnings.md">LED Codes</a></p>
 <h3 id="dpkg-lock-on-ubuntu-server">DPKG Lock on Ubuntu Server</h3>
-<p>If after first boot dpkg is locked because there is an <code>unattended-upgr</code>, then follow these steps: 1. Disable automatic updates: <code>sudo dpkg-reconfigure -plow unattended-upgrades</code> 2. Restart pi: sudo reboot<code>3. Upgrade system:</code>sudo apt update &amp;&amp; sudo apt upgrade<code>4. Renable automatic uppdates:</code>sudo dpkg-reconfigure -plow unattended-upgrades<code>5. Reboot again:</code>sudo reboot`</p>
+<p>If after first boot dpkg is locked because there is an <code>unattended-upgr</code>, then follow these steps:</p>
+<ol type="1">
+<li>Disable automatic updates: <code>sudo dpkg-reconfigure -plow unattended-upgrades</code></li>
+<li>Restart pi: sudo reboot`</li>
+<li>Upgrade system: <code>sudo apt update &amp;&amp; sudo apt upgrade</code></li>
+<li>Renable automatic uppdates: <code>sudo dpkg-reconfigure -plow unattended-upgrades</code></li>
+<li>Reboot again: <code>sudo reboot</code></li>
+</ol>
 <div class="center">
     <hr>
     <p><b>Notes on Computers</b></p>

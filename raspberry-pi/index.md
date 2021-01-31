@@ -84,6 +84,7 @@ sudo update-rc.d lightdm disable
 
 ### DPKG Lock on Ubuntu Server
 If after first boot dpkg is locked because there is an `unattended-upgr`, then follow these steps:
+
 1. Disable automatic updates: `sudo dpkg-reconfigure -plow unattended-upgrades`
 2. Restart pi: sudo reboot`
 3. Upgrade system: `sudo apt update && sudo apt upgrade`
