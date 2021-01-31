@@ -13,33 +13,44 @@
     <h1 class="center"><a href="/">Weise-ipedia</a></h1>
     <hr>
 </header>
-<h1 id="raspberry-pis">Raspberry Pi’s</h1>
-<h2 id="bootstrap-installation">Bootstrap Installation</h2>
+<h1 id="raspberry-pis">Raspberry Pi's</h1>
+<p>Note, these things work on Ubuntu Server, but some may not work on Raspberry Pi OS.</p>
+<h2 id="networking">Networking</h2>
 <h3 id="enable-ssh">Enable SSH</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">touch</span> /boot/ssh</a></code></pre></div>
-<h3 id="disable-graphics">Disable Graphics</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">sudo</span> update-rc.d lightdm disable</a></code></pre></div>
-<h3 id="create-new-user">Create New User</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="va">NEW_USER=</span><span class="st">&#39;&#39;</span>  <span class="co"># name of your new user</span></a>
-<a class="sourceLine" id="cb3-2" title="2"></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="fu">sudo</span> useradd <span class="va">$NEW_USER</span></a>
-<a class="sourceLine" id="cb3-4" title="4"><span class="fu">sudo</span> passwd <span class="va">$NEW_USER</span></a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="fu">sudo</span> usermod -aG sudo <span class="va">$NEW_USER</span></a></code></pre></div>
-<h3 id="disable-pi-user">Disable pi User</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">sudo</span> usermod -L pi</a></code></pre></div>
-<h3 id="connect-to-wifi-network">Connect to WiFi Network</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="va">SSID=</span><span class="st">&#39;&#39;</span>  <span class="co"># Network SSID.</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="va">PASS=</span><span class="st">&#39;&#39;</span>  <span class="co"># Network Password</span></a>
-<a class="sourceLine" id="cb5-3" title="3"></a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="bu">echo</span> <span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb5-5" title="5"></a>
-<a class="sourceLine" id="cb5-6" title="6"><span class="st">allow-hotplug wlan0</span></a>
-<a class="sourceLine" id="cb5-7" title="7"><span class="st">iface wlan0 inet dhcp</span></a>
-<a class="sourceLine" id="cb5-8" title="8"><span class="st">wpa-ssid </span><span class="dt">\&quot;</span><span class="va">$SSID</span><span class="dt">\&quot;</span></a>
-<a class="sourceLine" id="cb5-9" title="9"><span class="st">wpa-psk </span><span class="dt">\&quot;</span><span class="va">$PASS</span><span class="dt">\&quot;</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee -a /etc/network/interfaces</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">touch</span> /boot/ssh</code></pre></div>
+<h3 id="connect-to-wifi">Connect to WiFi</h3>
+<p>This can be done several different ways.</p>
+<h4 id="network-config">Network Config</h4>
+<p>This is supposed to work on Ubuntu Server for Raspberry Pi, but I can't test because I think my wifi card is broken.</p>
+<p>Edit the <code>network-config</code> file in the boot partition of a newly flashed SD card. It has an example configuration aleady in the file. First uncomment the block, then change the network name and passwords. The network name and password will always need to be enclosed in double quotes.</p>
+<p>You will need to reboot the Pi twice for these changes to take effect.</p>
+<h4 id="wpa-supplicant">WPA Supplicant</h4>
+<p>This works on Raspberry Pi OS</p>
+<p>Create a file called <code>wpa_supplicant.conf</code> in the boot partition of a newly flashed SD card. The should contain the following:</p>
+<pre><code>country=US
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+network={
+    ssid=&quot;YOURSSID&quot;
+    scan_ssid=1
+    psk=&quot;YOURPASSWORD&quot;
+    key_mgmt=WPA-PSK
+}</code></pre>
+<h2 id="secure-user-accounts">Secure User Accounts</h2>
+<p>Add a new user</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> adduser <span class="op">&lt;</span>NEW_USER<span class="op">&gt;</span>
+<span class="fu">sudo</span> usermod -aG sudo <span class="op">&lt;</span>NEW_USER<span class="op">&gt;</span></code></pre></div>
+<p>Log out of the pi user and log into your new user account.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">logout</span></code></pre></div>
+<p>Delete the old <code>pi</code> user</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> deluser --remove-home pi</code></pre></div>
+<h2 id="disable-graphics">Disable Graphics</h2>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> update-rc.d lightdm disable</code></pre></div>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="led-warning-flash-codes">LED Warning Flash Codes</h3>
 <p><a href="https://www.raspberrypi.org/documentation/configuration/led_blink_warnings.md">LED Codes</a></p>
+<h3 id="dpkg-lock-on-ubuntu-server">DPKG Lock on Ubuntu Server</h3>
+<p>If after first boot dpkg is locked because there is an <code>unattended-upgr</code>, then follow these steps: 1. Disable automatic updates: <code>sudo dpkg-reconfigure -plow unattended-upgrades</code> 2. Restart pi: sudo reboot<code>3. Upgrade system:</code>sudo apt update &amp;&amp; sudo apt upgrade<code>4. Renable automatic uppdates:</code>sudo dpkg-reconfigure -plow unattended-upgrades<code>5. Reboot again:</code>sudo reboot`</p>
 <div class="center">
     <hr>
     <p><b>Notes on Computers</b></p>
