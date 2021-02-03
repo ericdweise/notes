@@ -23,8 +23,16 @@ hr {
     background-color: #909090;
 }
 ul {
-    list-style-type: ':\00b7  ';
+    list-style-type: '-  ';
 }
+
+/* HEADERS */
+h2 {
+    margin-top: 3ch;
+    border-top: 1px solid #909090;
+    text-align: center;
+}
+
 
 /* TEXT */
 .center {
@@ -36,9 +44,6 @@ a {
 }
 a:hover {
     text-decoration: underline;
-}
-h2 {
-    padding-top: 4ch;
 }
 
 /* INLINE CODE */
@@ -54,9 +59,10 @@ code.sourceCode {
     color: #b0b0ff;
 }
 div.sourceCode {
+    margin: auto;
     padding-left: 1ch;
     padding-right: 1ch;
-    background-color: rgba(0, 50, 50, 0.9);
+    background-color: #153636;
     border-radius: 1ch;
     max-width: 80ch;
 }
