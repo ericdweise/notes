@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="center"><a href="/">Weise-ipedia</a></h1>
+    <hr>
+</header>
+<p>ip-layer</p>
+<h1 id="internet-protocol-ip">Internet Protocol (IP)</h1>
+<h2 id="dynamic-host-configuration-protocol-dhcp">Dynamic Host Configuration Protocol (DHCP)</h2>
+<ul>
+<li>Stopped at Router (not sent outside of network)</li>
+<li>Can use a DHCP helper to forward DHCP broadcast to unicast directed at external DHCP server.</li>
+</ul>
+<h3 id="steps">Steps</h3>
+<p>|---|------------|------------------|-----------| | 1 | <code>DISCOVER</code> | client to server | Broadcast | | 2 | <code>OFFER</code> | server to client | Broadcast | | 3 | <code>REQUEST</code> | client to server | Boradcast | | 4 | <code>ACCEPT</code> | server to client | Unicast |</p>
+<h2 id="automatic-private-ip-addressing-apipa">Automatic Private IP Addressing (APIPA)</h2>
+<ul>
+<li>Also called <strong>zeroconf</strong></li>
+<li>A fallback when there is no DHCP server</li>
+<li>Allows computers on a LAN to communicate</li>
+<li>Network Address is <code>169.124.0.0/16</code></li>
+<li>Clients will randomly choose the final two octets</li>
+<li>If the randomly chosen octets are already taken then another two are generated</li>
+<li>No default gateway, and therefor</li>
+</ul>
+<h2 id="network-address-translation-nat">Network Address Translation (NAT)</h2>
+<h3 id="pat">(PAT)</h3>
+<h3 id="port-forwarding">Port Forwarding</h3>
+<h2 id="communication-types">Communication Types</h2>
+<h3 id="unicast">Unicast</h3>
+<p>Sends an IP packet to one specific IP address.</p>
+<h3 id="broadcast">Broadcast</h3>
+<ul>
+<li>Used in IPv4 only</li>
+<li>sent to all clients on a subnet</li>
+<li>The broadcast address is the largest possible IP address in a subnet. E.g.</li>
+</ul>
+<h3 id="multicast">Multicast</h3>
+<ul>
+<li>Used in IPv6 only</li>
+<li>specify a range of</li>
+</ul>
+<h2 id="managing-traffic">Managing Traffic</h2>
+<h3 id="packet-shaping">Packet Shaping</h3>
+<h3 id="quality-of-service-qos">Quality of Service (QoS)</h3>
+<h3 id="class-of-service-cos">Class of Service (CoS)</h3>
+<p>A field in the Ethernet Frame Header functionality provided: QoS and Traffic Management</p>
+<h3 id="diffserv">DiffServ</h3>
+<h2 id="traffic-shaping">Traffic Shaping</h2>
+<h3 id="access-control-list">Access Control List</h3>
+<h2 id="routers">Routers</h2>
+<h2 id="subnetting">Subnetting</h2>
+<h2 id="todo">TODO:</h2>
+<p>VIP/VIPA</p>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/devices">Devices</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/tools">Tools</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>

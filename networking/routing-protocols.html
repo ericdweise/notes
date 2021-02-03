@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="center"><a href="/">Weise-ipedia</a></h1>
+    <hr>
+</header>
+<h1 id="routing">Routing</h1>
+<h2 id="todo">TODO</h2>
+<ul>
+<li>Trunk port</li>
+<li>IEEE 802.1Q</li>
+<li>RTP</li>
+<li>SRTP</li>
+<li>RDP</li>
+<li>STP</li>
+<li>RSTP</li>
+</ul>
+<h2 id="routing-table">Routing Table</h2>
+<p>A routing table has 5 columns:</p>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 40%" />
+<col style="width: 37%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Network Destination</td>
+<td>Defines local network</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Netmask</td>
+<td>Defines local network</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Gateway</td>
+<td>IP address of the next hop router</td>
+<td><code>0.0.0.0</code>, etc.</td>
+</tr>
+<tr class="even">
+<td>Interface</td>
+<td>What port to send the packet through</td>
+<td>WAN, LAN, IP Address, gig0/0, etc</td>
+</tr>
+<tr class="odd">
+<td>Metric</td>
+<td>Route priority</td>
+<td>Positive integers</td>
+</tr>
+</tbody>
+</table>
+<h3 id="static-route">static route</h3>
+<h3 id="default-route">Default route</h3>
+<p>a &quot;last resort&quot; network path used by a router for forwarding all packets with destination addresses not listed in its routing table.</p>
+<h3 id="metric">Metric</h3>
+<p>Routes with lower metrics will be used first.</p>
+<h2 id="mac-address-table">MAC address table</h2>
+<h2 id="arp-table">ARP table</h2>
+<h3 id="section"></h3>
+<h2 id="routing-protocols">Routing Protocols</h2>
+<p>Calculate the most efficient way to send an IP packet through one or more routers. The cost functions vary, but can be based on things like number of hops, latency, MTU, bandwidth, etc. In the end, these protocols aim to set the Metrics in a router's routing table.</p>
+<h3 id="distance-vector">Distance Vector</h3>
+<p>Calculates the cost to get from a router to a particular network ID.</p>
+<ol type="1">
+<li>A router transfers it's route table to other routers in the WAN.</li>
+<li>The recieving router will add it's route table to the recieved by splitting network destinations and adding it's metrics to the the new Netmasks.</li>
+<li>The new route table is then forwarded to all other routers.</li>
+</ol>
+<p>The eventual result is every router in the WAN will recieve every other routers route table, possibly several times, depending on how many The router can then update it's own route table to reach other routers if there is a route with an overall lower metric.</p>
+<p>Eventually, routers in a WAN will reach steady state. They will, however, continue to send their routing tables, even though nothing has changed. When the network topology changes and certain routes become unavailable, or new, lower cost/metric routes become available, this will be reflected in the entire network.</p>
+<p>Distance vector works for relatively few routers in a WAN, but not for the entire internet.</p>
+<h4 id="ripv1">RIPv1</h4>
+<ul>
+<li>maximum hop count: 15</li>
+<li>update interval: 30 seconds</li>
+<li>can loop back to original router</li>
+</ul>
+<h4 id="ripv2">RIPv2</h4>
+<ul>
+<li>much the same as RIPv1, with added features</li>
+<li>Variable Length Subnet Masking (VLSM)</li>
+<li>Router Authentication (so hackers can't add spurious route tables to the network)</li>
+</ul>
+<h3 id="link-state">Link-State</h3>
+<ul>
+<li>faster and takes less bandwidth than RIP</li>
+<li>Only broadcast changes as they occur (as opposed to broadcasting every 30 seconds)</li>
+</ul>
+<h4 id="open-shortest-path-first-ospf">Open Shortest Path First (OSPF)</h4>
+<ul>
+<li>most popular dynamic routing protocol</li>
+<li></li>
+</ul>
+<p>Upon startup router sends &quot;hello packets&quot; Adjacent routers form a <em>neighborship</em> <strong>Link State Advertisement (LSA)</strong> is used to flood the router network When flooding is complete each router chooses its own best routes</p>
+<ul>
+<li>cost is a function of bandwidth</li>
+<li>send only updates (as opposed to continual broadcasting</li>
+<li>Supports authentication</li>
+<li>shortest path first (prevents loops)</li>
+<li>Until recently didn't support IPv6 addresses</li>
+</ul>
+<h4 id="intermediate-system-to-intermediate-system-is-is">Intermediate System to Intermediate System (IS-IS)</h4>
+<ul>
+<li>very similar to OSPF (send only updates)</li>
+<li>supported IPv6 much earlier than OSPF</li>
+<li>default standard on ISPs</li>
+</ul>
+<h3 id="border-gateway-protocol-bgp">Border Gateway Protocol (BGP)</h3>
+<p>A Hybrid routing protocol that is the backbone of the global internet.</p>
+<h4 id="autonomous-systems">Autonomous Systems</h4>
+<ul>
+<li>sit at the top of the heirarchy in</li>
+<li>Address are Autonomous System Numbers (ASNs) 32 bits, represented as two 16 bit separated by a dot: `123.456'</li>
+<li>Talk to eachother using Exterior Gateway Protocol (EGP)</li>
+<li>Talk to their subnetwork using Interior Gateway Protocol (IGP)</li>
+</ul>
+<h3 id="enhanced-interior-gateway-routing-protocol-eigrp">Enhanced Interior Gateway Routing Protocol (EIGRP</h3>
+<ul>
+<li>Cisco proprietary protocol</li>
+<li>hybrid or &quot;Advanced Distance Vector Protocol&quot; (on CompTIA Network+ exam as <strong>distance vector</strong>)</li>
+</ul>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/devices">Devices</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/tools">Tools</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="center"><a href="/">Weise-ipedia</a></h1>
+    <hr>
+</header>
+<h1 id="cable-types">Cable Types</h1>
+<h2 id="coaxial">Coaxial</h2>
+<h3 id="uses">Uses</h3>
+<ul>
+<li>Cable modem to ISP</li>
+<li>TVs</li>
+<li>Cable Boxes</li>
+<li>Satellite Recievers</li>
+<li>short distances</li>
+</ul>
+<h3 id="connector-types">Connector Types</h3>
+<h4 id="bnc-aka-bayonet">BNC (AKA Bayonet)</h4>
+<table>
+<thead>
+<tr class="header">
+<th>BNC (a.k.a Bayonet)</th>
+<th>F-Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="./assets/images/bnc-connector.jpeg" alt="image" /></td>
+<td><img src="./assets/images/ftype-connector.jpeg" alt="image" /></td>
+</tr>
+<tr class="even">
+<td>Push and twist</td>
+<td>Screw in</td>
+</tr>
+</tbody>
+</table>
+<h3 id="radio-guide-rg-rating">Radio Guide (RG) Rating</h3>
+<ul>
+<li>A measure of the characteristing impedence of the wire.</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Rating</th>
+<th>Ohms</th>
+<th>Use</th>
+<th>Connector</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>RG-58</td>
+<td>50</td>
+<td>Networking</td>
+<td>BNC</td>
+</tr>
+<tr class="even">
+<td>RG-59</td>
+<td>75</td>
+<td>Cable TV</td>
+<td>F Type</td>
+</tr>
+<tr class="odd">
+<td>RG-6</td>
+<td>75</td>
+<td>Cable TV</td>
+<td>T Type</td>
+</tr>
+</tbody>
+</table>
+<h2 id="twisted-pair">Twisted Pair</h2>
+<p>One cable contains one or more pairs of wires inside. Each pair is twisted like a strand of DNA Twisted pairs come with different types of shielding. The shielding types are indicated in the wire names.</p>
+<h3 id="connectors">Connectors</h3>
+<p>Copper twisted cables use the Registered Jack (RJ) connectors.</p>
+<h4 id="tiaeia-568a-and-568b">TIA/EIA 568A and 568B</h4>
+<p>The standards documents are put out by the Telecommunications Industry Association/Electronics Industries Alliance. This has been replaced by the ANSI/TIA 568C, but that's not on the CompTIA Network+ exam.</p>
+<p>The difference between the 568A and 568B standards is that the Green and Orange cables are switched. This is important because if one host is transmitting on green, the other host must be receiving on green (unless a switch or other network device switches the signal wires.)</p>
+<figure>
+<img src="./assets/images/tia.eia.568ab.jpeg" alt="img" /><figcaption>img</figcaption>
+</figure>
+<h4 id="rj-11">RJ-11</h4>
+<p>Supports 2 twisted wire pairs.</p>
+<h4 id="p8c-not-rj-45">8P8C (not RJ-45)</h4>
+<p>But they are commonly called RJ-45, even on the CompTIA Network+ exam. Supports 4 twisted wire pairs.</p>
+<h3 id="cat-ratings">Cat Ratings</h3>
+<p>This table shows the evolution of the Cat cables in terms of network speeds.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Cat</th>
+<th>Freq (MHz)</th>
+<th>Max Bandwidth</th>
+<th>10BaseT</th>
+<th>100BaseT</th>
+<th>1000BaseT</th>
+<th>10GBaseT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>3</td>
+<td>16</td>
+<td>16 Mbps</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>20</td>
+<td>20 Mbps</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>100</td>
+<td>100 Mbps</td>
+<td></td>
+<td>100m</td>
+<td>in 4 pair</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>5e</td>
+<td>100</td>
+<td>1 Gbps</td>
+<td>100m</td>
+<td>100m</td>
+<td>100m</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>250</td>
+<td>10 Gbps</td>
+<td>100m</td>
+<td>100m</td>
+<td>100m</td>
+<td>55m</td>
+</tr>
+<tr class="even">
+<td>6a</td>
+<td>500</td>
+<td>10 Gbps</td>
+<td>100m</td>
+<td>100m</td>
+<td>100m</td>
+<td>100m</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>600</td>
+<td>10+ Gbps</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>7a</td>
+<td>1000</td>
+<td>100 Gbps</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>2000</td>
+<td>40 Gbps</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>CAT 7 introduces new connector types: GG45 and TERA.</p>
+<h3 id="shielding">Shielding</h3>
+<h4 id="ftp-vs-utp">FTP vs UTP</h4>
+<p>Indicates wheather each wire pair is shielded or not</p>
+<table>
+<thead>
+<tr class="header">
+<th>Unshilded Twisted Pair (UTP)</th>
+<th>Foil Twisted Pair (FTP)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Each wire pair is unshielded</td>
+<td>Each wire pair is wrapped in foil</td>
+</tr>
+<tr class="even">
+<td><img src="./assets/images/utp.jpeg" alt="img" /></td>
+<td><img src="./assets/images/ftp.jpeg" alt="img" /></td>
+</tr>
+</tbody>
+</table>
+<h4 id="cable-shielding">Cable Shielding</h4>
+<p>In addition to the wire pair shielding, the entire cable can be shielded. The following</p>
+<h4 id="twisted-pair-cables">Twisted Pair Cables</h4>
+<p>Available twisted pair cables:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Cable</th>
+<th>Pair Shielding</th>
+<th>cable Shielding</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>F/UTP</td>
+<td>none</td>
+<td>foil</td>
+</tr>
+<tr class="even">
+<td>S/UTP</td>
+<td>none</td>
+<td>braided wire</td>
+</tr>
+<tr class="odd">
+<td>SF/UTP</td>
+<td>none</td>
+<td>braided wire and foil</td>
+</tr>
+<tr class="even">
+<td>S/FTP</td>
+<td>foil</td>
+<td>braided wire</td>
+</tr>
+<tr class="odd">
+<td>F/FTP</td>
+<td>foil</td>
+<td>foil</td>
+</tr>
+<tr class="even">
+<td>U/FTP</td>
+<td>foil</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fiber-optic">Fiber Optic</h2>
+<h3 id="multi-mode-fiber-mmf-vs-single-mode-fiber-smf">Multi-Mode Fiber (MMF) vs Single Mode Fiber (SMF)</h3>
+<ul>
+<li>Multi-Mode (MMF) use LEDs</li>
+<li>Single Mode Fiber(SMF) use lasers</li>
+</ul>
+<p>SMF is better over long distances because lasers have a uniform wave front. LEDs on the other hand shine in different directions and can cause the signal to disperse in the wire. As the light propagates components not orthogonal to field direction bounces more and travels farther.</p>
+<h3 id="connectors-1">Connectors</h3>
+<table>
+<tbody>
+<tr class="odd">
+<td>ST</td>
+<td>single</td>
+<td>snap twist</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>SC</td>
+<td>single</td>
+<td>stick &amp; click (push)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>MT-RJ</td>
+<td>duplex</td>
+<td></td>
+<td>SFF</td>
+</tr>
+<tr class="even">
+<td>LC</td>
+<td>duplex</td>
+<td>smaller than mtRJ</td>
+<td>SFF</td>
+</tr>
+</tbody>
+</table>
+<h3 id="small-form-factor">Small Form Factor</h3>
+<p>-MT-RJ and LC are considered SFF</p>
+<h4 id="ultra-physical-contact-upc">Ultra Physical Contact (UPC)</h4>
+<ul>
+<li>polished glass</li>
+<li>spherical surface, better than flat surfaces because flat surfaces leave a small gap because of surface imperfections</li>
+</ul>
+<h4 id="angled-physical-contact-apc">Angled Physical Contact (APC)</h4>
+<ul>
+<li>still spherical, polished, glass surface</li>
+<li>adds an 8 degree tilt.</li>
+<li>tilt lowers signal loss even further</li>
+<li>tilt also reduces surface degredation after successive insertions</li>
+</ul>
+<p>The shape and angle of the tip of a fiber-optic connector can have an impact on the performance of a fiber-optic communication link. The two basic types of fiber end are Ultra Physical Contact (UPC) and Angled Physical Contact (APC). In the UPC-type connector, the connector end is polished with no angle, while APC connectors feature a fiber end polished at an 8-degree angle. Besides additional labeling (UPC or APC) that helps in identifying further details about a given connector type, fiber-optic connectors can also have different colors. The rule of thumb is that a UPC-type connector typically would be blue while APC connector would have a green color.</p>
+<p><strong>Bidirectional</strong>: a fiber transceiver equipped with the capability to transmit and receive signals over a single fiber strand</p>
+<h2 id="fire-rating">Fire Rating</h2>
+<h3 id="pvc">PVC</h3>
+<ul>
+<li>Has no significant fire protection</li>
+<li>will create lots of smoke and fumes when burned</li>
+</ul>
+<h3 id="plenum">Plenum</h3>
+<ul>
+<li>Creates much less smoke when burned</li>
+<li>Costs 3-5x as much as PVC</li>
+<li>Many ordinances require plenum</li>
+<li>named after the space above a ceiling</li>
+</ul>
+<h3 id="riser">Riser</h3>
+<ul>
+<li>not as good as plenum when it comes to fire protection</li>
+<li>named after the vertical spaces between floors in a building</li>
+</ul>
+<h2 id="ethernet">Ethernet</h2>
+<h3 id="straight-through">Straight-through</h3>
+<p>AKA: Patch cable Used to connect a host to a network device like a switch or hub</p>
+<h3 id="crossover">Crossover</h3>
+<p>A crossover cable reverses the sending and receiving cables on one end of the cable. Used to connect two hosts, since one the recieved signal on one host is the sent signal on the other host. One end is wired according to 568A and the other according to 568B. Modern switches auto detect and switch which wires are send and which wires are recieve, so this is a somewhat dated convention.</p>
+<h3 id="auto-mdi-x">Auto MDI-X</h3>
+<p>Automatically detects whether the required connection type is straight-through or crossover.</p>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/devices">Devices</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/tools">Tools</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>

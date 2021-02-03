@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="center"><a href="/">Weise-ipedia</a></h1>
+    <hr>
+</header>
+<h1 id="virtual-private-network">Virtual Private Network</h1>
+<p>A VPN creates a tunnel between a device and a network device.</p>
+<ol type="1">
+<li>The host's NIC connects to a local router. This creates the internet connection for the device.</li>
+<li>The VPN service creates a virtual NIC that connects to a remote network. This connects the</li>
+</ol>
+<p>When a device is connected to a VPN, the virtual network traffic is tunneled to a virtual router. That is, all Network Packets are first created with the VPN addresses, then they are encrypted and wrapped with another network layer for the local router to use to forward the packet through the internet.</p>
+<h2 id="vpn-protocols">VPN Protocols</h2>
+<h3 id="point-to-point-tunneling-protocol-pptp">Point to Point Tunneling Protocol (PPTP)</h3>
+<p>VPNs use this protocol to route network over the internet from a host to it's VPN router. In PPTP, the endpoint on the server side is a software program running on a capable computer. Data is secured by encrypting the data from the virtual NIC and passing it to the second NIC to add <em>real world</em> Network and Datalink headers.</p>
+<h3 id="layer-2-tunneling-protocol-l2tp">Layer 2 Tunneling Protocol (L2TP)</h3>
+<p>An L2TP VPN can run over almost any type of connection, from ethernet to dial-up. The biggest difference between L2TP and PPTP is that L2TP uses IPsec for its security.</p>
+<h3 id="ssl-vpn">SSL VPN</h3>
+<p>This is a browser native type of VPN. The network virtualization is performed in a web browser. This allows a browser page to access network resources as if the page were connected to the network. Encryption and authentication is all handled by TLS.</p>
+<h3 id="datagram-tls-dtls">Datagram TLS (DTLS)</h3>
+<p>As the name suggests, these VPNs use UDP instead of TCP. They are used when latency and data delivery time are critical, for example video streaming.</p>
+<h3 id="dynamic-multipoint-vpn-dmvpn">Dynamic Multipoint VPN (DMVPN)</h3>
+<p>A kind of distributed site-to-site VPN service. If you are connecting multiple offices that all need to access each other. This allows traffic to be routed to the correct router on the VPN without having to travel to a centralized VPN router.</p>
+<h2 id="types-of-vpn-connections">Types of VPN Connections</h2>
+<h3 id="client-to-site">Client-to-Site</h3>
+<p>A single computer connecting to a VPN. Also called host-to-site</p>
+<h3 id="site-to-site">Site-to-Site</h3>
+<p>A VPN tunnel is set up between two routers, typically separated by a long distance.</p>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/devices">Devices</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/tools">Tools</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="center"><a href="/">Weise-ipedia</a></h1>
+    <hr>
+</header>
+<h1 id="ethernet">Ethernet</h1>
+<h2 id="ieee-802.3">IEEE 802.3</h2>
+<p>The standards set forth by IEEE 802.3 establish Medium Access Control over wired Ethernet. The relevant changes put forth by revisions of the 802.3 standards are:</p>
+<h3 id="ethernet-deployment-standards">Ethernet deployment Standards</h3>
+<p>The standards are named in the form <strong>xBASE-y</strong> with the elements taking the following</p>
+<ul>
+<li><strong>x</strong> is the <em>bitrate</em> (confusingly, in GB or MB per second.)</li>
+<li><strong>BASE</strong> stands for <em>BASEBAND</em> or <em>BROADBAND</em>. All ethernet is transmitted using Baseband.</li>
+<li><strong>y</strong> is the transmission type. This indicates the cable medium. Usually this is &quot;T&quot; for twisted copper.</li>
+</ul>
+<p>For the exam remember that the maximum transmission distances for 10GBASE-T over the following mediums:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>UTP</td>
+<td>55 m</td>
+</tr>
+<tr class="even">
+<td>F/UTP</td>
+<td>100 m</td>
+</tr>
+<tr class="odd">
+<td>S/FTP</td>
+<td>100 m</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Ethernet standards are backwards compatible</li>
+<li></li>
+</ul>
+<h2 id="medium-access-control-mac-address">Medium Access Control (MAC) Address</h2>
+<p>A 6 byte address that is assigned to a physical communication device. Every device is assigned a unique MAC address. These are usually represented in hexadecimal format:</p>
+<p><code>11:22:33:44:55:66</code></p>
+<p>The first 3 bytes are the <strong>Organizationally Unique Identifier (OUI)</strong>, a code assigned to a unique manufacturer. The last three bytes are the <strong>Network Interface Controller Specific</strong>, or serial number, of the devices.</p>
+<h2 id="the-ethernet-frame">The Ethernet Frame</h2>
+<p>The Ethernet Frame encapsulates the information needed by layer 2 of the OSI Model. It will tell us the The form of an Ethernet Frame is:</p>
+<p><code>[ Preamble | SFD | Destination MAC | Source MAC | Type | Payload | FCS ]</code></p>
+<p>Each of the sections are described below:</p>
+<h3 id="preamble">Preamble</h3>
+<p>This indicates that the following message is an Ethernet Frame. It is always 7 bytes of alternating <code>1</code> and <code>0</code>:</p>
+<pre><code>1010101010101010101010101010101010101010101010</code></pre>
+<h3 id="sfd---start-frame-delimiter">SFD - Start Frame Delimiter</h3>
+<p>Another static set of data, this time it is one byte in a specific order:</p>
+<pre><code>10101011</code></pre>
+<h3 id="destination-and-source-mac">Destination and Source MAC</h3>
+<p>Each are 6 bytes long and give the MAC address of the physical devices sending and receiving the frame.</p>
+<h3 id="type">Type</h3>
+<p>2 Bytes of data. Indicates whether the data is IPv4 or IPv6.</p>
+<p>TODO: list kinds of payload data</p>
+<h3 id="payload">Payload</h3>
+<p>46-1500 bytes. This is commonly TCP or UDP data. If the payload contains less than 46 bytes then a PAD section is added.</p>
+<h3 id="fcs---frame-check-sequence">FCS - Frame Check Sequence</h3>
+<p>A <strong>CRC</strong> checksum that is 4 bytes long and is calculated for all of the data in frame. The CRC does not allow for retransmission, and does not catch all errors. If the frame does not agree with it's CRC then the frame is dropped.</p>
+<h2 id="network-communications">Network Communications</h2>
+<h3 id="half-duplex">Half Duplex</h3>
+<p>This is an old format of transporting data in a network. Data can be sent both to and from a HUB, but only one direction can be sent at a time. A devices cannot send data when the HUB is sending data (to all devices). If</p>
+<h3 id="full-duplex-switch-network">Full Duplex / Switch Network</h3>
+<p>A switch does full duplex communication</p>
+<h4 id="spanning-tree-table">Spanning Tree Table</h4>
+<p>A switch will keep a table of MAC addresses listing all the devices on the network. This table is built from the <strong>Source MAC</strong> parts of the Ethernet Frames sent to it.</p>
+<h4 id="flooding">Flooding</h4>
+<p>When a destination MAC address is not in the STT it will flood the network with that frame. If a device on the</p>
+<h4 id="address-resolution-protocol">Address Resolution Protocol</h4>
+<p>A protocol that a network device can use to find MAC addresses of the other devices on a network. It is used to pair IP addresses with MAC addresses, and can be run for a specific IP address or can be used to flood the network and get all the MAC addresses.</p>
+<p>Querying your local ARP Cache: <code>arp -a</code></p>
+<h3 id="wireless-networks">Wireless Networks</h3>
+<p>Wireless networks use a <strong>Ready to send, Clear to send</strong> protocol. When a devices is ready to send data to the base station it requests a time slot in which to broadcast. This is the ready to send signal. The base station then queues the request. When the base station is ready to receive the data from that device it will send the device a signal allowing it to broadcast its payload.</p>
+<p>This rigmarole is necessary because devices physically cannot send and receive data at the same time. This is because sending data overrides the antenna's ability to listen. Furthermore, on a specific communication band, if two devices are broadcasting at the same time, their signals will interfere with each other.</p>
+<h3 id="bus-ethernet">Bus Ethernet</h3>
+<p>In a bus network, every ethernet frame is sent to every host. Each host determines whether or not the frame is directed to it and discards the frame if the destination MAC address does not match the device's.</p>
+<h3 id="nbasex">NBaseX</h3>
+<ul>
+<li>N is the speed (in Mbps)</li>
+<li>Base indicates baseband (one signal, as opposed to broadband)</li>
+<li>X indicates cable type:
+<ul>
+<li>T means twisted copper wire</li>
+<li>FL means Fiber Optic</li>
+</ul></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Cable</th>
+<th>Max Dist*</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10BaseT</td>
+<td>CAT 3</td>
+<td>100 m</td>
+</tr>
+<tr class="even">
+<td>10BaseFL</td>
+<td>MMF</td>
+<td>2 km</td>
+</tr>
+<tr class="odd">
+<td>100BaseT</td>
+<td>CAT 5</td>
+<td>100 m</td>
+</tr>
+<tr class="even">
+<td>1000BaseT</td>
+<td>CAT 5e / 6</td>
+<td>100 m</td>
+</tr>
+<tr class="odd">
+<td>1000BaseSX</td>
+<td>MMF</td>
+<td>220-500 m</td>
+</tr>
+<tr class="even">
+<td>1000BaseLX</td>
+<td>SMF</td>
+<td>5 km</td>
+</tr>
+<tr class="odd">
+<td>10GBaseT</td>
+<td>CAT 6a</td>
+<td>100 m</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Some questions will ask for distances of sub-optimal cables. See <a href="./cables.html">Cables</a> for more on this.</li>
+</ul>
+<h4 id="base">100 Base</h4>
+<ul>
+<li>Also called vast ethernet</li>
+</ul>
+<h4 id="base-t">1000 Base T</h4>
+<ul>
+<li>IEEE 802.3ab</li>
+<li>most common ethernet nowadays</li>
+</ul>
+<h4 id="base-sx-lx">1000 Base SX / LX</h4>
+<ul>
+<li>IEEE 802.3z</li>
+<li>optical</li>
+<li></li>
+</ul>
+<h4 id="g-base-10-gbe">10G Base (10 GbE)</h4>
+<p>Standard names take the form 10GBaseXY, where X,Y have the following meanings:</p>
+<table>
+<thead>
+<tr class="header">
+<th>X</th>
+<th>means</th>
+<th>Wavelength</th>
+<th>Max Cable Length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S</td>
+<td>Short wavelength</td>
+<td>850 nm</td>
+<td>26-300 m</td>
+</tr>
+<tr class="even">
+<td>L</td>
+<td>Long wavelength</td>
+<td>1320 nm</td>
+<td>10 km</td>
+</tr>
+<tr class="odd">
+<td>E</td>
+<td>Extra-long wave</td>
+<td>1550 nm</td>
+<td>40 km</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Y</th>
+<th>means</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>R</td>
+<td>local</td>
+<td>LAN</td>
+</tr>
+<tr class="even">
+<td>W</td>
+<td>WAN</td>
+<td>WAN/SONET</td>
+</tr>
+</tbody>
+</table>
+<h4 id="half-duplex-1">Half Duplex</h4>
+<ul>
+<li>Can only send or recieve data at one time</li>
+<li>10BaseT and early 100BaseT were half-duplex</li>
+</ul>
+<h4 id="synchronized-optical-networok-sonet">Synchronized Optical Networok (SONET)</h4>
+<ul>
+<li>Existed before 10GBase ethernet</li>
+<li>Used in WANs</li>
+<li>Adopted by IEEE 802.3 working group as the 10GBase*W standards</li>
+</ul>
+<h2 id="carrier-sense-multiple-access-and-collision-detection-csmacd">Carrier Sense Multiple Access and Collision Detection (CSMA/CD)</h2>
+<p>This is a protocol that allows multiple hosts to access a bus network. Bus networks create what's called a collision domain.</p>
+<h3 id="multiple-access">Multiple Access</h3>
+<p>Every host has the same access to the network.</p>
+<h3 id="carrier-sense">Carrier Sense</h3>
+<p>Every host examines the network before sending a data frame, sending data only when the network is not in use.</p>
+<h3 id="collision-detection">Collision Detection</h3>
+<p>When two hosts send data at the same time both frames are lost (a collision). Both NICs on the hosts will detect that the other host is sending data and stop transmission. After a random time the NIC will retransmit the frame.</p>
+<h2 id="spanning-tree-protocol">Spanning Tree Protocol</h2>
+<p>If two or more switches are connected in a loop this can cause problems. A frame could be transmitted through the loop infinitely and bring down the entire network Spanning Tree Protocol solves this issue.</p>
+<ul>
+<li>One switch is randomly elected to be the &quot;root switch&quot;</li>
+<li>every other switch finds a path to the root switch using Bridge Protocol Data Units (BDPU)</li>
+<li>Ports connected to switches not on the path to the are put into the &quot;blocking state&quot;, and are unable to send or recieve normal frames</li>
+</ul>
+<p>Of course, the topology needs to change Blocked ports can listen for a Topology Change Notification BDPU. In the case of a switch being taken out of the network then the rest of the switches will recreate the spanning tree with a newly elected root switch.</p>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/devices">Devices</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/tools">Tools</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>

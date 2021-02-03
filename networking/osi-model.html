@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="center"><a href="/">Weise-ipedia</a></h1>
+    <hr>
+</header>
+<p>osi-model</p>
+<h1 id="osi---open-systems-interconnection-reference-model">OSI - Open Systems Interconnection Reference Model</h1>
+<p>The OSI is a guide that simplifies how we think about how data travels through a network. This is not a standard or a protocol. It is, for all intents and purposes, a mental model used for understanding and communicating network principles.</p>
+<h2 id="pneumonic-devices">Pneumonic Devices</h2>
+<p>Top Down: A Priest Slapped The Nun During Prayer</p>
+<p>Bottom Up: Please Do Not Touch Steve's Pet Alligator</p>
+<h2 id="the-layers">The Layers</h2>
+<h3 id="physical-layer">1 - Physical Layer</h3>
+<p>The cables or radiowaves that carry signals. A problem here means that a cable is broken or disconnected</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>PDU</td>
+<td>Bit</td>
+</tr>
+<tr class="even">
+<td>Devices</td>
+<td>Cables, transcievers, hubs, and repeaters, modems</td>
+</tr>
+</tbody>
+</table>
+<h3 id="data-link">2 - Data Link</h3>
+<p>Most fundamental communication that happens across the network</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>PDU</td>
+<td>Frame</td>
+</tr>
+<tr class="even">
+<td>Elements</td>
+<td>Ethernet, MAC Address, EUI, CSMA/CD</td>
+</tr>
+<tr class="odd">
+<td>Devices</td>
+<td>Switches, bridges, NICs</td>
+</tr>
+<tr class="even">
+<td>Domains</td>
+<td>Collision Domain</td>
+</tr>
+</tbody>
+</table>
+<h3 id="network">3 - Network</h3>
+<p>AKA the Routing Layer. IP addresses will deal with fragmenting data in the frames so that it can transverse different networks.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>PDU</td>
+<td>Packet</td>
+</tr>
+<tr class="even">
+<td>Protocols</td>
+<td>IP, ICMP, ARP, RIP, IGRP</td>
+</tr>
+<tr class="odd">
+<td>Devices</td>
+<td>Routers, Bridges, Network Adapters, WAPs</td>
+</tr>
+<tr class="even">
+<td>Domains</td>
+<td>Broadcast Domain</td>
+</tr>
+</tbody>
+</table>
+<h3 id="transport">4 - Transport</h3>
+<p>The &quot;Post Office&quot; layer. Adds the port to the data packet.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>PDU</td>
+<td>Segment</td>
+</tr>
+<tr class="even">
+<td>Protocols</td>
+<td>TCP and UDP</td>
+</tr>
+<tr class="odd">
+<td>Devices</td>
+<td>Intrusion Detection Systems, load balancers</td>
+</tr>
+</tbody>
+</table>
+<h3 id="session">5 - Session</h3>
+<p>How applications talk across the network. Responsible for establishing, managing, and terminating the session</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>PDU</td>
+<td>&quot;Data&quot; (no specific name)</td>
+</tr>
+<tr class="even">
+<td>Elements</td>
+<td>Application endpoints, tunneling</td>
+</tr>
+<tr class="odd">
+<td>Protocols</td>
+<td>NetBIOS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="presentation">6 - Presentation</h3>
+<p>Formats the information so that it is understood by the receiving system. Shares several responsibilities with layer 7.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>PDU</td>
+<td>&quot;Data&quot; (no specific name)</td>
+</tr>
+<tr class="even">
+<td>jobs</td>
+<td>Character Encoding, Encryption, Compression</td>
+</tr>
+</tbody>
+</table>
+<h3 id="application">7 - Application</h3>
+<p>What the user sees, e.g. a browser. Responsible for initiating or services the request.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>PDU</td>
+<td>&quot;Data&quot; (no specific name)</td>
+</tr>
+<tr class="even">
+<td>Elements</td>
+<td>SMTP, DNS, HTTP, and Telnet</td>
+</tr>
+</tbody>
+</table>
+<h2 id="asynchronous-transfer-mode-atm">Asynchronous Transfer Mode (ATM)</h2>
+<p>This is an old replacement layer for the OSI Datalink layer. It is the basis for SONET/SDH, on which PSTN and ISDN are based.</p>
+<p>IP based networks have largely replaced ATM.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>PDU</td>
+<td>Cell (53 octet long)</td>
+</tr>
+<tr class="even">
+<td>Elements</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/devices">Devices</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/tools">Tools</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>
