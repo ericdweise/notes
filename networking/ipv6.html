@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="center"><a href="/">Weise-ipedia</a></h1>
+    <hr>
+</header>
+<p>ipv6</p>
+<h1 id="internet-protocol-version-6">Internet Protocol version 6</h1>
+<p>That means there are <span class="math inline">\(2^{128} \approx 3.4 \times 10^{38}\)</span> addresses. (Compare that to the <span class="math inline">\(4.3 \times 10^{9}\)</span> ipv4 addresses...)</p>
+<h2 id="the-anatomy-of-an-ipv6-address">The Anatomy of an IPv6 Address</h2>
+<p>128 bit address. Broken up into eight 16 bit blocks. Each block expressed in hex.</p>
+<h2 id="network-prefix">Network Prefix</h2>
+<p>A network prefix is handed down by the router immediately above the device. When you get all the way down the tree to an end device (like a laptop) the network prefix is usually 48 bits. That way the router can use 16 bits to subnet the hosts attached to it. However, the router gets a somewhat less restrictive network prefix from its upstream router. This progesses until finally the tier 1 routers. Of course, this is the ideal case, but who knows what really happens?</p>
+<p>Since this is a top down appropriation of the first 64 bits of an end device's IPv6 address this allows on the fly updates from the top to the bottom.</p>
+<p>Ideally the passing along of network prefixes looks like this:</p>
+<pre><code>[Tier 1 Router]
+    |
+   1111::/16
+    |
+    v
+[RIR Router]
+    |__________________________
+    |                          |
+   1111.2222::/32             1111.3333::/32
+    |                          |
+    v                          v
+[ISP Router 1]          [ISP Router 2]
+    |
+   1111.2222.3333::/48
+    |
+    v
+[Home Router]
+    |
+   1111.2222.3333.4444/64
+    |
+    v
+[end device]</code></pre>
+<h2 id="interface-id">Interface ID</h2>
+<p>The interface ID is the second half of an IPv6 address. It is created when a device connects to a network. There are several ways this can be done, including:</p>
+<ul>
+<li>A modified EUI-64</li>
+<li>Through neighbor solicitation</li>
+<li>From a DHCPv6 server</li>
+</ul>
+<h3 id="interface-id-via-modified-eui-64">Interface ID via Modified EUI-64</h3>
+<p>Every device can choose an IPv6 address that is static and can be used to communicate world wide. Uses the device's MAC address. Need to convert the 48-bit MAC address into a 64-bit EUI.</p>
+<p>Takes two steps:</p>
+<ol type="1">
+<li>Add 16 bits <code>FFFE</code> in the middle of the address.</li>
+<li>Flip the 7th bit of the MAC, converting it from a <strong>universal</strong> to a <strong>local</strong> address.</li>
+</ol>
+<h4 id="an-example">An Example</h4>
+<table>
+<tbody>
+<tr class="odd">
+<td>IPv6 Subnet Prefix</td>
+<td><code>2600:dddd:1111:0001</code></td>
+</tr>
+<tr class="even">
+<td>Device MAC Address</td>
+<td><code>82:ed:aa:4b:98:a7</code></td>
+</tr>
+<tr class="odd">
+<td>Add <code>FFEE</code></td>
+<td><code>82:ed:aa:FF:EE:4b:98:a7</code></td>
+</tr>
+<tr class="even">
+<td>Group into 16 bits</td>
+<td><code>82ed:aaFF:EE4b:98a7</code></td>
+</tr>
+<tr class="odd">
+<td>Flip 7th bit</td>
+<td><code>80ed:aaFF:EE4b:98a7</code></td>
+</tr>
+</tbody>
+</table>
+<p>So, the EUI-64 is <code>80ed:aaff:ee4b:98a7</code>, and the full 128 IPv6 address is <code>2600:dddd:1111:0001:80ed:aaff:ee4b:98a7</code></p>
+<h2 id="global-unicast-address">Global Unicast Address</h2>
+<p>This is the address that an IPv6 devices uses to talk to the internet. It is assigned by the default gateway. First, the device will multicast a router solicitation message. Upon recieving the message, the router will tell the device the router's <strong>Site Prefix</strong> and the device's subnet. These together form the first 64 bits of the device's <em>global unicast address</em>. The device will then append it's <strong>interface ID</strong> (see below.) The final 128 bits is the device's globally accessible IPv6 address.</p>
+<h2 id="link-local-addresses">Link Local Addresses</h2>
+<p>In addition to the Global Unicast Address every IPv6 capable device gives itself a <strong>link local</strong> address on boot. This address has prefix <code>FE80::/10</code> followed by 54 zero bits, or <code>fe80:0000:0000:0000</code>. (Note: This is equivalent to <code>fe80::/64</code>, but it is always written <code>fe80::/10</code> with the remaining 54 bits implied.)</p>
+<p>The Link Local Address of a device is the IP address it uses to talk to devices <em>locally</em>.</p>
+<p>In some sense the Link Local Address is Equivalent to IPv4's APIPA, except an APIPA address is only used as a last resort but every device will have a link local address in addition to it's global unicast address.</p>
+<h2 id="address-compression-rules">Address Compression Rules</h2>
+<ol type="1">
+<li>Remove leading zeros in each hex block:</li>
+<li>[Junction rule] If there are sequential blocks of <code>0</code>s then they are joined using a double colon: <code>::</code>. For example, <code>0000:0000:0000</code> can be joined together as <code>::</code>.</li>
+<li>IF there are two disjoint sequences of <code>0</code>s, then only one will have the junction rule applied. This helps us avoid ambiguity that arises when expanding two or more <code>::</code>s.</li>
+</ol>
+<h3 id="compression-rule-examples">Compression Rule Examples</h3>
+<pre><code>FE82:0000:0000:0000:0000:1A12:1234:1A12
+FE82:   0:   0:   0:   0:1A12:1234:1A12    (Apply rule 1)
+FE82         ::         :1A12:1234:1A12    (Apply rule 2)
+FE82::1A12:1234:1A12                       (Final compressed address)
+
+
+FE82:0000:0000:1234:0000:0000:0000:1A12
+FE82:   0:   0:1234:   0:   0:   0:1A12    (Apply rule 1)
+FE82:   0:   0:1234       ::       1A12    (Apply rule 2)
+FE82:0:0:1234::1A12                        (Final compressed address)</code></pre>
+<h2 id="multicast">Multicast</h2>
+<p>Unlike IPv4, IPv6 does not use broadcasting. Instead, it uses a Multicast</p>
+<p>The ethernet frame of a multicast in IPv6 starts always has the form: <code>33:33:..:..:..:..</code>.</p>
+<h2 id="reserved-addresses">Reserved Addresses</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Address</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>::1</code></td>
+<td>loopback</td>
+</tr>
+<tr class="even">
+<td><code>ff02::1</code></td>
+<td>multicast read by all hosts</td>
+</tr>
+<tr class="odd">
+<td><code>ff02::2</code></td>
+<td>multicast read only by routers</td>
+</tr>
+<tr class="even">
+<td><code>ff0x::101</code></td>
+<td>NTP</td>
+</tr>
+<tr class="odd">
+<td><code>2001:0000:/32</code></td>
+<td>Teredo</td>
+</tr>
+<tr class="even">
+<td><code>2002:/16</code></td>
+<td>6to4 addresses</td>
+</tr>
+</tbody>
+</table>
+<h2 id="neighbor-discovery-protocol-ndp">Neighbor Discovery Protocol (NDP)</h2>
+<p>This is a protocol that IPv6 devices use to find other devices in and information about its broadcast domain.</p>
+<h3 id="neighbor-solicitation">Neighbor solicitation</h3>
+<p>This is functionally equivalent to an IPv4 ARP request. When a new host joins a network it sends out a <strong>neighbor solicitation</strong> message in its broadcast domain.</p>
+<h3 id="neighbor-advertisement">Neighbor advertisement</h3>
+<p>When a device recieves a <em>neighbor solicitation</em> message it replies with a <strong>neighbor advertisement</strong>. This message just tells the new device what the responding device's IPv6 address is.</p>
+<h3 id="router-solicitation">Router solicitation</h3>
+<p>A device (router or end device) can use a <strong>router solicitation</strong> message to ask for the network's WAN IP address (network ID and subnet).</p>
+<h3 id="router-advertisement">Router advertisement</h3>
+<p>The <strong>router advertisement</strong> message is sent by a router to it's downstream devices. It tells these devices things like it's WAN IP address, default gateway, DNS server, etc. This happens periodically, or in responce to a <em>router solicitation</em> message.</p>
+<h2 id="dhcpv6">DHCPv6</h2>
+<p>The top down nature of IPv6 is fairly restrictive. Every bit of information comes from the router above. DHCPv6 allows for fine grained control, for instance, running your own DNS.</p>
+<h3 id="stateful-dhcpv6">Stateful DHCPv6</h3>
+<p>Stateful DHCPv6 is very much like its IPv4 predecessor.</p>
+<p>The server uses UDP:547 and the the client uses UDP:546 to communicate.</p>
+<p>There might be many DCHPv6 servers that are accessible by a client. Every DHCPv6 server is listening on <code>FF02::1:2</code>.</p>
+<p>Steps:</p>
+<ol type="1">
+<li>[client to server] Solicit message via multicast to <code>FF02::1:2</code>. There might be multiple DHCP servers listening to this address..</li>
+<li>[server to client] A DHCPv6 Advertise message is sent from every DHCPv6 server to the device.</li>
+<li>[client to server] Client chooses a DHCPv6 server and sends a DHCPv6 Request to it.</li>
+<li>[server to client] The chosen DHCPv6 server sends a DHCPv6 Reply confirming it will take the provided network ID.</li>
+</ol>
+<h3 id="stateless-dhcpv6">Stateless DHCPv6</h3>
+<p>Where stateful DHCPv6 exerts full control over IP addresses, default gateway, etc, <strong>stateless DHCPv6</strong> recieves router advertisement messages from upstream and forwards modified messages to its downstream devices. Most of the information stays the same, however things like default gateway or DNS can be changed.</p>
+<h2 id="network-control-protocol-ncp">Network Control Protocol (NCP)</h2>
+<p>Used by routers</p>
+<h2 id="interaction-with-ipv4-stacks">Interaction with IPv4 Stacks</h2>
+<p>During the transition period from ipv4 to ipv6, there will be area in a route which ipv6 traffic needs to traverse an ipv4 only connection, or visa-versa. This can be done using tunneling. Several methods have been created to do this.</p>
+<h3 id="to6">4to6</h3>
+<p>An ipv4 packet is encapsulated with an ipv6 header.</p>
+<h3 id="to4">6to4</h3>
+<p>A deprecated standard, but it is essentially the reverse of 4to6</p>
+<h2 id="in4">6in4</h2>
+<p>A working standard that allows ipv6 tunneling through ipv4 connections. Can traverse through NAT.</p>
+<h3 id="teredo">Teredo</h3>
+<p>A Microsoft tunneling protocol that allows ipv6 to use ipv Can traverse through NAT.</p>
+<h4 id="miredo">Miredo</h4>
+<p>An open source implementation of Teredo used on Linux.</p>
+<h3 id="intra-site-automatic-tunnel-addressing-protocol-isatap">Intra-Site Automatic Tunnel Addressing Protocol (ISATAP)</h3>
+<p>This protocol appends an IPv4 address to an IPv6 prefix.</p>
+<h3 id="nat64">NAT64</h3>
+<p>Embeds an ipv4 packet into an ipv6 packet. This is usually put where a NAT would be at the edge of a network.</p>
+<h2 id="quick-maths">Quick Maths</h2>
+<h3 id="bit-flips">Bit Flips</h3>
+<p>The result of flipping the 7th bit has the following result on the last HEX element of the first 16 bit block. <code>0</code> ↔ <code>2</code> <code>1</code> ↔ <code>3</code> <code>4</code> ↔ <code>6</code> <code>5</code> ↔ <code>7</code> <code>8</code> ↔ <code>A</code> <code>9</code> ↔ <code>B</code> <code>C</code> ↔ <code>E</code> <code>D</code> ↔ <code>F</code></p>
+<p>So, flipping the 7th bit on <code>12:34:...</code> gives <code>10:34:...</code>. And flipping the 7th bit on <code>AA:00:...</code> gives <code>A8:00:...</code>.</p>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/devices">Devices</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/tools">Tools</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>

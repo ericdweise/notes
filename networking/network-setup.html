@@ -1,0 +1,51 @@
+# Practical Networking
+
+Some notes on the theory of practical installations (yes, the irony isn't lost on me.)
+
+
+## Solid vs Stranded Core UTP
+In solid core UTP, each wire has a single copper core.
+This increases conductivity but is more likely to fail completely when the core breaks.
+This happens becasue the solid core is less flexible than stranded core.
+
+
+## Horizontal Run
+A length of cable that runs from the server room to the endpoints.
+These are usually the arms in the star topology.
+These are usually solid core UTP.
+The run distance is limited to 90m.
+
+
+## Patch cables
+Thsee are used at either end of the run cable.
+The more flexible stranded core UTP is used here.
+This is because the ends are usually moved quite frequently.
+E.g. when a new computer is plugged into the network or the network switch ports are changed.
+Patch cable length is limited to 10m.
+
+
+## Demarcation, AKA Demarc
+The point where a building's network ends and the internet begins.
+Usually a Network Interface Unit (NIU) is placed here.
+These are also called Network Interface Boxes (NIB) or a Network Interface Device (NID).
+
+
+## Distribution Frames
+A room (or cabinet, box, etc) that houses the network devices (except for runs and hosts.)
+There are two types of distribution frames:
+
+### Main Distribution Frame
+This is the room that contains the Demarc
+
+### Intermediate Distribution Frame
+Contains all the networking infrastructure for a floor.
+
+A main and intermediate distribution frame might be the same room or cabinet.
+For instance, on the ground floor of an office, or if an office only has one floor.
+
+## Patch Panel
+The patch panel serves as a phyiscally static point where runs can terminate in the server room.
+They come in two sizes, 66 Block and 100 Block.
+Each wire in a run is physically locked into a the block, which is linked to a female RJ-45 port.
+This allows the patch cable to be connected to a run without moving the run.
+The run is locked in using a punchdown tool.

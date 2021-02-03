@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="center"><a href="/">Weise-ipedia</a></h1>
+    <hr>
+</header>
+<h1 id="name-resolution-protocols">Name Resolution Protocols</h1>
+<h2 id="netbios">NetBIOS</h2>
+<ul>
+<li>Pre DNS</li>
+<li>Microsoft protocol</li>
+<li>Used Broadcasting (unwieldy on large networks)</li>
+<li>Designed for un-routed networks with fewer than 40 hosts</li>
+</ul>
+<h2 id="netbios-over-tcpip-netbt">NetBIOS over TCP/IP (NetBT)</h2>
+<ul>
+<li>remove reliance on NetBEUI</li>
+<li>Ports (yes, these are correct...):
+<ul>
+<li>tcp:137 <em>name registration and resolution</em></li>
+<li>tcp:139 <em>connection-oriented communication</em></li>
+<li>udp:137 <em>name registration and resolution</em></li>
+<li>udp:138 <em>datagram distribution service</em></li>
+</ul></li>
+<li>NetBT is used only on the LAN. So a host has one NetBT name on the LAN, and can have a different one on the WAN (which uses DNS)</li>
+</ul>
+<h2 id="domain-name-services-dns">Domain Name Services DNS</h2>
+<h3 id="dns-names">DNS Names</h3>
+<ul>
+<li>DNS Names can be made of <code>a-z</code>, <code>0-9</code>, and <code>-</code></li>
+<li>Capitalization does not matter</li>
+<li>Can be up to 255 characters long, including separating <code>.</code>s</li>
+</ul>
+<h3 id="root-servers">Root Servers</h3>
+<p>There are 13 servers that sit at the top of the Domain Server stack. These delegate responsibilities to their top level domain servers.</p>
+<h3 id="top-level-domain-servers">Top Level Domain Servers</h3>
+<p>These handle the Top Level Domain Names. E.g. <code>.com</code>, <code>.net</code>, <code>.gov</code>, etc.</p>
+<h3 id="second-level-servers">Second Level Servers</h3>
+<p>These support individual computers.</p>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/devices">Devices</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/tools">Tools</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>
