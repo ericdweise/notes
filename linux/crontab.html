@@ -13,3 +13,62 @@
     <h1 class="center"><a href="/">Weise-ipedia</a></h1>
     <hr>
 </header>
+<h1 id="crontab">Crontab</h1>
+<h2 id="crontab-format">Crontab Format</h2>
+<p>The crontab format is as follows:</p>
+<pre><code>.____________ minuute         (0-59)
+| . _________ hour            (0-23)
+| | . _______ day of month    (1-31)
+| | | .______ month of year   (1-12 OR jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec)
+| | | | .____ day of week     (0-6, 0=Sunday OR sun, mon, tue, wed, thu, fri, sat)
+| | | | |
+* * * * *    USER  COMMAND</code></pre>
+<p>Note: only include the <code>USER</code> if you are editing systemwide crontab files. Otherwise omit this field.</p>
+<h2 id="adding-crontab-entries">Adding Crontab Entries</h2>
+<h3 id="interactive">Interactive</h3>
+<p>Use <code>sudo crontab -e</code>. This will open your chosen editor (the first time it will ask you to choose) and you can add a line to the crontab file. Any entries added this way will be run with root priviledges. If you don't need root permissions then you can run this without <code>sudo</code>. These entries are stored in <code>/proc</code> and can't be accessed easily.</p>
+<h3 id="edit-the-crontab-file-interactively">Edit the crontab file interactively</h3>
+<p>Systemwide rontab entries are stored in <code>/etc/crontab</code>. Choose your favorite editor and Requires root permissions</p>
+<h3 id="add-scripts-to-etccrontab.d">Add Scripts to <code>/etc/crontab.d/</code></h3>
+<p>Create a file with one line in the crontab format: <code>* * * * * USER COMMAND</code> Copy this file into <code>/etc/crontab.d/</code> The <code>COMMAND</code> will be executed on your prescribed schedule.</p>
+<h3 id="add-scripts-to-the-crontab-hourly-daily-weekly-or-monthly-directory">Add Scripts to the crontab <code>hourly</code>, <code>daily</code>, <code>weekly</code>, or <code>monthly</code> Directory</h3>
+<p>There are three directories:</p>
+<ol type="1">
+<li><code>/etc/cron.hourly/</code></li>
+<li><code>/etc/cron.daily/</code></li>
+<li><code>/etc/cron.weekly/</code></li>
+<li><code>/etc/cron.weeklymonthly/</code></li>
+</ol>
+<p>Any executable can be put in one of these directories and it will be run on the schedule. That means, you don't need to use the <code>* * * * * USER COMMAND</code> format. The drawback is that you cannot specify when it will run. For example, a script in the <code>weekly</code> directory might run every Sunday or every Wednesday.</p>
+<h2 id="debugging">Debugging</h2>
+<p>Some cron logs go into <code>/var/syslog</code></p>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/devices">Devices</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/tools">Tools</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>
