@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="center"><a href="/">Weise-ipedia</a></h1>
+    <hr>
+</header>
+<p>network-topology</p>
+<h1 id="network-topology">Network Topology</h1>
+<p>This page is a collection of notes on network topologies.</p>
+<h2 id="network-segmentation">Network Segmentation</h2>
+<h2 id="spanning-tree-protocol">Spanning Tree Protocol</h2>
+<h2 id="managing-traffic">Managing Traffic</h2>
+<p>AKA Packet Shaping or Traffic Shaping. This is a way of prioritizing certain packets over others. There are many ways to implement this. Two standards are described below:</p>
+<h3 id="class-of-service-cos">Class of Service (CoS)</h3>
+<p>This is performed in the Ethernet Frame Header in the 802.1Q trunk. It is only performed in switch devices.</p>
+<h3 id="differentiated-services">Differentiated Services</h3>
+<p>Performed in the IP Frame Header. This is usually performed inside of routers or firewalls.</p>
+<h2 id="network-address-translation-nat">Network Address Translation (NAT)</h2>
+<p>NAT is a way to translate a Router's external ip address to the internal ip address of a device in the internal network.</p>
+<p>NAT is useful because it allows us to send data to private IP addresses within the network by sending data to the network router. The router is responsible for routing the data to the correct internal IP address. So, even though two network devices might be assigned the same IP address on different network, for example, <code>192.168.0.5</code>, their respective routers can send and receive data for those devices as a proxy.</p>
+<p>How is this done if there are multiple devices connecting to one router?</p>
+<h3 id="nat-overload-port-address-translation">NAT Overload / Port Address Translation</h3>
+<p>A device on the intranet connects to a network switch with a randomly chosen port number. The router then performs NAT to send and receive data, translating the</p>
+<h3 id="port-forwarding">Port Forwarding</h3>
+<p>Used for inbound communication to the intranet. Map external IP:Port number and associate it with and internal IP:Port AKA &quot;Static NAT&quot;.</p>
+<h2 id="access-control-lists-acl-and-firewall-rules">Access Control Lists (ACL) and Firewall Rules</h2>
+<p>Act on routers. A list of logical requirements that either allow or deny traffic. Can act on many things, like: - source/destination IP address - time of day - port number - application - protocol</p>
+<p>Most rules have an implicit deny, so that any traffic not allowed by a previous rules in the list are denied by default</p>
+<h2 id="circuit-switch-network">Circuit Switch Network</h2>
+<p>A circuit is established before data is transferred. The circuit cannot be used by other services if it has already been established between two services. However, the connection is always there, and will not be unavailable when you want to send data.</p>
+<h3 id="types">Types</h3>
+<ul>
+<li>POTS (plain old Telephone Service)</li>
+<li>PTSN (Public Switched Telephone Network)</li>
+<li>T1/T3 (aka E1/E3)</li>
+<li>ISDN (Integrated services digital network)</li>
+</ul>
+<h2 id="packet-switching-network">Packet Switching Network</h2>
+<p>Data is grouped into packets before Network is shared with all other devices. Since everyone can talk at once it will support Quality of Service (prioritization)</p>
+<h3 id="types-1">Types</h3>
+<ul>
+<li>SONET</li>
+<li>DSL</li>
+<li>Frame Relay</li>
+<li>MPLS</li>
+<li>Cable Modem and Satelite</li>
+</ul>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/devices">Devices</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/tools">Tools</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>

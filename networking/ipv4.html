@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="center"><a href="/">Weise-ipedia</a></h1>
+    <hr>
+</header>
+<p>ipv4</p>
+<h1 id="internet-protocol-version-4">Internet Protocol version 4</h1>
+<p>IPv4 is a pervasive but dying protocol. In fact, it is planned to end of life on <a href="https://ipv4flagday.net/">February 1, 2021</a>. However, at least for now, it remains the standard for network address assignment.</p>
+<h3 id="subnet-mask">Subnet Mask</h3>
+<p>used by the device to determine what subnet it belongs to. This determines what devices the device can send data to. The mask tells you how many bits in the IP address must agree (counting from the left) for the address to be accessible. For example, if a device has an IP address of <code>10.10.10.10</code> and it's subnet mask is <code>255.255.255.0</code>, then the first three octets must agree. So, any address in <code>10.10.10.0</code> and <code>10.10.10.255</code> are reachable, but <code>10.10.11.0</code> is not.</p>
+<p>By convention, a subnet mask must have a binary form with all <code>1</code>s on the left and all <code>0</code>s on the right. This is because we always mask the most significant bits first. For example, <code>255.224.0.0</code> has the binary form <code>11111111.11100000.00000000.00000000</code> and is a valid submask.</p>
+<p><code>255.36.0.0</code> has the binary form <code>11111111.00100100.00000000.00000000</code> is not valid because the <code>1</code>s are not left aligned.</p>
+<p>As a general rule, each octet of the subnet mask must take a value in <code>255</code>, <code>254</code>, <code>252</code>, <code>248</code>, <code>240</code>, <code>224</code>, <code>192</code>, <code>128</code>, and <code>0</code>.</p>
+<h4 id="examples-of-accessible-addresses">Examples of Accessible Addresses</h4>
+<table>
+<thead>
+<tr class="header">
+<th>IP Address</th>
+<th>Subnet Mask</th>
+<th>Communicable addresses</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>192.168.1.1</code></td>
+<td><code>0.0.0.0</code></td>
+<td>Every IP address*</td>
+</tr>
+<tr class="even">
+<td><code>192.168.1.1</code></td>
+<td><code>255.255.255.255</code></td>
+<td><code>192.168.1.1</code></td>
+</tr>
+<tr class="odd">
+<td><code>192.168.1.1</code></td>
+<td><code>255.255.255.0</code></td>
+<td><code>192.168.1.0</code> to <code>192.168.1.255</code></td>
+</tr>
+<tr class="even">
+<td><code>192.168.1.1</code></td>
+<td><code>240.0.0.0</code></td>
+<td><code>192.0.0.0</code> to <code>207.255.255.255</code>**</td>
+</tr>
+<tr class="odd">
+<td><code>192.168.1.1</code></td>
+<td><code>248.0.0.0</code></td>
+<td><code>192.0.0.0</code> to <code>199.255.255.255</code>**</td>
+</tr>
+</tbody>
+</table>
+<p>* In reality, every address is not reachable because of the reserved private ranges (see below). ** This is a bit tricky to see. But if you work it out in binary form the result becomes clear.</p>
+<h4 id="connection-to-cidr">Connection to CIDR</h4>
+<p>It is useful to look at the binary representation of the subnet mask: <code>255.255.240.0</code> = <code>11111111.11111111.11110000</code>. In this representation it is easy to see that the first 20 bits of the address are masked. Therefore, in CIDR notation this is a <code>/20</code> mask.</p>
+<h3 id="default-gateway">Default Gateway</h3>
+<p>The IP address that the router uses to talk to devices inside the <strong>intranet</strong>. If the device needs to communicate with a device outside of the subnet, it will need to send the data first to the default gateway, and the router will forward this data.</p>
+<h2 id="classful-address">Classful Address</h2>
+<p>In the beginning of networking These classes are too rigid, and they aren't enforced any more, but it is useful to know them. Most networks still default to these values.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Class</th>
+<th>Lead Bits</th>
+<th>Lowest Addr.</th>
+<th>Highest Addr.</th>
+<th>Number of Addresses</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Class A</td>
+<td><code>0...</code></td>
+<td><code>0.0.0.0</code></td>
+<td><code>127.255.255.255</code></td>
+<td><span class="math inline">\(2^{31}\)</span>, <code>2,147,483,648</code></td>
+</tr>
+<tr class="even">
+<td>Class B</td>
+<td><code>10..</code></td>
+<td><code>128.0.0.0</code></td>
+<td><code>191.255.255.255</code></td>
+<td><span class="math inline">\(2^{30}\)</span>, <code>1,073,741,824</code></td>
+</tr>
+<tr class="odd">
+<td>Class C</td>
+<td><code>110.</code></td>
+<td><code>192.0.0.0</code></td>
+<td><code>223.255.255.255</code></td>
+<td><span class="math inline">\(2^{29}\)</span>, <code>536,870,912</code></td>
+</tr>
+<tr class="even">
+<td>Class D</td>
+<td><code>1110</code></td>
+<td><code>224.0.0.0</code></td>
+<td><code>239.255.255.255</code></td>
+<td><span class="math inline">\(2^{28}\)</span>, <code>268,435,456</code></td>
+</tr>
+<tr class="odd">
+<td>Class E</td>
+<td><code>1111</code></td>
+<td><code>240.0.0.0</code></td>
+<td><code>255.255.255.255</code></td>
+<td><span class="math inline">\(2^{28}\)</span>, <code>268,435,456</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="classes-d-and-e">Classes D and E</h3>
+<p>Classes D and E are not available for public use. Class D addresses are reserved for multicasting and are not assigned to hosts. Class E address are reserved for research and experimental purposes.</p>
+<h3 id="classful-addresses-in-binary-form">Classful Addresses in Binary Form</h3>
+<p>It is useful to think of this in binary form too:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Class</th>
+<th>Lowest Binary Address</th>
+<th>Highest Binary Address</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td><code>00000000.00000000.00000000.00000000</code></td>
+<td><code>01111111.11111111.11111111.11111111</code></td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td><code>10000000.00000000.00000000.00000000</code></td>
+<td><code>10111111.11111111.11111111.11111111</code></td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td><code>11000000.00000000.00000000.00000000</code></td>
+<td><code>11011111.11111111.11111111.11111111</code></td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td><code>11100000.00000000.00000000.00000000</code></td>
+<td><code>11101111.11111111.11111111.11111111</code></td>
+</tr>
+<tr class="odd">
+<td>E</td>
+<td><code>11110000.00000000.00000000.00000000</code></td>
+<td><code>11111111.11111111.11111111.11111111</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="classless-inter-domain-routing">Classless Inter-Domain Routing</h2>
+<p>TODO: VLSM</p>
+<h3 id="reserved-private-ranges">Reserved Private Ranges</h3>
+<p>A list of IP addresses reserved for private networks. These cannot be used for any public facing devices, i.e. any devices exposed directly to the internet.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Class Name</th>
+<th>Address Range</th>
+<th>CIDR Block</th>
+<th>Default Subnet Mask</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Class A</td>
+<td><code>10.0.0.0</code> - <code>10.255.255.255</code></td>
+<td><code>10.0.0.0/8</code></td>
+<td><code>255.0.0.0</code></td>
+</tr>
+<tr class="even">
+<td>Class B</td>
+<td><code>172.16.0.0</code> - <code>172.31.255.255</code></td>
+<td><code>172.16.0.0/12</code></td>
+<td><code>255.255.0.0</code></td>
+</tr>
+<tr class="odd">
+<td>Class C</td>
+<td><code>192.168.0.0</code> - <code>192.168.255.255</code></td>
+<td><code>192.168.0.0/16</code></td>
+<td><code>255.255.255.0</code></td>
+</tr>
+<tr class="even">
+<td>Loopback</td>
+<td><code>127.0.0.0</code> - <code>127.255.255.255</code></td>
+<td><code>127.0.0.0/8</code></td>
+<td>N/A</td>
+</tr>
+<tr class="odd">
+<td>APIPA/Boujour</td>
+<td><code>169.254.0.0</code> - <code>169.254.255.255</code></td>
+<td><code>169.254.0.0/16</code></td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h4 id="loopback-range">Loopback Range</h4>
+<p>A list of addresses reserved for a device to talk to itself. Usually only one loopback interface is needed on a device, but more loopback interfaces can be created if necessary. Any address between <code>127.0.0.0</code> and <code>127.255.255.255</code> can be used as a loopback address.</p>
+<h4 id="zeroconf-range">ZeroConf Range</h4>
+<h2 id="quick-maths">Quick Maths</h2>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/devices">Devices</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/tools">Tools</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>

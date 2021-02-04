@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="center"><a href="/">Weise-ipedia</a></h1>
+    <hr>
+</header>
+<h1 id="network-devices">Network Devices</h1>
+<h2 id="hub">Hub</h2>
+<ul>
+<li>OSI Level 2, Data Link</li>
+<li>Receive frame from a host on one port, transmit on every other port</li>
+<li>create collision domain</li>
+</ul>
+<h2 id="bridge">Bridge</h2>
+<ul>
+<li>connect two hub networks into one.</li>
+<li>uses mac address filtering to only send frames between hubs if the sending and receiving hosts are connected to different hubs.</li>
+<li>Allows a larger hub network while decreasing collisions.</li>
+</ul>
+<h2 id="switch">Switch</h2>
+<ul>
+<li>Exist in OSI layer 2, Data Link</li>
+<li>Keeps a Source Address Table, maps the MAC address of a host to the port it is attached to.</li>
+<li>only sends frames to the port where the destination MAC address is attached.</li>
+<li>Collisions occur significantly less frequently than a hub network</li>
+<li>If a frame has an unknown MAC address then it is sent to all hosts.</li>
+</ul>
+<h3 id="managed-switch">Managed Switch</h3>
+<p>A network switch that offers lots of configuration options. These can be:</p>
+<ul>
+<li>Bandwidth per port</li>
+<li>Duplex setting per port</li>
+<li>etc</li>
+</ul>
+<h3 id="multi-layer-switch">Multi-Layer Switch</h3>
+<p>A switch that also operates as a router. That means it has both a broadcast domain, but can route layer 3 packets based on IP address, too. Some things that multi-layer switches can do:</p>
+<ul>
+<li>Load-balancing</li>
+<li>Traffic shaping</li>
+<li>Port bonding (combining multiple ports to increase bandwidth)</li>
+<li>Can run Intrusion Detection Systems</li>
+<li>Port mirroring (sending identical data out two ports)</li>
+<li>Port authentication</li>
+</ul>
+<h2 id="transceiver">Transceiver</h2>
+<p>a modular network device designed to provide a seamless link between different types of network interfaces (e.g. copper and fiber, or vice versa)</p>
+<h3 id="gigabit-interface-converter-gbic">Gigabit Interface Converter (GBIC)</h3>
+<ul>
+<li>Modular (hot swappable) interface</li>
+<li>Converts optical signals to electrical signals (and visa-versa)</li>
+<li>Data transfer of 1 Gbps</li>
+</ul>
+<h3 id="small-form-factor-pluggable-sfp">Small Form Factor Pluggable (SFP)</h3>
+<ul>
+<li>Small form factor transceiver</li>
+<li>Newer transceiver type that replaces GBIC</li>
+<li>Hot swappable</li>
+<li>Transmission rate of 1 Gbps</li>
+</ul>
+<h3 id="small-form-factor-pluggable-enhanced-sfp">Small Form Factor Pluggable Enhanced (SFP+)</h3>
+<ul>
+<li>Commonly used in 10GBase networks</li>
+<li>Transmission rate of 16 Gbps</li>
+</ul>
+<h3 id="quad-small-form-factor-pluggable-qsfp">Quad Small Form-factor Pluggable (QSFP)</h3>
+<ul>
+<li>Hot swappable</li>
+<li>4 Gbps</li>
+</ul>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/devices">Devices</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/tools">Tools</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>
