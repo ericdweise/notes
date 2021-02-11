@@ -41,6 +41,28 @@ Some things that multi-layer switches can do:
 - Port mirroring (sending identical data out two ports)
 - Port authentication
 
+## Multiplexer
+
+- Commbines multiple connections and puts them into a single connection type.
+- Can be used to combine many host connections into one long distance wire.
+- Used in circuit switch networks
+
+
+## Repetears and Amplifiers
+An amplifier takes a signal and increases it.
+It can theoretically be used on both digital and analog signals,
+but in practice is only used on the later.
+A repeater works only on digital signals.
+It can interpret the signal, recreate the original data being carried, and send a new, cleaner signal.
+
+
+
+
+
+## Modulator and Demodulator
+
+
+
 
 
 

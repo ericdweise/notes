@@ -1,6 +1,14 @@
 # Access Control List (ACL)
 At a high level, an Access Control List is just a set of rules determine which resources a user can access.
+ACLs usually are set up to run on routers.
+They can act on many things, like:
+- source/destination IP address
+- time of day
+- port number
+- application
+- protocol
 
+Most rules have an implicit deny, so that any traffic not allowed by a previous rules in the list are denied by default
 
 
 
