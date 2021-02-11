@@ -221,6 +221,10 @@ sudo apt update
 sudo apt install virtualbox
 ```
 
+The first time you try to run `virtualbox` you might get an error asking you to reinstall linux headers.
+The only thing I did that got rid of this message was to reboot the computer.
+
+
 
 
 

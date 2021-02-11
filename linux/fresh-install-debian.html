@@ -219,6 +219,7 @@
 <span class="co"># Install</span>
 <span class="fu">sudo</span> apt update
 <span class="fu">sudo</span> apt install virtualbox</code></pre></div>
+<p>The first time you try to run <code>virtualbox</code> you might get an error asking you to reinstall linux headers. The only thing I did that got rid of this message was to reboot the computer.</p>
 <h2 id="disable-snaps">Disable Snaps</h2>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Remove existing snaps</span>
 <span class="kw">for</span> <span class="ex">SNAPPLE</span> in <span class="va">$(</span><span class="ex">snap</span> list <span class="kw">|</span> <span class="fu">tail</span> -n +2 <span class="kw">|</span> <span class="fu">cut</span> -d <span class="st">&#39; &#39;</span> -f 1<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span>
