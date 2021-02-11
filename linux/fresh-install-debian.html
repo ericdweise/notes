@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="center"><a href="/">Weise-ipedia</a></h1>
+    <hr>
+</header>
+<h1 id="setting-up-debian-based-distributions">Setting up Debian Based Distributions</h1>
+<p>This is a set of small scripts that I use to configure a new Debian based install.</p>
+<h2 id="install-steps">Install Steps</h2>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Debian (Base)</th>
+<th>Personal Computer</th>
+<th>Development Computer</th>
+<th>Kali Pen Test Computer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>All Distros</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Atom Text Editor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Docker</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Password Manager</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Python 3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>RSS Feed Reader</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Rust</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Slack</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Sudo</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Virtual Box</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="all-distros">All Distros</h2>
+<p>Some basic packages and configurations I can't live without.</p>
+<h3 id="packages">Packages</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> apt update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt upgrade
+
+<span class="fu">sudo</span> apt install \
+    curl
+    <span class="ex">exfat-utils</span> \
+    gcc \
+    git \
+    software-properties-common \
+    tmux \
+    tree \
+    vim</code></pre></div>
+<h3 id="configuration-files">Configuration Files</h3>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">wget</span> notes.ericdweise.com/dotfiles/gitconfig -O ~/.gitconfig
+<span class="fu">wget</span> notes.ericdweise.com/dotfiles/vimrc -O ~/.vimrc
+    <span class="fu">ssh-keygen</span> -t rsa -b 4096 -f ~/.ssh/id_rsa</code></pre></div>
+<h2 id="atom-text-editor">Atom Text Editor</h2>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> apt install -y apt-transport-https
+<span class="fu">wget</span> -qO - https://packagecloud.io/AtomEditor/atom/gpgkey <span class="kw">|</span> <span class="fu">sudo</span> apt-key add -
+<span class="fu">sudo</span> add-apt-repository <span class="st">&quot;deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main&quot;</span>
+
+<span class="fu">sudo</span> apt update
+<span class="fu">sudo</span> apt install -y atom
+
+<span class="co"># Install Atop Packages</span>
+<span class="fu">apm</span> install mathjax-wrapper markdown-preview-plus language-markdown markdown-writer markdown-preview-enhanced</code></pre></div>
+<h2 id="docker-and-docker-compose">Docker and Docker Compose</h2>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> apt install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+
+<span class="kw">if</span><span class="bu"> [</span> <span class="va">$DISTRO</span> <span class="ot">==</span> <span class="st">&#39;ubuntu&#39;</span><span class="bu"> ]</span>; <span class="kw">then</span>
+    <span class="ex">curl</span> -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="kw">|</span> <span class="fu">sudo</span> apt-key add -
+    <span class="fu">sudo</span> add-apt-repository \
+        <span class="st">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu </span><span class="va">$(</span><span class="ex">lsb_release</span> -cs<span class="va">)</span><span class="st"> stable&quot;</span>
+<span class="kw">elif</span><span class="bu"> [</span> <span class="va">$DISTRO</span> <span class="ot">==</span> <span class="st">&#39;debian&#39;</span><span class="bu"> ]</span>; <span class="kw">then</span>
+    <span class="ex">curl</span> -fsSL https://download.docker.com/linux/debian/gpg <span class="kw">|</span> <span class="fu">sudo</span> apt-key add -
+    <span class="fu">sudo</span> apt-key fingerprint 0EBFCD88
+    <span class="fu">sudo</span> add-apt-repository \
+        <span class="st">&quot;deb [arch=amd64] https://download.docker.com/linux/debian </span><span class="va">$(</span><span class="ex">lsb_release</span> -cs<span class="va">)</span><span class="st"> stable&quot;</span>
+<span class="kw">fi</span>
+
+<span class="fu">sudo</span> apt update
+<span class="fu">sudo</span> apt install -y \
+    docker-ce \
+    docker-ce-cli \
+    containerd.io
+
+<span class="co"># Test installation</span>
+<span class="fu">sudo</span> docker run hello-world
+
+<span class="co"># Installing Docker Compose: https://docs.docker.com/compose/install/</span>
+<span class="fu">sudo</span> curl -L <span class="st">&quot;https://github.com/docker/compose/releases/download/1.25.4/docker-compose-</span><span class="va">$(</span><span class="fu">uname</span> -s<span class="va">)</span><span class="st">-</span><span class="va">$(</span><span class="fu">uname</span> -m<span class="va">)</span><span class="st">&quot;</span> -o /usr/local/bin/docker-compose
+<span class="fu">sudo</span> chmod +x /usr/local/bin/docker-compose</code></pre></div>
+<h2 id="password-manager">Password Manager</h2>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> apt-add-repository ppa:jtaylor/keepass -y
+<span class="fu">sudo</span> apt update
+<span class="fu">sudo</span> apt install -y keepass2</code></pre></div>
+<h2 id="python-3">Python 3</h2>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> apt install -y python3 python3-pip
+<span class="fu">sudo</span> pip3 install virtualenv</code></pre></div>
+<h2 id="rss-feed-reader">RSS Feed Reader</h2>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> add-apt-repository -y ppa:quiterss/quiterss
+<span class="fu">sudo</span> apt update
+<span class="fu">sudo</span> apt install -y quiterss</code></pre></div>
+<h2 id="rust">Rust</h2>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> mkdir /opt/rust
+<span class="fu">sudo</span> chown -R <span class="va">$(</span><span class="fu">whoami</span><span class="va">)</span> /opt/rust
+<span class="va">RUSTUP_HOME=</span>/opt/rust
+<span class="bu">export</span> <span class="va">RUSTUP_HOME</span>
+<span class="va">CARGO_HOME=</span>/opt/rust
+<span class="bu">export</span> <span class="va">CARGO_HOME</span>
+<span class="ex">curl</span> https://sh.rustup.rs -sSf <span class="kw">|</span> <span class="fu">sh</span> -s -- -y --no-modify-path
+
+<span class="kw">for</span> <span class="ex">k</span> in <span class="va">$(</span><span class="fu">ls</span> /opt/rust/bin<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span>
+    <span class="va">f=</span><span class="st">&quot;/usr/local/bin/</span><span class="va">$k</span><span class="st">&quot;</span>
+    <span class="bu">echo</span> <span class="st">&#39;#!/bin/bash&#39;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee <span class="va">$f</span>
+    <span class="bu">echo</span> <span class="st">&#39;RUSTUP_HOME=/opt/rust exec /opt/rust/bin/${0##*/} &quot;$@&quot;&#39;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee -a <span class="va">$f</span>
+    <span class="fu">sudo</span> chmod +x <span class="va">$f</span>
+<span class="kw">done</span>
+
+<span class="ex">rustc</span> --version</code></pre></div>
+<h2 id="slack">Slack</h2>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># following: https://linuxize.com/post/how-to-install-slack-on-ubuntu-18-04/</span>
+
+<span class="ex">announce</span> <span class="st">&#39;install&#39;</span> <span class="st">&#39;Slack Messenger&#39;</span>
+
+<span class="co"># TODO: Automatically find latest file version</span>
+<span class="fu">wget</span> https://downloads.slack-edge.com/linux_releases/slack-desktop-4.0.2-amd64.deb
+<span class="fu">sudo</span> apt install -y ./slack-desktop-*.deb
+<span class="fu">rm</span> ./slack-desktop-*.deb</code></pre></div>
+<h2 id="sudo-debian-base-only">Sudo (Debian Base Only)</h2>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">echo</span> <span class="st">&quot;Temporarily switching to Super User&quot;</span>
+<span class="fu">su</span> -c <span class="st">&quot;apt upgrade -y &amp;&amp; \</span>
+<span class="st">    apt install -y sudo &amp;&amp; \</span>
+<span class="st">    echo </span><span class="dt">\&quot;</span><span class="st">Adding </span><span class="va">$USER_NAME</span><span class="st"> to sudoers.</span><span class="dt">\&quot;</span><span class="st"> &amp;&amp; \</span>
+<span class="st">    usermod -aG sudo </span><span class="va">$USER_NAME</span><span class="st">&quot;</span>
+
+<span class="bu">logout</span>
+
+<span class="bu">echo</span> <span class="st">&quot;Re-login to user &#39;</span><span class="va">$USER_NAME</span><span class="st">&#39; to allow sudo access.&quot;</span>
+<span class="bu">exec</span> su -l <span class="va">$USER</span></code></pre></div>
+<h2 id="virtual-box">Virtual Box</h2>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Following: https://www.virtualbox.org/wiki/Linux_Downloads</span>
+
+<span class="co"># </span>
+<span class="fu">sudo</span> apt-add-repository https://download.virtualbox.org/virtualbox/debian
+
+<span class="co"># Add Oracle Public Keys</span>
+<span class="fu">wget</span> -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- <span class="kw">|</span> <span class="fu">sudo</span> apt-key add -
+<span class="fu">wget</span> -q https://www.virtualbox.org/download/oracle_vbox.asc -O- <span class="kw">|</span> <span class="fu">sudo</span> apt-key add -
+
+<span class="co"># Install</span>
+<span class="fu">sudo</span> apt update
+<span class="fu">sudo</span> apt install virtualbox</code></pre></div>
+<h2 id="disable-snaps">Disable Snaps</h2>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Remove existing snaps</span>
+<span class="kw">for</span> <span class="ex">SNAPPLE</span> in <span class="va">$(</span><span class="ex">snap</span> list <span class="kw">|</span> <span class="fu">tail</span> -n +2 <span class="kw">|</span> <span class="fu">cut</span> -d <span class="st">&#39; &#39;</span> -f 1<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span>
+    <span class="bu">echo</span> <span class="st">&quot;  Removing snap: </span><span class="va">$SNAPPLE</span><span class="st">&quot;</span>
+    <span class="fu">sudo</span> snap remove <span class="va">$SNAPPLE</span>
+<span class="kw">done</span>
+<span class="fu">sudo</span> snap remove core18
+<span class="fu">sudo</span> snap remove snapd
+
+<span class="co"># Get Snap Device ID</span>
+<span class="kw">for</span> <span class="ex">SNAP_DEVICE</span> in <span class="va">$(</span><span class="fu">df</span> --output=target <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&#39;/snap/&#39;</span> <span class="va">)</span><span class="kw">;</span> <span class="kw">do</span>
+    <span class="bu">echo</span> <span class="st">&quot;  Unmounting snap: </span><span class="va">$SNAP_DEVICE</span><span class="st">&quot;</span>
+    <span class="fu">sudo</span> umount <span class="va">$SNAP_DEVICE</span>
+<span class="kw">done</span>
+
+<span class="co"># Purge Aptitude package</span>
+<span class="fu">sudo</span> apt purge snapd
+
+<span class="co"># Remove remaining Snap directories</span>
+<span class="fu">rm</span> -rf ~/snap
+<span class="fu">sudo</span> rm -rf /snap
+<span class="fu">sudo</span> rm -rf /var/snap
+<span class="fu">sudo</span> rm -rf /var/lib/snapd</code></pre></div>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/devices">Devices</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/tools">Tools</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>

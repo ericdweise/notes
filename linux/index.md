@@ -1,18 +1,25 @@
+
 # Linux
 
 So far just some notes I keep looking up now and then.
 
 
-## Distributions
 
-- [Debian (and Ubuntu)](debian)
-- [Manjaro](manjaro)
+
+## Distribution Personalization
+
+- [Debian Based Distos](fresh-install-debian.html)
+- [Manjaro](manjaro.html)
+
+
 
 ## Build Essential Tools
 
-- [GCC](gcc)
+- [GCC](gcc.html)
+
 
 
 ## Linux Tools
 
-- [Crontab](crontab)
+- [Crontab](crontab.html)
+- [Package Managers](package-managers.html)
