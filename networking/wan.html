@@ -13,46 +13,160 @@
     <h1 class="center"><a href="/">Weise-ipedia</a></h1>
     <hr>
 </header>
-<p>network-topology</p>
-<h1 id="network-topology">Network Topology</h1>
-<p>This page is a collection of notes on network topologies.</p>
-<h2 id="network-segmentation">Network Segmentation</h2>
-<h2 id="spanning-tree-protocol">Spanning Tree Protocol</h2>
-<h2 id="managing-traffic">Managing Traffic</h2>
-<p>AKA Packet Shaping or Traffic Shaping. This is a way of prioritizing certain packets over others. There are many ways to implement this. Two standards are described below:</p>
-<h3 id="class-of-service-cos">Class of Service (CoS)</h3>
-<p>This is performed in the Ethernet Frame Header in the 802.1Q trunk. It is only performed in switch devices.</p>
-<h3 id="differentiated-services">Differentiated Services</h3>
-<p>Performed in the IP Frame Header. This is usually performed inside of routers or firewalls.</p>
-<h2 id="network-address-translation-nat">Network Address Translation (NAT)</h2>
-<p>NAT is a way to translate a Router's external ip address to the internal ip address of a device in the internal network.</p>
-<p>NAT is useful because it allows us to send data to private IP addresses within the network by sending data to the network router. The router is responsible for routing the data to the correct internal IP address. So, even though two network devices might be assigned the same IP address on different network, for example, <code>192.168.0.5</code>, their respective routers can send and receive data for those devices as a proxy.</p>
-<p>How is this done if there are multiple devices connecting to one router?</p>
-<h3 id="nat-overload-port-address-translation">NAT Overload / Port Address Translation</h3>
-<p>A device on the intranet connects to a network switch with a randomly chosen port number. The router then performs NAT to send and receive data, translating the</p>
-<h3 id="port-forwarding">Port Forwarding</h3>
-<p>Used for inbound communication to the intranet. Map external IP:Port number and associate it with and internal IP:Port AKA &quot;Static NAT&quot;.</p>
-<h2 id="access-control-lists-acl-and-firewall-rules">Access Control Lists (ACL) and Firewall Rules</h2>
-<p>Act on routers. A list of logical requirements that either allow or deny traffic. Can act on many things, like: - source/destination IP address - time of day - port number - application - protocol</p>
-<p>Most rules have an implicit deny, so that any traffic not allowed by a previous rules in the list are denied by default</p>
+<h1 id="wide-area-network-wan">Wide Area Network (WAN)</h1>
+<p>While the line between LANs and WANs is ill defined I will include notes on ISPs and Regional Network Operators under the umbrella of WANs.</p>
 <h2 id="circuit-switch-network">Circuit Switch Network</h2>
 <p>A circuit is established before data is transferred. The circuit cannot be used by other services if it has already been established between two services. However, the connection is always there, and will not be unavailable when you want to send data.</p>
-<h3 id="types">Types</h3>
-<ul>
-<li>POTS (plain old Telephone Service)</li>
-<li>PTSN (Public Switched Telephone Network)</li>
-<li>T1/T3 (aka E1/E3)</li>
-<li>ISDN (Integrated services digital network)</li>
-</ul>
 <h2 id="packet-switching-network">Packet Switching Network</h2>
-<p>Data is grouped into packets before Network is shared with all other devices. Since everyone can talk at once it will support Quality of Service (prioritization)</p>
-<h3 id="types-1">Types</h3>
+<p>Data is grouped into packets before it is sent. Network is shared with all other devices, and they can all talk (roughly) at the same time. Since everyone can talk at once it should support Quality of Service (packet prioritization)</p>
+<h3 id="types">Types</h3>
 <ul>
 <li>SONET</li>
 <li>DSL</li>
 <li>Frame Relay</li>
 <li>MPLS</li>
 <li>Cable Modem and Satelite</li>
+</ul>
+<h2 id="regional-networks">Regional Networks</h2>
+<p>Historically, WANs didn't communicate using ethernet. (But, this is changing with new fiber networks.) Instead they use/used different protocols, namely T1/T3 and SONET.</p>
+<h2 id="signaling-protocols">Signaling Protocols</h2>
+<h3 id="digital-signal-0-ds0">Digital Signal 0 (DS0)</h3>
+<p>The earliest digital signal. It uses 8 bits of data sampled 8000 times a second. This gives it a total data throughput of 64 kbps. This can satisfactorily send a human voice, but has been superceded with better technologies.</p>
+<h3 id="digital-signal-1-ds1">Digital Signal 1 (DS1)</h3>
+<p>A DS1 frame contains 24 DS0 &quot;channels&quot; (and a frame bit.) 8,000 frames are sent per second giving a data rate of 1.544 Mbps.</p>
+<h3 id="digital-signal-3-ds3">Digital Signal 3 (DS3)</h3>
+<p>A DS3 frame contains 672 DS0 channels (and a frame bit.)</p>
+<h2 id="t1t3-copper">T1/T3 (Copper)</h2>
+<p>The T-level networks are copper based regional networks. They transmit digital data between regional hubs (usually owned by an ISP.)</p>
+<p>These operate using Point to Point connections, so frame headers are very simple.</p>
+<p>The analogous (but not exact same) Europe standards are called E1 and E3.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Wires</th>
+<th>Connector</th>
+<th>DS0 Channels</th>
+<th>Data Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T1</td>
+<td>2 tx, 2 rx</td>
+<td>RJ-48C</td>
+<td>24</td>
+<td>1.544 Mbps</td>
+</tr>
+<tr class="even">
+<td>E1</td>
+<td>2 tx, 2 rx</td>
+<td>RJ-48C</td>
+<td>32</td>
+<td>2.048 Mbps</td>
+</tr>
+<tr class="odd">
+<td>T3</td>
+<td></td>
+<td></td>
+<td>672</td>
+<td>44.736 Mbps</td>
+</tr>
+<tr class="even">
+<td>E3</td>
+<td></td>
+<td></td>
+<td>512</td>
+<td>34.368 Mbps</td>
+</tr>
+</tbody>
+</table>
+<h3 id="channel-service-unit-digital-service-unit-csudsu">Channel Service Unit / Digital Service Unit (CSU/DSU)</h3>
+<p>A physical device that connects a customer's network to a T1 or T3 phoneline. Can also be used to connect T1 and E1 lines.</p>
+<h2 id="synchronized-optical-network-sonet">Synchronized Optical Network (SONET)</h2>
+<p>Another point to point protocol used in WANs. Can combine multiple DS1, DS3, and E1 signals into one single frame.</p>
+<h3 id="optical-carrier-standards">Optical Carrier Standards</h3>
+<p>These set the standards for different data throughputs over optical cables. The standards increase in data throughput.</p>
+<h3 id="synchronous-transport-signal-sts">Synchronous Transport Signal (STS)</h3>
+<p>The STS protocol specifies a frame that is sent over SONET networks. The <strong>Overhead</strong> is similar to a header, and specifies the signaling and protocol information (e.g. OC-1 - OC-768) Correlate directly to different OC standards.</p>
+<h3 id="wavelength-division-multiplexing-wdm">Wavelength Division Multiplexing (WDM)</h3>
+<p>A method for sending multiple signals over an optical cable at one time. Gives each signal it's own wavelength. The newest version, <strong>Dense WDM (DWDM)</strong> can send up to about 150 signals at once Each signal is capable of the full data throughput. So, WDM essentially multiplies the data throughput by the number of signals being used.</p>
+<h4 id="coarse-wavelength-division-multiplexing-cwdm">Coarse Wavelength Division Multiplexing (CWDM)</h4>
+<p>This too uses multiple wavelengths but is simpler to implement than DWDM. Can also send data over longer distances than DWDM.</p>
+<h2 id="packet-switching">Packet Switching</h2>
+<p>At the end of a Point to Point connection the data needs to be sent to multiple hosts. Therefore, more complicated addressing is needed. At these terminuses a pat switching device unpacks packets from the T1, T3, STM, etc frames and directs them to the correct host.</p>
+<h3 id="frame-relay">Frame Relay</h3>
+<ul>
+<li>An old packet switching standard</li>
+<li>It is used mostly with T lines</li>
+<li>No guarantee of data reliablility (this is left to higher level protocols)</li>
+<li>Is being replaced by, among others, MPLS</li>
+</ul>
+<h3 id="asynchronous-transfer-mode-atm">Asynchronous Transfer Mode (ATM)</h3>
+<ul>
+<li>Another standard on its way out</li>
+<li>Was designed with voice and video transfer in mind</li>
+<li>Fixed cell size of 53 bytes</li>
+<li>Minimizes data transfer delay (at the expense of data loss rate)</li>
+</ul>
+<h3 id="multi-protocol-labeled-switching-mpls">Multi-Protocol Labeled Switching (MPLS)</h3>
+<p>This is a protocol that sits somewhere inbetween Datalink and Network. The protocol inserts one or more &quot;Labels&quot; inbetween the Ethernet frame and IP packet headers Here is a typical MPLS Label:</p>
+<pre><code>[  Label  |  Experimental Bits  |  BLS  |  TTL  ]</code></pre>
+<ul>
+<li>Label: A UID that tells MPLS routers how to direct data</li>
+<li>Experimental Bits: A sort of QoS tag. Higher values are prioritized</li>
+<li>Bottom of Label Stack (BLS): A frame can contain multiple labels. The very first Label in a frame has BLS set to 1. BLS is a single bit</li>
+<li>Time To Live (TTL): The number of hops the label can travel before being dropped</li>
+</ul>
+<p>This schema allows routers that are MPLS capable to be put into the network and route standard traffic with minimal changes to the IP packets being sent.</p>
+<h2 id="metropolitan-area-network-man">Metropolitan Area Network (MAN)</h2>
+<p>An implementation of Ethernet on a city-wide scale.</p>
+<h2 id="dial-up-connections">Dial Up Connections</h2>
+<p>One of two classes of connections from a LAN to a WAN. These create a connection whenver data needs to be transfered, then after the connection is dropped.</p>
+<h3 id="public-switch-telephone-network-ptsn">Public Switch Telephone Network (PTSN)</h3>
+<ul>
+<li>A.k.a <strong>Plain Old Telephone Service (POTS)</strong></li>
+<li>Analog signal (so requires a modem and a UART device)</li>
+<li>2400 baud rate (2400 hertz base signal)</li>
+<li>Use RJ-11 connectors</li>
+</ul>
+<h4 id="v-standards">V Standards</h4>
+<p>These specify the maximum baud-rate a modem is capable of. When two modems communicate they negotiate the largest V standard supported by both.</p>
+<h3 id="integrated-services-digital-network">Integrated Services Digital Network</h3>
+<p>Similar to the PTSN, but communicates to the customer using digital signals.</p>
+<ul>
+<li>Bearer (B) channels communicate using DS0</li>
+<li>Delta (D) channels carry up to 16 kbps</li>
+<li>Limited to about 18,000 ft from the provider</li>
+<li>There are two common types of lines:
+<ul>
+<li><strong>Basic Rate Interface</strong> is a single line that has two B and one D channels</li>
+<li><strong>Primary Rate Interface</strong> is a T1 line with 23 B channels</li>
+</ul></li>
+</ul>
+<h2 id="dedicated-connections.">Dedicated Connections.</h2>
+<p>A type of connection to the WAN that is always available, even when data is not being transferred.</p>
+<h3 id="digital-subscriber-line-dsl">Digital Subscriber Line (DSL)</h3>
+<p>Not much different from ISDN, except that the connection is never terminated.</p>
+<ul>
+<li>Uses RJ-11</li>
+<li>Symmetric DSL (<strong>SDSL</strong>) has equal upload and download speeds</li>
+<li>Asymmetric DSL (<strong>ADLS</strong>) download speeds are faster than upload speeds</li>
+<li>No new network cables required, can use the same infrastructure as ISDN</li>
+<li>Limited to about 18,000 ft from the provider</li>
+</ul>
+<h3 id="broadband-cable">Broadband Cable</h3>
+<ul>
+<li>Runs on coaxial &quot;TV&quot; cable</li>
+<li>Use a Cable Modem</li>
+<li>Usually much faster than DSL (5 to 200 Mbps download, up to 10 Mbps upload)</li>
+<li>The protocol used is called <strong>Data Over Cable Service Interface Specification (DOCSIS)</strong></li>
+</ul>
+<h2 id="point-to-point-protocol">Point to Point Protocol</h2>
+<ul>
+<li>Dial up connections use PPP</li>
+<li>Only DSL uses PPPoE</li>
+<li>Neither Broadband Cable nor Satellite use PPPoE or PPP</li>
 </ul>
 <div class="center">
     <hr>

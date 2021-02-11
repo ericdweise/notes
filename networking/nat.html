@@ -13,16 +13,14 @@
     <h1 class="center"><a href="/">Weise-ipedia</a></h1>
     <hr>
 </header>
-<h1 id="access-control-list-acl">Access Control List (ACL)</h1>
-<p>At a high level, an Access Control List is just a set of rules determine which resources a user can access. ACLs usually are set up to run on routers. They can act on many things, like: - source/destination IP address - time of day - port number - application - protocol</p>
-<p>Most rules have an implicit deny, so that any traffic not allowed by a previous rules in the list are denied by default</p>
-<h2 id="types-of-acls">Types of ACLs</h2>
-<h3 id="mandatory-access-control">Mandatory Access Control</h3>
-<p>Every resource is given a security level. If a user does not have that level of security then This is a very linear system. When a user with a certain secirity clearance will have access to everything at that level and lower.</p>
-<h3 id="discretionary-access-control">Discretionary Access Control</h3>
-<p>Every resource is assigned an owner. The owner of the resource can allow a particular user to access the resource.</p>
-<h3 id="role-based-access-control">Role Based Access Control</h3>
-<p>Role Based Access Control uses the abstraction of groups. A group is given access to certain resources. Users can be added to a group. When a user is added to a group they are granted access to the resources the group has access to.</p>
+<h1 id="network-address-translation-nat">Network Address Translation (NAT)</h1>
+<p>NAT is a way to translate a Router's external ip address to the internal ip address of a device in the internal network.</p>
+<p>NAT is useful because it allows us to send data to private IP addresses within the network by sending data to the network router. The router is responsible for routing the data to the correct internal IP address. So, even though two network devices might be assigned the same IP address on different network, for example, <code>192.168.0.5</code>, their respective routers can send and receive data for those devices as a proxy.</p>
+<p>How is this done if there are multiple devices connecting to one router?</p>
+<h2 id="nat-overload-port-address-translation">NAT Overload / Port Address Translation</h2>
+<p>A device on the intranet connects to a network switch with a randomly chosen port number. The router then performs NAT to send and receive data, translating the</p>
+<h2 id="port-forwarding">Port Forwarding</h2>
+<p>Used for inbound communication to the intranet. Map external IP:Port number and associate it with and internal IP:Port AKA &quot;Static NAT&quot;.</p>
 <div class="center">
     <hr>
     <p><b>Notes on Computers</b></p>

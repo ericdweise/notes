@@ -13,11 +13,9 @@
     <h1 class="center"><a href="/">Weise-ipedia</a></h1>
     <hr>
 </header>
-<p>internet-communications</p>
-<h2 id="domain-name-system-dns">Domain Name System (DNS)</h2>
+<h1 id="domain-name-system-dns">Domain Name System (DNS)</h1>
 <p>A server that hosts a website has to communicate using only IP addresses. DNS is how someone wishing to access the web content converts the website's domain name, e.g. <code>www.ericdweise.com</code>. Gaining the IP address for the server hosting the website from a DNS server is called <strong>resolving</strong>.</p>
 <p>DNS is a very distributed database. There are many servers that can resolve IP addresses. Usually a device is configured to connect to a <strong>root server</strong> which can direct your request to other servers.</p>
-<p>Some common name servers are: | Server Name | Primary DNS | Secondary DNS | |-------------|------------------|-------------------| | Google | <code>8.8.8.8</code> | <code>8.8.4.4</code> | | Cloudflare | <code>1.1.1.1</code> | <code>1.0.0.1</code> | | Quad9 | <code>9.9.9.9</code> | <code>149.112.112.112</code> | | OpenDNS | <code>208.67.222.222</code> | <code>208.67.220.220</code> | | SafeDNS | <code>195.46.39.39</code> | <code>195.46.39.40</code> | | Level3 | <code>209.244.0.3</code> | <code>209.244.0.4</code> | | DNS WATCH | <code>84.200.69.80</code> | <code>84.200.70.40</code> |</p>
 <h2 id="zones">Zones</h2>
 <h3 id="forward-lookup-zone">Forward Lookup Zone</h3>
 <p>Given an FQND, the Forward lookup zone will provide an IP address for the host serving that site. ### Reverse Lookup Zone Given an IP address, the reverse lookup zone will provide a FQDN.</p>
@@ -72,6 +70,53 @@ They are added to the reverse map zone file.
 <p>123.45.67.89 IN PTR example.com. ```</p>
 <h4 id="text-records">Text Records</h4>
 <p>These are not records, per se, but they offer useful information. They include things like: - Sender Policy Framework (SPF), which authorize an external host to send mail from a given domain - Domain Keys Identified Mail (DKIM), are public key parts of a digital signing framework so that a mail recipient can verify that the mail came from the private key holder.</p>
+<h2 id="common-name-servers">Common Name Servers</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Server Name</th>
+<th>Primary DNS</th>
+<th>Secondary DNS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Google</td>
+<td><code>8.8.8.8</code></td>
+<td><code>8.8.4.4</code></td>
+</tr>
+<tr class="even">
+<td>Cloudflare</td>
+<td><code>1.1.1.1</code></td>
+<td><code>1.0.0.1</code></td>
+</tr>
+<tr class="odd">
+<td>Quad9</td>
+<td><code>9.9.9.9</code></td>
+<td><code>149.112.112.112</code></td>
+</tr>
+<tr class="even">
+<td>OpenDNS</td>
+<td><code>208.67.222.222</code></td>
+<td><code>208.67.220.220</code></td>
+</tr>
+<tr class="odd">
+<td>SafeDNS</td>
+<td><code>195.46.39.39</code></td>
+<td><code>195.46.39.40</code></td>
+</tr>
+<tr class="even">
+<td>Level3</td>
+<td><code>209.244.0.3</code></td>
+<td><code>209.244.0.4</code></td>
+</tr>
+<tr class="odd">
+<td>DNS WATCH</td>
+<td><code>84.200.69.80</code></td>
+<td><code>84.200.70.40</code></td>
+</tr>
+</tbody>
+</table>
 <div class="center">
     <hr>
     <p><b>Notes on Computers</b></p>
