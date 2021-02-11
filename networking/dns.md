@@ -1,62 +1,127 @@
-# Domain Name System
+# Domain Name System (DNS)
 
-A few things to know about routing through the DNS.
+A server that hosts a website has to communicate using only IP addresses.
+DNS is how someone wishing to access the web content converts the website's domain name, e.g. `www.ericdweise.com`.
+Gaining the IP address for the server hosting the website from a DNS server is called **resolving**.
 
-
-## Different types of records
-
-
-## GitHub Pages
-
-### Adding a Custom Domain Using a Canonical Name Record (CNAME)
-Normally GitHub Pages are accessible through `username.github.io/repository`, however you can set up your github pages to be accessible from a custom URL.
-
-1. Obtain an Apex level domain name, e.g. `example.com`
-
-2. Activate GitHub Pages for the repository (Through the settings > GitHub Pages). After you do this the webpage is available at `https://USERNAME.github.io/REPOSITORY/`. Next we'll assign your custom domain.
-3. Create a file called `CNAME` in the root of the repository and put your domain name in this file.
-
-4. In your DNS provider create a `CNAME` record pointing to `USERNAME.github.io` or `ORGANIZATION.github.io`
-
-5. Test DNS configuration:
-
-    ```bash
-    dig EXAMPLE.COM +noall +answer +nocmd
-    > ;example.com.                          IN        A
-    > example.com.               275         IN        CNAME    USERNAME.github.io.
-    > USERNAME.github.io.        3584        IN        A        185.199.108.153
-    > USERNAME.github.io.        3584        IN        A        185.199.111.153
-    > USERNAME.github.io.        3584        IN        A        185.199.110.153
-    > USERNAME.github.io.        3584        IN        A        185.199.109.153
-    ```
-
-### Adding a Custom Domain Using an Apex Record (A)
-Note, GitHub is set up to use Canonical Name records (`CNAME`).
-It is preferable to set up a `CNAME` record, but if you need to use an Apex level record this is how you would do it.
-Steps 1-3 are the same as creating A `CNAME` record.
-
-4. On your DNS Providor's portal create an A record for your domain to each of the GitHub Pages IP Addresses: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, and `185.199.111.153`. You will need to create a separate DNS record for each IP Address. Note: I also had to add a separate DNS record for `example.com` and `www.example.com` for eash IP address.
-
-5. Test DNS configuration:
-
-    ```bash
-    dig EXAMPLE.COM +noall +answer
-    > EXAMPLE.COM     3600    IN A     185.199.108.153
-    > EXAMPLE.COM     3600    IN A     185.199.109.153
-    > EXAMPLE.COM     3600    IN A     185.199.110.153
-    > EXAMPLE.COM     3600    IN A     185.199.111.153
-    ```
-    You should see all four ip addresses in the `dig` output.
-
-One of the benefits of a CNAME record are that multiple subdomains or different can be linked to different repositories or projects in the same organization.
-For example, both `subdomain1.example.com` and `subdomain2.example.com` can point to `USER.github.io` and be linked to separate repositories.
-While it will still work if you set Apex level records for each subdomain, GitHub will send you a warning email everytime you update these websites.
-
-#### Enabling HTTPS:
-When you first enable GitHub Pages you will see an option to **Enforce HTTPS**. At first there will be a message that says your domain isn't configured to enable SSL. However, if you wait for a bit you should see the message: _Not yet available for your site because the certificate has not finished being issued. Please allow 24 hours for this process to complete_. So, it seems like this works itself out. Come back in a day and check this box.
+DNS is a very distributed database.
+There are many servers that can resolve IP addresses.
+Usually a device is configured to connect to a **root server** which can direct your request to other servers.
 
 
-#### References
-[GitHub: Managing a custom domain for you github pages site](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain)
-[GitHub: Securing your GitHub Pages site with HTTPS](https://docs.github.com/en/free-pro-team@latest/articles/securing-your-github-pages-site-with-https)
-[GitHub Pages Docs](https://pages.github.com/)
+
+
+
+## Zones
+### Forward Lookup Zone
+Given an FQND, the Forward lookup zone will provide an IP address for the host serving that site.
+### Reverse Lookup Zone
+Given an IP address, the reverse lookup zone will provide a FQDN.
+
+### Primary and Secondary Zones
+Primary zone is the first place to look for a record.
+Secondary zone takes over if the primary is down, but cannot add new records.
+The secondary zone will receive updates from the primary.
+
+
+
+
+
+## DNS Records
+A DNS Server keeps a large list of IP addresses connected to their domain name.
+this is just a text file.
+
+
+### DNS Record Types
+There are over 30 types of DNS records.
+This list will go over some of the most common ones.
+
+NOTE: the semi-colon, `;`, is the comment symbol.
+
+#### Start of Authority (SOA)
+An SOA record points at a server that is in charge of a forward lookup zone.
+
+
+#### Name Server (NS)
+This points at the name server for a particular domain
+
+
+#### Address Records: A and AAAA records
+
+- **A Records** are used for IPv4 addresses
+- **AAAA Records** are used for IPv6 addresses
+
+An example A record is
+
+```
+example.com    IN A    123:45:67:89
+```
+
+
+#### Canonical Name Record: CNAME
+A CNAME record is used to associate several domain names with one device, i.e: one IP address.
+The first domain name will be set up as an A or AAAA record, but any subsequent domains will alias 
+
+If we wanted to add the `www`, `mail`, and `ftp` subdomains to the `example.com` and want these to live on the same physical server (i.e. share the same IP address) as `example.com`, then the CNAME record would look like this:
+
+```
+; Alias (canonical) names
+    www IN CNAME example.com.
+	ftp IN CNAME example.com.
+	mail IN CNAME example.com.
+```
+
+
+#### Service Records (SRV)
+These records are used to find particular services on a network.
+Examples of Services that might need a SRV record might be a VoIP controller, or an instant messaging server.
+
+An example of a SRV record directing to a network's Microsoft Active Directory Controller is shown below.
+
+```
+; Service records
+; _service._proto.name. TTL class SRV priority weight port target
+ _ldap._tcp.domain.com. 300 IN    SRV 10       60     389  s1.domain.com.
+ ```
+ 
+ 
+ #### Mail Exchange Record: MX
+ This is an additional record in the DNS file that specifies the domain name of the mail server.
+ The server still needs to have an A Record (or CNAME record) in the file.
+ 
+ ```
+ IN MX mail.example.com
+ ```
+ 
+ 
+#### Pointer Records
+These are reverse look up records.
+They allow a user to find a domain name given an IP address.
+They are added to the reverse map zone file.
+
+```
+123.45.67.89    IN    PTR   example.com.
+```
+
+
+#### Text Records
+These are not records, per se, but they offer useful information.
+They include things like:
+- Sender Policy Framework (SPF), which authorize an external host to send mail from a given domain
+- Domain Keys Identified Mail (DKIM), are public key parts of a digital signing framework so that a mail recipient can verify that the mail came from the private key holder.
+
+
+
+
+
+## Common Name Servers
+
+| Server Name | Primary DNS      | Secondary DNS     |
+|-------------|------------------|-------------------|
+| Google      | `8.8.8.8`        | `8.8.4.4`         |
+| Cloudflare  | `1.1.1.1`        | `1.0.0.1`         |
+| Quad9       | `9.9.9.9`        | `149.112.112.112` |
+| OpenDNS     | `208.67.222.222` | `208.67.220.220`  |
+| SafeDNS     | `195.46.39.39`   | `195.46.39.40`    |
+| Level3      | `209.244.0.3`    | `209.244.0.4`     |
+| DNS WATCH   | `84.200.69.80`   | `84.200.70.40`    |

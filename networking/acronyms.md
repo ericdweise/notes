@@ -27,8 +27,8 @@ Therefore, this page is a pretty good index for this set of notes.
 |              |                                                                |                                 |
 | **L2TP**     | Layer 2 Tunneling Protocol                                     | [link](vpn.html)                |
 |              |                                                                |                                 |
-| **NAC**      | Network access control                                         |                                 |
-| **NAS**      | network access server                                          |                                 |
+| **NAC**      | Network Access Control                                         |                                 |
+| **NAS**      | Network Access Server                                          |                                 |
 | **NAS**      | Network Attached Storage                                       |                                 |
 | **NIDS**     | Network-based Intrusion Detection System                       |                                 |
 |              |                                                                |                                 |
@@ -40,9 +40,11 @@ Therefore, this page is a pretty good index for this set of notes.
 | **RADIUS**   | Remote Authentication Dial-In User Service                     | [link](security.html)           |
 |              |                                                                |                                 |
 | **SHA**      | Secure Hashing Algorithm                                       |                                 |
-| **SONET**    |                                                                |                                 |
+| **SONET**    | Synchronized Optical Network                                   | [link](ethernet.html)           |
 |              |                                                                |                                 |
 | **TACAS+**   | Terminal Access Controller Access Control System Plus          | [link](security.html)           |
+|              |                                                                |                                 |
+| **UART**     | Universal Asynchronous Reciever/Transmitter                    |                                 |
 |              |                                                                |                                 |
 | **VLAN**     | Virtual Local Area Network                                     | [link](vlan.html)               |
 | **VPN**      | Virtual Private Network                                        | [link](vpn.html)                |
