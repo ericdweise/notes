@@ -37,7 +37,7 @@ Some basic packages and configurations I can't live without.
 sudo apt update && sudo apt upgrade
 
 sudo apt install \
-    curl
+    curl \
     exfat-utils \
     gcc \
     git \
