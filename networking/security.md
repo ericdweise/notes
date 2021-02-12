@@ -49,6 +49,9 @@ The ticket can be used to authenticate the user to access any other network reso
 Fun fact, Kerberos is the three headed dog from Ancient Greek mythology.
 
 
+
+
+
 ## WiFi Security
 Methods for encrypting communication on a network.
 
@@ -96,4 +99,3 @@ Currently the standard for WiFi security.
 The simplest version uses a pre-shared key, but this doesn't do any user authentication.
 
 ### WPA2-Enterprise
-
