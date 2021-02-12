@@ -20,16 +20,18 @@
 <thead>
 <tr class="header">
 <th>Revision</th>
+<th>1997</th>
 <th>A</th>
 <th>B</th>
-<th>G</th>
-<th>N</th>
+<th>G*</th>
+<th>N**</th>
 <th>AC</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Year Adopted</td>
+<td></td>
 <td>1999</td>
 <td>1999</td>
 <td>2003</td>
@@ -38,6 +40,7 @@
 </tr>
 <tr class="even">
 <td>Max Throughput (Mbps)</td>
+<td>2</td>
 <td>54</td>
 <td>11</td>
 <td>54</td>
@@ -45,7 +48,8 @@
 <td>6.77 Gbps</td>
 </tr>
 <tr class="odd">
-<td>Frequency (Hz)</td>
+<td>Frequency (GHz)</td>
+<td>2.4</td>
 <td>5</td>
 <td>2.4</td>
 <td>2.4</td>
@@ -53,64 +57,123 @@
 <td>5</td>
 </tr>
 <tr class="even">
+<td>Range (feet)</td>
+<td>~300</td>
+<td>~150</td>
+<td>~300</td>
+<td>~300</td>
+<td>~300</td>
+<td>~300</td>
+</tr>
+<tr class="odd">
 <td>Modulation</td>
+<td>DSSS</td>
 <td>OFDM</td>
 <td>DSSS</td>
-<td>OFDM,DSSS</td>
+<td>OFDM</td>
 <td>OFDM</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Channels</td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Channel Width (MHz)</td>
+<td></td>
 <td>20</td>
 <td>22</td>
 <td>20</td>
 <td>40</td>
 <td>80 or 160</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>CSMA/CA</td>
+<td></td>
 <td>✔</td>
 <td></td>
 <td>✔</td>
 <td>✔</td>
 <td>✔</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>MIMO</td>
 <td></td>
 <td></td>
 <td></td>
+<td></td>
 <td>✔</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>MU-MIMO</td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
+<td></td>
 <td>✔</td>
-</tr>
-<tr class="even">
-<td>CSMA/CD</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
-<p>Other Notes: Multiple Input / Multiple Output (MIMO) CSMA/CA: Carrier Sense Multiple Access / Collision Avoidance (CSMA/CA) network Carrier Sense Multiple Access / Collision Detection (CSMA/CD) Multi-User Multiple Input / Multiple Output (MU-MIMO)</p>
+<p>* 802.11g has a <em>mixed mode</em> allowing it to drop datarates to 11 Mbps and support DSSS when an 802.11b device joined the network. ** 802.11n supports b and n devices using mixed or legacy modes. If only n devices are connected then it runs in greenfield mode.</p>
+<h3 id="wireless-access-point-wap">Wireless Access Point (WAP)</h3>
+<p>Works like an OSI Level 1 hub, but often incorporates other responsibilities like switching and routing. If the WAP is a gateway then it probably also has a DHCP server and NAT service.</p>
+<h3 id="independent-basic-service-set">Independent Basic Service Set</h3>
+<ul>
+<li>A.k.a <strong>peer-to-peer mode</strong> or <strong>Ad-Hoc</strong>.</li>
+<li>No WAP, therefore cannot connect to other networks.</li>
+<li>Wireless hosts can connect directly to one another and route data between hosts.</li>
+<li>These networks can be used for small numbers of computers.</li>
+<li>The <strong>Independent Basic Service Set ID (IBSSID)</strong> is is a randomly generated, 48-bit number that functions like a MAC Address.</li>
+</ul>
+<h3 id="infrastructure-mode">Infrastructure Mode</h3>
+<ul>
+<li>Nodes must communicate through Wireless Access Points (WAPs), like routers in ethernet.</li>
+<li>Create a Wireless Local Area Network (WLAN)</li>
+<li>Two types, BSS and ESS (see below)</li>
+</ul>
+<h3 id="basic-service-set-bss">Basic Service Set (BSS)</h3>
+<ul>
+<li>A WiFi network with only one WAP.</li>
+<li>The <strong>Basic Service Set Identifier (BSSID)</strong> is the MAC Address of the WAP</li>
+</ul>
+<h3 id="extended-service-set-ess">Extended Service Set (ESS)</h3>
+<ul>
+<li>A WiFi Network with more than one WAP</li>
+<li><strong>Extended Service Set ID (ESSID)</strong> is generated and shared among all the WAPs</li>
+<li>All WAPs share the network SSID too</li>
+</ul>
+<h3 id="service-set-identifier-ssid">Service Set Identifier (SSID)</h3>
+<p>This is a common name (not a 48 bit number) for a network. It is the human-readable network identifier, and it does not replace the BSSID or ESSID. The purpose of the SSID is for humans to configure the connection to the network. All hosts must have the same SSID to connect to each other in a WiFi network. The WAP will continuously broadcast the SSID so that hosts know they are connecting to the correct network.</p>
+<h2 id="carrier-sense-multiple-access-collision-avoidance-csmaca">Carrier Sense Multiple Access / Collision Avoidance (CSMA/CA)</h2>
+<p>Unlike in wired networks, Collision Detection is not possible. This is because wireless antenae cannot listen and send data simultaneously. Therefore, collisions can't be detected. Instead, wireless networks need to avoid them. If a collision happens it is up to higher level applications (like TCP) to detect and remediate the issue.</p>
+<h3 id="distributed-coordination-function-dcf">Distributed Coordination Function (DCF)</h3>
+<p>Before a host can transmit data it must check to see if the radio frequency is already being used. If some other host is transmitting the host will wait for a backoff period and try again after. After transmission, a recieving host must send an ACK. The sender will continue to retransmit until the ACK is sent or the message times out.</p>
+<ol type="1">
+<li></li>
+</ol>
+<h3 id="point-coordination-function-pcf">Point Coordination Function (PCF)</h3>
+<p>A collision avoindance scheme that is no longer in use.</p>
+<h3 id="ready-to-send-clear-to-send-rtscts">Ready to Send / Clear to Send (RTS/CTS)</h3>
+<h3 id="multiple-input-multiple-output-mimo">Multiple Input / Multiple Output (MIMO)</h3>
+<p>This is a standard introduced in 802.11n. It requires devices to have multiple antenae that can simultaneously connect to different channels</p>
+<h3 id="multiple-user-multiple-input-multiple-output-mu-mimo">Multiple User Multiple Input / Multiple Output (MU-MIMO)</h3>
+<p>Implemented in 802.11ac. This allows different antennae to broadcast to different users simultaneously using different frequencies.</p>
+<h3 id="vlan-pooling">VLAN Pooling</h3>
+<p>The process of breaking BSS or ESS into smaller VLANs. Hosts are randomly assigned to one of these VLANs. This decreases the number of devices in a broadcast domain.</p>
+<h2 id="modulation-techniques">Modulation Techniques</h2>
+<h3 id="direct-sequence-spread-spectrum-dsss">Direct Sequence Spread Spectrum (DSSS)</h3>
+<p>A kind of code division multiple access. It sends data out on several frequencies simultaneously. Has better datarate than FHSS</p>
+<h3 id="frequency-hopping-spread-spectrum">Frequency Hopping Spread Spectrum</h3>
+<p>This only sends one frequency at a time, but hops between frequencies. Has less interference than DSSS.</p>
+<h3 id="orthogonal-frequency-division-multiplexing-ofdm">Orthogonal Frequency Division Multiplexing (OFDM)</h3>
+<p>Different sub-channels are used to carry different signals. These sub-channels are chosen so that they are orthogonal to eachother. The orthogonality also allows high data thoughput, approaching the Nyquist rate.</p>
 <h2 id="bluetooth">Bluetooth</h2>
 <h2 id="nfc">NFC</h2>
 <h2 id="rfid">RFID</h2>
@@ -124,7 +187,7 @@
 <th>2G</th>
 <th>3G</th>
 <th>4G</th>
-<th></th>
+<th>5G</th>
 </tr>
 </thead>
 <tbody>
