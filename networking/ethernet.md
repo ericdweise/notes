@@ -243,7 +243,7 @@ Every host examines the network before sending a data frame, sending data only w
 ### Collision Detection
 When two hosts send data at the same time both frames are lost (a collision).
 Both NICs on the hosts will detect that the other host is sending data and stop transmission.
-After a random time the NIC will retransmit the frame.
+After a random ammount of time (called the _backoff_) the NIC will retransmit the frame.
 
 
 
