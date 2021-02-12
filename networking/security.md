@@ -47,3 +47,55 @@ This ticket expires after a certain time, after which the user must reauthentica
 The ticket can be used to authenticate the user to access any other network resource that they are allowed to access during the ticket's lifetime.
 
 Fun fact, Kerberos is the three headed dog from Ancient Greek mythology.
+
+
+
+
+
+## WiFi Security
+Methods for encrypting communication on a network.
+
+### WiFi Protected Security (WPS)
+This is a relatively insecure method for securing a network.
+There are two methods for authenticating a new host:
+
+#### Push Button
+A button is pushed on the WAP, then a button is pushed on the host.
+Configuration happens automatically.
+Downside is that you need physical access to the WAP, or a device already connected to the WLAN.
+
+#### Pin Method
+First a button is pressed on the WAP.
+Then, a preconfigured, 8-digit Personal Shared Key is entered into the host.
+
+
+### Extensible Authentication Protocol
+A RADIUS server is set up and WAPs act as edge Network Access Servers (NASs).
+EAP is a set of different protocols used to secure PPP authentication.
+They are different encryption protocols so that the user-name and password are not transmitted in the clear.
+The include:
+- EAP-PSK (Pre-Shared Key)
+- EAP-TLS
+- EAP-TTLS (Tunneled TLS)
+- EAP-MS-CHAPv2
+- EAP-MD5
+- LEAP (cisco)
+- EAP-Fast (cisco)
+
+
+### Wireless Equivalence Privacy (WEP)
+An easily cracked and no longer used standard.
+Has a static encryption key and a stream cipher that decreases key length.
+Also doesn't provide user authentication
+
+### WiFi Protected Access (WPA)
+Introduced Temporal Key Integrity Protocol, an 128 encryption key.
+Turned out to be just as insecure as WEP.
+Quickly abandoned
+
+### WPA2
+Uses Counter Mode Cipher Block Chaining Message Authentication Code Protocol (CCMP), an AES block cipher, and a 128 bit encryption key.
+Currently the standard for WiFi security.
+The simplest version uses a pre-shared key, but this doesn't do any user authentication.
+
+### WPA2-Enterprise

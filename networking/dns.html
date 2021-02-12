@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="center"><a href="/">Weise-ipedia</a></h1>
+    <hr>
+</header>
+<h1 id="domain-name-system-dns">Domain Name System (DNS)</h1>
+<p>A server that hosts a website has to communicate using only IP addresses. DNS is how someone wishing to access the web content converts the website's domain name, e.g. <code>www.ericdweise.com</code>. Gaining the IP address for the server hosting the website from a DNS server is called <strong>resolving</strong>.</p>
+<p>DNS is a very distributed database. There are many servers that can resolve IP addresses. Usually a device is configured to connect to a <strong>root server</strong> which can direct your request to other servers.</p>
+<h2 id="zones">Zones</h2>
+<h3 id="forward-lookup-zone">Forward Lookup Zone</h3>
+<p>Given an FQND, the Forward lookup zone will provide an IP address for the host serving that site. ### Reverse Lookup Zone Given an IP address, the reverse lookup zone will provide a FQDN.</p>
+<h3 id="primary-and-secondary-zones">Primary and Secondary Zones</h3>
+<p>Primary zone is the first place to look for a record. Secondary zone takes over if the primary is down, but cannot add new records. The secondary zone will receive updates from the primary.</p>
+<h2 id="dns-records">DNS Records</h2>
+<p>A DNS Server keeps a large list of IP addresses connected to their domain name. this is just a text file.</p>
+<h3 id="dns-record-types">DNS Record Types</h3>
+<p>There are over 30 types of DNS records. This list will go over some of the most common ones.</p>
+<p>NOTE: the semi-colon, <code>;</code>, is the comment symbol.</p>
+<h4 id="start-of-authority-soa">Start of Authority (SOA)</h4>
+<p>An SOA record points at a server that is in charge of a forward lookup zone.</p>
+<h4 id="name-server-ns">Name Server (NS)</h4>
+<p>This points at the name server for a particular domain</p>
+<h4 id="address-records-a-and-aaaa-records">Address Records: A and AAAA records</h4>
+<ul>
+<li><strong>A Records</strong> are used for IPv4 addresses</li>
+<li><strong>AAAA Records</strong> are used for IPv6 addresses</li>
+</ul>
+<p>An example A record is</p>
+<pre><code>example.com    IN A    123:45:67:89</code></pre>
+<h4 id="canonical-name-record-cname">Canonical Name Record: CNAME</h4>
+<p>A CNAME record is used to associate several domain names with one device, i.e: one IP address. The first domain name will be set up as an A or AAAA record, but any subsequent domains will alias</p>
+<p>If we wanted to add the <code>www</code>, <code>mail</code>, and <code>ftp</code> subdomains to the <code>example.com</code> and want these to live on the same physical server (i.e. share the same IP address) as <code>example.com</code>, then the CNAME record would look like this:</p>
+<pre><code>; Alias (canonical) names
+    www IN CNAME example.com.
+    ftp IN CNAME example.com.
+    mail IN CNAME example.com.</code></pre>
+<h4 id="service-records-srv">Service Records (SRV)</h4>
+<p>These records are used to find particular services on a network. Examples of Services that might need a SRV record might be a VoIP controller, or an instant messaging server.</p>
+<p>An example of a SRV record directing to a network's Microsoft Active Directory Controller is shown below.</p>
+<pre><code>; Service records
+; _service._proto.name. TTL class SRV priority weight port target
+ _ldap._tcp.domain.com. 300 IN    SRV 10       60     389  s1.domain.com.
+ ```
+ 
+ 
+ #### Mail Exchange Record: MX
+ This is an additional record in the DNS file that specifies the domain name of the mail server.
+ The server still needs to have an A Record (or CNAME record) in the file.
+ 
+ ```
+ IN MX mail.example.com
+ ```
+ 
+ 
+#### Pointer Records
+These are reverse look up records.
+They allow a user to find a domain name given an IP address.
+They are added to the reverse map zone file.
+</code></pre>
+<p>123.45.67.89 IN PTR example.com. ```</p>
+<h4 id="text-records">Text Records</h4>
+<p>These are not records, per se, but they offer useful information. They include things like: - Sender Policy Framework (SPF), which authorize an external host to send mail from a given domain - Domain Keys Identified Mail (DKIM), are public key parts of a digital signing framework so that a mail recipient can verify that the mail came from the private key holder.</p>
+<h2 id="common-name-servers">Common Name Servers</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Server Name</th>
+<th>Primary DNS</th>
+<th>Secondary DNS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Google</td>
+<td><code>8.8.8.8</code></td>
+<td><code>8.8.4.4</code></td>
+</tr>
+<tr class="even">
+<td>Cloudflare</td>
+<td><code>1.1.1.1</code></td>
+<td><code>1.0.0.1</code></td>
+</tr>
+<tr class="odd">
+<td>Quad9</td>
+<td><code>9.9.9.9</code></td>
+<td><code>149.112.112.112</code></td>
+</tr>
+<tr class="even">
+<td>OpenDNS</td>
+<td><code>208.67.222.222</code></td>
+<td><code>208.67.220.220</code></td>
+</tr>
+<tr class="odd">
+<td>SafeDNS</td>
+<td><code>195.46.39.39</code></td>
+<td><code>195.46.39.40</code></td>
+</tr>
+<tr class="even">
+<td>Level3</td>
+<td><code>209.244.0.3</code></td>
+<td><code>209.244.0.4</code></td>
+</tr>
+<tr class="odd">
+<td>DNS WATCH</td>
+<td><code>84.200.69.80</code></td>
+<td><code>84.200.70.40</code></td>
+</tr>
+</tbody>
+</table>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/devices">Devices</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/tools">Tools</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>

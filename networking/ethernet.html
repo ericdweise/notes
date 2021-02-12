@@ -229,7 +229,7 @@
 <h3 id="carrier-sense">Carrier Sense</h3>
 <p>Every host examines the network before sending a data frame, sending data only when the network is not in use.</p>
 <h3 id="collision-detection">Collision Detection</h3>
-<p>When two hosts send data at the same time both frames are lost (a collision). Both NICs on the hosts will detect that the other host is sending data and stop transmission. After a random time the NIC will retransmit the frame.</p>
+<p>When two hosts send data at the same time both frames are lost (a collision). Both NICs on the hosts will detect that the other host is sending data and stop transmission. After a random ammount of time (called the <em>backoff</em>) the NIC will retransmit the frame.</p>
 <h2 id="spanning-tree-protocol">Spanning Tree Protocol</h2>
 <p>If two or more switches are connected in a loop this can cause problems. A frame could be transmitted through the loop infinitely and bring down the entire network Spanning Tree Protocol solves this issue.</p>
 <ul>
