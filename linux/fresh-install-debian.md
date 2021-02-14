@@ -34,24 +34,16 @@ Some basic packages and configurations I can't live without.
 
 ### Packages
 ```bash
-sudo apt update && sudo apt upgrade
-
-sudo apt install \
-    curl \
-    exfat-utils \
-    gcc \
-    git \
-    software-properties-common \
-    tmux \
-    tree \
-    vim
+sudo apt update
+sudo apt upgrade
+sudo apt install curl exfat-utils gcc git software-properties-common tmux tree vim
 ```
 
 ### Configuration Files
 ```bash
 wget notes.ericdweise.com/dotfiles/gitconfig -O ~/.gitconfig
 wget notes.ericdweise.com/dotfiles/vimrc -O ~/.vimrc
-    ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa
 ```
 
 
@@ -172,12 +164,9 @@ rustc --version
 
 
 ## Slack
+Following instructions from [Linuxize](https://linuxize.com/post/how-to-install-slack-on-ubuntu-18-04/)
+
 ```bash
-# following: https://linuxize.com/post/how-to-install-slack-on-ubuntu-18-04/
-
-announce 'install' 'Slack Messenger'
-
-# TODO: Automatically find latest file version
 wget https://downloads.slack-edge.com/linux_releases/slack-desktop-4.0.2-amd64.deb
 sudo apt install -y ./slack-desktop-*.deb
 rm ./slack-desktop-*.deb
@@ -189,7 +178,7 @@ rm ./slack-desktop-*.deb
 
 ## Sudo (Debian Base Only)
 ```bash
-echo "Temporarily switching to Super User"
+USER_NAME=$(whoami)
 su -c "apt upgrade -y && \
     apt install -y sudo && \
     echo \"Adding $USER_NAME to sudoers.\" && \
@@ -206,10 +195,8 @@ exec su -l $USER
 
 
 ## Virtual Box
+Following instructions at the [Virtual Box website](https://www.virtualbox.org/wiki/Linux_Downloads)
 ```bash
-# Following: https://www.virtualbox.org/wiki/Linux_Downloads
-
-# 
 sudo apt-add-repository https://download.virtualbox.org/virtualbox/debian
 
 # Add Oracle Public Keys
