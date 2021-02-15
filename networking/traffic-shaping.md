@@ -17,3 +17,15 @@ It is only performed in switch devices.
 ### Differentiated Services
 Performed in the IP Frame Header.
 This is usually performed inside of routers or firewalls.
+Adds two fields to the IP Header:
+
+#### Differentiated Services Code Point (DSCP)
+- 6 bits
+
+#### Explicit Congestion Notification (ECN)
+- 2 bits
+- Takes Values:
+    - 00 - Not QoS Aware
+    - 01 - QoS Aware, no congestion
+    - 10 - QoS Aware, no congestion
+    - 11 - QoS Aware, congestion present

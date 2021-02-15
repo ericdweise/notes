@@ -116,12 +116,22 @@
 <tr class="odd">
 <td><code>tcp 1720</code></td>
 <td>H.323</td>
-<td>VoIP</td>
+<td>Video Presentation Codec</td>
 </tr>
 <tr class="even">
 <td><code>tcp 3389</code></td>
 <td>RDP</td>
 <td></td>
+</tr>
+<tr class="odd">
+<td><code>tcp 5004</code></td>
+<td>RTP</td>
+<td>VoIP</td>
+</tr>
+<tr class="even">
+<td><code>tcp 5005</code></td>
+<td>RTP</td>
+<td>VoIP</td>
 </tr>
 <tr class="odd">
 <td><code>tcp 5061</code></td>
@@ -165,18 +175,28 @@
 </tr>
 <tr class="odd">
 <td><code>udp 161</code></td>
-<td>SNMP</td>
+<td>SNMP agent</td>
 <td></td>
 </tr>
 <tr class="even">
 <td><code>udp 162</code></td>
-<td>SNMP</td>
+<td>SNMP NMS</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td><code>udp 389</code></td>
 <td>LDAP</td>
 <td></td>
+</tr>
+<tr class="even">
+<td><code>udp 10161</code></td>
+<td>SNMP agent</td>
+<td>TLS encrypted</td>
+</tr>
+<tr class="odd">
+<td><code>udp 10162</code></td>
+<td>SNMP NMS</td>
+<td>TLS encrypted</td>
 </tr>
 </tbody>
 </table>

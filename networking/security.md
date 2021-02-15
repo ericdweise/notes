@@ -99,3 +99,35 @@ Currently the standard for WiFi security.
 The simplest version uses a pre-shared key, but this doesn't do any user authentication.
 
 ### WPA2-Enterprise
+
+
+
+
+
+## Bluetooth
+Overall, Bluetooth is not very secure.
+It has evolved some security measures, including encrypted communications, discovery mode, and PINs, but it is designed to be lightweight and easy to use, not secure.
+
+### Attacks Against Bluetooth
+#### Bluejacking
+Sending unsolicited messages to a bluetooth device.
+
+#### Buesnarfing
+Stealing information from a bluetooth device.
+
+#### BlueBorne
+A set of security vulnerabilities in Bluetooth devices.
+Read the report [here](https://www.armis.com/blueborne/)
+
+
+
+
+
+## Passwords
+- Should be changed periodically (monthly)
+- Should not be allowed to repeate passwords (within a year)
+- Should be complex:
+    - At least 8 characters
+    - Upper and lower case letters
+    - numbers
+    - Special characters (like !, @, #, etc.)

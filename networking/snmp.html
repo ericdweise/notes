@@ -13,84 +13,65 @@
     <h1 class="center"><a href="/">Weise-ipedia</a></h1>
     <hr>
 </header>
-<h1 id="ieee-standards">IEEE Standards</h1>
-<p>There are a ton of IEEE standards. This is just a quick list of the important ones.</p>
+<h1 id="simple-network-management-protocol-snmp">Simple Network Management Protocol (SNMP)</h1>
+<p>For more information see <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-snmp-simple-network-management-protocol">DigitalOcean's page</a></p>
+<p>Running SNMP creates a &quot;managed network.&quot;</p>
+<p>A <strong>Network Management System</strong> is software that runs the SNMP. This software runs on a device and can use SNMP to monitor and control other devices on the network. The devices under management are called agents.</p>
+<h2 id="network-management-system-nms">Network Management System (NMS)</h2>
+<h3 id="core-functions">Core Functions</h3>
 <table>
 <colgroup>
-<col style="width: 18%" />
-<col style="width: 81%" />
+<col style="width: 11%" />
+<col style="width: 17%" />
+<col style="width: 71%" />
 </colgroup>
+<thead>
+<tr class="header">
+<th>Message</th>
+<th>Direction</th>
+<th>Action</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td>IEEE 802.1</td>
-<td>LAN/MAN working group</td>
+<td>Get</td>
+<td>manager -&gt; agent</td>
+<td>request a specific property from the agent</td>
 </tr>
 <tr class="even">
-<td>IEEE 802.1Q</td>
-<td>VLAN tagging: adds a tag to ethernet frames so switches can broadcast frames to the correct subnet.</td>
+<td>GetNext</td>
+<td>manager -&gt; MIB</td>
+<td>Get the next sequential object in the MIB</td>
 </tr>
 <tr class="odd">
-<td>IEEE 802.1X</td>
-<td>Port-based Network Authentication Protocol (PNAP). (EAP over ethernet.)</td>
+<td>GetBulk</td>
+<td>manager -&gt; agent</td>
+<td>fill as many properties will fit in the response</td>
 </tr>
 <tr class="even">
-<td>---------------</td>
-<td>--------------------------------------------------------------------</td>
+<td>Inform</td>
+<td>manager -&gt; agent</td>
+<td>inform reciept of trap</td>
 </tr>
 <tr class="odd">
-<td>IEEE 802.3</td>
-<td>Ethernet specification working group</td>
+<td>Response</td>
+<td>agent -&gt; manager</td>
+<td>send info in response to any message from the manager, including an inform</td>
 </tr>
 <tr class="even">
-<td>IEEE 802.3af</td>
-<td>Power over ethernet</td>
+<td>Set</td>
+<td>manager -&gt; agent</td>
+<td>set a specified property</td>
 </tr>
 <tr class="odd">
-<td>IEEE 802.3ab</td>
-<td>Most common ethernet</td>
-</tr>
-<tr class="even">
-<td>IEEE 802.3ad</td>
-<td>Link Agregation Control Protocol</td>
-</tr>
-<tr class="odd">
-<td>IEEE 802.3an</td>
-<td>10GBASE-T</td>
-</tr>
-<tr class="even">
-<td>---------------</td>
-<td>--------------------------------------------------------------------</td>
-</tr>
-<tr class="odd">
-<td>IEEE 802.11</td>
-<td>WLAN specifications (including LAN, MAC, and PHY protocols)</td>
-</tr>
-<tr class="even">
-<td>IEEE 802.11a</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>IEEE 802.11b</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>IEEE 802.11g</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>IEEE 802.11n</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>IEEE 802.11ac</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>IEEE 802.11i</td>
-<td>Adopted WiFi Protected Access (WPA)</td>
+<td>Trap</td>
+<td>agent -&gt; manager</td>
+<td>asynchronous update</td>
 </tr>
 </tbody>
 </table>
+<h2 id="management-information-base-mib">Management Information Base (MIB)</h2>
+<p>This is a device on a managed network that collect data for later review.</p>
 <div class="center">
     <hr>
     <p><b>Notes on Computers</b></p>

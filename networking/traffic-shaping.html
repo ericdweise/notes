@@ -19,7 +19,22 @@
 <h3 id="class-of-service-cos">Class of Service (CoS)</h3>
 <p>This is performed in the Ethernet Frame Header in the 802.1Q trunk. It is only performed in switch devices.</p>
 <h3 id="differentiated-services">Differentiated Services</h3>
-<p>Performed in the IP Frame Header. This is usually performed inside of routers or firewalls.</p>
+<p>Performed in the IP Frame Header. This is usually performed inside of routers or firewalls. Adds two fields to the IP Header:</p>
+<h4 id="differentiated-services-code-point-dscp">Differentiated Services Code Point (DSCP)</h4>
+<ul>
+<li>6 bits</li>
+</ul>
+<h4 id="explicit-congestion-notification-ecn">Explicit Congestion Notification (ECN)</h4>
+<ul>
+<li>2 bits</li>
+<li>Takes Values:
+<ul>
+<li>00 - Not QoS Aware</li>
+<li>01 - QoS Aware, no congestion</li>
+<li>10 - QoS Aware, no congestion</li>
+<li>11 - QoS Aware, congestion present</li>
+</ul></li>
+</ul>
 <div class="center">
     <hr>
     <p><b>Notes on Computers</b></p>

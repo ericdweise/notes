@@ -13,21 +13,28 @@
     <h1 class="center"><a href="/">Weise-ipedia</a></h1>
     <hr>
 </header>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<pre><code>&lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;title&gt;Eric&#39;s Notes&lt;/title&gt;
-&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;/assets/stylesheets/main.css&quot;&gt;
-&lt;script src=&quot;https://polyfill.io/v3/polyfill.min.js?features=es6&quot;&gt;&lt;/script&gt;
-&lt;script id=&quot;MathJax-script&quot; async src=&quot;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js&quot;&gt;&lt;/script&gt;</code></pre>
-</head>
-<body>
-<header>
-<pre><code>&lt;h1 class=&quot;center&quot;&gt;&lt;a href=&quot;/&quot;&gt;Weise-ipedia&lt;/a&gt;&lt;/h1&gt;
-&lt;hr&gt;</code></pre>
-</header>
+<h1 id="types-of-backups">Types of Backups</h1>
+<h3 id="full-backup">Full Backup</h3>
+<ul>
+<li>All files are backed up</li>
+<li>Archive Bit turned off for every file backed up</li>
+<li>slower and more memory for backing up</li>
+<li>very easy restore</li>
+</ul>
+<h3 id="incremental-backup">Incremental Backup</h3>
+<ul>
+<li>Only files with archve bit on are backed up</li>
+<li>Archive Bit turned off for every file backed up</li>
+<li>less storage space than differential</li>
+<li>harder to restore than differential</li>
+</ul>
+<h2 id="differential-backup">Differential Backup</h2>
+<ul>
+<li>Only files added or modified since last backup are backed up.</li>
+<li>Archive bit is not changed</li>
+<li>more storage space than incremental</li>
+<li>easier to restore than incremental</li>
+</ul>
 <div class="center">
     <hr>
     <p><b>Notes on Computers</b></p>
