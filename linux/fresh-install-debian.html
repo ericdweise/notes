@@ -184,15 +184,15 @@
 <a class="sourceLine" id="cb9-2" title="2"><span class="fu">sudo</span> apt install -y ./slack-desktop-*.deb</a>
 <a class="sourceLine" id="cb9-3" title="3"><span class="fu">rm</span> ./slack-desktop-*.deb</a></code></pre></div>
 <h2 id="sudo-debian-base-only">Sudo (Debian Base Only)</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="va">USER_NAME=$(</span><span class="fu">whoami</span><span class="va">)</span></a>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="va">USER=$(</span><span class="fu">whoami</span><span class="va">)</span></a>
 <a class="sourceLine" id="cb10-2" title="2"><span class="fu">su</span> -c <span class="st">&quot;apt upgrade -y &amp;&amp; \</span></a>
 <a class="sourceLine" id="cb10-3" title="3"><span class="st">    apt install -y sudo &amp;&amp; \</span></a>
-<a class="sourceLine" id="cb10-4" title="4"><span class="st">    echo </span><span class="dt">\&quot;</span><span class="st">Adding </span><span class="va">$USER_NAME</span><span class="st"> to sudoers.</span><span class="dt">\&quot;</span><span class="st"> &amp;&amp; \</span></a>
-<a class="sourceLine" id="cb10-5" title="5"><span class="st">    usermod -aG sudo </span><span class="va">$USER_NAME</span><span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="st">    echo </span><span class="dt">\&quot;</span><span class="st">Adding </span><span class="va">$USER</span><span class="st"> to sudoers.</span><span class="dt">\&quot;</span><span class="st"> &amp;&amp; \</span></a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="st">    usermod -aG sudo </span><span class="va">$USER</span><span class="st">&quot;</span></a>
 <a class="sourceLine" id="cb10-6" title="6"></a>
 <a class="sourceLine" id="cb10-7" title="7"><span class="bu">logout</span></a>
 <a class="sourceLine" id="cb10-8" title="8"></a>
-<a class="sourceLine" id="cb10-9" title="9"><span class="bu">echo</span> <span class="st">&quot;Re-login to user &#39;</span><span class="va">$USER_NAME</span><span class="st">&#39; to allow sudo access.&quot;</span></a>
+<a class="sourceLine" id="cb10-9" title="9"><span class="bu">echo</span> <span class="st">&quot;Re-login to user &#39;</span><span class="va">$USER</span><span class="st">&#39; to enable sudo access.&quot;</span></a>
 <a class="sourceLine" id="cb10-10" title="10"><span class="bu">exec</span> su -l <span class="va">$USER</span></a></code></pre></div>
 <h2 id="virtual-box">Virtual Box</h2>
 <p>Following instructions at the <a href="https://www.virtualbox.org/wiki/Linux_Downloads">Virtual Box website</a></p>

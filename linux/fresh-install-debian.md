@@ -178,15 +178,15 @@ rm ./slack-desktop-*.deb
 
 ## Sudo (Debian Base Only)
 ```bash
-USER_NAME=$(whoami)
+USER=$(whoami)
 su -c "apt upgrade -y && \
     apt install -y sudo && \
-    echo \"Adding $USER_NAME to sudoers.\" && \
-    usermod -aG sudo $USER_NAME"
+    echo \"Adding $USER to sudoers.\" && \
+    usermod -aG sudo $USER"
 
 logout
 
-echo "Re-login to user '$USER_NAME' to allow sudo access."
+echo "Re-login to user '$USER' to enable sudo access."
 exec su -l $USER
 ```
 
