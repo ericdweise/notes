@@ -50,8 +50,6 @@ a:hover {
 code {
     color: rgb(0,75,75);
     background-color: rgba(0,50,50,0.05);
-    padding-left: 0.5ch;
-    padding-right: 0.5ch;
 }
 
 /* CODE BLOCKS */
@@ -59,18 +57,16 @@ code.sourceCode {
     color: #b0b0ff;
 }
 div.sourceCode {
-    margin: auto;
-    padding-left: 1ch;
-    padding-right: 1ch;
     background-color: #153636;
     border-radius: 1ch;
     max-width: 80ch;
 }
 pre.sourceCode {
     max-width: 100%;
-    padding: 2ch;
+    padding: 1ch;
     overflow-x: scroll;
-    scrollbar-color: rgba(0,0,0,0.5) rgba(0,0,0,0);
+    scrollbar-color: rgba(255,255,255,0.35) rgba(0,0,0,0);
+    scrollbar-width: thin;
 }
 a.sourceLine {
     color: #ffffff;
