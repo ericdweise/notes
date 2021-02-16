@@ -135,5 +135,6 @@ This includes all font symbols, arrows, mathematical characters, and musical sym
 
 ## My LaTeX Document Templates
 My Tex templates.
-[Homework](storage/homework.tex)
-[Presentation](storage/presentation.tex)
+- [Homework](storage/homework.tex)
+- [Presentation](storage/presentation.tex)
+- [Beamer Theme](storage/beamerthemelight.sty)
