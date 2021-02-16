@@ -60,7 +60,7 @@ sudo add-apt-repository "deb [arch=amd64] https://packagecloud.io/AtomEditor/ato
 sudo apt update
 sudo apt install -y atom
 
-# Install Atop Packages
+# Install Atom Packages
 apm install mathjax-wrapper markdown-preview-plus language-markdown markdown-writer markdown-preview-enhanced
 ```
 
@@ -70,38 +70,62 @@ apm install mathjax-wrapper markdown-preview-plus language-markdown markdown-wri
 
 
 ## Docker and Docker Compose
-```bash
-sudo apt install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg-agent \
-    software-properties-common
+1. Install prerequesite packages:
 
-if [ $DISTRO == 'ubuntu' ]; then
+    ```bash
+    sudo apt install -y \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        gnupg-agent \
+        software-properties-common
+
+    ```
+
+2. Add docker's APT Key to your distro. There are different links depending on your distro. If you're on Ubuntu use this link
+
+    ```bash
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    sudo add-apt-repository \
-        "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-elif [ $DISTRO == 'debian' ]; then
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    ```
+    If you're on Debian proper use this link:
+
+    ```bash
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
     sudo apt-key fingerprint 0EBFCD88
-    sudo add-apt-repository \
-        "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
-fi
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+    ```
 
-sudo apt update
-sudo apt install -y \
-    docker-ce \
-    docker-ce-cli \
-    containerd.io
+3. Install Docker:
 
-# Test installation
-sudo docker run hello-world
+    ```bash
+    sudo apt update
+    sudo apt install -y \
+        docker-ce \
+        docker-ce-cli \
+        containerd.io
+    ```
 
-# Installing Docker Compose: https://docs.docker.com/compose/install/
-sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-```
+4. Test installation:
+
+    ```bash
+    sudo docker run hello-world
+    ```
+
+5. Installing Docker Compose: https://docs.docker.com/compose/install/
+
+    ```bash
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+    ```
+
+6. Add your user to the docker group so you don't need to run docker as sudo:
+
+    ```bash
+    sudo usermod -aG docker $USER
+    exec su -l $USER
+    docker run hello-world
+    ```
 
 
 
@@ -178,13 +202,12 @@ rm ./slack-desktop-*.deb
 
 ## Sudo (Debian Base Only)
 ```bash
-USER=$(whoami)
 su -c "apt upgrade -y && \
     apt install -y sudo && \
     echo \"Adding $USER to sudoers.\" && \
     usermod -aG sudo $USER"
 
-logout
+logout    # Logout of root
 
 echo "Re-login to user '$USER' to enable sudo access."
 exec su -l $USER
