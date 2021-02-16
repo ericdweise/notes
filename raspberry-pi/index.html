@@ -13,15 +13,15 @@
     <h1 class="center"><a href="/">Weise-ipedia</a></h1>
     <hr>
 </header>
-<h1 id="raspberry-pis">Raspberry Pi's</h1>
+<h1 id="raspberry-pis">Raspberry Pi’s</h1>
 <p>Note, these things work on Ubuntu Server, but some may not work on Raspberry Pi OS.</p>
 <h2 id="networking">Networking</h2>
 <h3 id="enable-ssh">Enable SSH</h3>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">touch</span> /boot/ssh</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">touch</span> /boot/ssh</a></code></pre></div>
 <h3 id="connect-to-wifi">Connect to WiFi</h3>
 <p>This can be done several different ways.</p>
 <h4 id="network-config">Network Config</h4>
-<p>This is supposed to work on Ubuntu Server for Raspberry Pi, but I can't test because I think my wifi card is broken.</p>
+<p>This is supposed to work on Ubuntu Server for Raspberry Pi, but I can’t test because I think my wifi card is broken.</p>
 <p>Edit the <code>network-config</code> file in the boot partition of a newly flashed SD card. It has an example configuration aleady in the file. First uncomment the block, then change the network name and passwords. The network name and password will always need to be enclosed in double quotes.</p>
 <p>You will need to reboot the Pi twice for these changes to take effect.</p>
 <h4 id="wpa-supplicant">WPA Supplicant</h4>
@@ -38,14 +38,14 @@ network={
 }</code></pre>
 <h2 id="secure-user-accounts">Secure User Accounts</h2>
 <p>Add a new user</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> adduser <span class="op">&lt;</span>NEW_USER<span class="op">&gt;</span>
-<span class="fu">sudo</span> usermod -aG sudo <span class="op">&lt;</span>NEW_USER<span class="op">&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">sudo</span> adduser <span class="op">&lt;</span>NEW_USER<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="fu">sudo</span> usermod -aG sudo <span class="op">&lt;</span>NEW_USER<span class="op">&gt;</span></a></code></pre></div>
 <p>Log out of the pi user and log into your new user account.</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">logout</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="bu">logout</span></a></code></pre></div>
 <p>Delete the old <code>pi</code> user</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> deluser --remove-home pi</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="fu">sudo</span> deluser --remove-home pi</a></code></pre></div>
 <h2 id="disable-graphics">Disable Graphics</h2>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> update-rc.d lightdm disable</code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">sudo</span> update-rc.d lightdm disable</a></code></pre></div>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="led-warning-flash-codes">LED Warning Flash Codes</h3>
 <p><a href="https://www.raspberrypi.org/documentation/configuration/led_blink_warnings.md">LED Codes</a></p>
@@ -59,7 +59,7 @@ network={
 <li>Reboot again: <code>sudo reboot</code></li>
 </ol>
 <div class="center">
-    <hr>
+    <hr style="margin-top: 5ch;">
     <p><b>Notes on Computers</b></p>
     <p>
              <a href="/aws">AWS</a>

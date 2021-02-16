@@ -29,7 +29,7 @@
 <h2 id="terminal-access-controller-access-control-system-plus-tacas">Terminal Access Controller Access Control System Plus (TACAS+)</h2>
 <p>A method for distributing ACLs to many routers and switches. The ACL is stored on a single server. It communicates</p>
 <h3 id="kerberos">Kerberos</h3>
-<p>This is decidedly <em>not</em> a point-to-point protocol. Kerberos still runs on TCP/IP, but every host connects to a single authentication server, called the Key Distribution Center (KDC). This KDC contains the usernames and passwords of all the users on the network. When a user tries to log in to a host, that host queries the authentication server. IF the authentication passes the user is sent a <em>Ticket to Request Ticket</em>. This ticket expires after a certain time, after which the user must reauthenticate. The ticket can be used to authenticate the user to access any other network resource that they are allowed to access during the ticket's lifetime.</p>
+<p>This is decidedly <em>not</em> a point-to-point protocol. Kerberos still runs on TCP/IP, but every host connects to a single authentication server, called the Key Distribution Center (KDC). This KDC contains the usernames and passwords of all the users on the network. When a user tries to log in to a host, that host queries the authentication server. IF the authentication passes the user is sent a <em>Ticket to Request Ticket</em>. This ticket expires after a certain time, after which the user must reauthenticate. The ticket can be used to authenticate the user to access any other network resource that they are allowed to access during the ticket’s lifetime.</p>
 <p>Fun fact, Kerberos is the three headed dog from Ancient Greek mythology.</p>
 <h2 id="wifi-security">WiFi Security</h2>
 <p>Methods for encrypting communication on a network.</p>
@@ -42,11 +42,11 @@
 <h3 id="extensible-authentication-protocol">Extensible Authentication Protocol</h3>
 <p>A RADIUS server is set up and WAPs act as edge Network Access Servers (NASs). EAP is a set of different protocols used to secure PPP authentication. They are different encryption protocols so that the user-name and password are not transmitted in the clear. The include: - EAP-PSK (Pre-Shared Key) - EAP-TLS - EAP-TTLS (Tunneled TLS) - EAP-MS-CHAPv2 - EAP-MD5 - LEAP (cisco) - EAP-Fast (cisco)</p>
 <h3 id="wireless-equivalence-privacy-wep">Wireless Equivalence Privacy (WEP)</h3>
-<p>An easily cracked and no longer used standard. Has a static encryption key and a stream cipher that decreases key length. Also doesn't provide user authentication</p>
+<p>An easily cracked and no longer used standard. Has a static encryption key and a stream cipher that decreases key length. Also doesn’t provide user authentication</p>
 <h3 id="wifi-protected-access-wpa">WiFi Protected Access (WPA)</h3>
 <p>Introduced Temporal Key Integrity Protocol, an 128 encryption key. Turned out to be just as insecure as WEP. Quickly abandoned</p>
 <h3 id="wpa2">WPA2</h3>
-<p>Uses Counter Mode Cipher Block Chaining Message Authentication Code Protocol (CCMP), an AES block cipher, and a 128 bit encryption key. Currently the standard for WiFi security. The simplest version uses a pre-shared key, but this doesn't do any user authentication.</p>
+<p>Uses Counter Mode Cipher Block Chaining Message Authentication Code Protocol (CCMP), an AES block cipher, and a 128 bit encryption key. Currently the standard for WiFi security. The simplest version uses a pre-shared key, but this doesn’t do any user authentication.</p>
 <h3 id="wpa2-enterprise">WPA2-Enterprise</h3>
 <h2 id="bluetooth">Bluetooth</h2>
 <p>Overall, Bluetooth is not very secure. It has evolved some security measures, including encrypted communications, discovery mode, and PINs, but it is designed to be lightweight and easy to use, not secure.</p>
@@ -70,7 +70,7 @@
 </ul></li>
 </ul>
 <div class="center">
-    <hr>
+    <hr style="margin-top: 5ch;">
     <p><b>Notes on Computers</b></p>
     <p>
              <a href="/aws">AWS</a>

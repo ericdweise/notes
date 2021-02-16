@@ -16,13 +16,13 @@
 <h1 id="virtual-private-network">Virtual Private Network</h1>
 <p>A VPN creates a tunnel between a device and a network device.</p>
 <ol type="1">
-<li>The host's NIC connects to a local router. This creates the internet connection for the device.</li>
+<li>The host’s NIC connects to a local router. This creates the internet connection for the device.</li>
 <li>The VPN service creates a virtual NIC that connects to a remote network. This connects the</li>
 </ol>
 <p>When a device is connected to a VPN, the virtual network traffic is tunneled to a virtual router. That is, all Network Packets are first created with the VPN addresses, then they are encrypted and wrapped with another network layer for the local router to use to forward the packet through the internet.</p>
 <h2 id="vpn-protocols">VPN Protocols</h2>
 <h3 id="point-to-point-tunneling-protocol-pptp">Point to Point Tunneling Protocol (PPTP)</h3>
-<p>VPNs use this protocol to route network over the internet from a host to it's VPN router. In PPTP, the endpoint on the server side is a software program running on a capable computer. Data is secured by encrypting the data from the virtual NIC and passing it to the second NIC to add <em>real world</em> Network and Datalink headers.</p>
+<p>VPNs use this protocol to route network over the internet from a host to it’s VPN router. In PPTP, the endpoint on the server side is a software program running on a capable computer. Data is secured by encrypting the data from the virtual NIC and passing it to the second NIC to add <em>real world</em> Network and Datalink headers.</p>
 <h3 id="layer-2-tunneling-protocol-l2tp">Layer 2 Tunneling Protocol (L2TP)</h3>
 <p>An L2TP VPN can run over almost any type of connection, from ethernet to dial-up. The biggest difference between L2TP and PPTP is that L2TP uses IPsec for its security.</p>
 <h3 id="ssl-vpn">SSL VPN</h3>
@@ -37,7 +37,7 @@
 <h3 id="site-to-site">Site-to-Site</h3>
 <p>A VPN tunnel is set up between two routers, typically separated by a long distance.</p>
 <div class="center">
-    <hr>
+    <hr style="margin-top: 5ch;">
     <p><b>Notes on Computers</b></p>
     <p>
              <a href="/aws">AWS</a>

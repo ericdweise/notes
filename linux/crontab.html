@@ -26,7 +26,7 @@
 <p>Note: only include the <code>USER</code> if you are editing systemwide crontab files. Otherwise omit this field.</p>
 <h2 id="adding-crontab-entries">Adding Crontab Entries</h2>
 <h3 id="interactive">Interactive</h3>
-<p>Use <code>sudo crontab -e</code>. This will open your chosen editor (the first time it will ask you to choose) and you can add a line to the crontab file. Any entries added this way will be run with root priviledges. If you don't need root permissions then you can run this without <code>sudo</code>. These entries are stored in <code>/proc</code> and can't be accessed easily.</p>
+<p>Use <code>sudo crontab -e</code>. This will open your chosen editor (the first time it will ask you to choose) and you can add a line to the crontab file. Any entries added this way will be run with root priviledges. If you don’t need root permissions then you can run this without <code>sudo</code>. These entries are stored in <code>/proc</code> and can’t be accessed easily.</p>
 <h3 id="edit-the-crontab-file-interactively">Edit the crontab file interactively</h3>
 <p>Systemwide rontab entries are stored in <code>/etc/crontab</code>. Choose your favorite editor and Requires root permissions</p>
 <h3 id="add-scripts-to-etccrontab.d">Add Scripts to <code>/etc/crontab.d/</code></h3>
@@ -39,11 +39,11 @@
 <li><code>/etc/cron.weekly/</code></li>
 <li><code>/etc/cron.weeklymonthly/</code></li>
 </ol>
-<p>Any executable can be put in one of these directories and it will be run on the schedule. That means, you don't need to use the <code>* * * * * USER COMMAND</code> format. The drawback is that you cannot specify when it will run. For example, a script in the <code>weekly</code> directory might run every Sunday or every Wednesday.</p>
+<p>Any executable can be put in one of these directories and it will be run on the schedule. That means, you don’t need to use the <code>* * * * * USER COMMAND</code> format. The drawback is that you cannot specify when it will run. For example, a script in the <code>weekly</code> directory might run every Sunday or every Wednesday.</p>
 <h2 id="debugging">Debugging</h2>
 <p>Some cron logs go into <code>/var/syslog</code></p>
 <div class="center">
-    <hr>
+    <hr style="margin-top: 5ch;">
     <p><b>Notes on Computers</b></p>
     <p>
              <a href="/aws">AWS</a>

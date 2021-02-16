@@ -19,15 +19,15 @@
 <h3 id="sources">Sources</h3>
 <p>APT stores a list of source databases in <code>/etc/apt/sources.list</code> and <code>/etc/apt/sources.list.d/</code>. TODO: Add a description of file format.</p>
 <h3 id="updating-packages">Updating packages</h3>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> apt update  <span class="co"># update APT&#39;s database of available packages and versions</span>
-<span class="fu">sudo</span> apt upgrade <span class="co"># install newer version of packages already on machine</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">sudo</span> apt update  <span class="co"># update APT&#39;s database of available packages and versions</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="fu">sudo</span> apt upgrade <span class="co"># install newer version of packages already on machine</span></a></code></pre></div>
 <h3 id="ppas">PPAs</h3>
 <p>Adding a PPA:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> add-apt-repository --remove ppa:PPA_REPOSITORY_NAME/PPA</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">sudo</span> add-apt-repository --remove ppa:PPA_REPOSITORY_NAME/PPA</a></code></pre></div>
 <p>Removing a PPA:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> add-apt-repository ppa:PPA_REPOSITORY_NAME/PPA</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">sudo</span> add-apt-repository ppa:PPA_REPOSITORY_NAME/PPA</a></code></pre></div>
 <div class="center">
-    <hr>
+    <hr style="margin-top: 5ch;">
     <p><b>Notes on Computers</b></p>
     <p>
              <a href="/aws">AWS</a>

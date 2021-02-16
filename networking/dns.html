@@ -14,7 +14,7 @@
     <hr>
 </header>
 <h1 id="domain-name-system-dns">Domain Name System (DNS)</h1>
-<p>A server that hosts a website has to communicate using only IP addresses. DNS is how someone wishing to access the web content converts the website's domain name, e.g. <code>www.ericdweise.com</code>. Gaining the IP address for the server hosting the website from a DNS server is called <strong>resolving</strong>.</p>
+<p>A server that hosts a website has to communicate using only IP addresses. DNS is how someone wishing to access the web content converts the website’s domain name, e.g. <code>www.ericdweise.com</code>. Gaining the IP address for the server hosting the website from a DNS server is called <strong>resolving</strong>.</p>
 <p>DNS is a very distributed database. There are many servers that can resolve IP addresses. Usually a device is configured to connect to a <strong>root server</strong> which can direct your request to other servers.</p>
 <h2 id="zones">Zones</h2>
 <h3 id="forward-lookup-zone">Forward Lookup Zone</h3>
@@ -39,35 +39,22 @@
 <pre><code>example.com    IN A    123:45:67:89</code></pre>
 <h4 id="canonical-name-record-cname">Canonical Name Record: CNAME</h4>
 <p>A CNAME record is used to associate several domain names with one device, i.e: one IP address. The first domain name will be set up as an A or AAAA record, but any subsequent domains will alias</p>
-<p>If we wanted to add the <code>www</code>, <code>mail</code>, and <code>ftp</code> subdomains to the <code>example.com</code> and want these to live on the same physical server (i.e. share the same IP address) as <code>example.com</code>, then the CNAME record would look like this:</p>
+<p>If we wanted to add the <code>www</code>, <code>mail</code>, and <code>ftp</code> subdomains to the <code>example.com</code> and want these to live on the same physical server (i.e. share the same IP address) as <code>example.com</code>, then the CNAME record would look like this:</p>
 <pre><code>; Alias (canonical) names
     www IN CNAME example.com.
     ftp IN CNAME example.com.
     mail IN CNAME example.com.</code></pre>
 <h4 id="service-records-srv">Service Records (SRV)</h4>
 <p>These records are used to find particular services on a network. Examples of Services that might need a SRV record might be a VoIP controller, or an instant messaging server.</p>
-<p>An example of a SRV record directing to a network's Microsoft Active Directory Controller is shown below.</p>
+<p>An example of a SRV record directing to a network’s Microsoft Active Directory Controller is shown below.</p>
 <pre><code>; Service records
 ; _service._proto.name. TTL class SRV priority weight port target
- _ldap._tcp.domain.com. 300 IN    SRV 10       60     389  s1.domain.com.
- ```
- 
- 
- #### Mail Exchange Record: MX
- This is an additional record in the DNS file that specifies the domain name of the mail server.
- The server still needs to have an A Record (or CNAME record) in the file.
- 
- ```
- IN MX mail.example.com
- ```
- 
- 
-#### Pointer Records
-These are reverse look up records.
-They allow a user to find a domain name given an IP address.
-They are added to the reverse map zone file.
-</code></pre>
-<p>123.45.67.89 IN PTR example.com. ```</p>
+ _ldap._tcp.domain.com. 300 IN    SRV 10       60     389  s1.domain.com.</code></pre>
+<p>#### Mail Exchange Record: MX This is an additional record in the DNS file that specifies the domain name of the mail server. The server still needs to have an A Record (or CNAME record) in the file.</p>
+<pre><code>IN MX mail.example.com</code></pre>
+<h4 id="pointer-records">Pointer Records</h4>
+<p>These are reverse look up records. They allow a user to find a domain name given an IP address. They are added to the reverse map zone file.</p>
+<pre><code>123.45.67.89    IN    PTR   example.com.</code></pre>
 <h4 id="text-records">Text Records</h4>
 <p>These are not records, per se, but they offer useful information. They include things like: - Sender Policy Framework (SPF), which authorize an external host to send mail from a given domain - Domain Keys Identified Mail (DKIM), are public key parts of a digital signing framework so that a mail recipient can verify that the mail came from the private key holder.</p>
 <h2 id="common-name-servers">Common Name Servers</h2>
@@ -118,7 +105,7 @@ They are added to the reverse map zone file.
 </tbody>
 </table>
 <div class="center">
-    <hr>
+    <hr style="margin-top: 5ch;">
     <p><b>Notes on Computers</b></p>
     <p>
              <a href="/aws">AWS</a>

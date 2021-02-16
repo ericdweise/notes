@@ -21,7 +21,7 @@
 <ul>
 <li><strong>x</strong> is the <em>bitrate</em> (confusingly, in GB or MB per second.)</li>
 <li><strong>BASE</strong> stands for <em>BASEBAND</em> or <em>BROADBAND</em>. All ethernet is transmitted using Baseband.</li>
-<li><strong>y</strong> is the transmission type. This indicates the cable medium. Usually this is &quot;T&quot; for twisted copper.</li>
+<li><strong>y</strong> is the transmission type. This indicates the cable medium. Usually this is “T” for twisted copper.</li>
 </ul>
 <p>For the exam remember that the maximum transmission distances for 10GBASE-T over the following mediums:</p>
 <table>
@@ -66,12 +66,12 @@
 <h3 id="payload">Payload</h3>
 <p>46-1500 bytes. This is commonly TCP or UDP data. If the payload contains less than 46 bytes then a PAD section is added.</p>
 <h3 id="fcs---frame-check-sequence">FCS - Frame Check Sequence</h3>
-<p>A <strong>CRC</strong> checksum that is 4 bytes long and is calculated for all of the data in frame. The CRC does not allow for retransmission, and does not catch all errors. If the frame does not agree with it's CRC then the frame is dropped.</p>
+<p>A <strong>CRC</strong> checksum that is 4 bytes long and is calculated for all of the data in frame. The CRC does not allow for retransmission, and does not catch all errors. If the frame does not agree with it’s CRC then the frame is dropped.</p>
 <h2 id="types-of-networks">Types of Networks</h2>
 <h3 id="bus-network">Bus Network</h3>
-<p>In a bus network, every computer is directly connected to every other computer through a common network cable. Every ethernet frame is sent to every host. Each host determines whether or not the frame is directed to it and discards the frame if the destination MAC address does not match the device's.</p>
+<p>In a bus network, every computer is directly connected to every other computer through a common network cable. Every ethernet frame is sent to every host. Each host determines whether or not the frame is directed to it and discards the frame if the destination MAC address does not match the device’s.</p>
 <h3 id="hub-network">Hub Network</h3>
-<p>This is also an old format of transporting data in a network. <em>Really, it is like putting a bus put into a small box.</em> The advantage of this is that the bus wire can't be cut as easily. If a wire gets cut then only the host connected to that wire is disconnected from the network.</p>
+<p>This is also an old format of transporting data in a network. <em>Really, it is like putting a bus put into a small box.</em> The advantage of this is that the bus wire can’t be cut as easily. If a wire gets cut then only the host connected to that wire is disconnected from the network.</p>
 <p>Data can be sent both to and from a HUB, but only one direction can be sent at a time. A device cannot send data when the HUB is sending data (to all devices).</p>
 <p>In a hub network, every ethernet frame is sent to every device on the network. 10BaseT and early 100BaseT used hub networks.</p>
 <h3 id="switch-network">Switch Network</h3>
@@ -80,7 +80,7 @@
 <p>A switch will keep a table of MAC addresses listing all the devices on the network. This table is built from the <strong>Source MAC</strong> parts of the Ethernet Frames sent to it.</p>
 <h5 id="flooding">Flooding</h5>
 <p>When a destination MAC address is not in the STT it will flood the network with that frame.</p>
-<h3 id="half-vs.-full-duplex">Half vs. Full Duplex</h3>
+<h3 id="half-vs.-full-duplex">Half vs. Full Duplex</h3>
 <p>A host can send and receive data, but not at the same time. Hub (and bus) networks use <strong>Half Duplex</strong> communication.</p>
 <p>Full Duplex communication Switch networks use full duplex communication, it can send and receive data simultaneously.</p>
 <h3 id="address-resolution-protocol">Address Resolution Protocol</h3>
@@ -88,7 +88,7 @@
 <p>Querying your local ARP Cache: <code>arp -a</code></p>
 <h3 id="wireless-networks">Wireless Networks</h3>
 <p>Wireless networks use a <strong>Ready to send, Clear to send</strong> protocol. When a devices is ready to send data to the base station it requests a time slot in which to broadcast. This is the ready to send signal. The base station then queues the request. When the base station is ready to receive the data from that device it will send the device a signal allowing it to broadcast its payload.</p>
-<p>This rigmarole is necessary because a device physically cannot send and receive data at the same time. This is because sending data overrides the antenna's ability to listen. Furthermore, on a specific communication band, if two devices are broadcasting at the same time, their signals will interfere with each other.</p>
+<p>This rigmarole is necessary because a device physically cannot send and receive data at the same time. This is because sending data overrides the antenna’s ability to listen. Furthermore, on a specific communication band, if two devices are broadcasting at the same time, their signals will interfere with each other.</p>
 <h2 id="ethernet-standards">Ethernet Standards</h2>
 <p>The ethernet standards are written by IEEE working group 802.3. The standards take names that take the form <strong>NBaseX</strong>, where: - N is the speed (in Mbps) - Base indicates baseband (one signal, as opposed to broadband) - X indicates cable type: - T means twisted copper wire - FL, SX, and LX mean Fiber Optic</p>
 <h3 id="base">10 Base</h3>
@@ -233,13 +233,13 @@
 <h2 id="spanning-tree-protocol">Spanning Tree Protocol</h2>
 <p>If two or more switches are connected in a loop this can cause problems. A frame could be transmitted through the loop infinitely and bring down the entire network Spanning Tree Protocol solves this issue.</p>
 <ul>
-<li>One switch is randomly elected to be the &quot;root switch&quot;</li>
+<li>One switch is randomly elected to be the “root switch”</li>
 <li>every other switch finds a path to the root switch using Bridge Protocol Data Units (BDPU)</li>
-<li>Ports connected to switches not on the path to the are put into the &quot;blocking state&quot;, and are unable to send or recieve normal frames</li>
+<li>Ports connected to switches not on the path to the are put into the “blocking state”, and are unable to send or recieve normal frames</li>
 </ul>
 <p>Of course, the topology needs to change Blocked ports can listen for a Topology Change Notification BDPU. In the case of a switch being taken out of the network then the rest of the switches will recreate the spanning tree with a newly elected root switch.</p>
 <div class="center">
-    <hr>
+    <hr style="margin-top: 5ch;">
     <p><b>Notes on Computers</b></p>
     <p>
              <a href="/aws">AWS</a>

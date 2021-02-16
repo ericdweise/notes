@@ -62,22 +62,22 @@
 </table>
 <h3 id="static-route">static route</h3>
 <h3 id="default-route">Default route</h3>
-<p>a &quot;last resort&quot; network path used by a router for forwarding all packets with destination addresses not listed in its routing table.</p>
+<p>a “last resort” network path used by a router for forwarding all packets with destination addresses not listed in its routing table.</p>
 <h3 id="metric">Metric</h3>
 <p>Routes with lower metrics will be used first.</p>
 <h2 id="mac-address-table">MAC address table</h2>
 <h2 id="arp-table">ARP table</h2>
 <h3 id="section"></h3>
 <h2 id="routing-protocols">Routing Protocols</h2>
-<p>Calculate the most efficient way to send an IP packet through one or more routers. The cost functions vary, but can be based on things like number of hops, latency, MTU, bandwidth, etc. In the end, these protocols aim to set the Metrics in a router's routing table.</p>
+<p>Calculate the most efficient way to send an IP packet through one or more routers. The cost functions vary, but can be based on things like number of hops, latency, MTU, bandwidth, etc. In the end, these protocols aim to set the Metrics in a router’s routing table.</p>
 <h3 id="distance-vector">Distance Vector</h3>
 <p>Calculates the cost to get from a router to a particular network ID.</p>
 <ol type="1">
-<li>A router transfers it's route table to other routers in the WAN.</li>
-<li>The recieving router will add it's route table to the recieved by splitting network destinations and adding it's metrics to the the new Netmasks.</li>
+<li>A router transfers it’s route table to other routers in the WAN.</li>
+<li>The recieving router will add it’s route table to the recieved by splitting network destinations and adding it’s metrics to the the new Netmasks.</li>
 <li>The new route table is then forwarded to all other routers.</li>
 </ol>
-<p>The eventual result is every router in the WAN will recieve every other routers route table, possibly several times, depending on how many The router can then update it's own route table to reach other routers if there is a route with an overall lower metric.</p>
+<p>The eventual result is every router in the WAN will recieve every other routers route table, possibly several times, depending on how many The router can then update it’s own route table to reach other routers if there is a route with an overall lower metric.</p>
 <p>Eventually, routers in a WAN will reach steady state. They will, however, continue to send their routing tables, even though nothing has changed. When the network topology changes and certain routes become unavailable, or new, lower cost/metric routes become available, this will be reflected in the entire network.</p>
 <p>Distance vector works for relatively few routers in a WAN, but not for the entire internet.</p>
 <h4 id="ripv1">RIPv1</h4>
@@ -90,7 +90,7 @@
 <ul>
 <li>much the same as RIPv1, with added features</li>
 <li>Variable Length Subnet Masking (VLSM)</li>
-<li>Router Authentication (so hackers can't add spurious route tables to the network)</li>
+<li>Router Authentication (so hackers can’t add spurious route tables to the network)</li>
 </ul>
 <h3 id="link-state">Link-State</h3>
 <ul>
@@ -102,13 +102,13 @@
 <li>most popular dynamic routing protocol</li>
 <li></li>
 </ul>
-<p>Upon startup router sends &quot;hello packets&quot; Adjacent routers form a <em>neighborship</em> <strong>Link State Advertisement (LSA)</strong> is used to flood the router network When flooding is complete each router chooses its own best routes</p>
+<p>Upon startup router sends “hello packets” Adjacent routers form a <em>neighborship</em> <strong>Link State Advertisement (LSA)</strong> is used to flood the router network When flooding is complete each router chooses its own best routes</p>
 <ul>
 <li>cost is a function of bandwidth</li>
 <li>send only updates (as opposed to continual broadcasting</li>
 <li>Supports authentication</li>
 <li>shortest path first (prevents loops)</li>
-<li>Until recently didn't support IPv6 addresses</li>
+<li>Until recently didn’t support IPv6 addresses</li>
 </ul>
 <h4 id="intermediate-system-to-intermediate-system-is-is">Intermediate System to Intermediate System (IS-IS)</h4>
 <ul>
@@ -121,17 +121,17 @@
 <h4 id="autonomous-systems">Autonomous Systems</h4>
 <ul>
 <li>sit at the top of the heirarchy in</li>
-<li>Address are Autonomous System Numbers (ASNs) 32 bits, represented as two 16 bit separated by a dot: `123.456'</li>
+<li>Address are Autonomous System Numbers (ASNs) 32 bits, represented as two 16 bit separated by a dot: `123.456’</li>
 <li>Talk to eachother using Exterior Gateway Protocol (EGP)</li>
 <li>Talk to their subnetwork using Interior Gateway Protocol (IGP)</li>
 </ul>
 <h3 id="enhanced-interior-gateway-routing-protocol-eigrp">Enhanced Interior Gateway Routing Protocol (EIGRP</h3>
 <ul>
 <li>Cisco proprietary protocol</li>
-<li>hybrid or &quot;Advanced Distance Vector Protocol&quot; (on CompTIA Network+ exam as <strong>distance vector</strong>)</li>
+<li>hybrid or “Advanced Distance Vector Protocol” (on CompTIA Network+ exam as <strong>distance vector</strong>)</li>
 </ul>
 <div class="center">
-    <hr>
+    <hr style="margin-top: 5ch;">
     <p><b>Notes on Computers</b></p>
     <p>
              <a href="/aws">AWS</a>

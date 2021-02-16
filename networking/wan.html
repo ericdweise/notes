@@ -28,12 +28,12 @@
 <li>Cable Modem and Satelite</li>
 </ul>
 <h2 id="regional-networks">Regional Networks</h2>
-<p>Historically, WANs didn't communicate using ethernet. (But, this is changing with new fiber networks.) Instead they use/used different protocols, namely T1/T3 and SONET.</p>
+<p>Historically, WANs didn’t communicate using ethernet. (But, this is changing with new fiber networks.) Instead they use/used different protocols, namely T1/T3 and SONET.</p>
 <h2 id="signaling-protocols">Signaling Protocols</h2>
 <h3 id="digital-signal-0-ds0">Digital Signal 0 (DS0)</h3>
 <p>The earliest digital signal. It uses 8 bits of data sampled 8000 times a second. This gives it a total data throughput of 64 kbps. This can satisfactorily send a human voice, but has been superceded with better technologies.</p>
 <h3 id="digital-signal-1-ds1">Digital Signal 1 (DS1)</h3>
-<p>A DS1 frame contains 24 DS0 &quot;channels&quot; (and a frame bit.) 8,000 frames are sent per second giving a data rate of 1.544 Mbps.</p>
+<p>A DS1 frame contains 24 DS0 “channels” (and a frame bit.) 8,000 frames are sent per second giving a data rate of 1.544 Mbps.</p>
 <h3 id="digital-signal-3-ds3">Digital Signal 3 (DS3)</h3>
 <p>A DS3 frame contains 672 DS0 channels (and a frame bit.)</p>
 <h2 id="t1t3-copper">T1/T3 (Copper)</h2>
@@ -82,15 +82,15 @@
 </tbody>
 </table>
 <h3 id="channel-service-unit-digital-service-unit-csudsu">Channel Service Unit / Digital Service Unit (CSU/DSU)</h3>
-<p>A physical device that connects a customer's network to a T1 or T3 phoneline. Can also be used to connect T1 and E1 lines.</p>
+<p>A physical device that connects a customer’s network to a T1 or T3 phoneline. Can also be used to connect T1 and E1 lines.</p>
 <h2 id="synchronized-optical-network-sonet">Synchronized Optical Network (SONET)</h2>
 <p>Another point to point protocol used in WANs. Can combine multiple DS1, DS3, and E1 signals into one single frame.</p>
 <h3 id="optical-carrier-standards">Optical Carrier Standards</h3>
 <p>These set the standards for different data throughputs over optical cables. The standards increase in data throughput.</p>
 <h3 id="synchronous-transport-signal-sts">Synchronous Transport Signal (STS)</h3>
-<p>The STS protocol specifies a frame that is sent over SONET networks. The <strong>Overhead</strong> is similar to a header, and specifies the signaling and protocol information (e.g. OC-1 - OC-768) Correlate directly to different OC standards.</p>
+<p>The STS protocol specifies a frame that is sent over SONET networks. The <strong>Overhead</strong> is similar to a header, and specifies the signaling and protocol information (e.g. OC-1 - OC-768) Correlate directly to different OC standards.</p>
 <h3 id="wavelength-division-multiplexing-wdm">Wavelength Division Multiplexing (WDM)</h3>
-<p>A method for sending multiple signals over an optical cable at one time. Gives each signal it's own wavelength. The newest version, <strong>Dense WDM (DWDM)</strong> can send up to about 150 signals at once Each signal is capable of the full data throughput. So, WDM essentially multiplies the data throughput by the number of signals being used.</p>
+<p>A method for sending multiple signals over an optical cable at one time. Gives each signal it’s own wavelength. The newest version, <strong>Dense WDM (DWDM)</strong> can send up to about 150 signals at once Each signal is capable of the full data throughput. So, WDM essentially multiplies the data throughput by the number of signals being used.</p>
 <h4 id="coarse-wavelength-division-multiplexing-cwdm">Coarse Wavelength Division Multiplexing (CWDM)</h4>
 <p>This too uses multiple wavelengths but is simpler to implement than DWDM. Can also send data over longer distances than DWDM.</p>
 <h2 id="packet-switching">Packet Switching</h2>
@@ -110,7 +110,7 @@
 <li>Minimizes data transfer delay (at the expense of data loss rate)</li>
 </ul>
 <h3 id="multi-protocol-labeled-switching-mpls">Multi-Protocol Labeled Switching (MPLS)</h3>
-<p>This is a protocol that sits somewhere inbetween Datalink and Network. The protocol inserts one or more &quot;Labels&quot; inbetween the Ethernet frame and IP packet headers Here is a typical MPLS Label:</p>
+<p>This is a protocol that sits somewhere inbetween Datalink and Network. The protocol inserts one or more “Labels” inbetween the Ethernet frame and IP packet headers Here is a typical MPLS Label:</p>
 <pre><code>[  Label  |  Experimental Bits  |  BLS  |  TTL  ]</code></pre>
 <ul>
 <li>Label: A UID that tells MPLS routers how to direct data</li>
@@ -157,7 +157,7 @@
 </ul>
 <h3 id="broadband-cable">Broadband Cable</h3>
 <ul>
-<li>Runs on coaxial &quot;TV&quot; cable</li>
+<li>Runs on coaxial “TV” cable</li>
 <li>Use a Cable Modem</li>
 <li>Usually much faster than DSL (5 to 200 Mbps download, up to 10 Mbps upload)</li>
 <li>The protocol used is called <strong>Data Over Cable Service Interface Specification (DOCSIS)</strong></li>
@@ -169,7 +169,7 @@
 <li>Neither Broadband Cable nor Satellite use PPPoE or PPP</li>
 </ul>
 <div class="center">
-    <hr>
+    <hr style="margin-top: 5ch;">
     <p><b>Notes on Computers</b></p>
     <p>
              <a href="/aws">AWS</a>

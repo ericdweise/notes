@@ -19,7 +19,7 @@
 <ul>
 <li>Version: <code>4</code> or <code>6</code>, depending on whether IPv4 or IPv6 is being used</li>
 <li>Length: The length of the packet in bytes</li>
-<li>Differentiated Services Code Point: Contains bandwidth sensitive data (e.g. VoIP)</li>
+<li>Differentiated Services Code Point: Contains bandwidth sensitive data (e.g. VoIP)</li>
 <li>Time To Live (TTL): A counter that is decremented every time a packet goes through a router. Maximum value is 255</li>
 <li>Protocol: Usually <code>TCP</code> or <code>UDP</code></li>
 </ul>
@@ -31,15 +31,15 @@
 <h3 id="three-way-handshake">Three Way Handshake</h3>
 <p>Used to start a TCP connection. This dance must be performed by two machines before they can send TCP data</p>
 <ol type="1">
-<li><code>SYN</code>: Machine 1, &quot;Are you there&quot;</li>
-<li><code>SYN-ACK</code>: Machine 2, &quot;Yes I'm Here&quot;</li>
-<li><code>ACK</code>: Machine 1, &quot;Cool, I'm sending data&quot; (or requesting data, which is itself data...)</li>
+<li><code>SYN</code>: Machine 1, “Are you there”</li>
+<li><code>SYN-ACK</code>: Machine 2, “Yes I’m Here”</li>
+<li><code>ACK</code>: Machine 1, “Cool, I’m sending data” (or requesting data, which is itself data…)</li>
 </ol>
 <h2 id="udp">UDP</h2>
 <h3 id="udp-header">UDP Header</h3>
 <pre><code>[ Source Port | Destination Port | Length | Checksum ]</code></pre>
 <div class="center">
-    <hr>
+    <hr style="margin-top: 5ch;">
     <p><b>Notes on Computers</b></p>
     <p>
              <a href="/aws">AWS</a>

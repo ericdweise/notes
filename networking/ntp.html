@@ -19,10 +19,10 @@
 <h2 id="communication-with-ntp-servers">Communication with NTP Servers</h2>
 <h2 id="stratums">Stratums</h2>
 <p>NTP servers are identified by their stratum. A stratum 0 device is the highest order. It does not <em>get</em> its time from any other clock but is a standalone device. Once it is set that is it. Examples of stratum 0 devices are the clocks on GPS satelites.</p>
-<p>An NTP server that synchronizes its time with a statum 0 server is called a stratum 1 device. Similarly, a stratum 2 device synchronizes with a stratum 1 device, <em>und so weiter</em>. The larger the stratum number, the less accurate the NTP server's clock will be, simply because errors can be introduced when each NTP server synchronizes it's clock.</p>
+<p>An NTP server that synchronizes its time with a statum 0 server is called a stratum 1 device. Similarly, a stratum 2 device synchronizes with a stratum 1 device, <em>und so weiter</em>. The larger the stratum number, the less accurate the NTP server’s clock will be, simply because errors can be introduced when each NTP server synchronizes it’s clock.</p>
 <p>The maximum stratum is 15. A stratum of 16 indicates that the devices is unsynchronized</p>
 <div class="center">
-    <hr>
+    <hr style="margin-top: 5ch;">
     <p><b>Notes on Computers</b></p>
     <p>
              <a href="/aws">AWS</a>
