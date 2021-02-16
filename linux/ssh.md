@@ -76,5 +76,5 @@ CAREFUL: You will need to enable SSH Keys before you do this!
 Edit the `sshd_config` file and add or edit this line:
 
 ```bash
-#PasswordAuthentication no
+PasswordAuthentication no
 ```
