@@ -27,3 +27,6 @@ set ruler
 
 " disable mouse 
 set mouse=
+
+" smartcase, ignores case if searching all lowercase
+set smartcase
