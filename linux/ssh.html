@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <h1 class="center"><a href="/">Weise-ipedia</a></h1>
+    <hr>
+</header>
+<h1 id="secure-shell-ssh">Secure Shell (SSH)</h1>
+<p>Instructions for setting up the SSH Server on Linux</p>
+<h2 id="installing-ssh-server">Installing SSH Server</h2>
+<h3 id="debian-and-ubuntu">Debian and Ubuntu</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">sudo</span> apt install openssh-server</a></code></pre></div>
+<h2 id="securing-you-ssh-server">Securing you SSH Server</h2>
+<p>So far a very incomplete list of things to do to make the computer running SSH Server more secure. You will need root privileges to edit the <code>sshd_config</code> file. This file is found in different places, here is where I know where to look for it:</p>
+<table>
+<thead>
+<tr class="header">
+<th>distro</th>
+<th>filepath</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ubuntu 20.04</td>
+<td><code>/etc/ssh/sshd_config</code></td>
+</tr>
+</tbody>
+</table>
+<p>As a last resort you can use <code>locate</code> or <code>find</code> to find the config file.</p>
+<p>After you make any changes to <code>sshd_config</code> you will need to reload the server. If you’re running systemd you’ll run</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">sudo</span> systemctl restart sshd</a></code></pre></div>
+<p>And, if you’re running sysvinit you’ll run:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">sudo</span> service sshd restart</a></code></pre></div>
+<h3 id="changing-the-default-port">Changing the Default Port</h3>
+<p>This will confuse basic port sniffers that check to see if port 22 is open. Edit the <code>sshd_config</code> file and add or edit this line:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">Port</span> 12345  <span class="co"># Not 22!</span></a></code></pre></div>
+<h3 id="enable-ssh-keys">Enable SSH Keys</h3>
+<p>Why do this? SSH Keys are probably more secure than your password, thus are harder to crack!</p>
+<ol type="1">
+<li>On your SSH Server enable SSH Key Logins by editing the <code>sshd_config</code> file. The default is to allow SSH Key Authentication, but make sure this line is included in yoru config: <code>bash  PubkeyAuthentication yes</code></li>
+<li>NOTE: The rest of these steps will be run on your ssh client device (not the server)</li>
+<li>Generate a Public-Private Key. Don’t do this if you already generated a key in this file as it will be overwritten. <code>bash  ssh-keygen -t rsa -b 2048 -f ~/.ssh/server_rsa_file</code></li>
+<li>Copy the public key to your ssh server. This command will copy your public key into <code>~/.ssh/authorized_keys</code>, but you can also do it manually. <code>bash  ssh-copy-id -i ~/.ssh/server_rsa_file.pub USER@HOST</code></li>
+<li>Log into your server using your private key: <code>bash  ssh -i ~/.ssh/server_rsa_file USER@HOST</code></li>
+</ol>
+<h3 id="disable-passwords">Disable passwords</h3>
+<p>This won’t allow a user to log in with their password. CAREFUL: You will need to enable SSH Keys before you do this! Edit the <code>sshd_config</code> file and add or edit this line:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="co">#PasswordAuthentication no</span></a></code></pre></div>
+<div class="center">
+    <hr>
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/devices">Devices</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/tools">Tools</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>
