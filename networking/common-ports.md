@@ -24,7 +24,7 @@
 | `tcp 3389`  | RDP                |
 | `tcp 5004`  | RTP                | VoIP
 | `tcp 5005`  | RTP                | VoIP
-| `tcp 5061`  | SIP                |
+| `tcp 5060`  | SIP                |
 | `tcp 5061`  | SIP                |
 | `udp 53`    | DNS                |
 | `udp 67`    | DHCP (server)      |
