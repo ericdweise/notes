@@ -3,13 +3,12 @@ I used to have a prolific music library, but I lost it when my computer crashed 
 I'm trying to build up my collection again, but I'm trying to not be dependent on a proprietary system, single point of failure.
 This is my process.
 
-### Strawberry
+## Strawberry
+### Install
+```bash
+```
 
-- Fork of Clementine
-- I use it to manage audio files and playlists
-
-
-#### Set Up Collection
+### Set Up Collection
 The Strawberry "collection" is a set of all the audio files in it's database.
 It's similar to an iTunes Library.
 
@@ -17,8 +16,7 @@ It's similar to an iTunes Library.
 2. `Collections`
 3. `Add new folder`
 
-
-#### Importing New Music
+### Importing New Music
 
 1. Import unsorted directory into a **Playlist**: `Playlist -> Add Folder`
 2. Clean up metadata
@@ -31,6 +29,20 @@ It's similar to an iTunes Library.
 7. Un-check `Overwrite existing files`
 8. Un-check `Copy album cover artwork`
 9. Click `Ok`
+
+### Playlists
+
+
+
+
+
+## Audacity
+### Install
+```bash
+```
+
+
+
 
 
 ## Editing Music and Audio Files

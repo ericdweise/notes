@@ -2,30 +2,6 @@
 
 This is a set of small scripts that I use to configure a new Debian based install.
 
-## Install Steps
-
-|                        | Debian (Base) | Personal Computer | Development Computer | Kali Pen Test Computer |
-|------------------------|---------------|-------------------|----------------------|------------------------|
-| All Distros            |               |                   |                      |                        |
-| Atom Text Editor       |               |                   |                      |                        |
-| Docker                 |               |                   |                      |                        |
-| Password Manager       |               |                   |                      |                        |
-| Python 3               |               |                   |                      |                        |
-| RSS Feed Reader        |               |                   |                      |                        |
-| Rust                   |               |                   |                      |                        |
-| Slack                  |               |                   |                      |                        |
-| Sudo                   |               |                   |                      |                        |
-| Virtual Box            |               |                   |                      |                        |
- 
- 
- 
- 
- 
- 
- 
- 
-
-
 
 
 
@@ -64,6 +40,17 @@ sudo apt install -y atom
 apm install mathjax-wrapper markdown-preview-plus language-markdown markdown-writer markdown-preview-enhanced
 ```
 
+
+
+
+
+## Bluetooth
+### Keyboard with NumLock stuck on
+Do this if the bluetooth keyboard always connects with numlock on.
+```bash
+sudo apt install numlockx
+echo '/usr/bin/numlockx off' | sudo tee -a /etc/X11/Xsession
+```
 
 
 

@@ -15,19 +15,17 @@
 </header>
 <h1 id="audio">Audio</h1>
 <p>I used to have a prolific music library, but I lost it when my computer crashed and iPod classic was stolen. I’m trying to build up my collection again, but I’m trying to not be dependent on a proprietary system, single point of failure. This is my process.</p>
-<h3 id="strawberry">Strawberry</h3>
-<ul>
-<li>Fork of Clementine</li>
-<li>I use it to manage audio files and playlists</li>
-</ul>
-<h4 id="set-up-collection">Set Up Collection</h4>
+<h2 id="strawberry">Strawberry</h2>
+<h3 id="install">Install</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"></code></pre></div>
+<h3 id="set-up-collection">Set Up Collection</h3>
 <p>The Strawberry “collection” is a set of all the audio files in it’s database. It’s similar to an iTunes Library.</p>
 <ol type="1">
 <li>Settings <code>ctrl + P</code> or <code>tools</code> -&gt; <code>Settings</code></li>
 <li><code>Collections</code></li>
 <li><code>Add new folder</code></li>
 </ol>
-<h4 id="importing-new-music">Importing New Music</h4>
+<h3 id="importing-new-music">Importing New Music</h3>
 <ol type="1">
 <li>Import unsorted directory into a <strong>Playlist</strong>: <code>Playlist -&gt; Add Folder</code></li>
 <li>Clean up metadata
@@ -43,12 +41,16 @@
 <li>Un-check <code>Copy album cover artwork</code></li>
 <li>Click <code>Ok</code></li>
 </ol>
+<h3 id="playlists">Playlists</h3>
+<h2 id="audacity">Audacity</h2>
+<h3 id="install-1">Install</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"></code></pre></div>
 <h2 id="editing-music-and-audio-files">Editing Music and Audio Files</h2>
 <h3 id="ffmpeg">FFMPEG</h3>
 <p>A very powerful command line tool.</p>
 <h4 id="clipping-file">Clipping File</h4>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">ffmpeg</span> -i INPUT.file [-ss START(hh:mm:ss)] <span class="ex">-t</span> LENGTH(hh:mm:ss) <span class="ex">-acodec</span> copy OUTPUT.file</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="co"># </span><span class="al">NOTE</span><span class="co">: -ss can be omitted if starting from beginning of file</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">ffmpeg</span> -i INPUT.file [-ss START(hh:mm:ss)] <span class="ex">-t</span> LENGTH(hh:mm:ss) <span class="ex">-acodec</span> copy OUTPUT.file</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="co"># </span><span class="al">NOTE</span><span class="co">: -ss can be omitted if starting from beginning of file</span></a></code></pre></div>
 <div class="center">
     <hr style="margin-top: 5ch;">
     <p><b>Notes on Computers</b></p>
@@ -58,7 +60,6 @@
     &middot; <a href="/c-lang">C</a>
     &middot; <a href="/cpp-lang">C++</a>
     &middot; <a href="/cybersecurity">Cyber Security</a>
-    &middot; <a href="/devices">Devices</a>
     &middot; <a href="/git">Git</a>
     &middot; <a href="/latex">LaTeX</a>
     &middot; <a href="/linux">Linux</a>

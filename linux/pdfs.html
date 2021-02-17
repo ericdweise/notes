@@ -13,21 +13,11 @@
     <h1 class="center"><a href="/">Weise-ipedia</a></h1>
     <hr>
 </header>
-<h1 id="email">Email</h1>
-<h2 id="protocols">Protocols</h2>
-<h3 id="simple-mail-transfer-protocol">Simple Mail Transfer Protocol</h3>
-<ul>
-<li>Can only send, not retrieve</li>
-</ul>
-<h3 id="post-office-protocol-v3-pop3">Post Office Protocol v3 (POP3)</h3>
-<ul>
-<li>Can send and recieve emails</li>
-</ul>
-<h3 id="internet-message-access-protocol-v4-imap4">Internet Message Access Protocol v4 (IMAP4)</h3>
-<ul>
-<li>Can send and retrieve emails</li>
-<li>Generally more advanced than POP3</li>
-</ul>
+<h1 id="portable-document-format-on-linux">Portable Document Format on Linux</h1>
+<h2 id="making-a-pdf-from-multiple-files">Making a PDF from Multiple Files:</h2>
+<p>I prefer <code>img2pdf</code> over <code>convert</code>. It has a lower memory footprint and <code>convert</code> will crash on my cloudbook if there are more than 14 pages of 300 dpi pngs.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">img2pdf</span> -o output.pdf JPG1 [JPG2 [...]]</a></code></pre></div>
+<p>To install <code>img2pdf</code> on Debian: <code>sudo apt install img2pdf</code></p>
 <div class="center">
     <hr style="margin-top: 5ch;">
     <p><b>Notes on Computers</b></p>

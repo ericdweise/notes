@@ -13,21 +13,18 @@
     <h1 class="center"><a href="/">Weise-ipedia</a></h1>
     <hr>
 </header>
-<h1 id="email">Email</h1>
-<h2 id="protocols">Protocols</h2>
-<h3 id="simple-mail-transfer-protocol">Simple Mail Transfer Protocol</h3>
-<ul>
-<li>Can only send, not retrieve</li>
-</ul>
-<h3 id="post-office-protocol-v3-pop3">Post Office Protocol v3 (POP3)</h3>
-<ul>
-<li>Can send and recieve emails</li>
-</ul>
-<h3 id="internet-message-access-protocol-v4-imap4">Internet Message Access Protocol v4 (IMAP4)</h3>
-<ul>
-<li>Can send and retrieve emails</li>
-<li>Generally more advanced than POP3</li>
-</ul>
+<h1 id="using-android-with-linux">Using Android with Linux</h1>
+<h2 id="transferring-files-to-debian">Transferring Files to Debian</h2>
+<ol type="1">
+<li><code>sudo apt install jmtpfs</code></li>
+<li>Debian only: <code>sudo apt install fusermount</code></li>
+<li>Connect android to computer (USB)</li>
+<li>Enable <code>File Transfer</code> on phone</li>
+<li>Make mount point: <code>mkdir ~/android</code></li>
+<li>Mount phone: <code>jmtpfs ~/android</code></li>
+<li>Move files</li>
+<li>Unmount: <code>fusermount -u ~/android</code></li>
+</ol>
 <div class="center">
     <hr style="margin-top: 5ch;">
     <p><b>Notes on Computers</b></p>

@@ -13,21 +13,21 @@
     <h1 class="center"><a href="/">Weise-ipedia</a></h1>
     <hr>
 </header>
-<h1 id="email">Email</h1>
-<h2 id="protocols">Protocols</h2>
-<h3 id="simple-mail-transfer-protocol">Simple Mail Transfer Protocol</h3>
+<h1 id="acer-cloudbook">Acer Cloudbook</h1>
+<h2 id="stats">Stats</h2>
+<p>Acer Cloudbook 11 Year: 2015 Model No: N15V1 Debian 9 with XFCE desktop</p>
+<h2 id="installing-debian-9-on-the-acer-cloudbook-with-emmc-storage.">Installing Debian 9 on the Acer Cloudbook with eMMC storage.</h2>
+<ol type="1">
+<li>Boot computer and get to the “Debian GNU/Linux installer boot loader”</li>
+<li>Press <code>esc</code> key to get to the grub command-line</li>
+<li><code>install /install.amd/vmlinuz desktop=xfce vga=788 noapic edd=off quiet</code></li>
+<li>You will need to add the iwlwifi firmware. Can be found one of these places:
 <ul>
-<li>Can only send, not retrieve</li>
-</ul>
-<h3 id="post-office-protocol-v3-pop3">Post Office Protocol v3 (POP3)</h3>
-<ul>
-<li>Can send and recieve emails</li>
-</ul>
-<h3 id="internet-message-access-protocol-v4-imap4">Internet Message Access Protocol v4 (IMAP4)</h3>
-<ul>
-<li>Can send and retrieve emails</li>
-<li>Generally more advanced than POP3</li>
-</ul>
+<li>https://github.com/OpenELEC/iwlwifi-firmware/blob/master/firmware/iwlwifi-3160-17.ucode</li>
+<li>https://packages.debian.org/sid/firmware-iwlwifi</li>
+</ul></li>
+<li>Proceed with installation as you normally would</li>
+</ol>
 <div class="center">
     <hr style="margin-top: 5ch;">
     <p><b>Notes on Computers</b></p>

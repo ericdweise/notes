@@ -15,90 +15,6 @@
 </header>
 <h1 id="setting-up-debian-based-distributions">Setting up Debian Based Distributions</h1>
 <p>This is a set of small scripts that I use to configure a new Debian based install.</p>
-<h2 id="install-steps">Install Steps</h2>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>Debian (Base)</th>
-<th>Personal Computer</th>
-<th>Development Computer</th>
-<th>Kali Pen Test Computer</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>All Distros</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Atom Text Editor</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Docker</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Password Manager</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Python 3</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>RSS Feed Reader</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Rust</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Slack</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Sudo</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Virtual Box</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h2 id="all-distros">All Distros</h2>
 <p>Some basic packages and configurations I can’t live without.</p>
 <h3 id="packages">Packages</h3>
@@ -119,116 +35,121 @@
 <a class="sourceLine" id="cb3-7" title="7"></a>
 <a class="sourceLine" id="cb3-8" title="8"><span class="co"># Install Atom Packages</span></a>
 <a class="sourceLine" id="cb3-9" title="9"><span class="fu">apm</span> install mathjax-wrapper markdown-preview-plus language-markdown markdown-writer markdown-preview-enhanced</a></code></pre></div>
+<h2 id="bluetooth">Bluetooth</h2>
+<h3 id="keyboard-with-numlock-stuck-on">Keyboard with NumLock stuck on</h3>
+<p>Do this if the bluetooth keyboard always connects with numlock on.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">sudo</span> apt install numlockx</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="bu">echo</span> <span class="st">&#39;/usr/bin/numlockx off&#39;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee -a /etc/X11/Xsession</a></code></pre></div>
 <h2 id="docker-and-docker-compose">Docker and Docker Compose</h2>
 <ol type="1">
 <li><p>Install prerequesite packages:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">sudo</span> apt install -y \</a>
-<a class="sourceLine" id="cb4-2" title="2">    apt-transport-https \</a>
-<a class="sourceLine" id="cb4-3" title="3">    ca-certificates \</a>
-<a class="sourceLine" id="cb4-4" title="4">    curl \</a>
-<a class="sourceLine" id="cb4-5" title="5">    gnupg-agent \</a>
-<a class="sourceLine" id="cb4-6" title="6">    software-properties-common</a></code></pre></div></li>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="fu">sudo</span> apt install -y \</a>
+<a class="sourceLine" id="cb5-2" title="2">    apt-transport-https \</a>
+<a class="sourceLine" id="cb5-3" title="3">    ca-certificates \</a>
+<a class="sourceLine" id="cb5-4" title="4">    curl \</a>
+<a class="sourceLine" id="cb5-5" title="5">    gnupg-agent \</a>
+<a class="sourceLine" id="cb5-6" title="6">    software-properties-common</a></code></pre></div></li>
 <li><p>Add docker’s APT Key to your distro. There are different links depending on your distro. If you’re on Ubuntu use this link</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">curl</span> -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="kw">|</span> <span class="fu">sudo</span> apt-key add -</a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="fu">sudo</span> add-apt-repository <span class="st">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu </span><span class="va">$(</span><span class="ex">lsb_release</span> -cs<span class="va">)</span><span class="st"> stable&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="ex">curl</span> -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="kw">|</span> <span class="fu">sudo</span> apt-key add -</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="fu">sudo</span> add-apt-repository <span class="st">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu </span><span class="va">$(</span><span class="ex">lsb_release</span> -cs<span class="va">)</span><span class="st"> stable&quot;</span></a></code></pre></div>
 <p>If you’re on Debian proper use this link:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="ex">curl</span> -fsSL https://download.docker.com/linux/debian/gpg <span class="kw">|</span> <span class="fu">sudo</span> apt-key add -</a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="fu">sudo</span> apt-key fingerprint 0EBFCD88</a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="fu">sudo</span> add-apt-repository <span class="st">&quot;deb [arch=amd64] https://download.docker.com/linux/debian </span><span class="va">$(</span><span class="ex">lsb_release</span> -cs<span class="va">)</span><span class="st"> stable&quot;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">curl</span> -fsSL https://download.docker.com/linux/debian/gpg <span class="kw">|</span> <span class="fu">sudo</span> apt-key add -</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="fu">sudo</span> apt-key fingerprint 0EBFCD88</a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="fu">sudo</span> add-apt-repository <span class="st">&quot;deb [arch=amd64] https://download.docker.com/linux/debian </span><span class="va">$(</span><span class="ex">lsb_release</span> -cs<span class="va">)</span><span class="st"> stable&quot;</span></a></code></pre></div></li>
 <li><p>Install Docker:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="fu">sudo</span> apt update</a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="fu">sudo</span> apt install -y \</a>
-<a class="sourceLine" id="cb7-3" title="3">    docker-ce \</a>
-<a class="sourceLine" id="cb7-4" title="4">    docker-ce-cli \</a>
-<a class="sourceLine" id="cb7-5" title="5">    containerd.io</a></code></pre></div></li>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="fu">sudo</span> apt update</a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="fu">sudo</span> apt install -y \</a>
+<a class="sourceLine" id="cb8-3" title="3">    docker-ce \</a>
+<a class="sourceLine" id="cb8-4" title="4">    docker-ce-cli \</a>
+<a class="sourceLine" id="cb8-5" title="5">    containerd.io</a></code></pre></div></li>
 <li><p>Test installation:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="fu">sudo</span> docker run hello-world</a></code></pre></div></li>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">sudo</span> docker run hello-world</a></code></pre></div></li>
 <li><p>Installing Docker Compose: https://docs.docker.com/compose/install/</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">sudo</span> curl -L <span class="st">&quot;https://github.com/docker/compose/releases/download/1.25.4/docker-compose-</span><span class="va">$(</span><span class="fu">uname</span> -s<span class="va">)</span><span class="st">-</span><span class="va">$(</span><span class="fu">uname</span> -m<span class="va">)</span><span class="st">&quot;</span> -o /usr/local/bin/docker-compose</a>
-<a class="sourceLine" id="cb9-2" title="2"><span class="fu">sudo</span> chmod +x /usr/local/bin/docker-compose</a></code></pre></div></li>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="fu">sudo</span> curl -L <span class="st">&quot;https://github.com/docker/compose/releases/download/1.25.4/docker-compose-</span><span class="va">$(</span><span class="fu">uname</span> -s<span class="va">)</span><span class="st">-</span><span class="va">$(</span><span class="fu">uname</span> -m<span class="va">)</span><span class="st">&quot;</span> -o /usr/local/bin/docker-compose</a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="fu">sudo</span> chmod +x /usr/local/bin/docker-compose</a></code></pre></div></li>
 <li><p>Add your user to the docker group so you don’t need to run docker as sudo:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="fu">sudo</span> usermod -aG docker <span class="va">$USER</span></a>
-<a class="sourceLine" id="cb10-2" title="2"><span class="bu">exec</span> su -l <span class="va">$USER</span></a>
-<a class="sourceLine" id="cb10-3" title="3"><span class="ex">docker</span> run hello-world</a></code></pre></div></li>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="fu">sudo</span> usermod -aG docker <span class="va">$USER</span></a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="bu">exec</span> su -l <span class="va">$USER</span></a>
+<a class="sourceLine" id="cb11-3" title="3"><span class="ex">docker</span> run hello-world</a></code></pre></div></li>
 </ol>
 <h2 id="password-manager">Password Manager</h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="fu">sudo</span> apt-add-repository ppa:jtaylor/keepass -y</a>
-<a class="sourceLine" id="cb11-2" title="2"><span class="fu">sudo</span> apt update</a>
-<a class="sourceLine" id="cb11-3" title="3"><span class="fu">sudo</span> apt install -y keepass2</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="fu">sudo</span> apt-add-repository ppa:jtaylor/keepass -y</a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="fu">sudo</span> apt update</a>
+<a class="sourceLine" id="cb12-3" title="3"><span class="fu">sudo</span> apt install -y keepass2</a></code></pre></div>
 <h2 id="python-3">Python 3</h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="fu">sudo</span> apt install -y python3 python3-pip</a>
-<a class="sourceLine" id="cb12-2" title="2"><span class="fu">sudo</span> pip3 install virtualenv</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1"><span class="fu">sudo</span> apt install -y python3 python3-pip</a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="fu">sudo</span> pip3 install virtualenv</a></code></pre></div>
 <h2 id="rss-feed-reader">RSS Feed Reader</h2>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1"><span class="fu">sudo</span> add-apt-repository -y ppa:quiterss/quiterss</a>
-<a class="sourceLine" id="cb13-2" title="2"><span class="fu">sudo</span> apt update</a>
-<a class="sourceLine" id="cb13-3" title="3"><span class="fu">sudo</span> apt install -y quiterss</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1"><span class="fu">sudo</span> add-apt-repository -y ppa:quiterss/quiterss</a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="fu">sudo</span> apt update</a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="fu">sudo</span> apt install -y quiterss</a></code></pre></div>
 <h2 id="rust">Rust</h2>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1"><span class="fu">sudo</span> mkdir /opt/rust</a>
-<a class="sourceLine" id="cb14-2" title="2"><span class="fu">sudo</span> chown -R <span class="va">$(</span><span class="fu">whoami</span><span class="va">)</span> /opt/rust</a>
-<a class="sourceLine" id="cb14-3" title="3"><span class="va">RUSTUP_HOME=</span>/opt/rust</a>
-<a class="sourceLine" id="cb14-4" title="4"><span class="bu">export</span> <span class="va">RUSTUP_HOME</span></a>
-<a class="sourceLine" id="cb14-5" title="5"><span class="va">CARGO_HOME=</span>/opt/rust</a>
-<a class="sourceLine" id="cb14-6" title="6"><span class="bu">export</span> <span class="va">CARGO_HOME</span></a>
-<a class="sourceLine" id="cb14-7" title="7"><span class="ex">curl</span> https://sh.rustup.rs -sSf <span class="kw">|</span> <span class="fu">sh</span> -s -- -y --no-modify-path</a>
-<a class="sourceLine" id="cb14-8" title="8"></a>
-<a class="sourceLine" id="cb14-9" title="9"><span class="kw">for</span> <span class="ex">k</span> in <span class="va">$(</span><span class="fu">ls</span> /opt/rust/bin<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span></a>
-<a class="sourceLine" id="cb14-10" title="10">    <span class="va">f=</span><span class="st">&quot;/usr/local/bin/</span><span class="va">$k</span><span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb14-11" title="11">    <span class="bu">echo</span> <span class="st">&#39;#!/bin/bash&#39;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee <span class="va">$f</span></a>
-<a class="sourceLine" id="cb14-12" title="12">    <span class="bu">echo</span> <span class="st">&#39;RUSTUP_HOME=/opt/rust exec /opt/rust/bin/${0##*/} &quot;$@&quot;&#39;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee -a <span class="va">$f</span></a>
-<a class="sourceLine" id="cb14-13" title="13">    <span class="fu">sudo</span> chmod +x <span class="va">$f</span></a>
-<a class="sourceLine" id="cb14-14" title="14"><span class="kw">done</span></a>
-<a class="sourceLine" id="cb14-15" title="15"></a>
-<a class="sourceLine" id="cb14-16" title="16"><span class="ex">rustc</span> --version</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="fu">sudo</span> mkdir /opt/rust</a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="fu">sudo</span> chown -R <span class="va">$(</span><span class="fu">whoami</span><span class="va">)</span> /opt/rust</a>
+<a class="sourceLine" id="cb15-3" title="3"><span class="va">RUSTUP_HOME=</span>/opt/rust</a>
+<a class="sourceLine" id="cb15-4" title="4"><span class="bu">export</span> <span class="va">RUSTUP_HOME</span></a>
+<a class="sourceLine" id="cb15-5" title="5"><span class="va">CARGO_HOME=</span>/opt/rust</a>
+<a class="sourceLine" id="cb15-6" title="6"><span class="bu">export</span> <span class="va">CARGO_HOME</span></a>
+<a class="sourceLine" id="cb15-7" title="7"><span class="ex">curl</span> https://sh.rustup.rs -sSf <span class="kw">|</span> <span class="fu">sh</span> -s -- -y --no-modify-path</a>
+<a class="sourceLine" id="cb15-8" title="8"></a>
+<a class="sourceLine" id="cb15-9" title="9"><span class="kw">for</span> <span class="ex">k</span> in <span class="va">$(</span><span class="fu">ls</span> /opt/rust/bin<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb15-10" title="10">    <span class="va">f=</span><span class="st">&quot;/usr/local/bin/</span><span class="va">$k</span><span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb15-11" title="11">    <span class="bu">echo</span> <span class="st">&#39;#!/bin/bash&#39;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee <span class="va">$f</span></a>
+<a class="sourceLine" id="cb15-12" title="12">    <span class="bu">echo</span> <span class="st">&#39;RUSTUP_HOME=/opt/rust exec /opt/rust/bin/${0##*/} &quot;$@&quot;&#39;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee -a <span class="va">$f</span></a>
+<a class="sourceLine" id="cb15-13" title="13">    <span class="fu">sudo</span> chmod +x <span class="va">$f</span></a>
+<a class="sourceLine" id="cb15-14" title="14"><span class="kw">done</span></a>
+<a class="sourceLine" id="cb15-15" title="15"></a>
+<a class="sourceLine" id="cb15-16" title="16"><span class="ex">rustc</span> --version</a></code></pre></div>
 <h2 id="slack">Slack</h2>
 <p>Following instructions from <a href="https://linuxize.com/post/how-to-install-slack-on-ubuntu-18-04/">Linuxize</a></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="fu">wget</span> https://downloads.slack-edge.com/linux_releases/slack-desktop-4.0.2-amd64.deb</a>
-<a class="sourceLine" id="cb15-2" title="2"><span class="fu">sudo</span> apt install -y ./slack-desktop-*.deb</a>
-<a class="sourceLine" id="cb15-3" title="3"><span class="fu">rm</span> ./slack-desktop-*.deb</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1"><span class="fu">wget</span> https://downloads.slack-edge.com/linux_releases/slack-desktop-4.0.2-amd64.deb</a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="fu">sudo</span> apt install -y ./slack-desktop-*.deb</a>
+<a class="sourceLine" id="cb16-3" title="3"><span class="fu">rm</span> ./slack-desktop-*.deb</a></code></pre></div>
 <h2 id="sudo-debian-base-only">Sudo (Debian Base Only)</h2>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1"><span class="fu">su</span> -c <span class="st">&quot;apt upgrade -y &amp;&amp; \</span></a>
-<a class="sourceLine" id="cb16-2" title="2"><span class="st">    apt install -y sudo &amp;&amp; \</span></a>
-<a class="sourceLine" id="cb16-3" title="3"><span class="st">    echo </span><span class="dt">\&quot;</span><span class="st">Adding </span><span class="va">$USER</span><span class="st"> to sudoers.</span><span class="dt">\&quot;</span><span class="st"> &amp;&amp; \</span></a>
-<a class="sourceLine" id="cb16-4" title="4"><span class="st">    usermod -aG sudo </span><span class="va">$USER</span><span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb16-5" title="5"></a>
-<a class="sourceLine" id="cb16-6" title="6"><span class="bu">logout</span>    <span class="co"># Logout of root</span></a>
-<a class="sourceLine" id="cb16-7" title="7"></a>
-<a class="sourceLine" id="cb16-8" title="8"><span class="bu">echo</span> <span class="st">&quot;Re-login to user &#39;</span><span class="va">$USER</span><span class="st">&#39; to enable sudo access.&quot;</span></a>
-<a class="sourceLine" id="cb16-9" title="9"><span class="bu">exec</span> su -l <span class="va">$USER</span></a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1"><span class="fu">su</span> -c <span class="st">&quot;apt upgrade -y &amp;&amp; \</span></a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="st">    apt install -y sudo &amp;&amp; \</span></a>
+<a class="sourceLine" id="cb17-3" title="3"><span class="st">    echo </span><span class="dt">\&quot;</span><span class="st">Adding </span><span class="va">$USER</span><span class="st"> to sudoers.</span><span class="dt">\&quot;</span><span class="st"> &amp;&amp; \</span></a>
+<a class="sourceLine" id="cb17-4" title="4"><span class="st">    usermod -aG sudo </span><span class="va">$USER</span><span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb17-5" title="5"></a>
+<a class="sourceLine" id="cb17-6" title="6"><span class="bu">logout</span>    <span class="co"># Logout of root</span></a>
+<a class="sourceLine" id="cb17-7" title="7"></a>
+<a class="sourceLine" id="cb17-8" title="8"><span class="bu">echo</span> <span class="st">&quot;Re-login to user &#39;</span><span class="va">$USER</span><span class="st">&#39; to enable sudo access.&quot;</span></a>
+<a class="sourceLine" id="cb17-9" title="9"><span class="bu">exec</span> su -l <span class="va">$USER</span></a></code></pre></div>
 <h2 id="virtual-box">Virtual Box</h2>
 <p>Following instructions at the <a href="https://www.virtualbox.org/wiki/Linux_Downloads">Virtual Box website</a></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1"><span class="fu">sudo</span> apt-add-repository https://download.virtualbox.org/virtualbox/debian</a>
-<a class="sourceLine" id="cb17-2" title="2"></a>
-<a class="sourceLine" id="cb17-3" title="3"><span class="co"># Add Oracle Public Keys</span></a>
-<a class="sourceLine" id="cb17-4" title="4"><span class="fu">wget</span> -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- <span class="kw">|</span> <span class="fu">sudo</span> apt-key add -</a>
-<a class="sourceLine" id="cb17-5" title="5"><span class="fu">wget</span> -q https://www.virtualbox.org/download/oracle_vbox.asc -O- <span class="kw">|</span> <span class="fu">sudo</span> apt-key add -</a>
-<a class="sourceLine" id="cb17-6" title="6"></a>
-<a class="sourceLine" id="cb17-7" title="7"><span class="co"># Install</span></a>
-<a class="sourceLine" id="cb17-8" title="8"><span class="fu">sudo</span> apt update</a>
-<a class="sourceLine" id="cb17-9" title="9"><span class="fu">sudo</span> apt install virtualbox</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1"><span class="fu">sudo</span> apt-add-repository https://download.virtualbox.org/virtualbox/debian</a>
+<a class="sourceLine" id="cb18-2" title="2"></a>
+<a class="sourceLine" id="cb18-3" title="3"><span class="co"># Add Oracle Public Keys</span></a>
+<a class="sourceLine" id="cb18-4" title="4"><span class="fu">wget</span> -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- <span class="kw">|</span> <span class="fu">sudo</span> apt-key add -</a>
+<a class="sourceLine" id="cb18-5" title="5"><span class="fu">wget</span> -q https://www.virtualbox.org/download/oracle_vbox.asc -O- <span class="kw">|</span> <span class="fu">sudo</span> apt-key add -</a>
+<a class="sourceLine" id="cb18-6" title="6"></a>
+<a class="sourceLine" id="cb18-7" title="7"><span class="co"># Install</span></a>
+<a class="sourceLine" id="cb18-8" title="8"><span class="fu">sudo</span> apt update</a>
+<a class="sourceLine" id="cb18-9" title="9"><span class="fu">sudo</span> apt install virtualbox</a></code></pre></div>
 <p>The first time you try to run <code>virtualbox</code> you might get an error asking you to reinstall linux headers. The only thing I did that got rid of this message was to reboot the computer.</p>
 <h2 id="disable-snaps">Disable Snaps</h2>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1"><span class="co"># Remove existing snaps</span></a>
-<a class="sourceLine" id="cb18-2" title="2"><span class="kw">for</span> <span class="ex">SNAPPLE</span> in <span class="va">$(</span><span class="ex">snap</span> list <span class="kw">|</span> <span class="fu">tail</span> -n +2 <span class="kw">|</span> <span class="fu">cut</span> -d <span class="st">&#39; &#39;</span> -f 1<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span></a>
-<a class="sourceLine" id="cb18-3" title="3">    <span class="bu">echo</span> <span class="st">&quot;  Removing snap: </span><span class="va">$SNAPPLE</span><span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb18-4" title="4">    <span class="fu">sudo</span> snap remove <span class="va">$SNAPPLE</span></a>
-<a class="sourceLine" id="cb18-5" title="5"><span class="kw">done</span></a>
-<a class="sourceLine" id="cb18-6" title="6"><span class="fu">sudo</span> snap remove core18</a>
-<a class="sourceLine" id="cb18-7" title="7"><span class="fu">sudo</span> snap remove snapd</a>
-<a class="sourceLine" id="cb18-8" title="8"></a>
-<a class="sourceLine" id="cb18-9" title="9"><span class="co"># Get Snap Device ID</span></a>
-<a class="sourceLine" id="cb18-10" title="10"><span class="kw">for</span> <span class="ex">SNAP_DEVICE</span> in <span class="va">$(</span><span class="fu">df</span> --output=target <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&#39;/snap/&#39;</span> <span class="va">)</span><span class="kw">;</span> <span class="kw">do</span></a>
-<a class="sourceLine" id="cb18-11" title="11">    <span class="bu">echo</span> <span class="st">&quot;  Unmounting snap: </span><span class="va">$SNAP_DEVICE</span><span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb18-12" title="12">    <span class="fu">sudo</span> umount <span class="va">$SNAP_DEVICE</span></a>
-<a class="sourceLine" id="cb18-13" title="13"><span class="kw">done</span></a>
-<a class="sourceLine" id="cb18-14" title="14"></a>
-<a class="sourceLine" id="cb18-15" title="15"><span class="co"># Purge Aptitude package</span></a>
-<a class="sourceLine" id="cb18-16" title="16"><span class="fu">sudo</span> apt purge snapd</a>
-<a class="sourceLine" id="cb18-17" title="17"></a>
-<a class="sourceLine" id="cb18-18" title="18"><span class="co"># Remove remaining Snap directories</span></a>
-<a class="sourceLine" id="cb18-19" title="19"><span class="fu">rm</span> -rf ~/snap</a>
-<a class="sourceLine" id="cb18-20" title="20"><span class="fu">sudo</span> rm -rf /snap</a>
-<a class="sourceLine" id="cb18-21" title="21"><span class="fu">sudo</span> rm -rf /var/snap</a>
-<a class="sourceLine" id="cb18-22" title="22"><span class="fu">sudo</span> rm -rf /var/lib/snapd</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1"><span class="co"># Remove existing snaps</span></a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="kw">for</span> <span class="ex">SNAPPLE</span> in <span class="va">$(</span><span class="ex">snap</span> list <span class="kw">|</span> <span class="fu">tail</span> -n +2 <span class="kw">|</span> <span class="fu">cut</span> -d <span class="st">&#39; &#39;</span> -f 1<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb19-3" title="3">    <span class="bu">echo</span> <span class="st">&quot;  Removing snap: </span><span class="va">$SNAPPLE</span><span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb19-4" title="4">    <span class="fu">sudo</span> snap remove <span class="va">$SNAPPLE</span></a>
+<a class="sourceLine" id="cb19-5" title="5"><span class="kw">done</span></a>
+<a class="sourceLine" id="cb19-6" title="6"><span class="fu">sudo</span> snap remove core18</a>
+<a class="sourceLine" id="cb19-7" title="7"><span class="fu">sudo</span> snap remove snapd</a>
+<a class="sourceLine" id="cb19-8" title="8"></a>
+<a class="sourceLine" id="cb19-9" title="9"><span class="co"># Get Snap Device ID</span></a>
+<a class="sourceLine" id="cb19-10" title="10"><span class="kw">for</span> <span class="ex">SNAP_DEVICE</span> in <span class="va">$(</span><span class="fu">df</span> --output=target <span class="kw">|</span> <span class="fu">grep</span> <span class="st">&#39;/snap/&#39;</span> <span class="va">)</span><span class="kw">;</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb19-11" title="11">    <span class="bu">echo</span> <span class="st">&quot;  Unmounting snap: </span><span class="va">$SNAP_DEVICE</span><span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb19-12" title="12">    <span class="fu">sudo</span> umount <span class="va">$SNAP_DEVICE</span></a>
+<a class="sourceLine" id="cb19-13" title="13"><span class="kw">done</span></a>
+<a class="sourceLine" id="cb19-14" title="14"></a>
+<a class="sourceLine" id="cb19-15" title="15"><span class="co"># Purge Aptitude package</span></a>
+<a class="sourceLine" id="cb19-16" title="16"><span class="fu">sudo</span> apt purge snapd</a>
+<a class="sourceLine" id="cb19-17" title="17"></a>
+<a class="sourceLine" id="cb19-18" title="18"><span class="co"># Remove remaining Snap directories</span></a>
+<a class="sourceLine" id="cb19-19" title="19"><span class="fu">rm</span> -rf ~/snap</a>
+<a class="sourceLine" id="cb19-20" title="20"><span class="fu">sudo</span> rm -rf /snap</a>
+<a class="sourceLine" id="cb19-21" title="21"><span class="fu">sudo</span> rm -rf /var/snap</a>
+<a class="sourceLine" id="cb19-22" title="22"><span class="fu">sudo</span> rm -rf /var/lib/snapd</a></code></pre></div>
 <div class="center">
     <hr style="margin-top: 5ch;">
     <p><b>Notes on Computers</b></p>
@@ -238,7 +159,6 @@
     &middot; <a href="/c-lang">C</a>
     &middot; <a href="/cpp-lang">C++</a>
     &middot; <a href="/cybersecurity">Cyber Security</a>
-    &middot; <a href="/devices">Devices</a>
     &middot; <a href="/git">Git</a>
     &middot; <a href="/latex">LaTeX</a>
     &middot; <a href="/linux">Linux</a>
