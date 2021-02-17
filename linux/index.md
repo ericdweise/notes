@@ -8,7 +8,7 @@ So far just some notes I keep looking up now and then.
 
 ## Distribution Personalization
 
-- [Debian Based Distos](fresh-install-debian.html)
+- [Debian](debian.html)
 - [Manjaro](manjaro.html)
 
 
