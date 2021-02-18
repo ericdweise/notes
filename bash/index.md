@@ -13,7 +13,7 @@
 | `$$`     | Process ID of the shell                                                    |
 | `$!`     | Process ID of the most recently executed background (asynchronous) command |
 | `$0`     | Name of the shell or shell script                                          |
-| `$\_`    | Last argument(s) to the previous command                                   |
+| `$_`     | Last argument(s) to the previous command                                   |
 
 [source: TLDP](https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_02.html)
 

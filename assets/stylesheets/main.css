@@ -2,20 +2,20 @@
 html {
     font-family: "Times New Roman", Times, serif;
     background-color: #323232;
-    background-image: url("/assets/images/icecrystals.jpg");
+    background-image: url("/assets/images/background.jpg");
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
 }
 body {
-    background-color: #ffffff;
+    background-color: rgba(0,0,0,0.75);
     border-radius: 2ch;
     max-width: 100ch;
     padding: 2ch;
     margin: auto;
     margin-top: 2ch;
     margin-bottom: 2ch;
-    color: #000000;
+    color: #ffffff;
 }
 hr {
     border: none;
@@ -27,6 +27,12 @@ ul {
 }
 
 /* HEADERS */
+a.site-title {
+    color: #2a6c6c;
+    font-size: 50px;
+    font-weight: bold;
+    text-decoration: none;
+}
 h2 {
     margin-top: 3ch;
     border-top: 1px solid #909090;
@@ -48,8 +54,7 @@ a:hover {
 
 /* INLINE CODE */
 code {
-    color: rgb(0,75,75);
-    background-color: rgba(0,50,50,0.05);
+    color: #2a6c6c;
 }
 
 /* CODE BLOCKS */
@@ -57,7 +62,7 @@ code.sourceCode {
     color: #b0b0ff;
 }
 div.sourceCode {
-    background-color: #153636;
+    background-color: #081818;
     border-radius: 1ch;
     max-width: 80ch;
 }
