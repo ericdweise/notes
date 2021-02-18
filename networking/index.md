@@ -7,7 +7,7 @@ Use with caution.
 
 
 ## Review Pages
-Text specific things that should be memorized.
+Test specific things that should be memorized.
 
 - [Exam Basics](comptia-exam-basics.html)
 - [Acronyms](acronyms.html)
@@ -17,42 +17,53 @@ Text specific things that should be memorized.
 
 
 ## Communication Basics
-
 - [The OSI Model](osi-model.html)
+- [The TCP/IP Model](tcp-ip.html)
 - [Ethernet](ethernet.html)
-- [Layer 3](ip-layer.html)
-- [Wireless Networks](wireless.html)
-- [The TCP/IP Stack](tcp-ip.html)
+- [WiFi](wifi.html)
 
 
 
 ## Overview Pages
-
 - [Cables](cables.html)
-- [Netowrk Devices](devices.html)
+- [Network Devices](devices.html)
 - [Security](security.html)
 - [Communication on the Internet](internet-communications.html)
-- [Network Setup](network-setup.html)
-- [Network Troubleshooting](troubleshooting.html)
 - [VLANs](vlan.html)
+- [Wide Area Networks](wan.html)
+- [Routing Protocols](routing-protocols.html)
+- [Virtual Private Networks](vpn.html)
+- [IPv4](ipv4.html)
+- [IPv6](ipv6.html)
 
 
 
 ## Protocols
-
-- [ICMP](icmp.html)
-- [IPv4](ipv4.html)
-- [IPv6](ipv6.html)
-- [Name Resolution](name-resolution.html)
+- [ARP](arp.html)
+- [APIPA](apipa.html)
+- [DHCP](dhcp.html)
+- [NAT](nat.html)
 - [NTP](ntp.html)
-- [Routing Protocols](routing-protocols.html)
 - [SSH](ssh.html)
+- [SNMP](snmp.html)
+- [Tunneling Protocols](tunneling.html)
+
+### Transport Protocols
 - [TCP](tcp.html)
-- [VPN](vpn.html)
+- [UDP](udp.html)
+- [ICMP](icmp.html)
+
+### Name Resolution
+- [Overview](name-resolution.html)
+- [DNS](dns.html)
 
 
 
 ## Miscellaneous
 - [Access Control Lists](acl.html)
-- [Tunnelling](tunneling.html)
 - [Email](email.html)
+- [Change Management](change-mgmt.html)]
+- [Network Setup](network-setup.html)
+- [Network Troubleshooting](troubleshooting.html)
+- [Other Wireless Protocols](other-wireless.html)
+- [Traffic Shaping](traffic-shaping.html)

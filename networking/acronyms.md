@@ -7,51 +7,52 @@ Therefore, this page is a pretty good index for this set of notes.
 
 |              |                                                                |                                 |
 |--------------|----------------------------------------------------------------|---------------------------------|
-| **AAA**      | Authentication, Authorization, and Accounting                  | [link](security.html)           |
-| **ACL**      | Access Control List                                            | [link](acl.html)                |
+| **AAA**      | Authentication, Authorization, and Accounting                  | [Security](security.html)       |
+| **ACL**      | Access Control List                                            | [ACL](acl.html)                 |
 | **ARP**      | Address Resolution Protocol                                    |                                 |
-| **ATM**      | Asynchronous Transfer Mode                                     | [link](osi-model.html)          |
+| **ATM**      | Asynchronous Transfer Mode                                     | [OSI](osi-model.html)           |
 |              |                                                                |                                 |
-| **BSS**      | Basic Service Set                                              | [link](wireless.md)             |
+| **BSS**      | Basic Service Set                                              | [WiFi](wifi.html)               |
 |              |                                                                |                                 |
-| **CHAP**     | Challenge Handshake Authentication Protocol                    | [link](security.html)           |
-| **CSMA/CA**  | Carrier Sense Multiple Access with Collision Avoidance         | [link](wireless.html)           |
-| **CSMA/CD**  | Carrier Sense Multiple Access with Collision Detection         | [link](ethernet.html)           |
+| **CHAP**     | Challenge Handshake Authentication Protocol                    | [Security](security.html)       |
+| **CSMA/CA**  | Carrier Sense Multiple Access with Collision Avoidance         | [WiFi](wifi.html)               |
+| **CSMA/CD**  | Carrier Sense Multiple Access with Collision Detection         | [Ethernet](ethernet.html)       |
 |              |                                                                |                                 |
 | **DAI**      | Dynamic ARP Inspection                                         |                                 |
-| **DCF**      | Distributed Coordination Function                              | [link](wireless.html)           |
+| **DCF**      | Distributed Coordination Function                              | [WiFi](wifi.html)               |
 | **DiffServ** | Differential Services                                          | [QoS](traffic-shaping.html)     |
-| **DMVPN**    | Dynamic Multipoint VPN                                         | [link](vpn.html)                |
+| **DMVPN**    | Dynamic Multipoint VPN                                         | [VPN](vpn.html)                 |
 | **DSCP**     | Differentiated Services Code Point                             | [QoS](traffic-shapint.html)     |
-| **DSSS**     | Direct Sequence Spread Spectrum                                | [wifi](wireless.html)           |
-| **DTLS**     | Datagram TLS                                                   | [link](vpn.html)                |
+| **DSSS**     | Direct Sequence Spread Spectrum                                | [WiFi](wifi.html)               |
+| **DTLS**     | Datagram TLS                                                   | [VPN](vpn.html)                 |
 |              |                                                                |                                 |
-| **EAP**      | Extensible Authentication Protocol                             | [link](security.html)           |
-| **ESS**      | Extended Service Set                                           | [wireless](wireless.html)       |
+| **EAP**      | Extensible Authentication Protocol                             | [WiFi](wifi.html)               |
+| **ESS**      | Extended Service Set                                           | [WiFi](wifi.html)               |
 |              |                                                                |                                 |
-| **FHSS**     | Frequency Hoping Spread Spectrum                               | [wifi](wireless.html)           |
+| **FHSS**     | Frequency Hoping Spread Spectrum                               | [WiFi](wifi.html)               |
 |              |                                                                |                                 |
 | **HIDS**     | Host-based Intrusion Detection System                          |                                 |
 | **HSRP**     | Hot Standby Router Protocol                                    |                                 |
 |              |                                                                |                                 |
 | **IANA**     | Internet Assigned Numbers Authority                            |                                 |
-| **IBSS**     | Independent Basic Service Set                                  | [wireless](wireless.html)       |
+| **IBSS**     | Independent Basic Service Set                                  | [WiFi](wifi.html)               |
 | **ICS**      | Industrial Control System                                      |                                 |
 | **IDF**      | Intermediate Distribution Frame                                |                                 |
 | **IDS**      | Intrusion Detection System                                     |                                 |
 | **IETF**     | Internet Engineering Task Force                                |                                 |
+| **IMAP4**    | Internet Message Access Protocol Version 4                     | [Email](email.html)             |
 | **IPS**      | Intrusion Prevention System                                    |                                 |
-| **ISATAP**   | Intra-Site Automatic Tunnel Addressing Protocol                | [link](ipv6)                    |
-| **ISDN**     |                                                                |                                 |
+| **ISATAP**   | Intra-Site Automatic Tunnel Addressing Protocol                | [IPv6](ipv6.html)               |
+| **ISDN**     | Integrated Services Digital Network                            |                                 |
 |              |                                                                |                                 |
-| **L2TP**     | Layer 2 Tunneling Protocol                                     | [link](vpn.html)                |
+| **L2TP**     | Layer 2 Tunneling Protocol                                     | [VPN](vpn.html)                 |
 |              |                                                                |                                 |
 | **MDF**      | Main Distribution Frame                                        |                                 |
-| **MIMO**     | Multiple Input Multiple Output                                 | [wireless](wireless.html)       |
+| **MIMO**     | Multiple Input Multiple Output                                 | [WiFi](wifi.html)               |
 | **MTBF**     | mean time between failures                                     |                                 |
 | **MTTF**     | Mean Time To Failure                                           |                                 |
 | **MTTR**     | Mean Time To Recover                                           |                                 |
-| **MU-MIMO**  | Multi-User MIMO                                                | [wireless](wireless.html)       |
+| **MU-MIMO**  | Multi-User MIMO                                                | [WiFi](wifi.html)               |
 | **MSDS**     | Material Safety Data Sheet                                     |                                 |
 |              |                                                                |                                 |
 | **NAC**      | Network Access Control                                         |                                 |
@@ -59,35 +60,37 @@ Therefore, this page is a pretty good index for this set of notes.
 | **NAS**      | Network Attached Storage                                       |                                 |
 | **NIDS**     | Network-based Intrusion Detection System                       |                                 |
 |              |                                                                |                                 |
-| **OFDM**     | Orthogonal Frequency Division Multiplexing                     | [wifi](wireless.html)           |
+| **OFDM**     | Orthogonal Frequency Division Multiplexing                     | [WiFi](wifi.html)               |
 |              |                                                                |                                 |
-| **PAP**      | Password Authentication Protocol                               | [link](security.html)           |
-| **PCF**      | Point Coordination Function                                    | [wifi](wireless.html)           |
+| **PAP**      | Password Authentication Protocol                               | [Security](security.html)       |
+| **PCF**      | Point Coordination Function                                    | [WiFi](wifi.html)               |
 | **PMTU**     | Path MTU Discovery                                             |                                 |
-| **PPP**      | Point-to-Point Protocol                                        | [link](security.html)           |
-| **PPTP**     | Point-to-Point Tunneling Protocol                              | [link](vpn.html)                |
-| **PSTN**     |                                                                |                                 |
+| **POP3**     | Post Office Protocol Version 3                                 | [Email](email.html)             |
+| **PPP**      | Point-to-Point Protocol                                        | [Security](security.html)       |
+| **PPTP**     | Point-to-Point Tunneling Protocol                              | [VPN](vpn.html)                 |
+| **PSTN**     | Public Switch Telephone Network                                |                                 |
 |              |                                                                |                                 |
-| **RADIUS**   | Remote Authentication Dial-In User Service                     | [link](security.html)           |
+| **RADIUS**   | Remote Authentication Dial-In User Service                     | [Security](security.html)       |
 | **RTP**      | Real-time Transport Protocol                                   |                                 |
 |              |                                                                |                                 |
 | **SCADA**    | Supervisory Control And Data Acquisition                       |                                 |
 | **SHA**      | Secure Hashing Algorithm                                       |                                 |
-| **SNMP**     | Simple Network Management Protocol                             | [snmp](snmp.html)               |
-| **SONET**    | Synchronized Optical Network                                   | [link](ethernet.html)           |
-| **SSID**     | Service Set Identifier                                         | [wireless](wireless.html)       |
+| **SMTP**     | Simple Mail Transfer Protocol                                  | [Email](email.html)             |
+| **SNMP**     | Simple Network Management Protocol                             | [SNMP](snmp.html)               |
+| **SONET**    | Synchronized Optical Network                                   | [Ethernet](ethernet.html)       |
+| **SSID**     | Service Set Identifier                                         | [WiFi](wifi.html)               |
 |              |                                                                |                                 |
-| **TACAS+**   | Terminal Access Controller Access Control System Plus          | [link](security.html)           |
+| **TACAS+**   | Terminal Access Controller Access Control System Plus          | [Security](security.html)       |
 |              |                                                                |                                 |
 | **UART**     | Universal Asynchronous Reciever/Transmitter                    |                                 |
 | **UPS**      | Uninterruptable Power Supply                                   |                                 |
 |              |                                                                |                                 |
-| **VLAN**     | Virtual Local Area Network                                     | [link](vlan.html)               |
-| **VPN**      | Virtual Private Network                                        | [link](vpn.html)                |
+| **VLAN**     | Virtual Local Area Network                                     | [VLAN](vlan.html)               |
+| **VPN**      | Virtual Private Network                                        | [VPN](vpn.html)                 |
 | **VRRP**     | Virtual Router Redundancy Protocol                             |                                 |
 |              |                                                                |                                 |
-| **WAP**      | Wireless Access Point                                          | [link](wireless.html)           |
-| **WEP**      | Wireless Equivlaence Privacy                                   | [security](security.html)       |
-| **WPA**      | WiFi Protected Access                                          | [security](security)            |
-| **WPS**      | WiFi Protected Security                                        | [link](security.html)           |
+| **WAP**      | Wireless Access Point                                          | [WiFi](wifi.html)               |
+| **WEP**      | Wireless Equivlaence Privacy                                   | [WiFi](wifi.html)               |
+| **WPA**      | WiFi Protected Access                                          | [WiFi](wifi.html)               |
+| **WPS**      | WiFi Protected Security                                        | [WiFi](wifi.html)               |
 |              |                                                                |                                 |

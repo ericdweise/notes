@@ -13,9 +13,40 @@
     <h1 class="center"><a href="/">Weise-ipedia</a></h1>
     <hr>
 </header>
-<h1 id="transmission-control-protocol-tcp">Transmission Control Protocol (TCP)</h1>
-<h2 id="the-tcp-segment">The TCP Segment</h2>
-<pre><code>[ Dest. Port | Source Port| SQN Number | Checksum | Flags | Ack | Data ]</code></pre>
+<h1 id="dynamic-host-configuration-protocol-dhcp">Dynamic Host Configuration Protocol (DHCP)</h1>
+<ul>
+<li>Stopped at Router (not sent outside of network)</li>
+<li>Can use a DHCP helper to forward DHCP broadcast to unicast directed at external DHCP server.</li>
+</ul>
+<h3 id="steps-in-dhcp">Steps in DHCP</h3>
+<table>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><code>DISCOVER</code></td>
+<td>client to server</td>
+<td>Broadcast</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><code>OFFER</code></td>
+<td>server to client</td>
+<td>Broadcast</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><code>REQUEST</code></td>
+<td>client to server</td>
+<td>Boradcast</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><code>ACCEPT</code></td>
+<td>server to client</td>
+<td>Unicast</td>
+</tr>
+</tbody>
+</table>
 <div class="center">
     <hr style="margin-top: 5ch;">
     <p><b>Notes on Computers</b></p>
