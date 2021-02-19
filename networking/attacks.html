@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <div style="display: flex; justify-content: center; align-items: center;"><a class="site-title" href="/">Weise-ipedia</a></div>
+    <hr>
+</header>
+<h1 id="types-of-network-attacks">Types of Network Attacks</h1>
+<h3 id="virus">Virus</h3>
+<p>A self replicating and spreading exploit.</p>
+<h3 id="logic-bomb">Logic Bomb</h3>
+<p>An exploit that is set off when certain conditions are met.</p>
+<h3 id="rootkit">Rootkit</h3>
+<h3 id="trojan-horse">Trojan Horse</h3>
+<h3 id="man-in-the-middle-mitm">Man in the Middle (MITM)</h3>
+<p>An actor placed inbetween two devices. This listens to all communications between these devices. It can also modify unencrypted or cracked data before it forwards the data on to the recipient.</p>
+<h3 id="evil-twin">Evil Twin</h3>
+<p>A rogue WAP set up with the same SSID as another. This rogue WAP will intercept traffic, acting as a man in the middle.</p>
+<h3 id="war-driving">War Driving</h3>
+<p>Driving in a car with specialized hardware (“specialized” in the old days) to find open WAPs.</p>
+<h3 id="phishing">Phishing</h3>
+<p>Posing as a legitimate service in order to trick a user into giving out sensitive information.</p>
+<h3 id="ransomeware">Ransomeware</h3>
+<p>Locking or encrypting data and holding it hostage for payment.</p>
+<h3 id="dns-poisoning">DNS Poisoning</h3>
+<p>Remapping a domain name to a rogue IP address. This allows a threat actor to impersonate a known service or device. Then the actor can send malicious data or intercept sensitive data.</p>
+<h3 id="arp-poisoning">ARP Poisoning</h3>
+<p>A device impersonates the default gateway by associating it’s MAC address with the deault gateway’s IP address. It sends out rogue ARP broadcasts that hosts on the network put into their ARP tables.</p>
+<h3 id="denial-of-service-dos">Denial of Service (DoS)</h3>
+<p>Overwhelming a server with so much traffic that it stops working or shuts down. This is common with HTTP servers but can work on any device. There are some</p>
+<h4 id="distributed-dos-ddos">Distributed DoS (DDoS)</h4>
+<p>Using many different hosts with many different IP addresses to perform a DoS attack. This is harder to block than a regular DoS attack because it is harder to determine which IP addresses are legitimate and which are malicious. Usually the attacking machines are compromised and owned by people other than the attacker.</p>
+<h4 id="reflective-dos">Reflective DoS</h4>
+<p>Using a third party service to send a DoS attack.</p>
+<h3 id="downgrade-attack">Downgrade Attack</h3>
+<h3 id="brute-force">Brute Force</h3>
+<p>Repeatedly testing different passwords in order to log into a service or break encryption cipher.</p>
+<h4 id="dictionary-attack">Dictionary attack</h4>
+<p>A type of brute force attack that uses a list (dictionary) of commonly used passwords.</p>
+<h3 id="wireless-disassociation-attack">Wireless Disassociation Attack</h3>
+<p>WiFi management frames are sent unencrypted. This allows the attacker to view another device’s MAC address. The attacker sends disassociation frames to the WAP with the target device’s MAC address. This boots the target device off the wireless network. These frames are usually sent continuously, making it a DoS attack.</p>
+<h3 id="vlan-hopping">VLAN Hopping</h3>
+<p>A family of attacks used by a device to get access to a retricted VLAN.</p>
+<h4 id="switch-spoofing">Switch Spoofing</h4>
+<p>The attacker imitates a trunking switch, thus being able to gain access to the VLANs managed by the switch the attacker is connected to.</p>
+<h4 id="double-tagging">Double Tagging</h4>
+<p>The attacking device sends a frame with two VLAN tags. The first switch strips the outer tag and forwards the frame to another switch with the second tag is visible. The second switch then forwards the frame to a device on the network on the restricted VLAN.</p>
+<div class="center">
+    <hr style="margin-top: 5ch;">
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/tools">Tools</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>

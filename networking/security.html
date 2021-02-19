@@ -26,11 +26,23 @@
 <p>AAA is a model in which a central server that keeps authentication information. Therefore, any modem can be connected to by any client. When the connection request comes in the modem just checks with the authentication server before allowing the connection.</p>
 <h3 id="remote-authentication-dial-in-user-service-radius">Remote Authentication Dial-In User Service (RADIUS)</h3>
 <p>An AAA standard. This protocol uses many Network Access Servers, which users connect to. There is also a centralized RADIUS server, which contains a database of user authentication credentials. All the NASs connect to the RADIUS server to get authentication credentials.</p>
-<h2 id="terminal-access-controller-access-control-system-plus-tacas">Terminal Access Controller Access Control System Plus (TACAS+)</h2>
+<p>Key Facts: - Used to grant network access - Authentication and Authorization are combined into the same process - Only encrypts the password in the authentication payload</p>
+<h2 id="terminal-access-controller-access-control-system-plus-tacacs">Terminal Access Controller Access Control System Plus (TACACS+)</h2>
 <p>A method for distributing ACLs to many routers and switches. The ACL is stored on a single server. It communicates</p>
+<p>Key Facts: - TACAS was an open protocol. TACACS+ was developed by Cisco to replace TACAS and solve many of its failings - TACACS+ encrypts the entire authentication payload, not just the user’s password - Used mostly for device administration - Authentication and Authorization are separate processes</p>
 <h3 id="kerberos">Kerberos</h3>
 <p>This is decidedly <em>not</em> a point-to-point protocol. Kerberos still runs on TCP/IP, but every host connects to a single authentication server, called the Key Distribution Center (KDC). This KDC contains the usernames and passwords of all the users on the network. When a user tries to log in to a host, that host queries the authentication server. IF the authentication passes the user is sent a <em>Ticket to Request Ticket</em>. This ticket expires after a certain time, after which the user must reauthenticate. The ticket can be used to authenticate the user to access any other network resource that they are allowed to access during the ticket’s lifetime.</p>
+<p>Key Facts: - Reduces efficacy of replay attacks - Encrypted keys are called tickets</p>
 <p>Fun fact, Kerberos is the three headed dog from Ancient Greek mythology.</p>
+<h2 id="dhcp-snooping">DHCP Snooping</h2>
+<p>A set of features added to a DHCP server that address some common security failures. Although DHCP operates on OSI level 3, DHCP Snooping operates on a switch, providing integrity between IP addresses and MAC addresses. Some protections provided are:</p>
+<ul>
+<li>ARP sanitization</li>
+<li>IP Address Integrity</li>
+<li>Physical IP Address tracking</li>
+</ul>
+<h2 id="user-agreements">User Agreements</h2>
+<p>Some forms that users might need to sign before accessing network resources: - AUP: Acceptable Use Policy - NDA: Non Disclosure Agreement</p>
 <h2 id="passwords">Passwords</h2>
 <ul>
 <li>Should be changed periodically (monthly)</li>
@@ -43,6 +55,8 @@
 <li>Special characters (like !, @, #, etc.)</li>
 </ul></li>
 </ul>
+<h2 id="online-certificate-status-protocol-ocsp">Online Certificate Status Protocol (OCSP)</h2>
+<p>Used to verify the revocation status of a certificate.</p>
 <div class="center">
     <hr style="margin-top: 5ch;">
     <p><b>Notes on Computers</b></p>

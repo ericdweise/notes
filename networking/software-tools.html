@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eric's Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header>
+    <div style="display: flex; justify-content: center; align-items: center;"><a class="site-title" href="/">Weise-ipedia</a></div>
+    <hr>
+</header>
+<h1 id="software-tools">Software Tools</h1>
+<p>These are some of the tools used to diagnose problems and explore</p>
+<h2 id="finding-local-address-information">Finding Local Address Information</h2>
+<h3 id="linux-ip">Linux <code>ip</code></h3>
+<p><code></code>ip addr<code>shows network interfaces and information</code> <code>ip down IFACE; ip up IFACE</code> resets the prescribed interface</p>
+<h3 id="windows-ipconfig">Windows <code>ipconfig</code></h3>
+<ul>
+<li><code>ipconfig /all</code> prints all interface TCP/IP <em>and</em> physical information</li>
+<li><code>ipconfig /release</code> and <code>ipconfig /renew</code> will reset DHCP information</li>
+</ul>
+<h3 id="macos-ifconfig">MacOS <code>ifconfig</code></h3>
+<p><code>ifconfig -a</code> prints all interface intormation</p>
+<h2 id="dns-information">DNS Information</h2>
+<h3 id="nslookup"><code>nslookup</code></h3>
+<ul>
+<li>Query the DNS server for an IP address</li>
+<li>Preferred tool on Windows</li>
+</ul>
+<h3 id="dig-domain-information-groper"><code>dig</code> Domain Information Groper</h3>
+<ul>
+<li>Query the DNS server for an IP address</li>
+<li>Preferred tool on Linux</li>
+</ul>
+<h2 id="router-information">Router Information</h2>
+<h3 id="route-print"><code>route print</code></h3>
+<ul>
+<li>Print the current devices route table</li>
+</ul>
+<h3 id="pathping"><code>pathping</code></h3>
+<h3 id="linux-traceroute">Linux <code>traceroute</code></h3>
+<h3 id="windows-tracert">Windows <code>tracert</code></h3>
+<h3 id="windows-pathping">Windows <code>pathping</code></h3>
+<p>Combines <code>traceroute</code> and <code>ping</code> into one tool</p>
+<h2 id="arp"><code>arp</code></h2>
+<p>Used to resolve MAC addresses from IP addresses. - <code>arp -a</code> Print the device’s ARP table</p>
+<h2 id="netstat"><code>netstat</code></h2>
+<ul>
+<li>Used to find which applications are currently using network resources</li>
+<li><code>netstat -b</code> shows which applications are accessing the network</li>
+</ul>
+<h2 id="nmap"><code>nmap</code></h2>
+<p>Used to discover devices on the netowrk.</p>
+<h2 id="ping"><code>ping</code></h2>
+<ul>
+<li>Used to see if a device is accessible</li>
+<li>Uses ICMP, which might be blocked on some devices</li>
+</ul>
+<h2 id="iptables"><code>iptables</code></h2>
+<ul>
+<li>Linux firewall command line tool</li>
+</ul>
+<div class="center">
+    <hr style="margin-top: 5ch;">
+    <p><b>Notes on Computers</b></p>
+    <p>
+             <a href="/aws">AWS</a>
+    &middot; <a href="/bash">Bash</a>
+    &middot; <a href="/c-lang">C</a>
+    &middot; <a href="/cpp-lang">C++</a>
+    &middot; <a href="/cybersecurity">Cyber Security</a>
+    &middot; <a href="/git">Git</a>
+    &middot; <a href="/latex">LaTeX</a>
+    &middot; <a href="/linux">Linux</a>
+    &middot; <a href="/networking">Networking</a>
+    &middot; <a href="/python">Python</a>
+    &middot; <a href="/raspberry-pi">Raspberry Pi</a>
+    &middot; <a href="/tools">Tools</a>
+    &middot; <a href="/vim">Vim</a>
+    </p>
+    <p><b>Notes on Math &amp; Physics</b></p>
+    <p>
+             <a href="/information-theory">Information Theory</a>
+    &middot; <a href="/linear-algebra">Linear Algebra</a>
+    &middot; <a href="/solid-state-physics">Solid State Physics</a>
+    </p>
+    <hr>
+    <p>Copyright 2021 &middot; <a href="https://ericdweise.com">Eric D. Weise</a></p>
+</div>
+</body>
+</html>

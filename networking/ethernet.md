@@ -249,10 +249,12 @@ After a random ammount of time (called the _backoff_) the NIC will retransmit th
 
 
 
-## Spanning Tree Protocol
+## Spanning Tree Protocol (STP)
 If two or more switches are connected in a loop this can cause problems.
 A frame could be transmitted through the loop infinitely and bring down the entire network
 Spanning Tree Protocol solves this issue.
+
+STP Uses special frames called **Bridge Protocol Data Units (BDPU)***.
 
 - One switch is randomly elected to be the "root switch"
 - every other switch finds a path to the root switch using Bridge Protocol Data Units (BDPU)

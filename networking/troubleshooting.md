@@ -38,8 +38,13 @@ There are many things that can cause a broken cable:
 These can test wire breaks, short circuits, bad connections, and bad mappings.
 They come with two parts, plugging in to opposite ends of the cable in question.
 
-### Time Domain Reflectometer
-Send 
+### Time Domain Reflectometer (TDR)
+This measures backtalk in UTP cables.
+It is plugged into one end of a cable and transmist signals then measures how much of that signal is reflected back into it.
+This is useful for measuring **open and short circuits**.
+
+The analog in optical cabling is **Optical TDR (OTDR)**.
+
 
 ### Certifier
 Used to test whether or not a wire can handle the data flow rate it is rated to.

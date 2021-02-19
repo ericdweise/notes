@@ -12,6 +12,7 @@ Therefore, this page is a pretty good index for this set of notes.
 | **ARP**      | Address Resolution Protocol                                    |                                 |
 | **ATM**      | Asynchronous Transfer Mode                                     | [OSI](osi-model.html)           |
 |              |                                                                |                                 |
+| **BDPU**     | Bridge Protocol Data Unit                                      | [Ethernet](ethernet.html)       |
 | **BSS**      | Basic Service Set                                              | [WiFi](wifi.html)               |
 |              |                                                                |                                 |
 | **CHAP**     | Challenge Handshake Authentication Protocol                    | [Security](security.html)       |
@@ -79,6 +80,7 @@ Therefore, this page is a pretty good index for this set of notes.
 | **SNMP**     | Simple Network Management Protocol                             | [SNMP](snmp.html)               |
 | **SONET**    | Synchronized Optical Network                                   | [Ethernet](ethernet.html)       |
 | **SSID**     | Service Set Identifier                                         | [WiFi](wifi.html)               |
+| **STP**      | Spanning Tree Protocol                                         | [Ethernet](ethernet.html)       |
 |              |                                                                |                                 |
 | **TACAS+**   | Terminal Access Controller Access Control System Plus          | [Security](security.html)       |
 |              |                                                                |                                 |

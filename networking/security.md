@@ -68,6 +68,19 @@ Fun fact, Kerberos is the three headed dog from Ancient Greek mythology.
 
 
 
+## DHCP Snooping
+A set of features added to a DHCP server that address some common security failures.
+Although DHCP operates on OSI level 3, DHCP Snooping operates on a switch, providing integrity between IP addresses and MAC addresses.
+Some protections provided are:
+
+- ARP sanitization
+- IP Address Integrity
+- Physical IP Address tracking
+
+
+
+
+
 ## User Agreements
 Some forms that users might need to sign before accessing network resources:
 - AUP: Acceptable Use Policy
@@ -85,3 +98,10 @@ Some forms that users might need to sign before accessing network resources:
     - Upper and lower case letters
     - numbers
     - Special characters (like !, @, #, etc.)
+
+
+
+
+
+## Online Certificate Status Protocol (OCSP)
+Used to verify the revocation status of a certificate.
