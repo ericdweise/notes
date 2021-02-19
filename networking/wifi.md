@@ -150,27 +150,38 @@ EAP is a set of different protocols used to secure PPP authentication.
 They are different encryption protocols so that the user-name and password are not transmitted in the clear.
 The include:
 - EAP-PSK (Pre-Shared Key)
-- EAP-TLS
+- EAP-TLS (Highest level of security)
 - EAP-TTLS (Tunneled TLS)
 - EAP-MS-CHAPv2
 - EAP-MD5
 - LEAP (cisco)
 - EAP-Fast (cisco)
 
+### Protected Extensible Authentication Protocol (PEAP)
+Encapsulates EAP in in a TLS Tunnel.
 
-### Wireless Equivalence Privacy (WEP)
+
+### Wired Equivalent Privacy (WEP)
 An easily cracked and no longer used standard.
 Has a static encryption key and a stream cipher that decreases key length.
-Also doesn't provide user authentication
+Also doesn't provide user authentication.
+Used the RC4 stream cipher.
+
+### Temporal Key Integrity Protocol (TKIP)
+An temporary stand in for WEP before a more secure protocol could take over.
+Used the RC4 stream cipher.
 
 ### WiFi Protected Access (WPA)
 Introduced Temporal Key Integrity Protocol, an 128 encryption key.
 Turned out to be just as insecure as WEP.
-Quickly abandoned
+Quickly abandoned.
 
 ### WPA2
 Uses Counter Mode Cipher Block Chaining Message Authentication Code Protocol (CCMP), an AES block cipher, and a 128 bit encryption key.
 Currently the standard for WiFi security.
 The simplest version uses a pre-shared key, but this doesn't do any user authentication.
 
+Uses Counter mode Cipher-Block-Chaining Message-Authentication-Code Protocol (CCMP), an AES based cipher.
+
 ### WPA2-Enterprise
+Uses the same authentication protocols as WPA, but also introduces a RADIUS server to manage multiple access points.

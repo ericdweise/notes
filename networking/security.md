@@ -31,11 +31,23 @@ This protocol uses many Network Access Servers, which users connect to.
 There is also a centralized RADIUS server, which contains a database of user authentication credentials.
 All the NASs connect to the RADIUS server to get authentication credentials.
 
+Key Facts:
+- Used to grant network access
+- Authentication and Authorization are combined into the same process
+- Only encrypts the password in the authentication payload
 
-## Terminal Access Controller Access Control System Plus (TACAS+)
+
+## Terminal Access Controller Access Control System Plus (TACACS+)
 A method for distributing ACLs to many routers and switches.
 The ACL is stored on a single server.
 It communicates
+
+Key Facts:
+- TACAS was an open protocol. TACACS+ was developed by Cisco to replace TACAS and solve many of its failings
+- TACACS+ encrypts the entire authentication payload, not just the user's password
+- Used mostly for device administration
+- Authentication and Authorization are separate processes
+
 
 ### Kerberos
 This is decidedly _not_ a point-to-point protocol.
@@ -46,7 +58,20 @@ IF the authentication passes the user is sent a _Ticket to Request Ticket_.
 This ticket expires after a certain time, after which the user must reauthenticate.
 The ticket can be used to authenticate the user to access any other network resource that they are allowed to access during the ticket's lifetime.
 
+Key Facts:
+- Reduces efficacy of replay attacks
+- Encrypted keys are called tickets
+
 Fun fact, Kerberos is the three headed dog from Ancient Greek mythology.
+
+
+
+
+
+## User Agreements
+Some forms that users might need to sign before accessing network resources:
+- AUP: Acceptable Use Policy
+- NDA: Non Disclosure Agreement
 
 
 
