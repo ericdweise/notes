@@ -6,6 +6,9 @@ This is my process.
 ## Strawberry
 ### Install
 ```bash
+wget -O /tmp/strawberry.deb 'https://github.com/strawberrymusicplayer/strawberry/releases/download/0.6.11/strawberry_0.6.11-eoan_amd64.deb'
+sudo apt install -y /tmp/strawberry.deb
+rm /tmp/strawberry.deb
 ```
 
 ### Set Up Collection
@@ -20,9 +23,8 @@ It's similar to an iTunes Library.
 
 1. Import unsorted directory into a **Playlist**: `Playlist -> Add Folder`
 2. Clean up metadata
-   - Set Album to `Unknown` if not available
 3. Move files to collection (`select all`, `right click`, `Move to collection`)
-4. Set output filename format: `%artist/%album/{0%track-}%title.%extension`
+4. Set output filename format: `%artist/{%album/}{%track_}%title.%extension`
 5. Check `Remove problematic characters from filenames`
 5. Check `Restrict to characters allowed on FAT filesystems`
 6. Check `Replace spaces with underscores`
@@ -36,9 +38,12 @@ It's similar to an iTunes Library.
 
 
 
-## Audacity
+## Audacious
+A lightweight player.
+
 ### Install
 ```bash
+sudo apt install -y audacious
 ```
 
 

@@ -17,7 +17,9 @@
 <p>I used to have a prolific music library, but I lost it when my computer crashed and iPod classic was stolen. I’m trying to build up my collection again, but I’m trying to not be dependent on a proprietary system, single point of failure. This is my process.</p>
 <h2 id="strawberry">Strawberry</h2>
 <h3 id="install">Install</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">wget</span> -O /tmp/strawberry.deb <span class="st">&#39;https://github.com/strawberrymusicplayer/strawberry/releases/download/0.6.11/strawberry_0.6.11-eoan_amd64.deb&#39;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="fu">sudo</span> apt install -y /tmp/strawberry.deb</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="fu">rm</span> /tmp/strawberry.deb</a></code></pre></div>
 <h3 id="set-up-collection">Set Up Collection</h3>
 <p>The Strawberry “collection” is a set of all the audio files in it’s database. It’s similar to an iTunes Library.</p>
 <ol type="1">
@@ -28,12 +30,9 @@
 <h3 id="importing-new-music">Importing New Music</h3>
 <ol type="1">
 <li>Import unsorted directory into a <strong>Playlist</strong>: <code>Playlist -&gt; Add Folder</code></li>
-<li>Clean up metadata
-<ul>
-<li>Set Album to <code>Unknown</code> if not available</li>
-</ul></li>
+<li>Clean up metadata</li>
 <li>Move files to collection (<code>select all</code>, <code>right click</code>, <code>Move to collection</code>)</li>
-<li>Set output filename format: <code>%artist/%album/{0%track-}%title.%extension</code></li>
+<li>Set output filename format: <code>%artist/{%album/}{%track_}%title.%extension</code></li>
 <li>Check <code>Remove problematic characters from filenames</code></li>
 <li>Check <code>Restrict to characters allowed on FAT filesystems</code></li>
 <li>Check <code>Replace spaces with underscores</code></li>
@@ -42,9 +41,10 @@
 <li>Click <code>Ok</code></li>
 </ol>
 <h3 id="playlists">Playlists</h3>
-<h2 id="audacity">Audacity</h2>
+<h2 id="audacious">Audacious</h2>
+<p>A lightweight player.</p>
 <h3 id="install-1">Install</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">sudo</span> apt install -y audacious</a></code></pre></div>
 <h2 id="editing-music-and-audio-files">Editing Music and Audio Files</h2>
 <h3 id="ffmpeg">FFMPEG</h3>
 <p>A very powerful command line tool.</p>
