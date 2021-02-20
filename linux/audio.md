@@ -24,7 +24,7 @@ It's similar to an iTunes Library.
 1. Import unsorted directory into a **Playlist**: `Playlist -> Add Folder`
 2. Clean up metadata
 3. Move files to collection (`select all`, `right click`, `Move to collection`)
-4. Set output filename format: `%artist/{%album/}{%track_}%title.%extension`
+4. Set output filename format: <code>%artist/{\%album/}{\%track_}%title.%extension</code>
 5. Check `Remove problematic characters from filenames`
 5. Check `Restrict to characters allowed on FAT filesystems`
 6. Check `Replace spaces with underscores`
