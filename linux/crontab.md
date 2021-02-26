@@ -5,7 +5,7 @@
 The crontab format is as follows:
 
 ```
-.____________ minuute         (0-59)
+.____________ minute          (0-59)
 | . _________ hour            (0-23)
 | | . _______ day of month    (1-31)
 | | | .______ month of year   (1-12 OR jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec)
@@ -17,27 +17,36 @@ The crontab format is as follows:
 Note: only include the `USER` if you are editing systemwide crontab files.
 Otherwise omit this field.
 
-## Adding Crontab Entries
-### Interactive
-Use `sudo crontab -e`.
-This will open your chosen editor (the first time it will ask you to choose) and you can add a line to the crontab file.
-Any entries added this way will be run with root priviledges.
-If you don't need root permissions then you can run this without `sudo`.
-These entries are stored in `/proc` and can't be accessed easily.
 
-### Edit the crontab file interactively
+
+## The `crontab` Command
+The `crontab -e` command is used to add entries to crontab.
+This will open the editor of your choice and allow you to modify entries for the current user.
+Use `sudo crontab -e` to add root level crontab entries, and use `crontab -e` to add crontabs for your login.
+These entries are stored in `/proc` and can't be accessed easily without using the `crontab` command.
+
+
+
+## Editing the Crontab File
 Systemwide rontab entries are stored in `/etc/crontab`.
-Choose your favorite editor and 
-Requires root permissions
+Choose your favorite editor and open this file.
+This requires root permissions.
 
 
-### Add Scripts to `/etc/crontab.d/`
-Create a file with one line in the crontab format: `* * * * * USER COMMAND`
+
+## Add Scripts to `/etc/crontab.d/`
+Create a file with one line in the crontab format:
+
+```text
+* * * * * USER COMMAND
+```
+
 Copy this file into `/etc/crontab.d/`
 The `COMMAND` will be executed on your prescribed schedule.
 
 
-### Add Scripts to the crontab `hourly`, `daily`, `weekly`, or `monthly` Directory
+
+## Add Scripts to the crontab `hourly`, `daily`, `weekly`, or `monthly` Directory
 There are three directories:
 
 1. `/etc/cron.hourly/`
@@ -49,6 +58,7 @@ Any executable can be put in one of these directories and it will be run on the 
 That means, you don't need to use the `* * * * * USER COMMAND` format.
 The drawback is that you cannot specify when it will run.
 For example, a script in the `weekly` directory might run every Sunday or every Wednesday.
+
 
 
 ## Debugging
